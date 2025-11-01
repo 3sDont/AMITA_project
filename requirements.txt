@@ -1,0 +1,32 @@
+# Project dependencies for AMITA_project
+# Note: ffmpeg must be installed in the system (pydub and faster-whisper require it).
+# Install with your system package manager (e.g., apt, choco, brew) or download from ffmpeg.org.
+
+# Core ML and audio
+torch>=1.13.0
+pyannote.audio>=2.1
+
+# Whisper implementations
+faster-whisper>=0.8.0
+openai-whisper>=20230314
+
+# Audio processing
+pydub>=0.25.1
+soundfile>=0.12.1
+librosa>=0.10.0
+
+# Numeric / signal
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Helpers
+python-dotenv>=1.0.0
+transformers>=4.30.0
+huggingface-hub>=0.15.1
+ffmpeg-python>=0.4.0
+
+# Optional / developer
+# (If you plan to run parallel transcription using multiprocessing worker model)
+# Note: faster-whisper and WhisperModel are CPU/GPU aware; tune torch installation for CUDA if needed.
+
+# Pin versions as needed for reproducibility

@@ -1,0 +1,24 @@
+# Default configuration
+model:
+  whisper_size: medium
+  device: auto
+
+diarization:
+  threshold: 0.71
+  min_duration_off: 0.0
+
+transcription:
+  chunk_minutes: 10
+  language: vi
+  beam_size: 5
+
+cache:
+  enabled: true
+  dir: data/cache
+
+logging:
+  level: INFO
+  dir: data/logs
+
+output:
+  dir: data/output

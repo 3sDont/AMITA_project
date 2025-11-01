@@ -1,0 +1,344 @@
+[
+  {
+    "speaker": "SPEAKER_00",
+    "start": 4.04,
+    "end": 5.4,
+    "text": "Rồi, ghi găm lại nè."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 8.66,
+    "end": 9.84,
+    "text": "Ghi găm lại luôn em."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 12.32,
+    "end": 13.82,
+    "text": "Mà ghi găm gì nó có..."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 13.82,
+    "end": 14.64,
+    "text": "Ghi găm bên này luôn không?"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 23.34,
+    "end": 24.34,
+    "text": "Xin chào hổ."
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 26.6,
+    "end": 27.2,
+    "text": "Chào quá đông."
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 28.4,
+    "end": 30.94,
+    "text": "Rồi, bây giờ mình bắt đầu củ hợp ha."
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 34.16,
+    "end": 34.6,
+    "text": "Ok."
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 38.48,
+    "end": 39.1,
+    "text": "Rồi hả?"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 42.3,
+    "end": 45.84,
+    "text": "Sáng nay mình hợp nhanh để chúc lại phân tích hệ thống AHA nha."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 46.58,
+    "end": 48.78,
+    "text": "Em nói hôm qua bên giáo viên hộ gấp ý gì thêm hông?"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 50.4,
+    "end": 51.12,
+    "text": "Có anh ơi."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 51.56,
+    "end": 56.18,
+    "text": "Thao bảo là mỗi khi ớt lát tà liệu lên á, thì hệ thống phải lưu luôn."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 56.94,
+    "end": 59.14,
+    "text": "Để mấy lần sau không cần phải cải lại."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 59.62,
+    "end": 62.18,
+    "text": "Em thấy cái này là một hợp lý."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 64.78,
+    "end": 67.96,
+    "text": "Vậy là phải thêm phòng lùm Metadata của Phi và Tata Bay ha."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 68.84,
+    "end": 70.04,
+    "text": "Mình có bạn có gọi bách em chưa?"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 71.22,
+    "end": 73.62,
+    "text": "Vậy rồi, em còn nói sơ."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 74.12,
+    "end": 77.9,
+    "text": "Bên đó bảo là cần có đấu chúc, đạt tà bay trước."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 78.74,
+    "end": 80.34,
+    "text": "Chứ, chui và dạm làm."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 82.42,
+    "end": 82.78,
+    "text": "Ok."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 83.46,
+    "end": 85.72,
+    "text": "Để chịu anh rap lại cái schema mới."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 86.2,
+    "end": 88.12,
+    "text": "Có thêm bài ướp lát là Hitcher Phi."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 88.54,
+    "end": 89.86,
+    "text": "Cho họ lưu theo ID giáo viên."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 91.44,
+    "end": 91.8,
+    "text": "Dạ."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 92.1,
+    "end": 94.24,
+    "text": "Mà anh nhớ chứ chừng em luôn cái phần bả mật nha."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 94.48,
+    "end": 96.18,
+    "text": "Mới Phi về học cũng là cũng nhạc em."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 97.82,
+    "end": 98.18,
+    "text": "Ok."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 98.82,
+    "end": 100.44,
+    "text": "Anh tính dùng tục kênh sách thực thế sét xin."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 101.48,
+    "end": 103.76,
+    "text": "À mà em xem lại cái phần chát Hitchery nha."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 104.3,
+    "end": 105.82,
+    "text": "Mình có cần lưu toàn bọn hội thoại không?"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 105.94,
+    "end": 106.66,
+    "text": "Chỉ tấm tắt hả ta?"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 108.24,
+    "end": 110.1,
+    "text": "Em nghĩ nên lưu toàn bộ."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 110.8,
+    "end": 112.64,
+    "text": "Tính nhất là trong vòng 7 ngày còn nhất."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 113.4,
+    "end": 117.94,
+    "text": "Để ví dụ như giáo viên họ có thể coi lại là mình tương tết với chát bót như thế nào."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 119.36,
+    "end": 120.92,
+    "text": "Ok, ok để anh nói lại."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 121.84,
+    "end": 124.12,
+    "text": "Ủa còn vụ lóc phải hỏi học sinh thì bên em thử chưa?"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 124.96,
+    "end": 125.84,
+    "text": "Chưa xong anh ơi."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 126.1,
+    "end": 128.18,
+    "text": "Mới chị xong cái phần phong trả lời câu hỏi thôi."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 128.54,
+    "end": 132.12,
+    "text": "Còn phần lưu cất vẻ thì đẹp đang fit lỗi API."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 134.54,
+    "end": 134.94,
+    "text": "Ok."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 134.94,
+    "end": 137.04,
+    "text": "Bây giờ mình thống nhất tiếng đồ như thế nha."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 137.34,
+    "end": 139.9,
+    "text": "Là sáng mai thì em gửi anh cái bản cập nhật data bay."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 140.52,
+    "end": 142.8,
+    "text": "Còn chiều mai thì anh đẩy cái bản thiết kế API."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 143.54,
+    "end": 145.8,
+    "text": "Còn cuối tuần này thì mình test lựa phoàn bộ luôn."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 146.14,
+    "end": 148.24,
+    "text": "Và bao gồm là uplack, chết là phản hồi."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 149.86,
+    "end": 150.82,
+    "text": "Ok anh ơi."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 150.94,
+    "end": 151.72,
+    "text": "Em có nói là rồi."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 153.4,
+    "end": 153.8,
+    "text": "Ok."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 154.16,
+    "end": 155.16,
+    "text": "Tạm thời vậy nha."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 155.72,
+    "end": 159.26,
+    "text": "Cố gắng tuần này mình xong để qua tuần demo nha."
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 160.5,
+    "end": 161.5,
+    "text": "Ok em rõ rồi."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 161.78,
+    "end": 163.16,
+    "text": "Hẹn gặp anh ở bữa hôm tiếp theo nha."
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 163.16,
+    "end": 164.72,
+    "text": "Dạ."
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 165.7,
+    "end": 167.04,
+    "text": "Dạ em."
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 170.1,
+    "end": 171.6,
+    "text": "Dừng nghĩ luôn hả?"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 172.6,
+    "end": 172.92,
+    "text": "Dừng nghĩ."
+  }
+]

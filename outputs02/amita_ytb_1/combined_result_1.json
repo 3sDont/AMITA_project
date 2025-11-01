@@ -1,0 +1,5861 @@
+[
+  {
+    "speaker": "UNKNOWN",
+    "start": 0.0,
+    "end": 3.0,
+    "text": "Anh gửi hồ sơ của em cho lãm đốc ạ.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 5.0,
+    "end": 6.0,
+    "text": "Anh không nhận nhé.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 6.0,
+    "end": 7.0,
+    "text": "Tại sao ạ?",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 7.0,
+    "end": 11.0,
+    "text": "Tại vì em chưa giới thiệu tên em, anh không biết.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 11.0,
+    "end": 12.0,
+    "text": "Thì anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 12.0,
+    "end": 13.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 13.0,
+    "end": 14.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 14.0,
+    "end": 15.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 15.0,
+    "end": 16.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 16.0,
+    "end": 17.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 17.0,
+    "end": 18.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 18.0,
+    "end": 19.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 19.0,
+    "end": 20.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 20.0,
+    "end": 21.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 21.0,
+    "end": 22.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 22.0,
+    "end": 23.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 23.0,
+    "end": 24.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 24.0,
+    "end": 25.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 25.0,
+    "end": 26.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 26.0,
+    "end": 27.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 27.0,
+    "end": 28.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 28.0,
+    "end": 29.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 29.0,
+    "end": 30.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 30.0,
+    "end": 31.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 31.0,
+    "end": 32.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 32.0,
+    "end": 33.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 33.0,
+    "end": 34.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 34.0,
+    "end": 35.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 35.0,
+    "end": 36.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 36.0,
+    "end": 37.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 37.0,
+    "end": 38.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 38.0,
+    "end": 39.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 39.0,
+    "end": 40.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 40.0,
+    "end": 41.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 41.0,
+    "end": 42.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 42.0,
+    "end": 43.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 43.0,
+    "end": 44.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 44.0,
+    "end": 45.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 45.0,
+    "end": 46.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 46.0,
+    "end": 47.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 47.0,
+    "end": 48.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 48.0,
+    "end": 49.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 49.0,
+    "end": 50.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 50.0,
+    "end": 51.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 51.0,
+    "end": 52.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 52.0,
+    "end": 53.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 53.0,
+    "end": 54.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 54.0,
+    "end": 55.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 55.0,
+    "end": 56.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 56.0,
+    "end": 57.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 57.0,
+    "end": 58.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 58.0,
+    "end": 59.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 59.0,
+    "end": 60.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 60.0,
+    "end": 61.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 61.0,
+    "end": 62.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 62.0,
+    "end": 63.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 63.0,
+    "end": 64.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 64.0,
+    "end": 65.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 65.0,
+    "end": 66.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 66.0,
+    "end": 67.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 67.0,
+    "end": 68.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 68.0,
+    "end": 69.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 69.0,
+    "end": 70.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 70.0,
+    "end": 71.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 71.0,
+    "end": 72.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 72.0,
+    "end": 73.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 73.0,
+    "end": 74.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 74.0,
+    "end": 75.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 75.0,
+    "end": 76.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 99.0,
+    "end": 100.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 100.0,
+    "end": 101.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 101.0,
+    "end": 102.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 102.0,
+    "end": 103.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 103.0,
+    "end": 104.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 104.0,
+    "end": 105.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 105.0,
+    "end": 106.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 106.0,
+    "end": 107.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 107.0,
+    "end": 108.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 108.0,
+    "end": 109.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 109.0,
+    "end": 110.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 110.0,
+    "end": 111.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 111.0,
+    "end": 112.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 112.0,
+    "end": 113.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 113.0,
+    "end": 114.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 114.0,
+    "end": 115.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 115.0,
+    "end": 116.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 116.0,
+    "end": 117.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 117.0,
+    "end": 118.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 118.0,
+    "end": 119.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 119.0,
+    "end": 120.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 120.0,
+    "end": 121.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 121.0,
+    "end": 122.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 122.0,
+    "end": 123.0,
+    "text": "Anh cứ cầm đi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 123.0,
+    "end": 124.0,
+    "text": "Dạ.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 124.0,
+    "end": 126.0,
+    "text": "Bây giờ em không nhớ gì ạ.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 129.0,
+    "end": 132.0,
+    "text": "Em mình học ở đâu nhỉ?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 132.0,
+    "end": 134.0,
+    "text": "Em đi học ở bên Mỹ.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 136.0,
+    "end": 140.0,
+    "text": "Thì trong cái quãng thời gian đấy em học cả bằng cử nhân lẫn bằng thạc sĩ luôn.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 140.0,
+    "end": 141.0,
+    "text": "Dạ.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 141.0,
+    "end": 143.0,
+    "text": "Cái vị trí của anh em thấy quen lắm.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 143.0,
+    "end": 144.0,
+    "text": "Quen á?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 144.0,
+    "end": 145.0,
+    "text": "Dạ.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 145.0,
+    "end": 147.0,
+    "text": "Ờ, em gặp ở đâu mà quen nhỉ?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 147.0,
+    "end": 150.0,
+    "text": "Ý là cái khung cảnh này này, cái vị trí này này.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 150.0,
+    "end": 152.0,
+    "text": "Em thấy trông nó quen quen thôi ạ.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 152.0,
+    "end": 157.0,
+    "text": "Ờ, anh thấy ở trong CV này em có ghi là em...",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 157.0,
+    "end": 160.0,
+    "text": "trước đây em còn làm cả giám đốc ạ.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 160.0,
+    "end": 162.0,
+    "text": "Em vẫn là giám đốc ạ.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 163.0,
+    "end": 166.0,
+    "text": "Ờ, thế giám đốc đi nộp CV sinh việc làm gì vậy?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 166.0,
+    "end": 171.0,
+    "text": "Thú thật với anh thì thời gian này công ty cũng khá là khó khăn.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 171.0,
+    "end": 172.0,
+    "text": "À, phá sản.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 172.0,
+    "end": 173.0,
+    "text": "À, chưa đến mức phá sản.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 173.0,
+    "end": 176.0,
+    "text": "Chỉ có là không có doanh thu thôi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 176.0,
+    "end": 179.0,
+    "text": "Không có doanh thu thì khác gì phá sản?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 183.0,
+    "end": 187.0,
+    "text": "À, anh cũng nắm sơ sơ qua được rồi.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 188.0,
+    "end": 189.0,
+    "text": "Thế cho anh hỏi nhé.",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 189.0,
+    "end": 190.0,
+    "text": "Dạ.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 190.0,
+    "end": 193.0,
+    "text": "Nếu mà có siêu năng lực thì em...",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 194.0,
+    "end": 196.0,
+    "text": "Em muốn có siêu năng lực gì?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 198.0,
+    "end": 202.0,
+    "text": "Em muốn nói chuyện được với cây cối.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 202.0,
+    "end": 204.0,
+    "text": "Ủa, tại sao đấy?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 205.0,
+    "end": 207.0,
+    "text": "À, em...",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 208.0,
+    "end": 212.0,
+    "text": "Tại vì em là một người hay thích đi bộ á.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 212.0,
+    "end": 214.0,
+    "text": "Đi dạo, lên qua lên quanh ấy.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 214.0,
+    "end": 215.0,
+    "text": "Sao không muốn được nói chuyện với cây?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 215.0,
+    "end": 216.0,
+    "text": "Dạ.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 218.0,
+    "end": 222.0,
+    "text": "Tại nhiều khi mình đi dạo, xong rồi mình quan sát mọi thứ xung quanh.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 222.0,
+    "end": 224.0,
+    "text": "Mình thấy rất là nhiều cây cối ấy.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 224.0,
+    "end": 226.0,
+    "text": "Và lúc đấy thì mình đi một mình ấy, nên là...",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 227.0,
+    "end": 232.0,
+    "text": "Nhiều khi em cũng muốn được có cái cảm giác là...",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 232.0,
+    "end": 236.0,
+    "text": "Có người bạn đồng hành trên đường đi dạo,",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 236.0,
+    "end": 239.0,
+    "text": "thì em có thể quay ra nói chuyện với cây cối chẳng hạn.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 239.0,
+    "end": 243.0,
+    "text": "Hỏi thăm xem là các bạn ấy hôm nay vui như thế nào?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 243.0,
+    "end": 245.0,
+    "text": "Có được tới nước không?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 245.0,
+    "end": 247.0,
+    "text": "Có đầy đủ chất dinh dưỡng không?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 247.0,
+    "end": 248.0,
+    "text": "Dạ.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 249.0,
+    "end": 251.0,
+    "text": "Em là một người yêu môi trường.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 251.0,
+    "end": 253.0,
+    "text": "Em khá là yêu môi trường.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 253.0,
+    "end": 255.0,
+    "text": "Cho anh hỏi nếu mà...",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 255.0,
+    "end": 257.0,
+    "text": "Em được một lần nói chuyện với cây cà phê ấy,",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 257.0,
+    "end": 259.0,
+    "text": "thì em sẽ nói gì với cây cà phê?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 259.0,
+    "end": 261.0,
+    "text": "Cảm ơn bạn.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 261.0,
+    "end": 267.0,
+    "text": "Đã trở thành một phần quan trọng trong cuộc sống của rất nhiều người Việt Nam.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 267.0,
+    "end": 268.0,
+    "text": "Anh nghĩ đấy là một điểm cộng đấy.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 268.0,
+    "end": 269.0,
+    "text": "Dạ.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 269.0,
+    "end": 272.0,
+    "text": "Không biết là em đã từng làm việc với cả chuyên gia chưa nhỉ?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 272.0,
+    "end": 276.0,
+    "text": "Em làm việc với khá là nhiều chuyên gia rồi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 276.0,
+    "end": 279.0,
+    "text": "Em làm việc với các chuyên gia tài chính này.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 279.0,
+    "end": 284.0,
+    "text": "Làm việc với các chuyên gia khởi nghiệp này.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 284.0,
+    "end": 288.0,
+    "text": "Các chuyên gia về âm nhạc này, về phim ảnh này.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 288.0,
+    "end": 291.0,
+    "text": "Nói chung là làm đủ với các chuyên gia luôn.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 292.0,
+    "end": 296.0,
+    "text": "Nó cũng không liên quan với chuyên gia mà anh muốn hỏi lắm.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 297.0,
+    "end": 299.0,
+    "text": "Anh muốn hỏi đến các chuyên gia nào ạ?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 299.0,
+    "end": 302.0,
+    "text": "Chuyên gia về nông trại như của Nescafe chẳng hạn.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 302.0,
+    "end": 306.0,
+    "text": "Em chưa có cơ hội tiếp xúc với các chuyên gia về nông nghiệp.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 306.0,
+    "end": 312.0,
+    "text": "Nhưng mà em rất sẵn lòng để có cơ hội được tiếp xúc với các chuyên gia đó.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 312.0,
+    "end": 316.0,
+    "text": "Và tìm hiểu thêm về trang trại cà phê của Nescafe.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 321.0,
+    "end": 323.0,
+    "text": "Em có sẵn sàng với những trải nghiệm mới không?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 323.0,
+    "end": 324.0,
+    "text": "Sẵn sàng chứ.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 324.0,
+    "end": 326.0,
+    "text": "Sẵn sàng luôn luôn sẵn sàng.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 326.0,
+    "end": 330.0,
+    "text": "Tại sao em lại nghĩ là em hợp với vị trí công việc?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 330.0,
+    "end": 334.0,
+    "text": "Em nghĩ em phù hợp với chương trình siêu thực tập sinh này.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 334.0,
+    "end": 336.0,
+    "text": "Vì việc gì em cũng làm được.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 336.0,
+    "end": 337.0,
+    "text": "Em chắc hả?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 337.0,
+    "end": 338.0,
+    "text": "Không hẳn.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 338.0,
+    "end": 343.0,
+    "text": "Em có một sự tò mò và một sự nhiệt huyết.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 343.0,
+    "end": 345.0,
+    "text": "Nhất định theo như anh.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 345.0,
+    "end": 347.0,
+    "text": "Chứ không phải là vô hạn.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 349.0,
+    "end": 353.0,
+    "text": "Em sẵn sàng cống hiến cho các công việc của chương trình mình.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 353.0,
+    "end": 360.0,
+    "text": "Và em cũng nhận thấy là chương trình mình sẽ có cơ hội cho các bạn thực tập sinh được đi ra thiên nhiên.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 360.0,
+    "end": 363.0,
+    "text": "Được đến các trang trại để trải nghiệm thực tế.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 363.0,
+    "end": 368.0,
+    "text": "Là một người làm ở trong không gian văn phòng lâu quá rồi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 368.0,
+    "end": 373.0,
+    "text": "Cứ phải ngồi trong không khí điều hòa, ảnh sáng nhân tạo.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 373.0,
+    "end": 376.0,
+    "text": "Các đồ vật cũng nhân tạo hết.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 376.0,
+    "end": 382.0,
+    "text": "Em khá là thèm muốn cảm giác có một trải nghiệm gì đó gần gũi với thiên nhiên hơn.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 383.0,
+    "end": 384.0,
+    "text": "Cho anh hỏi thêm.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 384.0,
+    "end": 387.0,
+    "text": "Em nói em ngồi trong văn phòng lâu.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 387.0,
+    "end": 388.0,
+    "text": "Lâu là bao lâu?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 388.0,
+    "end": 390.0,
+    "text": "Ba tiếng.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 390.0,
+    "end": 392.0,
+    "text": "Là khoảng thời gian em còn làm giám đốc?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 392.0,
+    "end": 394.0,
+    "text": "Dạ, em vẫn là giám đốc.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 394.0,
+    "end": 396.0,
+    "text": "Em vẫn là giám đốc.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 396.0,
+    "end": 401.0,
+    "text": "Khi khoảng thời gian mà anh làm giám đốc, anh có hay nói xấu nhân viên không?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 401.0,
+    "end": 403.0,
+    "text": "Em không có nhân viên nữa.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 404.0,
+    "end": 409.0,
+    "text": "Em mất một chút thời gian để suy nghĩ, nhưng mà em mới phát hiện ra là em chưa tuyển được ai cả.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 409.0,
+    "end": 414.0,
+    "text": "Văn phòng em có các bạn tới nộp CV hay là đăng ký ứng quyển?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 414.0,
+    "end": 415.0,
+    "text": "Dạ có.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 415.0,
+    "end": 416.0,
+    "text": "Có đúng không?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 416.0,
+    "end": 419.0,
+    "text": "Dạ, nhưng mà các bạn ấy không có ai được tuyển hết.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 422.0,
+    "end": 425.0,
+    "text": "Chắc mình sẽ bỏ qua về vấn đề sức khỏe em nhỉ?",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 425.0,
+    "end": 426.0,
+    "text": "Không, em nghĩ là em có thể...",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 426.0,
+    "end": 428.0,
+    "text": "Không, bỏ qua đi, em đừng cố.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 428.0,
+    "end": 430.0,
+    "text": "Anh hiểu được mà.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 430.0,
+    "end": 431.0,
+    "text": "Anh có muốn vất tay không?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 431.0,
+    "end": 433.0,
+    "text": "Anh hỏi nhá.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 433.0,
+    "end": 435.0,
+    "text": "Nếu em thắng anh thì em có thấy vui không?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 435.0,
+    "end": 437.0,
+    "text": "Thứ nhất là em sẽ thấy không vui.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 438.0,
+    "end": 439.0,
+    "text": "Cho anh.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 439.0,
+    "end": 440.0,
+    "text": "Cho anh hả?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 440.0,
+    "end": 443.0,
+    "text": "Dạ, nhưng mà em sẽ thấy vui vì em đã chứng tỏ được bản thân mình.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 443.0,
+    "end": 447.0,
+    "text": "Để cho anh thấy được là anh đang có một cái nhìn sai về...",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 447.0,
+    "end": 449.0,
+    "text": "Trong khoảng thời gian em làm giám đốc,",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 449.0,
+    "end": 452.0,
+    "text": "những thành tựu nào lớn nhất trong khoảng đường đời của em?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 452.0,
+    "end": 453.0,
+    "text": "Trong khoảng đường đời hả?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 453.0,
+    "end": 456.0,
+    "text": "Kể cả tính từ sự nghiệp từ lúc bắt đầu em học xong,",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 456.0,
+    "end": 460.0,
+    "text": "hoặc là em có thể kể một cái nào, kể cả một cái thành tựu từ ngày xưa của em cũng được.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 461.0,
+    "end": 462.0,
+    "text": "Không có hả?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 462.0,
+    "end": 463.0,
+    "text": "Không, không, không, anh.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 463.0,
+    "end": 464.0,
+    "text": "Đợi em một tí.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 464.0,
+    "end": 466.0,
+    "text": "Tại em nghĩ cái thành tựu của anh nó rất là lớn.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 466.0,
+    "end": 467.0,
+    "text": "Và em đang...",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 467.0,
+    "end": 468.0,
+    "text": "Thì em có thể kể một cái gì?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 468.0,
+    "end": 469.0,
+    "text": "Thì em có thể kể một cái gì?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 469.0,
+    "end": 470.0,
+    "text": "Thì em có thể kể một cái gì?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 470.0,
+    "end": 471.0,
+    "text": "Thì em có thể kể một cái gì?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 471.0,
+    "end": 472.0,
+    "text": "Thì em có thể kể một cái gì?",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 477.0,
+    "end": 483.0,
+    "text": "Tìm một cái cách nào đấy để em có thể giải thích cho anh hiểu được dễ nhất có thể.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 483.0,
+    "end": 484.0,
+    "text": "Thành tựu lớn.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 484.0,
+    "end": 485.0,
+    "text": "Dạ, vâng.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 485.0,
+    "end": 487.0,
+    "text": "Thành tựu này khổng lồ luôn ạ.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 487.0,
+    "end": 488.0,
+    "text": "Mà em phải nghĩ để giải thích.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 488.0,
+    "end": 489.0,
+    "text": "Dạ.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 489.0,
+    "end": 492.0,
+    "text": "Tại em muốn cái câu trả lời của mình nó có ý nghĩa một tí.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 492.0,
+    "end": 493.0,
+    "text": "Ừ.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 493.0,
+    "end": 495.0,
+    "text": "Đó là em quyết định em nghỉ việc.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 495.0,
+    "end": 499.0,
+    "text": "Em thành lập một công ty của riêng bản thân em.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 501.0,
+    "end": 503.0,
+    "text": "Thực ra cái đấy nó không phải là thành tựu đâu.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 503.0,
+    "end": 508.0,
+    "text": "Mà đối với em nó là một cái bước ngoặt rất là lớn trong cuộc đời em.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 508.0,
+    "end": 512.0,
+    "text": "Cái lúc mà em đưa ra quyết định làm như vậy,",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 512.0,
+    "end": 517.0,
+    "text": "em cũng không nghĩ nó là thành tựu hay là một cái gì đấy nó cao siêu hay cái gì cả.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 517.0,
+    "end": 522.0,
+    "text": "Mà nó chỉ là một cái bước cần thiết để em có thể làm được thứ em muốn trong sự nghiệp của em.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 522.0,
+    "end": 525.0,
+    "text": "Bây giờ nhìn lại đối với em đấy là một cái thành tựu.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 525.0,
+    "end": 529.0,
+    "text": "Làm mình đã suy nghĩ một cách thấu đáo để đưa ra được quyết định đó.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 529.0,
+    "end": 531.0,
+    "text": "Và mình không hối hận với quyết định đấy.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 531.0,
+    "end": 532.0,
+    "text": "Không hối hận.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 532.0,
+    "end": 535.0,
+    "text": "Dù cho bây giờ là công ty sắp phá sản.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 535.0,
+    "end": 537.0,
+    "text": "Vâng, nó là trải nghiệm thôi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 537.0,
+    "end": 545.0,
+    "text": "Anh có biết cái câu mà mọi thứ chúng ta làm trong cuộc sống là để tiếp diễn cho cái kích bản của cuộc sống chúng ta không?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 545.0,
+    "end": 547.0,
+    "text": "À, anh không phải diễn viên nhỉ? Anh không biết cái đấy đúng không?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 547.0,
+    "end": 548.0,
+    "text": "Anh không.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 553.0,
+    "end": 556.0,
+    "text": "Em thì được tiếp xúc nhiều với các chuyên gia trong ngành phim.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 556.0,
+    "end": 558.0,
+    "text": "Dạ, nên em hiểu cái đó.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 558.0,
+    "end": 561.0,
+    "text": "Hay quá. Anh thì không thích bên ngành phim lắm.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 561.0,
+    "end": 565.0,
+    "text": "À, tại em trong giám đốc cũng có tổ chất đấy.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 565.0,
+    "end": 569.0,
+    "text": "À, không. Anh làm về bên mạng khác.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 569.0,
+    "end": 570.0,
+    "text": "Dạ, mạng gì ạ anh?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 570.0,
+    "end": 573.0,
+    "text": "Đấy, siêu thực tập sinh của Nescafe.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 575.0,
+    "end": 577.0,
+    "text": "Nhưng mà cho anh hỏi này.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 577.0,
+    "end": 583.0,
+    "text": "Em có cách nào để em có thể duy trì cái đam mê trong công việc của em không?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 583.0,
+    "end": 590.0,
+    "text": "Nó giống như kiểu là công ty sắp phá sản mà lúc nào anh cũng thấy em cảm thấy rất là kiểu rất là tích cực ấy.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 590.0,
+    "end": 594.0,
+    "text": "Nên là em mới nói là em muốn có khả năng nói chuyện với cây cối á.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 594.0,
+    "end": 599.0,
+    "text": "Cái việc mà được đi bộ ở trong tiên nhiên nó mang lại cho em rất là nhiều năng lượng.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 599.0,
+    "end": 602.0,
+    "text": "Nó tái tạo lại trong em rất là nhiều năng lượng và cảm hứng.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 602.0,
+    "end": 609.0,
+    "text": "Làm em quên đi hết các mụn phiền trong nền kinh tế hiện nay cũng như trong bối cảnh kinh doanh hiện tại.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 609.0,
+    "end": 614.0,
+    "text": "Thì bây giờ công ty mình làm ra mình phải chịu thôi. Mình cũng đâu thể chạy trốn được.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 614.0,
+    "end": 618.0,
+    "text": "Nhưng mà mình làm thế nào để mà mình giữ vững được tâm trí của bản thân mình?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 618.0,
+    "end": 624.0,
+    "text": "Tâm trí của bản thân mình thì em chọn cách là em làm những cái hoạt động mà giúp em tái tạo năng lượng.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 624.0,
+    "end": 625.0,
+    "text": "Hay đấy.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 625.0,
+    "end": 626.0,
+    "text": "Dạ.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 626.0,
+    "end": 631.0,
+    "text": "Thế mà đối với anh đi thì những lúc mà anh cảm thấy khó khăn thì anh sẽ làm gì?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 631.0,
+    "end": 635.0,
+    "text": "Anh thì chưa thấy khó khăn gì mấy.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 635.0,
+    "end": 637.0,
+    "text": "Tức là cuộc sống anh khá là xuân sẻ.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 637.0,
+    "end": 642.0,
+    "text": "Không phải khá là xuân sẻ tại vì với anh thì chả có gì khó thì mà anh phải kè cái chuyện đấy.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 648.0,
+    "end": 651.0,
+    "text": "Anh thấy nói chuyện với em bắt đầu anh thấy hướng khởi rồi đấy.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 651.0,
+    "end": 653.0,
+    "text": "Em nghĩ sao vì cái chuyện tăng ca?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 653.0,
+    "end": 654.0,
+    "text": "Có cần không anh?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 654.0,
+    "end": 655.0,
+    "text": "Anh nghĩ là cần.",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 655.0,
+    "end": 658.0,
+    "text": "Nhưng em cũng thấy là trong bảng...",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 658.32,
+    "end": 661.14,
+    "text": "Trình phác của công ty mình có chữ không tăng ca mà",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 661.14,
+    "end": 662.28,
+    "text": "Chưa sửa em ạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 662.7,
+    "end": 664.1,
+    "text": "Với cái ảnh bị ghi nhầm",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 664.1,
+    "end": 667.76,
+    "text": "Chuyên nghiệp hòa nhã có tăng ca không lương nha",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 668.62,
+    "end": 669.62,
+    "text": "Ghi nhầm",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 669.62,
+    "end": 672.4,
+    "text": "Em thấy được không? Nếu mà em nghĩ sao?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 672.4,
+    "end": 674.62,
+    "text": "Chuyện mà có tăng ca mà không lương",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 674.88,
+    "end": 678.94,
+    "text": "Chứ bây giờ nếu mà cái chuyện mà không tăng ca mà có lương thì ai cũng yêu thích",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 680.2,
+    "end": 681.28,
+    "text": "Anh nói dối đúng không?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 681.28,
+    "end": 682.28,
+    "text": "Anh nói dối",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 682.28,
+    "end": 683.28,
+    "text": "Em biết mấy thư tiếng?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 683.28,
+    "end": 687.28,
+    "text": "Em biết em biết ba thư tiếng",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 687.28,
+    "end": 691.28,
+    "text": "Tiếng Việt, Tiếng Anh và Tiếng Hàn",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 691.28,
+    "end": 692.28,
+    "text": "Em biết Tiếng Hàn à?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 692.28,
+    "end": 693.28,
+    "text": "Dạ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 693.28,
+    "end": 694.28,
+    "text": "Nào xin chào",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 694.28,
+    "end": 695.28,
+    "text": "Nào xin chào",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 695.28,
+    "end": 696.28,
+    "text": "Thôi xem đi đã",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 696.28,
+    "end": 697.28,
+    "text": "Vô đảo gốc",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 697.28,
+    "end": 698.28,
+    "text": "Vô đảo gốc",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 698.28,
+    "end": 699.28,
+    "text": "Oh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 699.28,
+    "end": 700.28,
+    "text": "Cho anh 1 câu",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 702.28,
+    "end": 706.28,
+    "text": "Em chưa thấy công ty nào tuyệt vời như công ty này bằng tiếng Hàn hay nào?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 706.28,
+    "end": 708.28,
+    "text": "Y huế xá trời gồ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 708.28,
+    "end": 709.28,
+    "text": "Cũng hay",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 709.28,
+    "end": 710.28,
+    "text": "Giảm đốc ơi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 710.28,
+    "end": 713.28,
+    "text": "Giảm đốc nghiêm túc lên xíu được không ạ?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 716.28,
+    "end": 720.28,
+    "text": "Em mong chờ điều gì khi mà tham gia chương trình siêu thực tập sinh?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 720.28,
+    "end": 726.28,
+    "text": "Em nghĩ là cái mà em mong chờ nhất đó là được ở gần với thiên nhiên",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 726.28,
+    "end": 731.28,
+    "text": "Trải nghiệm các cái công việc liên quan đến canh tắc cà phê",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 731.28,
+    "end": 733.28,
+    "text": "Một cái món đồ uống mà em rất là yêu thích",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 733.28,
+    "end": 734.28,
+    "text": "Một cái món đồ uống mà em rất là yêu thích",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 734.28,
+    "end": 736.28,
+    "text": "Một cái món đồ uống mà em rất là yêu thích",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 736.28,
+    "end": 737.28,
+    "text": "Một cái món đồ uống mà em rất là yêu thích",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 737.28,
+    "end": 738.28,
+    "text": "Một cái món đồ uống mà em rất là yêu thích",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 738.28,
+    "end": 739.28,
+    "text": "Một cái món đồ uống mà em rất là yêu thích",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 739.28,
+    "end": 740.28,
+    "text": "Một cái món đồ uống mà em rất là yêu thích",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 740.28,
+    "end": 741.28,
+    "text": "Một cái món đồ uống mà em rất là yêu thích",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 741.28,
+    "end": 742.28,
+    "text": "Một cái món đồ uống mà em rất là yêu thích",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 742.28,
+    "end": 743.28,
+    "text": "Một cái món đồ uống mà em rất là yêu thích",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 743.28,
+    "end": 744.28,
+    "text": "Một cái món đồ uống mà em rất là yêu thích",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 744.28,
+    "end": 745.28,
+    "text": "Một cái món đồ uống mà em rất là yêu thích",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 745.28,
+    "end": 746.28,
+    "text": "Một cái món đồ uống mà em rất là yêu thích",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 746.28,
+    "end": 747.28,
+    "text": "Một cái món đồ uống mà em rất là yêu thích",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 747.28,
+    "end": 748.28,
+    "text": "Một cái món đồ uống mà em rất là yêu thích",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 748.28,
+    "end": 749.28,
+    "text": "Một cái món đồ uống mà em rất là yêu thích",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 793.28,
+    "end": 796.28,
+    "text": "Em biết nông nghiệp tái sinh chứ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 796.28,
+    "end": 802.28,
+    "text": "Nông nghiệp tái sinh theo cái hiểu của em dựa vào những từ ngữ ở trong cụm từ nông nghiệp tái sinh",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 802.28,
+    "end": 803.28,
+    "text": "Đúng",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 803.28,
+    "end": 810.28,
+    "text": "Nó là những cái hoạt động sản xuất nông nghiệp và canh tác để mà giúp cho chất lượng của đất",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 810.28,
+    "end": 813.28,
+    "text": "Và sự phi nêu của đất được đảm bảo",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 813.28,
+    "end": 816.28,
+    "text": "Cũng như là mình đảm bảo được hết tất cả những cái yếu tố thiên nhiên khác",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 816.28,
+    "end": 819.28,
+    "text": "Ví dụ như là nước, sinh học",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 820.28,
+    "end": 823.28,
+    "text": "Tôi đánh giá cao sự thông minh của em",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 823.28,
+    "end": 827.28,
+    "text": "Em biết mô hình nông nghiệp tái sinh thì bao gồm những thứ hành nào?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 827.28,
+    "end": 834.28,
+    "text": "Thì như những cái em chia sẻ đó, nó sẽ có 3 cái mảng chính là liên quan đến việc bảo tồn đất này",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 834.28,
+    "end": 837.28,
+    "text": "Là bảo tồn được cái chất lượng, cái độ phi nêu của đất",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 837.28,
+    "end": 841.28,
+    "text": "Bảo tồn nước",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 841.28,
+    "end": 844.28,
+    "text": "Và bảo tồn sự đa dạng của sinh học",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 844.28,
+    "end": 848.28,
+    "text": "Bảo tồn nước là mình?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 848.28,
+    "end": 852.28,
+    "text": "Bảo tồn sự tích kiếp",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 852.28,
+    "end": 854.28,
+    "text": "Em hiểu ý tôi chưa?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 854.28,
+    "end": 860.28,
+    "text": "Em là một trong những người khá bất bình nhưng mà tôi nhìn được sự chân thành và sự yêu mến môi trường của em",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 860.28,
+    "end": 862.28,
+    "text": "Rất là muốn đi khám phá ở em",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 862.28,
+    "end": 866.28,
+    "text": "Còn các bạn khác thì tôi chưa thấy nên là tôi tặng cho em một điểm cọc ở đây",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 866.28,
+    "end": 869.28,
+    "text": "Em không có gì ngoài chân thành hết",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 869.28,
+    "end": 870.28,
+    "text": "Tôi thấy mà",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 870.28,
+    "end": 871.28,
+    "text": "Em biết bài hát chân thành",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 871.28,
+    "end": 872.28,
+    "text": "Em không á",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 872.28,
+    "end": 873.28,
+    "text": "Đấy có phải điểm trừ không?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 873.28,
+    "end": 875.28,
+    "text": "Một điểm trừ cho em",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 875.28,
+    "end": 876.28,
+    "text": "Đấy là bài hát tôi yêu thích",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 876.28,
+    "end": 878.28,
+    "text": "Anh hát thử cho em nghe được không ạ?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 878.28,
+    "end": 882.28,
+    "text": "Liệu người ấy có yêu em chân thành",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 882.28,
+    "end": 883.28,
+    "text": "Tặng một điểm trừ nữa cho em",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 883.28,
+    "end": 886.28,
+    "text": "Vì bắt tôi hát mà vẫn không biết bài gì",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 891.28,
+    "end": 894.28,
+    "text": "Để tiếp tục thì anh sẽ hỏi những câu hỏi nó hóc búa hơn",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 894.28,
+    "end": 898.28,
+    "text": "Để xem em có xứng đáng ứng tuyển không",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 898.28,
+    "end": 899.28,
+    "text": "Thì câu đầu tiên nhé",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 899.28,
+    "end": 901.28,
+    "text": "Đối với em biết là tại chương trình Next Cafe Plan",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 901.28,
+    "end": 906.28,
+    "text": "Đã có bao nhiêu người nông dân được tập huấn về phương pháp canh tác cây cà phê",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 906.28,
+    "end": 908.28,
+    "text": "A. 300 ngàn lượt nông dân",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 908.28,
+    "end": 911.28,
+    "text": "B. 335 ngàn lượt nông dân",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 911.28,
+    "end": 914.28,
+    "text": "C. 355 ngàn lượt nông dân",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 916.28,
+    "end": 918.28,
+    "text": "Em chỉ là trả lời một lần thôi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 918.28,
+    "end": 919.28,
+    "text": "Sai",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 919.28,
+    "end": 920.28,
+    "text": "Loại",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 920.28,
+    "end": 921.28,
+    "text": "Là đi về luôn ạ?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 921.28,
+    "end": 922.28,
+    "text": "Đúng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 922.28,
+    "end": 923.28,
+    "text": "300",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 923.28,
+    "end": 924.28,
+    "text": "335",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 924.28,
+    "end": 925.28,
+    "text": "Và 355",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 925.28,
+    "end": 926.28,
+    "text": "Đúng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 926.28,
+    "end": 928.28,
+    "text": "Tôi sẽ cho em một điều kiện loại trừ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 928.28,
+    "end": 929.28,
+    "text": "Loại trừ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 929.28,
+    "end": 933.28,
+    "text": "Em cảm giác như có hai đáp án kết thúc bằng số 5",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 933.28,
+    "end": 936.28,
+    "text": "Chắc sẽ là hai đáp án gần đúng hơn",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 936.28,
+    "end": 940.28,
+    "text": "Em sẽ loại trừ đáp án A trước là 300 ngàn lượt nông dân",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 940.28,
+    "end": 941.28,
+    "text": "Đúng",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 941.28,
+    "end": 943.28,
+    "text": "Em còn phương án B và phương án C",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 943.28,
+    "end": 944.28,
+    "text": "Sếp gợi ý được không?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 944.28,
+    "end": 945.28,
+    "text": "Lâm lắm",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 945.28,
+    "end": 946.28,
+    "text": "À",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 946.28,
+    "end": 947.28,
+    "text": "Đáp án C",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 950.28,
+    "end": 951.28,
+    "text": "Em chắc chắn không?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 951.28,
+    "end": 953.28,
+    "text": "Đấy là đáp án cuối cùng của em",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 953.28,
+    "end": 954.28,
+    "text": "Chúc mừng em",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 954.28,
+    "end": 956.28,
+    "text": "Rất may mắn cho em",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 956.28,
+    "end": 958.28,
+    "text": "Câu này em chắc chắn trả lời đúng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 958.28,
+    "end": 959.28,
+    "text": "Dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 959.28,
+    "end": 961.28,
+    "text": "Tôi tặng em một dấu cộng ở đây",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 961.28,
+    "end": 962.28,
+    "text": "Một dấu cộng thôi ạ?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 962.28,
+    "end": 964.28,
+    "text": "Vậy em muốn thêm một dấu cộng nữa",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 964.28,
+    "end": 965.28,
+    "text": "Dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 965.28,
+    "end": 966.28,
+    "text": "Tặng em một dấu trừ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 966.28,
+    "end": 967.28,
+    "text": "Loài hỏi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 967.28,
+    "end": 968.28,
+    "text": "Câu hỏi tiếp theo",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 968.28,
+    "end": 972.28,
+    "text": "Liệt kê ba ý em biết về chương trình siêu thực tập sinh của công ty của tôi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 972.28,
+    "end": 974.28,
+    "text": "Thứ nhất lương 10 triệu",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 974.28,
+    "end": 975.28,
+    "text": "Em nghe ở đâu?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 975.28,
+    "end": 977.28,
+    "text": "Em không nghe mà em đọc",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 978.28,
+    "end": 983.28,
+    "text": "Nhưng mà cho tôi hỏi trước khi em trả lời tiếp thì có phải lương 10 triệu đối với em bây giờ đang là rất cao không?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 983.28,
+    "end": 985.28,
+    "text": "Dạ vâng tại vì bây giờ em không có lương á",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 986.28,
+    "end": 987.28,
+    "text": "Tốt tiếp theo",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 987.28,
+    "end": 990.28,
+    "text": "Đây chính là lý do mà tại sao em up live vào chương trình mà",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 990.28,
+    "end": 995.28,
+    "text": "Đấy là mình sẽ được đến cái trang trại biển vững của Death Cafe ở Bồ Mê Thuật",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 995.28,
+    "end": 996.28,
+    "text": "Đúng",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 996.28,
+    "end": 997.28,
+    "text": "Chính xác",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 998.28,
+    "end": 999.28,
+    "text": "Một cái nữa thôi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 999.28,
+    "end": 1005.28,
+    "text": "Khi mà được đến cái trang trại cafe đó thì em cũng sẽ được trải nghiệm canh tác cafe biển vững",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1006.28,
+    "end": 1007.28,
+    "text": "Chúc mừng em",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1007.28,
+    "end": 1008.28,
+    "text": "Này em được nhận rồi đúng không ạ?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1008.28,
+    "end": 1009.28,
+    "text": "Chưa em",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1009.28,
+    "end": 1013.28,
+    "text": "Anh cảm thấy câu trả lời em hay và thuyết phục anh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1013.28,
+    "end": 1014.28,
+    "text": "Dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1014.28,
+    "end": 1015.28,
+    "text": "Tặng em một dấu cộng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1015.28,
+    "end": 1017.28,
+    "text": "Tiếp theo câu hỏi cuối cùng nhé",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1017.28,
+    "end": 1020.28,
+    "text": "Một câu hỏi khá là khó và khá là hấp buốt",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1020.28,
+    "end": 1023.28,
+    "text": "Anh nghĩ phải vận dụng hết khả năng thông minh của em",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1023.28,
+    "end": 1024.28,
+    "text": "Dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1024.28,
+    "end": 1030.28,
+    "text": "Em có biết bao nhiêu cây giống chất lượng cao được phân phối đến người nông dân thông qua chương trình Death Cafe Plan?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1030.28,
+    "end": 1032.28,
+    "text": "Anh sẽ cho em 3 đáp án",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1032.28,
+    "end": 1033.28,
+    "text": "Đáp án thứ nhất",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1033.28,
+    "end": 1034.28,
+    "text": "A",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1035.28,
+    "end": 1037.28,
+    "text": "50 triệu cây giống",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1037.28,
+    "end": 1038.28,
+    "text": "Hơi ít",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1038.28,
+    "end": 1039.28,
+    "text": "Anh cứ đọc nó đi ạ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1039.28,
+    "end": 1040.28,
+    "text": "Em xin lỗi",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1040.28,
+    "end": 1041.28,
+    "text": "B",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1041.28,
+    "end": 1043.28,
+    "text": "62 triệu",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1043.28,
+    "end": 1044.28,
+    "text": "Ồ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1045.28,
+    "end": 1046.28,
+    "text": "Càng hơn ở đây đúng không ạ?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1046.28,
+    "end": 1048.28,
+    "text": "Một con số khá là cụ thể rồi ạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1048.28,
+    "end": 1049.28,
+    "text": "Và C",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1049.28,
+    "end": 1051.28,
+    "text": "74,3 triệu cây giống",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1051.28,
+    "end": 1053.28,
+    "text": "Nó còn cụ thể hơn",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1054.28,
+    "end": 1058.28,
+    "text": "Theo những kinh nghiệm đi thi các bài kiểm tra của em thì",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1058.28,
+    "end": 1059.28,
+    "text": "Chắc nghiệm hả?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1059.28,
+    "end": 1060.28,
+    "text": "Dạ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1060.28,
+    "end": 1065.28,
+    "text": "Với những đáp án như thế này thì em sẽ chọn đáp án nó cụ thể nhất",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1065.28,
+    "end": 1066.28,
+    "text": "Chí tiết nhất",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1066.28,
+    "end": 1069.28,
+    "text": "74,3 triệu đáp án C",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1069.28,
+    "end": 1070.28,
+    "text": "Đáp án cuối cùng của em",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1070.28,
+    "end": 1071.28,
+    "text": "Chúc mừng em",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1072.28,
+    "end": 1073.28,
+    "text": "Em thông minh hơn tôi nghĩ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1073.28,
+    "end": 1074.28,
+    "text": "Dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1074.28,
+    "end": 1076.28,
+    "text": "Càng ngày tôi cao cảm tình với em hơn rồi đấy",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1076.28,
+    "end": 1077.28,
+    "text": "Tôi nghĩ rằng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1078.28,
+    "end": 1080.28,
+    "text": "Em đã được khoảng 70% trong lòng tôi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1086.28,
+    "end": 1088.28,
+    "text": "Nãy giờ những câu hỏi anh hỏi em",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1088.28,
+    "end": 1089.28,
+    "text": "Em hiểu chứ hả?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1089.28,
+    "end": 1090.28,
+    "text": "Dạ em hiểu hết ạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1090.28,
+    "end": 1091.28,
+    "text": "Ừ tốt",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1092.28,
+    "end": 1093.28,
+    "text": "Cũng đâu có gì khó đâu anh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1093.28,
+    "end": 1095.28,
+    "text": "Đối với anh là khó đấy",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1095.28,
+    "end": 1097.28,
+    "text": "Không biết là em",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1097.28,
+    "end": 1100.28,
+    "text": "Có câu hỏi nào muốn đáp cho nhà tuyển dụng này không nhỉ?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1100.28,
+    "end": 1101.28,
+    "text": "Ôi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1101.28,
+    "end": 1102.28,
+    "text": "Anh sẵn sàng chưa?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1103.28,
+    "end": 1104.28,
+    "text": "Dạ em",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1105.28,
+    "end": 1107.28,
+    "text": "À không cần phải như thế đâu",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1107.28,
+    "end": 1108.28,
+    "text": "Vậy hả?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1108.28,
+    "end": 1111.28,
+    "text": "Em có vài câu hỏi để em làm rõ về chương trình thôi mà",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1111.28,
+    "end": 1113.28,
+    "text": "À không phải tại vì cái tính của anh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1113.28,
+    "end": 1115.28,
+    "text": "Cái kiểu bị thóa quen thôi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1115.28,
+    "end": 1116.28,
+    "text": "Anh tưởng em là sếp không đấy",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1116.28,
+    "end": 1118.28,
+    "text": "Thì đấy em thấy anh hợp làm diễn viên á anh thử xem",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1118.28,
+    "end": 1119.28,
+    "text": "À vậy hả?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1119.28,
+    "end": 1121.28,
+    "text": "Rồi câu hỏi đầu tiên",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1121.28,
+    "end": 1125.28,
+    "text": "Mục đích của chương trình này và ý nghĩa của chương trình siêu thực tập sinh là gì ạ?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1125.28,
+    "end": 1129.28,
+    "text": "Tham gia chương trình siêu thực tập sinh em sẽ được tìm hiểu về chương trình Next Cafe Plan",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1129.28,
+    "end": 1135.28,
+    "text": "Chương trình được ra đời với sứ mệnh để tạo ra tác động tích cực đến sự phát triển bền vững của ngành cafe Việt Nam",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1136.28,
+    "end": 1137.28,
+    "text": "Wow",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1137.28,
+    "end": 1141.28,
+    "text": "Anh cần một câu hỏi nào xoáy sâu hơn",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1141.28,
+    "end": 1145.28,
+    "text": "Cần một câu hỏi nào mà nó để anh phải độc não nhiều hơn",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1145.28,
+    "end": 1146.28,
+    "text": "Ok",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1146.28,
+    "end": 1148.28,
+    "text": "Anh sẵn sàng độc não chưa?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1148.28,
+    "end": 1149.28,
+    "text": "Anh sẵn sàng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1149.28,
+    "end": 1154.28,
+    "text": "Em nhận thấy là chương trình của mình nó sẽ kéo dài hơn vòng 10 ngày",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1154.28,
+    "end": 1159.28,
+    "text": "Em có thể giúp ngăn nó xuống thành một tuần 7 ngày thôi được không?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1159.28,
+    "end": 1161.28,
+    "text": "Em tại sao lại muốn giúp?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1161.28,
+    "end": 1167.28,
+    "text": "Tại vì em nghĩ là trong 7 ngày em có thể làm hết tất cả những gì mà chương trình siêu thực tập sinh yêu cầu",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1167.28,
+    "end": 1170.28,
+    "text": "Tại vì nếu mà 10 ngày tham gia trải nghiệm thực tập tại vườn",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1170.28,
+    "end": 1177.28,
+    "text": "Thì em sẽ được trải nghiệm tưởng không thực mà thật không tưởng duy nhất nông trại bền vững của Next Cafe",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1177.28,
+    "end": 1181.28,
+    "text": "Ồ sao nghe... nghe bí hiểm hết á anh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1181.28,
+    "end": 1185.28,
+    "text": "Nó không chỉ bí hiểm mà nghe thôi là em đã muốn được lên trải nghiệm rồi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1185.28,
+    "end": 1186.28,
+    "text": "Dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1186.28,
+    "end": 1190.28,
+    "text": "Anh nghĩ là đây là một cái lời trải nghiệm rất là thú vị với em đấy",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1190.28,
+    "end": 1194.28,
+    "text": "Không chỉ là cái môi trường xung quanh mà em sẽ còn được nói chuyện với cả cây cà phê",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1194.28,
+    "end": 1195.28,
+    "text": "Bực làm điều mà em muốn",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1195.28,
+    "end": 1196.28,
+    "text": "Dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1196.28,
+    "end": 1200.28,
+    "text": "Nếu chương trình cho phép em nói chuyện với cây cà phê thì em...",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1200.28,
+    "end": 1204.28,
+    "text": "Không ai cấm em nói chuyện với cây cà phê cả",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1204.28,
+    "end": 1207.28,
+    "text": "Em chỉ sợ những kẻ ánh mắt từ xã hội",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1209.28,
+    "end": 1210.28,
+    "text": "Anh nghĩ là không đâu",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1210.28,
+    "end": 1211.28,
+    "text": "Dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1211.28,
+    "end": 1215.28,
+    "text": "Anh... mỗi người đều có một cá tính riêng mà đều có một cái nguyện vọng riêng mà",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1215.28,
+    "end": 1218.28,
+    "text": "Anh... em đừng quan tâm cái đấy",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1218.28,
+    "end": 1219.28,
+    "text": "Xếp tập lý quá",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1219.28,
+    "end": 1223.28,
+    "text": "Nhưng mà nếu mà anh là người đi đường thì anh cũng sẽ có một cái nhìn nó cũng đúng",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1223.28,
+    "end": 1224.28,
+    "text": "Dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1224.28,
+    "end": 1225.28,
+    "text": "Nhưng mà anh cứ đi tiếp",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1225.28,
+    "end": 1226.28,
+    "text": "Anh vẫn đi tiếp thôi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1226.28,
+    "end": 1227.28,
+    "text": "Dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1230.28,
+    "end": 1232.28,
+    "text": "Cái nhóm mình đi lên sẽ có bao nhiêu người hả anh",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1232.28,
+    "end": 1233.28,
+    "text": "Đợi anh tý nha",
+    "gender": "Female"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 1240.28,
+    "end": 1241.28,
+    "text": "Anh ơi",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 1241.28,
+    "end": 1242.28,
+    "text": "Ừ",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1242.28,
+    "end": 1244.28,
+    "text": "Chương trình mình sẽ có bao nhiêu bạn tham gia hả anh",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1244.28,
+    "end": 1246.28,
+    "text": "Ủa nãy anh chưa trả lời em hả",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1246.28,
+    "end": 1247.28,
+    "text": "Chưa",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1247.28,
+    "end": 1248.28,
+    "text": "Ồ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1248.28,
+    "end": 1250.28,
+    "text": "Tại sao em lại muốn biết là bao nhiêu người tham gia",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1250.28,
+    "end": 1252.28,
+    "text": "Em có sợ đám đông hay là...",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1252.28,
+    "end": 1255.28,
+    "text": "Không, em muốn biết để chuẩn bị tinh thần thôi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1255.28,
+    "end": 1257.28,
+    "text": "Vì anh cũng xin trả lời là...",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1257.28,
+    "end": 1259.28,
+    "text": "8 người",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1259.28,
+    "end": 1260.28,
+    "text": "8 người à",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1260.28,
+    "end": 1261.28,
+    "text": "Ừ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1261.28,
+    "end": 1264.28,
+    "text": "Em muốn biết để em biết cái sắc xuất mà em được chấp nhận vào chương trình",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1264.28,
+    "end": 1269.28,
+    "text": "Theo tất cả những gì mà anh đang ghi lại thì sắc xuất của em đang ở khoảng...",
+    "gender": "Female"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 1269.28,
+    "end": 1270.28,
+    "text": "82",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1270.28,
+    "end": 1272.28,
+    "text": "80% và 20%",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1273.28,
+    "end": 1275.28,
+    "text": "Là 80%...",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1276.28,
+    "end": 1277.28,
+    "text": "Gì ạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1277.28,
+    "end": 1278.28,
+    "text": "Chượt",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1278.28,
+    "end": 1279.28,
+    "text": "Ờ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1280.28,
+    "end": 1282.28,
+    "text": "Anh thông báo cho em một tin vui là",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1282.28,
+    "end": 1285.28,
+    "text": "Phần trăm 20% này vẫn đang lên theo từng dây từng phút",
+    "gender": "Female"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 1285.28,
+    "end": 1286.28,
+    "text": "Dạ",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 1286.28,
+    "end": 1287.28,
+    "text": "Tại vì anh cũng hơi khó khăn lắm",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1287.28,
+    "end": 1288.28,
+    "text": "Vâng",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1288.28,
+    "end": 1289.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1289.28,
+    "end": 1290.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1290.28,
+    "end": 1291.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1291.28,
+    "end": 1293.28,
+    "text": "Em có một câu hỏi muốn hỏi anh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1293.28,
+    "end": 1294.28,
+    "text": "Em cứ tự nhiên thôi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1294.28,
+    "end": 1295.28,
+    "text": "Dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1295.28,
+    "end": 1298.28,
+    "text": "Trong cái chương trình siêu tử tập sinh nó sẽ trông như thế nào?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1298.28,
+    "end": 1299.28,
+    "text": "Em sẽ được tham gia vào các cái hoạt động nào?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1299.28,
+    "end": 1300.28,
+    "text": "Hoạt động",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1300.28,
+    "end": 1301.28,
+    "text": "Dạ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1301.28,
+    "end": 1303.28,
+    "text": "Đầu tiên là em sẽ được làm kênh với cây giống",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1303.28,
+    "end": 1304.28,
+    "text": "Ừm",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1304.28,
+    "end": 1305.28,
+    "text": "Em sẽ được tìm hiểu",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1305.28,
+    "end": 1308.28,
+    "text": "Sẽ được thực hành kỹ thuật ương hạt cà phê",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1308.28,
+    "end": 1309.28,
+    "text": "Ừm",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1309.28,
+    "end": 1310.28,
+    "text": "Cái đấy khá là hay",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1310.28,
+    "end": 1311.28,
+    "text": "Dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1311.28,
+    "end": 1313.28,
+    "text": "Cái thứ 2 là em sẽ được học này",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1314.28,
+    "end": 1315.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1315.28,
+    "end": 1316.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1316.28,
+    "end": 1317.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1317.28,
+    "end": 1318.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1318.28,
+    "end": 1319.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1319.28,
+    "end": 1320.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1320.28,
+    "end": 1321.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1321.28,
+    "end": 1322.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1322.28,
+    "end": 1323.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1323.28,
+    "end": 1324.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1324.28,
+    "end": 1325.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1325.28,
+    "end": 1326.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1326.28,
+    "end": 1327.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1327.28,
+    "end": 1328.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1328.28,
+    "end": 1329.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1329.28,
+    "end": 1330.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1330.28,
+    "end": 1331.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1331.28,
+    "end": 1332.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1332.28,
+    "end": 1333.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1333.28,
+    "end": 1334.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1334.28,
+    "end": 1335.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1335.28,
+    "end": 1336.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1336.28,
+    "end": 1337.28,
+    "text": "Vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1317.87,
+    "end": 1320.87,
+    "text": "trải nghiệm này, thực hành nông nghiệp tái sinh này",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1320.87,
+    "end": 1323.87,
+    "text": "em sẽ được giao lưu, được giao đổi với cả dân địa phương ở đây",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1323.87,
+    "end": 1325.87,
+    "text": "Oh, rất là nhiều trận động",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1325.87,
+    "end": 1326.87,
+    "text": "nhìn rất rất nhiều",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1326.87,
+    "end": 1329.87,
+    "text": "và cái cuối cùng là cái mà anh nghĩ rằng bản thân anh thích nhất",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1329.87,
+    "end": 1331.87,
+    "text": "đó là trải nghiệm thu hoạch, phơi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1331.87,
+    "end": 1333.87,
+    "text": "và cuối cùng là nếm hạt cà phê",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1335.87,
+    "end": 1336.87,
+    "text": "em đã nếm hạt cà phê chưa?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1336.87,
+    "end": 1337.87,
+    "text": "em có nếm dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1337.87,
+    "end": 1338.87,
+    "text": "ừ, anh cũng vậy",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1338.87,
+    "end": 1341.87,
+    "text": "anh nghĩ là phần trăm của em càng ngày càng cao đấy",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1341.87,
+    "end": 1343.87,
+    "text": "khi mà anh hỏi em nếm hạt cà phê mà em nếm rồi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1343.87,
+    "end": 1346.87,
+    "text": "thì anh nghĩ bây giờ hiện tại của em đang là khoảng được 50% rồi đấy",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1347.87,
+    "end": 1348.87,
+    "text": "rất là căng",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1348.87,
+    "end": 1353.87,
+    "text": "thì như những cái quyền lợi về mặt những cái trải nghiệm mà em được tham gia đi",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1353.87,
+    "end": 1357.87,
+    "text": "thì khi mà em tham gia chương trình thì em có được những cái quyền lợi gì khác nữa không hả anh?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1357.87,
+    "end": 1358.87,
+    "text": "điều đầu tiên",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1359.87,
+    "end": 1363.87,
+    "text": "em sẽ có thêm trợ cấp 10 triệu",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1363.87,
+    "end": 1365.87,
+    "text": "và lúc nào em nhận được cái trợ cấp đấy ạ?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1367.87,
+    "end": 1369.87,
+    "text": "anh nghĩ rằng cái",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1370.87,
+    "end": 1374.87,
+    "text": "em đang làm anh cảm thấy hơi thất vọng nhẹ đấy",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1374.87,
+    "end": 1376.87,
+    "text": "em cũng không để ý lắm đâu",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1376.87,
+    "end": 1380.87,
+    "text": "kể cả tham gia chương trình này mà em không nhận được tiền thì em vẫn sẽ tham gia",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1380.87,
+    "end": 1385.87,
+    "text": "vì đây là những cái trải nghiệm mà em nghĩ là không mấy nơi có thể",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1386.87,
+    "end": 1389.87,
+    "text": "em yên tâm, anh hiểu về cái hoàn cảnh của em hiện tại",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1390.87,
+    "end": 1394.87,
+    "text": "nhưng mà khi em đi lên thì chắc chắn là ban tổ chức sẽ hỗ trợ 10 triệu",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1394.87,
+    "end": 1396.87,
+    "text": "còn chi phí ăn ở của em",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1397.87,
+    "end": 1398.87,
+    "text": "ban tổ chức cũng sẽ lo hết",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1398.87,
+    "end": 1402.87,
+    "text": "còn cái chuyện khi nào em được nhận trợ cấp, anh sẽ gửi mail riêng cho em sau",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1402.87,
+    "end": 1403.87,
+    "text": "nếu...",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1403.87,
+    "end": 1404.87,
+    "text": "nếu em được nhận",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1404.87,
+    "end": 1405.87,
+    "text": "yes",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1418.87,
+    "end": 1419.87,
+    "text": "ui ly xỉ hả anh?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1421.87,
+    "end": 1422.87,
+    "text": "em nhìn này",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1423.87,
+    "end": 1424.87,
+    "text": "rồi em nhìn kỹ lại, em xin lỗi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1424.87,
+    "end": 1425.87,
+    "text": "em nhìn kỹ lại xem",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1426.87,
+    "end": 1427.87,
+    "text": "em nghĩ nó là cái gì?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1427.87,
+    "end": 1430.87,
+    "text": "trong nó như mấy cái gói thôi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1430.87,
+    "end": 1431.87,
+    "text": "nó gọi là túi mù",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1431.87,
+    "end": 1435.87,
+    "text": "dưới trẻ bây giờ đang rất là ưa thích bộ môn này bóc",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1436.87,
+    "end": 1437.87,
+    "text": "thì anh sẽ đưa cho em một cái thử thách",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1437.87,
+    "end": 1438.87,
+    "text": "dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1438.87,
+    "end": 1441.87,
+    "text": "nó đòi hỏi trí tuệ, thông minh và sự nhanh nhẹ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1441.87,
+    "end": 1442.87,
+    "text": "em đều có hết",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1443.87,
+    "end": 1445.87,
+    "text": "anh chưa tin nên cần phải thử thách",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1446.87,
+    "end": 1449.87,
+    "text": "em có thể bóc 8 túi mù này trong vòng 30 giây được không?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1449.87,
+    "end": 1450.87,
+    "text": "hả?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1451.87,
+    "end": 1452.87,
+    "text": "đấy là thử thách á hả?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1452.87,
+    "end": 1453.87,
+    "text": "ừ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1453.87,
+    "end": 1455.87,
+    "text": "bóc 8 túi mù trong vòng 30 giây, thế thôi",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1455.87,
+    "end": 1456.87,
+    "text": "thế thôi",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1456.87,
+    "end": 1457.87,
+    "text": "dạ vâng",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1457.87,
+    "end": 1461.87,
+    "text": "nhưng mà khách đếm nó sẽ không thể nào theo thứ tự",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1461.87,
+    "end": 1463.87,
+    "text": "ok, nghĩa là anh đảm bảo anh đếm đều rồi được không?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1463.87,
+    "end": 1470.87,
+    "text": "nó cũng có thể 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30",
+    "gender": "Female"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 1474.87,
+    "end": 1475.87,
+    "text": "em bắt đầu chưa?",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1476.87,
+    "end": 1477.87,
+    "text": "rồi, em sẵn sàng",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1478.87,
+    "end": 1479.87,
+    "text": "1, 2, 3",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1479.87,
+    "end": 1480.87,
+    "text": "từ từ từ, anh đếm nhanh nữa hả?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1481.87,
+    "end": 1482.87,
+    "text": "anh có đếm nhanh không đấy?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1482.87,
+    "end": 1483.87,
+    "text": "ok, anh phải thử thách chứ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1483.87,
+    "end": 1484.87,
+    "text": "à, rồi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1484.87,
+    "end": 1486.87,
+    "text": "1, 2, 3",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1486.87,
+    "end": 1499.87,
+    "text": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1504.87,
+    "end": 1505.87,
+    "text": "anh chuẩn bị cái này cho em hả?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1505.87,
+    "end": 1506.87,
+    "text": "đúng",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1508.87,
+    "end": 1509.87,
+    "text": "em...",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1509.87,
+    "end": 1510.87,
+    "text": "em cài lên được không?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1510.87,
+    "end": 1511.87,
+    "text": "à, không được",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1511.87,
+    "end": 1512.87,
+    "text": "ngay của anh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1512.87,
+    "end": 1514.87,
+    "text": "đầu tiên là em chúc mừng em",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1514.87,
+    "end": 1515.87,
+    "text": "29 giây",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1516.87,
+    "end": 1517.87,
+    "text": "xa nút",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1517.87,
+    "end": 1521.87,
+    "text": "nhưng mà anh hình như là có cái đầu tiên là em bóc xong rồi em bỏ luôn",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1521.87,
+    "end": 1523.87,
+    "text": "nó bị rơi xuống ấy, mà em bóc rồi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1524.87,
+    "end": 1525.87,
+    "text": "em có biết trong này là gì không?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1526.87,
+    "end": 1527.87,
+    "text": "10 triệu",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1531.87,
+    "end": 1532.87,
+    "text": "mời em",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1532.87,
+    "end": 1533.87,
+    "text": "giám đốc nhiều chiêu quá",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1536.87,
+    "end": 1538.87,
+    "text": "sống phải ráng, sáng phải cà phê",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1538.87,
+    "end": 1539.87,
+    "text": "chúc mừng em",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1539.87,
+    "end": 1541.87,
+    "text": "đó là câu châm ngôn của anh",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1541.87,
+    "end": 1542.87,
+    "text": "à",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1542.87,
+    "end": 1543.87,
+    "text": "anh tặng em",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1543.87,
+    "end": 1544.87,
+    "text": "dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1544.87,
+    "end": 1546.87,
+    "text": "đọc lại một lần nữa thật to",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1546.87,
+    "end": 1549.87,
+    "text": "sống phải ráng, sáng phải cà phê",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1549.87,
+    "end": 1550.87,
+    "text": "chúc mừng em",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1550.87,
+    "end": 1551.87,
+    "text": "tiếp theo",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1552.87,
+    "end": 1554.87,
+    "text": "đây là gói pha cà phê",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1554.87,
+    "end": 1558.87,
+    "text": "để lát nữa khi mà anh muốn uống thì em có thể pha cho anh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1560.87,
+    "end": 1561.87,
+    "text": "khi mà em muốn uống",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1561.87,
+    "end": 1562.87,
+    "text": "anh muốn uống",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1562.87,
+    "end": 1563.87,
+    "text": "à, anh muốn uống",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1563.87,
+    "end": 1564.87,
+    "text": "anh muốn uống",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1564.87,
+    "end": 1566.87,
+    "text": "à, em lại tưởng là khi mà em muốn uống thì em lại phải pha cho anh",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1567.87,
+    "end": 1570.87,
+    "text": "còn đây là điều mà anh tâm huyết nhất",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1570.87,
+    "end": 1572.87,
+    "text": "em đeo này trên người",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1575.87,
+    "end": 1576.87,
+    "text": "ơ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1577.87,
+    "end": 1579.87,
+    "text": "em nên đeo cái của em chứ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1579.87,
+    "end": 1580.87,
+    "text": "em đeo cái này à",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1581.87,
+    "end": 1582.87,
+    "text": "không, nhưng mà",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1582.87,
+    "end": 1585.87,
+    "text": "anh nghĩ là em nên đeo cái của nhà tuyển dục để lấy lòng chứ nhỉ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1585.87,
+    "end": 1587.87,
+    "text": "nhưng mà đeo cái này cảm giác như là",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1587.87,
+    "end": 1588.87,
+    "text": "anh là idol ấy",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1588.87,
+    "end": 1591.87,
+    "text": "xong rồi em đeo như kiểu một bạn fan ấy",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1591.87,
+    "end": 1593.87,
+    "text": "thì anh có thể thả tim cho em gần mặt",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1596.87,
+    "end": 1598.87,
+    "text": "hiện tại anh cũng chỉ muốn nói với anh như này",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1599.87,
+    "end": 1602.87,
+    "text": "phần trăm cơ hội mà em được ứng tuyển",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1603.87,
+    "end": 1604.87,
+    "text": "đã lên tới",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1605.87,
+    "end": 1606.87,
+    "text": "80%",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1608.87,
+    "end": 1612.87,
+    "text": "chỉ còn 20% nữa nhưng mà anh cũng nói cho em biết là 20% này sẽ là khó nhất",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1613.87,
+    "end": 1614.87,
+    "text": "ok",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1614.87,
+    "end": 1617.87,
+    "text": "tức là em vượt qua được 20% này",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1617.87,
+    "end": 1618.87,
+    "text": "dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1618.87,
+    "end": 1619.87,
+    "text": "thì em có thể may mắn",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1620.87,
+    "end": 1621.87,
+    "text": "vẫn may mắn hả anh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1621.87,
+    "end": 1622.87,
+    "text": "vẫn may mắn",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1623.87,
+    "end": 1624.87,
+    "text": "sẽ được ứng tuyển",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1624.87,
+    "end": 1625.87,
+    "text": "ok",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1625.87,
+    "end": 1627.87,
+    "text": "đây là thử thách cuối cùng của em",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1627.87,
+    "end": 1628.87,
+    "text": "em sẵn sàng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1628.87,
+    "end": 1629.87,
+    "text": "em sẵn sàng hông",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1629.87,
+    "end": 1630.87,
+    "text": "dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1630.87,
+    "end": 1632.87,
+    "text": "nói chuyện với cả cây cà phê bên này",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1632.87,
+    "end": 1633.87,
+    "text": "ô",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1634.87,
+    "end": 1636.87,
+    "text": "tại vì anh muốn đây là",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1636.87,
+    "end": 1639.87,
+    "text": "anh muốn được nghe em thuyết phục",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1640.87,
+    "end": 1642.87,
+    "text": "cây cà phê được nói chuyện với cà phê được giao lưu với cây cối",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1642.87,
+    "end": 1645.87,
+    "text": "như những gì cái nguyện phỏng của em đã nói về",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1645.87,
+    "end": 1648.87,
+    "text": "thì nếu như mà cái cách nói chuyện thu hút",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1648.87,
+    "end": 1649.87,
+    "text": "thì chắc chắn rồi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1649.87,
+    "end": 1650.87,
+    "text": "điểm tuyệt đối",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1650.87,
+    "end": 1652.87,
+    "text": "em nghĩ mình có làm được không ạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1652.87,
+    "end": 1653.87,
+    "text": "để anh biết anh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1653.87,
+    "end": 1654.87,
+    "text": "anh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1655.87,
+    "end": 1657.87,
+    "text": "hãy cho em một cơ hội",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1657.87,
+    "end": 1659.87,
+    "text": "em sẽ làm hết khả năng của mình",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1659.87,
+    "end": 1660.87,
+    "text": "anh mời em",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1662.87,
+    "end": 1663.87,
+    "text": "là em cứ mang bạn ấy",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1663.87,
+    "end": 1664.87,
+    "text": "ừ em cứ thoải mái thôi",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1664.87,
+    "end": 1665.87,
+    "text": "dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1665.87,
+    "end": 1667.87,
+    "text": "em muốn cần gì thì cứ nói anh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1667.87,
+    "end": 1669.87,
+    "text": "anh có thể đáp ứng cho em được hết",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1670.87,
+    "end": 1673.87,
+    "text": "em cần phải cảm nhận năng lượng của bạn ấy trước ạ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1673.87,
+    "end": 1674.87,
+    "text": "dạ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1674.87,
+    "end": 1676.87,
+    "text": "anh cứ để em mấy giây nha",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1676.87,
+    "end": 1678.87,
+    "text": "ơ nhưng mà em cảm nhận em",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1679.87,
+    "end": 1682.87,
+    "text": "em không sợ em để mỗi này bình",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1682.87,
+    "end": 1683.87,
+    "text": "nên nói chuyện",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1683.87,
+    "end": 1684.87,
+    "text": "à dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1692.87,
+    "end": 1693.87,
+    "text": "chào bạn",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1694.87,
+    "end": 1697.87,
+    "text": "nhà hôm nay bạn cảm thấy như thế nào",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1700.87,
+    "end": 1701.87,
+    "text": "ừ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 1703.87,
+    "end": 1704.87,
+    "text": "à",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1704.87,
+    "end": 1705.87,
+    "text": "bạn ấy khăn nước không",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1706.87,
+    "end": 1707.87,
+    "text": "à khăn nước à",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1707.87,
+    "end": 1708.87,
+    "text": "có nước",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1708.87,
+    "end": 1709.87,
+    "text": "có nước không anh",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1709.87,
+    "end": 1710.87,
+    "text": "dạ dạ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1710.87,
+    "end": 1711.87,
+    "text": "nhanh lên nhanh nhanh",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1711.87,
+    "end": 1712.87,
+    "text": "bài ấy bảo là vội rồi vội",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1712.87,
+    "end": 1713.87,
+    "text": "đây đây đây",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1714.87,
+    "end": 1715.87,
+    "text": "đây để em",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1715.87,
+    "end": 1716.87,
+    "text": "ừ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1724.87,
+    "end": 1725.87,
+    "text": "bài ấy bảo là nước hơi mặn",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1726.87,
+    "end": 1727.87,
+    "text": "nước cái nước gì đấy anh",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1727.87,
+    "end": 1728.87,
+    "text": "nước biển",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1730.87,
+    "end": 1733.87,
+    "text": "chứ bây giờ mặn chỉ có nước biển thôi chứ không có nước gì nữa đâu",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1734.87,
+    "end": 1735.87,
+    "text": "không anh nghĩ là",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1735.87,
+    "end": 1737.87,
+    "text": "chắc là bài ấy từ buôn Mê Thuột xuống",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1738.87,
+    "end": 1741.87,
+    "text": "cái nước ở thành phố nó hơi",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1742.87,
+    "end": 1743.87,
+    "text": "tức là chưa quen",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1743.87,
+    "end": 1744.87,
+    "text": "chưa quen",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1744.87,
+    "end": 1746.87,
+    "text": "nói chứ đây là nước bình thường không phải nước biển đâu",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1746.87,
+    "end": 1748.87,
+    "text": "anh có muốn biết gì về bạn ấy không",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1748.87,
+    "end": 1749.87,
+    "text": "không để anh thử đi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1749.87,
+    "end": 1750.87,
+    "text": "để anh thử đi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1750.87,
+    "end": 1751.87,
+    "text": "anh thấy cái cách nói chuyện của em rất là",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1751.87,
+    "end": 1752.87,
+    "text": "thấy lắm anh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1752.87,
+    "end": 1753.87,
+    "text": "anh chạm vào tai của bạn ấy",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1753.87,
+    "end": 1754.87,
+    "text": "à đây là tai hả",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1754.87,
+    "end": 1755.87,
+    "text": "đúng rồi tai ạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1755.87,
+    "end": 1756.87,
+    "text": "ồ anh",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1756.87,
+    "end": 1757.87,
+    "text": "tại vì cái hình dung của anh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1758.87,
+    "end": 1760.87,
+    "text": "thì những cái lá này này",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1761.87,
+    "end": 1762.87,
+    "text": "lại là một cái tên khác nhau",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1763.87,
+    "end": 1764.87,
+    "text": "à",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1764.87,
+    "end": 1765.87,
+    "text": "hai khang này",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1765.87,
+    "end": 1766.87,
+    "text": "khang à",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1766.87,
+    "end": 1767.87,
+    "text": "khang",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1768.87,
+    "end": 1769.87,
+    "text": "khang ơi",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1770.87,
+    "end": 1771.87,
+    "text": "ồ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1771.87,
+    "end": 1772.87,
+    "text": "khang bị mũi đốt em ạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1774.87,
+    "end": 1775.87,
+    "text": "khang bị mũi đốt ở đây này",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1775.87,
+    "end": 1776.87,
+    "text": "dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1777.87,
+    "end": 1779.87,
+    "text": "khang thì mấy ngày hôm nay cũng khá là",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1780.87,
+    "end": 1781.87,
+    "text": "cũng khá là khỏe",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1781.87,
+    "end": 1783.87,
+    "text": "nhưng mà trông khang có vẻ tươi nhất rồi đấy",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1783.87,
+    "end": 1784.87,
+    "text": "đúng không",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1784.87,
+    "end": 1786.87,
+    "text": "chỉ hơi bị mũi đốt một tí thôi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1786.87,
+    "end": 1787.87,
+    "text": "dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1787.87,
+    "end": 1789.87,
+    "text": "cái bạn bảo hoạt này trông hơi giống win này",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1789.87,
+    "end": 1790.87,
+    "text": "lông đấy",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1790.87,
+    "end": 1791.87,
+    "text": "tên lông",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1791.87,
+    "end": 1792.87,
+    "text": "lông",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1792.87,
+    "end": 1793.87,
+    "text": "lông",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1793.87,
+    "end": 1794.87,
+    "text": "chấp lông cả ra tụi này",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1796.87,
+    "end": 1797.87,
+    "text": "lông ơi cố gắng lên nhớ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1797.87,
+    "end": 1800.87,
+    "text": "nãy anh mới tưới nước cho lông đấy",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1800.87,
+    "end": 1801.87,
+    "text": "dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1804.87,
+    "end": 1805.87,
+    "text": "rồi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1805.87,
+    "end": 1806.87,
+    "text": "cảm ơn em nha",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1806.87,
+    "end": 1807.87,
+    "text": "dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1807.87,
+    "end": 1810.87,
+    "text": "hy vọng rằng công ty em vẫn hoạt động bình thường",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1810.87,
+    "end": 1812.87,
+    "text": "em không được cốc cà phê hay nào ạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1813.87,
+    "end": 1814.87,
+    "text": "em luyến tiếc gì với anh ạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1814.87,
+    "end": 1815.87,
+    "text": "không",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1816.87,
+    "end": 1817.87,
+    "text": "em luyến tiếc vì không được uống cà phê",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1823.87,
+    "end": 1824.87,
+    "text": "em biết pha cà phê hả",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1824.87,
+    "end": 1825.87,
+    "text": "vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1825.87,
+    "end": 1826.87,
+    "text": "đơn giản lắm anh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1826.87,
+    "end": 1828.87,
+    "text": "em biết khẩu vị của anh ấy",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1828.87,
+    "end": 1831.87,
+    "text": "anh thích uống cà phê ngon đúng không",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1832.87,
+    "end": 1833.87,
+    "text": "ngon thì tất nhiên là ngon rồi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1833.87,
+    "end": 1835.87,
+    "text": "nhưng mà nó có lại đặc",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1835.87,
+    "end": 1836.87,
+    "text": "và có thể pha hơi đặc một tí",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1836.87,
+    "end": 1837.87,
+    "text": "pha hơi loã một tí",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1837.87,
+    "end": 1839.87,
+    "text": "cho người nào muốn uống đặc",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1839.87,
+    "end": 1841.87,
+    "text": "thế thì em quên mất em phải hỏi anh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1841.87,
+    "end": 1842.87,
+    "text": "vậy anh cứ thử trước nhé",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1842.87,
+    "end": 1843.87,
+    "text": "dạ vâng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1848.87,
+    "end": 1849.87,
+    "text": "đúng ý anh đúng không ạ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1849.87,
+    "end": 1850.87,
+    "text": "đúng ý anh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1851.87,
+    "end": 1852.87,
+    "text": "sao em chưa về",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1853.87,
+    "end": 1854.87,
+    "text": "à",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1854.87,
+    "end": 1855.87,
+    "text": "là em về luôn ạ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1855.87,
+    "end": 1857.87,
+    "text": "không được uống hết cốc cà phê ạ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1858.87,
+    "end": 1860.87,
+    "text": "cho em thêm một hụm nữa được không",
+    "gender": "Female"
+  },
+  {
+    "speaker": "UNKNOWN",
+    "start": 1860.87,
+    "end": 1861.87,
+    "text": "tại nó ngon quá",
+    "gender": "Unknown"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1861.87,
+    "end": 1862.87,
+    "text": "ngon quá",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1866.87,
+    "end": 1867.87,
+    "text": "là em cứ về thôi đúng không ạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1867.87,
+    "end": 1869.87,
+    "text": "em cứ về thôi có gì anh sẽ gửi mail sau",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1869.87,
+    "end": 1870.87,
+    "text": "dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1871.87,
+    "end": 1872.87,
+    "text": "cho em bắt tay gặp đốc một lần nữa",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1872.87,
+    "end": 1873.87,
+    "text": "cảm ơn em nhé",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1873.87,
+    "end": 1874.87,
+    "text": "dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1874.87,
+    "end": 1877.87,
+    "text": "trước khi về anh có muốn pha tặng em nữa không",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1877.87,
+    "end": 1880.87,
+    "text": "tại anh nhìn em khá là thấy có cảm tính",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1880.87,
+    "end": 1881.87,
+    "text": "dạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1882.87,
+    "end": 1884.87,
+    "text": "không thể cầm cây này về để nói chuyện",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1884.87,
+    "end": 1885.87,
+    "text": "về nói cả đêm",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1885.87,
+    "end": 1886.87,
+    "text": "ok em nhận",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1886.87,
+    "end": 1888.87,
+    "text": "em sẽ về em tìm hiểu bạn ý thêm",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1888.87,
+    "end": 1889.87,
+    "text": "em gáng tìm hiểu thêm nhé",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1889.87,
+    "end": 1890.87,
+    "text": "dạ vâng",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1890.87,
+    "end": 1892.87,
+    "text": "tại vì có cả bạn Khang bạn Long ở đây nữa",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1892.87,
+    "end": 1893.87,
+    "text": "đúng rồi",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1893.87,
+    "end": 1895.87,
+    "text": "có rất là nhiều bạn ở trên đấy nữa",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1895.87,
+    "end": 1896.87,
+    "text": "dạ em cảm ơn anh",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1896.87,
+    "end": 1897.87,
+    "text": "cảm ơn em",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1897.87,
+    "end": 1898.87,
+    "text": "dạ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1898.87,
+    "end": 1899.87,
+    "text": "hy vọng em được nhận ạ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1900.87,
+    "end": 1901.87,
+    "text": "anh chưa biết nhé",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1902.87,
+    "end": 1903.87,
+    "text": "em biết rồi",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1903.87,
+    "end": 1904.87,
+    "text": "em thì biết rồi",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1904.87,
+    "end": 1905.87,
+    "text": "dạ dạ em đi ạ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1908.87,
+    "end": 1909.87,
+    "text": "em khỏe",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1909.87,
+    "end": 1910.87,
+    "text": "em khỏe",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 1910.87,
+    "end": 1911.87,
+    "text": "được không em",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1927.87,
+    "end": 1928.87,
+    "text": "các bạn ơi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1928.87,
+    "end": 1932.87,
+    "text": "những ngày mà còn đang quan tâm đến chương trình siêu thực tập sinh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1932.87,
+    "end": 1934.87,
+    "text": "mọi người cứ đăng ký và tham gia ứng tuyển nhé",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1934.87,
+    "end": 1936.87,
+    "text": "tu vẫn ngồi ở đây chờ các bạn đó",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1936.87,
+    "end": 1937.87,
+    "text": "xin chào",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 1941.87,
+    "end": 1943.87,
+    "text": "thấy ăn chương vẻ không được lắm",
+    "gender": "Male"
+  }
+]

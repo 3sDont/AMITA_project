@@ -1,0 +1,219 @@
+[
+  {
+    "speaker": "SPEAKER_01",
+    "start": 0.0,
+    "end": 13.0,
+    "text": "Chào mọi người, cảm ơn đã có mặt đúng giờ. Hôm nay chúng ta sẽ hợp ngắn để cảm nhận kiến độ dự án quân tích xuất hướng của kinh tế năm 2025 và hóng nhất các công việc cần hoàn thành trong 2 tuần tới.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 13.0,
+    "end": 16.0,
+    "text": "Linh, em có thể bắt đầu phần báo cáo dữ liệu.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_02",
+    "start": 16.0,
+    "end": 23.0,
+    "text": "Dạ, dạ, dạ. Thì hiện tại nhóm dữ liệu đã hoàn thiện được phần hợp số liệu từ tổng cụ của các nhà nước.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_02",
+    "start": 23.0,
+    "end": 34.0,
+    "text": "Nhưng mà dữ liệu xuất nhập khẩu tháng 9 vẫn còn thiếu một vài chiếc yêu phụ về nhóm hàng công nghệ cao. Em đã gửi các yêu cầu cập nhật cũng như là dự kiến của tuần này sẽ nhận được ánh.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 34.0,
+    "end": 39.0,
+    "text": "Ok, khi mà có dữ liệu đầy đủ thì em sẽ làm gì nữa?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_02",
+    "start": 39.0,
+    "end": 53.0,
+    "text": "Chắc là em sẽ bắt đầu với bước tiền xử lý trước sau đó là trận hóa dữ liệu cũng như là trạm mua hình dự báo GDP theo khu vực kinh tế. Dự kiến là khoảng thứ 4 tuần sau em sẽ gửi cho anh báo cáo phân tích số bộ.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 53.0,
+    "end": 60.0,
+    "text": "Ok, nhớ đúng hạn deadline nha. Cảm ơn em. Thì Cộng Minh, ở mạng phân tích vĩ mô thì tình hình thế nào?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 60.0,
+    "end": 77.0,
+    "text": "Ở cái phần đó thì em đã hoàn thiện báo cáo về lạm phát trên sách tiên tả. Nhưng mà phần dự báo tăng trưởng quý thứ 4 cần phải thêm đầu vào từ nhóm của Linh để có thể hiệu trả nước mô hình.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 77.0,
+    "end": 87.0,
+    "text": "Ngoài ra thì em có đề xuất một cái mục nhỏ về tác động của biến động tiện giá vì gần đây nó có tín hiệu để chú ý từ mũi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 87.0,
+    "end": 96.0,
+    "text": "Ok, em nhớ bỏ xuân phần đó. Nhưng mà em nhớ lưu ý là giữ dụng lượng báo cáo trong giá hạn 10 danh nha.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 96.0,
+    "end": 101.0,
+    "text": "Dạ, ok anh ạ. Em sẽ cân đối nội dung với lại người bạn cập nhập vào thứ 6 thứ này nha.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 101.0,
+    "end": 105.0,
+    "text": "Ok, còn Hương, nhóm truyền thông và báo cáo tiến đổi.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_03",
+    "start": 106.0,
+    "end": 113.0,
+    "text": "Dạ, nhóm em thì sẽ hàng phần liên ý cho bạn báo cáo tình bài và thiết kế info rác sức cho phần số vũ khí đầu tư của nước ngoài.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_03",
+    "start": 113.0,
+    "end": 124.0,
+    "text": "Nhưng mà em muốn xin thân gửi được khoản đề chỉ số SGO để hình ảnh. Thì không biết là Linh em có gửi cho chị bộ số gì đó được không?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_02",
+    "start": 124.0,
+    "end": 128.0,
+    "text": "Dạ, được chị. Để em gửi chiều nay cho chị nha.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_02",
+    "start": 128.0,
+    "end": 132.0,
+    "text": "Dạ, ok em. Anh truyền nha.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_03",
+    "start": 132.0,
+    "end": 140.0,
+    "text": "Em cũng muốn hỏi anh em về cái bản thình chiến cuối cùng thì mình có vòng bổ sung phần chiến luyện chiến sách không?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 140.0,
+    "end": 144.0,
+    "text": "Có chứ. Phần đó nó quan trọng. Tại vì mình...",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 144.0,
+    "end": 149.0,
+    "text": "Minh thì sẽ chịu trách nhiệm viết nội dung. Còn Hương thì sẽ lo phần trình bài cho đẹp mắt.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 149.0,
+    "end": 151.0,
+    "text": "Hai người cùng nhau hóa hợp nha.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 151.0,
+    "end": 156.0,
+    "text": "Dạ, ok. Em với Hương sẽ cố gắng làm việc riêng để thống nhất phần đó trong phần bản thân.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 156.0,
+    "end": 162.0,
+    "text": "Ok. Giờ chốt lại cuối cùng thì deadline của New Sound. Đó là thứ 6 này.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 162.0,
+    "end": 166.0,
+    "text": "Sẽ có bản cập nhật phân tích demo và dữ liệu bổ sung.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 166.0,
+    "end": 170.0,
+    "text": "Còn thứ 4 tuần sau sẽ có bản dự báo GDP từ Linh.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 170.0,
+    "end": 175.0,
+    "text": "Cuối tuần sau sẽ là hoàn hiện báo cáo trình chiếu và khuyến nghị cách chiến sách.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_03",
+    "start": 175.0,
+    "end": 178.0,
+    "text": "Dạ, ok. Rõ xếp.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_03",
+    "start": 178.0,
+    "end": 181.0,
+    "text": "Dạ, em cũng sẽ hoàn thiện phần trình bài đúng hàng.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 182.0,
+    "end": 187.0,
+    "text": "Em sẽ gửi cái bản dự thạo phía ngay trên social để cho mọi người có ý nha.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 188.0,
+    "end": 193.0,
+    "text": "Ok, thì nếu không ai có ý kiến gì nữa thì buổi hợp kết thúc. Cảm ơn mọi người.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 193.0,
+    "end": 195.0,
+    "text": "Chúc mọi người có một tuần vui mẻ nha.",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 195.0,
+    "end": 199.0,
+    "text": "Cảm ơn. Tạm biệt anh nha.",
+    "gender": "Female"
+  }
+]

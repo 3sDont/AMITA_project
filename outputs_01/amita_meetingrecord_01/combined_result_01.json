@@ -1,0 +1,1115 @@
+[
+  {
+    "speaker": "SPEAKER_01",
+    "start": 0.0,
+    "end": 6.0,
+    "text": "Chào 2 bạn nha, mình bắt đầu hợp nhanh tầm 10 phút thôi ha",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 6.0,
+    "end": 9.0,
+    "text": "Mục tiêu là cập dụng tiến độ vự án dashboard danh thu",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 9.0,
+    "end": 13.0,
+    "text": "xem tuần này còn vướng gì khi lên bảng điểm mua thứ 6",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 13.0,
+    "end": 17.0,
+    "text": "Long, nói trước đi, bản dữ liệu bên em tới đâu rồi ?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 17.0,
+    "end": 20.0,
+    "text": "Dạ, thì phòng 3 live trên thái em đã xong rồi anh ơi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 20.0,
+    "end": 26.0,
+    "text": "Dự liệu từ 3 nguồn, website, cửa hàng về, cửa ứng dụng di động",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 26.0,
+    "end": 28.0,
+    "text": "đều đã gom về 1 bảng tổng hợp",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 28.0,
+    "end": 31.0,
+    "text": "Em cũng chạy thử mấy lần rồi thì kết quả khá là ổn",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 31.0,
+    "end": 37.0,
+    "text": "nhưng mà phần cronchop tự động cập nhập dự liệu mỗi ngày thì nó vẫn chưa ổn lắm",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 37.0,
+    "end": 40.0,
+    "text": "Nó chạy được vài hôm thì nó báo lỗi là hết hàng token",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 40.0,
+    "end": 44.0,
+    "text": "nhưng mà ở bên IT họ chưa có copy refresh token tự động cho mình",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 44.0,
+    "end": 51.0,
+    "text": "Cái vụ token hôm trước mình cũng nói rồi mà ta, họ chưa fit hả ?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 51.0,
+    "end": 57.0,
+    "text": "Dạ chưa anh ơi, em có gửi email rồi mà họ bảo đây là approve từ hệ quen trị",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 57.0,
+    "end": 61.0,
+    "text": "Em định là trưa nay quay nói chích tiếp luôn",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 61.0,
+    "end": 66.0,
+    "text": "Ok, tốt, cố gắng xử được hôm nay luôn nha",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 66.0,
+    "end": 68.0,
+    "text": "để mai cronchop chạy ổn",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 68.0,
+    "end": 71.0,
+    "text": "Linh đang cần dự liệu cập nhập mỗi ngày để test dashboard mà",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 71.0,
+    "end": 75.0,
+    "text": "Đúng rồi anh, hôm qua em test lại mà dự liệu mới chưa tự lên",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 75.0,
+    "end": 77.0,
+    "text": "phải bắt thủ công hơi cực chút",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 78.0,
+    "end": 82.0,
+    "text": "Rồi, Lâm cố gắng xử lý chỗ đó",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 82.0,
+    "end": 87.0,
+    "text": "Còn phần xử lý dự liệu thiếu, đặc biệt là cột danh thu khu vực",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 87.0,
+    "end": 89.0,
+    "text": "Em xử lý kiểu gì rồi ?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 89.0,
+    "end": 93.0,
+    "text": "Em sẽ đi với chị trung bình cho từng khu vực anh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 93.0,
+    "end": 97.0,
+    "text": "nhưng mà có vài khu vực nó thích dự liệu như là ở miền Trung",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 97.0,
+    "end": 101.0,
+    "text": "thì em đang thử mô hình nhỏ để chờ đoán cái dự trị cần thiếu",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 101.0,
+    "end": 105.0,
+    "text": "Em có luôn nó bút lại thì tiến dự cho anh coi thử nha",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 105.0,
+    "end": 107.0,
+    "text": "Ok, để anh coi sao nha",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 107.0,
+    "end": 110.0,
+    "text": "Mà mấy cái cột dự liệu kiểu này mà xử lý không khíu",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 110.0,
+    "end": 112.0,
+    "text": "dashboard nó nhìn sai liền à",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 112.0,
+    "end": 116.0,
+    "text": "Còn Linh, còn châu trị nhật dự đồ tới đâu rồi em ?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 116.0,
+    "end": 121.0,
+    "text": "Dạ, bản Rototide Jamfist 3 em đã phản hiện rồi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 121.0,
+    "end": 125.0,
+    "text": "là em đang chuyển qua Dreamleak để review cái dự mô hình",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 125.0,
+    "end": 128.0,
+    "text": "Em test thử với dự liệu long của thằng trước",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 128.0,
+    "end": 131.0,
+    "text": "thì cơ bản là kệ được nhưng có 2 loại nhỏ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 131.0,
+    "end": 137.0,
+    "text": "Thứ nhất là trục thời gian trên đựa đồ danh thu theo kháng bị lệch",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 137.0,
+    "end": 142.0,
+    "text": "do dự liệu bị thiếu vài ngày nên đường đựa đồ không có điều",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 142.0,
+    "end": 145.0,
+    "text": "thứ 2 là khi chọn bộ lọc theo khu vực",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 145.0,
+    "end": 147.0,
+    "text": "tết sản phẩm bán chạy không cận nhật đúng",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 147.0,
+    "end": 152.0,
+    "text": "em nghĩ là do khi trong Chason khác nhau có mở rẽ",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 152.0,
+    "end": 156.0,
+    "text": "Ờ, là đó chắc do Phỏng Max dự liệu",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 156.0,
+    "end": 161.0,
+    "text": "Chị Long, chị này gửi lên Phỏng Max cho chàng trưởng như em",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 161.0,
+    "end": 163.0,
+    "text": "Dạ, vâng, để em gửi luôn",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 163.0,
+    "end": 167.0,
+    "text": "Em sẽ kèm thêm cái file màu để linh test cho chắc",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 167.0,
+    "end": 169.0,
+    "text": "Ok, cảm ơn Long nha",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 169.0,
+    "end": 174.0,
+    "text": "À mà anh Linh em có đề xuất thêm một phát phân tích hành phí khách hàng",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 174.0,
+    "end": 178.0,
+    "text": "Em thấy trong data có thông tin về người dùng mua lại",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 178.0,
+    "end": 182.0,
+    "text": "nên có thể tính tỷ lệ quay lại theo kháng",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 182.0,
+    "end": 187.0,
+    "text": "Cái này sẽ giúp bên khách hàng họ hiểu hơn về",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 187.0,
+    "end": 189.0,
+    "text": "tên tần great",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 189.0,
+    "end": 191.0,
+    "text": "Ờ, ý hay đó",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 191.0,
+    "end": 194.0,
+    "text": "nhưng mà tù này mình chỉ nên ưu tiên bản đề mô chính thôi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 194.0,
+    "end": 197.0,
+    "text": "tab đó để xem spring sau",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 197.0,
+    "end": 200.0,
+    "text": "Chừng nào có thêm dữ liệu mới người dùng từ tháng này",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 200.0,
+    "end": 203.0,
+    "text": "Còn giờ tập trung 3.9 là tổng quan dinh thu",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 203.0,
+    "end": 207.0,
+    "text": "theo kênh bán hàng và tết sản phẩm bán chạy",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 207.0,
+    "end": 209.0,
+    "text": "Ok anh",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 209.0,
+    "end": 211.0,
+    "text": "À mà khách hàng hôm qua có gọi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 211.0,
+    "end": 214.0,
+    "text": "Họ nói là muốn thêm chỉ số tỉ xuất là những góp",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 214.0,
+    "end": 216.0,
+    "text": "trọt trên đách bô chính",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 216.0,
+    "end": 218.0,
+    "text": "Linh có thêm được không em?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 218.0,
+    "end": 221.0,
+    "text": "Dạ được, em chỉ cần cúng thức thôi",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 221.0,
+    "end": 225.0,
+    "text": "Chắc là danh thu trừ chi phí",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 225.0,
+    "end": 228.0,
+    "text": "Hàng hóa chia cho danh thu đúng không anh?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 230.0,
+    "end": 235.0,
+    "text": "Trụm luôn, trong data có cái gột là goth of gothsoul",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 235.0,
+    "end": 238.0,
+    "text": "Em lấy tới bạn chi phí rồi mệt vô được",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 238.0,
+    "end": 242.0,
+    "text": "Ok vậy dễ rồi, em thêm trong sáng mai là xong",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 243.0,
+    "end": 247.0,
+    "text": "Rồi, à Long, còn cái vụ API dữ liệu lịch sử",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 247.0,
+    "end": 249.0,
+    "text": "nhóm bắt em mở cho mình chưa?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 249.0,
+    "end": 252.0,
+    "text": "Vậy chưa anh ơi, họ nói phải tổ ưu lại bê saver",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 252.0,
+    "end": 254.0,
+    "text": "nên chắc phải 2 ngày nữa",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 254.0,
+    "end": 256.0,
+    "text": "nên em tết bằng cái file xipv đành thôi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 256.0,
+    "end": 259.0,
+    "text": "Ok, cố gắng đẩy thôi nha",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 259.0,
+    "end": 263.0,
+    "text": "Nếu không có API ổn định thì bạn không có đề mô được real time đâu",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 264.0,
+    "end": 268.0,
+    "text": "Anh ơi, phần dashboard nếu chưa có dữ liệu real time",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 268.0,
+    "end": 272.0,
+    "text": "em có thể cắt dữ liệu ngày cuối cùng",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 272.0,
+    "end": 276.0,
+    "text": "gọi những thị dòng chữ nhỏ data as of cho đỡ chóng",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 278.0,
+    "end": 280.0,
+    "text": "Thấy đó, làm gì đi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 280.0,
+    "end": 282.0,
+    "text": "cứ có dữ liệu gia đồng chung chứ cũng được",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 282.0,
+    "end": 284.0,
+    "text": "miễn nhân viện ổn định hơn 50",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 285.0,
+    "end": 288.0,
+    "text": "Vâng, để em hồi chờ Linh phần đó nha",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 288.0,
+    "end": 291.0,
+    "text": "Hãy sẽ tạm ổ file cherson dạ lập dữ liệu bạn gần nhất",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 291.0,
+    "end": 294.0,
+    "text": "để Linh tế tốc độ của lắc",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 294.0,
+    "end": 297.0,
+    "text": "Ok, tốt, cảm ơn các bạn",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 297.0,
+    "end": 300.0,
+    "text": "Còn cái dữ hiệu nhân dashboard sau thì Linh có lắc không?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 300.0,
+    "end": 303.0,
+    "text": "Cũng hơi chậm khi lắc tiểu đồ tốt sản phẩm",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 303.0,
+    "end": 305.0,
+    "text": "Cắt do là dữ liệu nhiều quá",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 305.0,
+    "end": 309.0,
+    "text": "em nghĩ càng người array, rách dữ liệu trước khi hiển thị",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 310.0,
+    "end": 315.0,
+    "text": "Ờ, chổn, để em thêm bước tổng hợp trước khi bút ra cherson",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 315.0,
+    "end": 319.0,
+    "text": "Cái đó giảm được khoảng 40% thời gian last",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 319.0,
+    "end": 321.0,
+    "text": "Ok, làm luôn nha",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 321.0,
+    "end": 323.0,
+    "text": "Mình chỉnh demo mà lắc là bắt điểm lắm",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 323.0,
+    "end": 325.0,
+    "text": "Ok nè",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 325.0,
+    "end": 327.0,
+    "text": "Dạ, anh tổng kết lại tập bỏ nha",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 327.0,
+    "end": 330.0,
+    "text": "Long nè, chị của em là Fizz Longchut",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 330.0,
+    "end": 333.0,
+    "text": "làm việc với bên IT sinh quyền Tâu Cình trong hôm nay",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 333.0,
+    "end": 336.0,
+    "text": "Sau đó là gửi lại phần mắt cho sinh chuẩn",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 336.0,
+    "end": 338.0,
+    "text": "dập 2 mẫu cho lên trước 5 giờ chiều",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 338.0,
+    "end": 342.0,
+    "text": "làm thêm bước free array dữ liệu để giảm thời gian last",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 342.0,
+    "end": 346.0,
+    "text": "Còn Linh thì là Fizz giữ đò thời gian của bộ lộc khu hội",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 346.0,
+    "end": 348.0,
+    "text": "Thêm thị số Rod Margin",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 348.0,
+    "end": 351.0,
+    "text": "Cát dữ liệu ngày cuối cùng chưa có free time",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 351.0,
+    "end": 354.0,
+    "text": "Sau đó là chuẩn bị bản demo stream list",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 354.0,
+    "end": 356.0,
+    "text": "ổn định trước tối thứ 5",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 356.0,
+    "end": 360.0,
+    "text": "Còn anh thì sẽ chuẩn bị slide trình bày cho buổi đêm nghe",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 360.0,
+    "end": 363.0,
+    "text": "Làm việc với nhóm Bach N để chắc IPA lịch sử kiếp mở",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 363.0,
+    "end": 365.0,
+    "text": "Ok chưa?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 365.0,
+    "end": 367.0,
+    "text": "Dạ, ổn quá anh",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 367.0,
+    "end": 370.0,
+    "text": "Em sẽ làm xong phần dashboard chính trong 2 ngày tới",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 370.0,
+    "end": 374.0,
+    "text": "Còn mấy phần nhỏ như là giao dị thì em sẽ chỉnh thêm xong",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 374.0,
+    "end": 376.0,
+    "text": "Em ổn đó",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 376.0,
+    "end": 380.0,
+    "text": "Em nghĩ là neo-artist hạ việc Tô Cần Sơn thì con job chạy uống đùm điên rồi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 380.0,
+    "end": 382.0,
+    "text": "Rồi, còn gì căng hút tỏ không?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 382.0,
+    "end": 385.0,
+    "text": "Em đang phong vân chỗ màu sắc dữ đò",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 385.0,
+    "end": 388.0,
+    "text": "Em đang dùng màu xanh, cam, sám",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 388.0,
+    "end": 391.0,
+    "text": "Nhưng khách hàng có vẻ thích tông màu pastel",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 391.0,
+    "end": 393.0,
+    "text": "Anh nghĩ có nên đổi không?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 393.0,
+    "end": 397.0,
+    "text": "ừ, anh nghĩ nên đổi nhẹ thôi, có đổi hết",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 397.0,
+    "end": 399.0,
+    "text": "Làm bản mới và gửi anh việc trước tối ngày mai",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 399.0,
+    "end": 401.0,
+    "text": "Không chưa",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 401.0,
+    "end": 407.0,
+    "text": "Còn cái slide của buổi đêm ngon, em có thể chia một đoạn video ngắn quay theo tát dashboard được không?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 407.0,
+    "end": 409.0,
+    "text": "Cho khách hàng thấy tuyệt tắc thực tế",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 409.0,
+    "end": 418.0,
+    "text": "Được chứ, em quay màn hình bằng OBS, rồi cắt đoạn ngắn khoảng 30 giây thôi cho sinh động",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 418.0,
+    "end": 422.0,
+    "text": "Có bị hay, có bị chuyên nghiệp hơn nhiều rồi đó",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 422.0,
+    "end": 427.0,
+    "text": "Cố gắng nha, khách hàng hầu nhìn UI nhiều lắm, không có chỉ kết quả đâu",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 428.0,
+    "end": 431.0,
+    "text": "Em biết, nên em làm nhẹ nhàng, không có gương gà",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 431.0,
+    "end": 438.0,
+    "text": "Anh Vinh ơi, nãy với demo xong, khách hàng thịt á thì từ sau mình deploy lên xe bà thật chưa anh?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 438.0,
+    "end": 442.0,
+    "text": "ừ, anh nghĩ là chưa liền được đâu, phải test thêm",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 442.0,
+    "end": 447.0,
+    "text": "Sau demo họ phải hỏi xong, mình phải chính sửa thư mục spring nữa rồi mới deploy",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 447.0,
+    "end": 450.0,
+    "text": "Chửa kiến khoảng chắc 2 tuần nữa",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 450.0,
+    "end": 453.0,
+    "text": "ừ, dạ, em hiểu rồi anh ạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 453.0,
+    "end": 458.0,
+    "text": "Rồi, anh nhắc lại deadline cho chắc nha, chiều thứ 5 là bạn demo phải chạy ổn nè",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 458.0,
+    "end": 461.0,
+    "text": "Còn tối bữa thứ 5 thì là học nhanh và phải bỏ test",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 461.0,
+    "end": 464.0,
+    "text": "Bỏ qua sáng thứ 6 là demo cho khách hàng",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 464.0,
+    "end": 468.0,
+    "text": "Nếu có gì chụp chặt thì báo ngay trong nhóm Slack nha, dù có để Slack giờ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 468.0,
+    "end": 470.0,
+    "text": "Dạ, em nói rồi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 470.0,
+    "end": 472.0,
+    "text": "Ok, anh em cũng nói rồi",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 472.0,
+    "end": 475.0,
+    "text": "Ok, tốt, có chắc đề về cần thêm người được không?",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 475.0,
+    "end": 477.0,
+    "text": "Chắc chưa cần đâu anh ạ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 477.0,
+    "end": 482.0,
+    "text": "Em cũng ổn, chỉ cần anh Long dự dự ngủ sớm là xong phận của em",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 482.0,
+    "end": 484.0,
+    "text": "Rồi, cảm ơn 2 bạn",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 484.0,
+    "end": 487.0,
+    "text": "À Linh, còn báo cáo tuần trước em gửi chưa?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 487.0,
+    "end": 492.0,
+    "text": "Em có gửi hôm qua rồi đó anh, trong thư mục weekly repop trên fly đó",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 492.0,
+    "end": 495.0,
+    "text": "Ok, anh thấy rồi, cảm ơn nha",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 495.0,
+    "end": 500.0,
+    "text": "À anh Linh ơi, anh có muốn em log lại tầm bộ thư byline version hả?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 500.0,
+    "end": 503.0,
+    "text": "Vậy mai 1 mình chuyển nó sẽ vầy dễ không?",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 503.0,
+    "end": 505.0,
+    "text": "Có, làm luôn đi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 505.0,
+    "end": 510.0,
+    "text": "Ghi vỏ version byline thư diễn, và các đường dẫn trong cái file không mình rồi chứ",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 510.0,
+    "end": 514.0,
+    "text": "Cảm ơn anh, em gắn tác v1.0 beta để dễ trách",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 514.0,
+    "end": 517.0,
+    "text": "Dạ, để em nè vùn trong hôm nay nha",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 517.0,
+    "end": 520.0,
+    "text": "Rồi tốt, anh gắn thư làm tiến bộ tuần này",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 520.0,
+    "end": 523.0,
+    "text": "Còn người làm việc khá đều tay rồi",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 523.0,
+    "end": 527.0,
+    "text": "Tập trung giữ nhiệm này thêm mấy hôm nữa, qua demo là nhiều người",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 527.0,
+    "end": 533.0,
+    "text": "Ha ha, đúng đó anh, giờ còn mỗi phần vô diện em chỉnh là xong rồi",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_00",
+    "start": 533.0,
+    "end": 538.0,
+    "text": "Còn em thì chỉ xào bên cái IT là chậm thôi, còn mà thương ổn là...",
+    "gender": "Female"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 538.0,
+    "end": 541.0,
+    "text": "Không sao, anh follow luôn với bên đó cho nha",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 541.0,
+    "end": 543.0,
+    "text": "Rồi, chắc tạm biệt nha, cảm ơn 2 bạn",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 543.0,
+    "end": 545.0,
+    "text": "Mình kết thúc bữa nay nha",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 545.0,
+    "end": 547.0,
+    "text": "Cảm ơn anh",
+    "gender": "Male"
+  },
+  {
+    "speaker": "SPEAKER_01",
+    "start": 547.0,
+    "end": 549.0,
+    "text": "Cảm ơn anh nè",
+    "gender": "Male"
+  }
+]
