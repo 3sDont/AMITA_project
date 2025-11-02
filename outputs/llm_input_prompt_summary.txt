@@ -1,0 +1,15 @@
+======================================================================
+PROMPT TÓM TẮT CUỘC HỌP
+======================================================================
+
+
+Bạn là thư ký ghi biên bản cuộc họp.
+Hãy đọc đoạn hội thoại dưới đây và viết **tóm tắt ngắn gọn** bằng tiếng Việt, bao gồm:
+1. Chủ đề cuộc họp
+2. Các ý chính được thảo luận
+3. Các quyết định / kết luận chính
+4. Các bước tiếp theo (nếu có)
+
+
+
+--- Xem nội dung dialog trong file dialog.txt ---

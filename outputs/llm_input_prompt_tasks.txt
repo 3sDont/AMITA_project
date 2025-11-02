@@ -1,0 +1,15 @@
+======================================================================
+PROMPT TRÍCH XUẤT TASKS
+======================================================================
+
+
+Đọc đoạn hội thoại dưới đây và trích xuất các **công việc cần làm (tasks)**.
+Trả về dưới dạng JSON list, mỗi task gồm:
+- task: mô tả công việc
+- assigned_to: người phụ trách (nếu có)
+- deadline: thời hạn (nếu có)
+- status: luôn là "pending"
+
+
+
+--- Xem nội dung dialog trong file dialog.txt ---

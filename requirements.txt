@@ -1,0 +1,34 @@
+# ============================================
+# Audio Transcription & Diarization Pipeline
+# ============================================
+
+# Core Deep Learning
+torch>=2.0.0,<2.5.0
+torchaudio>=2.0.0,<2.5.0
+
+# Speaker Diarization
+pyannote.audio>=3.1.0,<3.2.0
+
+# Whisper Transcription
+faster-whisper>=0.8.0,<1.0.0
+
+# Audio Processing
+librosa>=0.10.0,<0.11.0
+soundfile>=0.12.1
+pydub>=0.25.1
+scipy>=1.10.0,<2.0.0
+
+# LLM Integration (Optional)
+ollama>=0.1.0
+
+# Utilities
+numpy>=1.24.0,<2.0.0
+huggingface-hub>=0.15.1
+
+# Optional: Environment variables
+python-dotenv>=1.0.0
+
+# Note: ffmpeg required for audio conversion
+# Windows: Download from https://ffmpeg.org/download.html
+# Linux: sudo apt-get install ffmpeg
+# Mac: brew install ffmpeg

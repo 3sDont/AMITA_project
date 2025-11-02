@@ -1,0 +1,37 @@
+Dưới đây là danh sách công việc cần làm (tasks) từ đoạn hội thoại:
+
+```json
+[
+  {
+    "task": "Thực hiện các thay đổi về phần project speaking trong kế hoạch giảng dạy học kỳ hai",
+    "assigned_to": "Giao"
+  },
+  {
+    "task": "Giảm số lượng khuôn 12 để có thời gian chuẩn bị tốt hơn",
+    "assigned_to": "Giao"
+  },
+  {
+    "task": "Chọn chủ đề và thực hiện phần video ngắn cho các khuôn 12",
+    "assigned_to": "Giao"
+  },
+  {
+    "task": "Phân loại và chấm điểm project của các khuôn 11",
+    "assigned_to": "Giao",
+    "deadline": "thứ 4 tuần sau"
+  },
+  {
+    "task": "Tổ chức thêm một buổi workshop về viết để hỗ trợ học sinh",
+    "assigned_to": "Giao"
+  },
+  {
+    "task": "Chia nhóm và hướng dẫn học sinh trong buổi workshop về viết",
+    "assigned_to": "Giao"
+  },
+  {
+    "task": "Làm chung với Giao để hoàn thành kế hoạch bài diễn năng lực trước ngày 25 tháng 10",
+    "assigned_to": "Giao"
+  }
+]
+```
+
+Lưu ý rằng một số công việc cần làm có thể không được chỉ định người phụ trách cụ thể, nhưng vẫn cần phải thực hiện.
