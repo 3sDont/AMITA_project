@@ -1,0 +1,72 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Audio files (too large for GitHub)
+*.mp3
+*.wav
+*.m4a
+*.aac
+*.ogg
+*.flac
+
+# Output files
+outputs/
+uploads/
+*.json
+!requirements*.json
+!package*.json
+
+# Cache files
+*.cache
+*.pkl
+*.pt
+*.pth
+*.ckpt
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.local
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Model checkpoints (too large)
+models/
+checkpoints/
+*.bin
+*.safetensors
+
+# Temporary files
+temp/
+tmp/
+*_temp.*
+*_chunk_*.wav

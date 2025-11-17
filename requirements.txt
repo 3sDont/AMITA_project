@@ -1,0 +1,68 @@
+# ============================================
+# AMITA Meeting Analyzer - Dependencies
+# Python 3.8 - 3.12 compatible
+# ============================================
+
+# ===== PYTORCH (INSTALL SEPARATELY FIRST!) =====
+# ⚠️  QUAN TRỌNG: Cài PyTorch TRƯỚC khi cài file này!
+# 
+# Với GPU (CUDA 11.8):
+#   pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu118
+# 
+# Với CPU only:
+#   pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
+#
+# Sau đó mới chạy:
+#   pip install -r requirements.txt
+#
+# torch>=2.0.0,<2.5.0
+# torchaudio>=2.0.0,<2.5.0
+
+# ===== CORE: DIARIZATION & TRANSCRIPTION =====
+pyannote.audio>=3.1.0,<3.2.0
+faster-whisper>=0.10.0,<1.1.0
+
+# ===== AUDIO PROCESSING =====
+librosa>=0.10.0,<0.11.0
+soundfile>=0.12.1,<0.13.0
+pydub>=0.25.1,<0.26.0
+scipy>=1.10.0,<2.0.0
+numpy>=1.23.0,<2.0.0
+
+# ===== LLM (OPTIONAL) =====
+ollama>=0.1.0,<1.0.0
+
+# ===== UTILITIES =====
+huggingface-hub>=0.20.0,<1.0.0
+python-dotenv>=1.0.0,<2.0.0
+requests>=2.31.0,<3.0.0
+
+# ===== CLI ENHANCEMENTS =====
+rich>=13.0.0,<14.0.0
+tqdm>=4.65.0,<5.0.0
+
+# ===== WEB INTERFACE (OPTIONAL - cho app.py) =====
+# Chỉ cài nếu muốn dùng web UI:
+#   pip install -r requirements_web.txt
+# streamlit>=1.30.0
+# streamlit-option-menu>=0.3.12
+
+# ===== INTEGRATIONS (OPTIONAL) =====
+# Chỉ cài nếu cần export to Trello/Notion/ClickUp:
+#   pip install -r requirements_web.txt
+# py-trello>=0.19.0
+# notion-client>=2.2.1
+
+# ===== NOTES =====
+# 1. FFmpeg required (not pip installable):
+#    - Windows: winget install ffmpeg
+#    - Linux: sudo apt-get install ffmpeg
+#    - macOS: brew install ffmpeg
+#
+# 2. Verify installation:
+#    python test_gpu.py
+#
+# 3. Troubleshooting:
+#    - CUDA error → Reinstall PyTorch with correct CUDA version
+#    - Module not found → pip install -r requirements.txt --force-reinstall
+#    - Version conflict → python -m pip check
