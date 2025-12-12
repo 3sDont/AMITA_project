@@ -1,27 +1,26 @@
 #!/usr/bin/env python3
-# llm_applying.py
-# Improved LLM meeting analysis pipeline (Ollama)
-# Requirements: config.py (with ENABLE_LLM_ANALYSIS, COMBINING_CACHE, OLLAMA_MODEL), utils.py, ollama.chat
+"""
+LLM Meeting Analysis Pipeline (Ollama)
 
+✅ REFACTORED: 
+    - Loại bỏ duplicate dialog generation logic
+    - Sử dụng text_utils cho text processing
+    - Tập trung vào LLM analysis
+"""
 import sys
 import os
-import time
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import warnings
+warnings.filterwarnings("ignore")
+
+# Import từ thư viện chuẩn
 import json
 import re
 import argparse
 import logging
+import time
 from datetime import datetime
 from typing import List, Dict, Any, Optional, Union
-
-# Add project root to path so imports work when running script from /src
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-import warnings
-warnings.filterwarnings("ignore")
-
-import config
-from ollama import chat
-import utils
 
 # ✅ FIX: Import text preprocessor với error handling (TRƯỚC khi dùng logger)
 PREPROCESSING_AVAILABLE = False
@@ -30,6 +29,14 @@ try:
     PREPROCESSING_AVAILABLE = True
 except ImportError:
     pass  # ✅ Không log warning ở đây vì logger chưa được init
+
+# ✅ IMPORT SHARED UTILITIES
+from text_utils import clean_text, format_duration, truncate_text
+from data_processor import normalize_segment_format, get_segments_stats
+
+import config
+from ollama import chat
+import utils
 
 # -------------------------
 # Logging config
@@ -50,7 +57,9 @@ if not PREPROCESSING_AVAILABLE:
 # -------------------------
 def load_transcript(json_path: str, include_speaker=True, include_gender=True) -> str:
     """
-    Load transcript từ JSON combining output (list hoặc {segments:[]})
+    Load transcript từ JSON combining output.
+    
+    ✅ SIMPLIFIED: Chỉ load và format, không làm nhiệm vụ khác
     """
     data = utils.load_json(json_path)
     segments = data if isinstance(data, list) else data.get("segments") or data.get("transcript")
@@ -58,11 +67,15 @@ def load_transcript(json_path: str, include_speaker=True, include_gender=True) -
     if not segments:
         raise ValueError(f"Không tìm thấy segments trong file {json_path}")
 
+    # ✅ Chuẩn hóa format
+    segments = normalize_segment_format(segments)
+
     lines = []
     for seg in segments:
         text = seg.get("text", "").strip()
         if not text:
             continue
+        
         speaker = seg.get("speaker", "UNKNOWN")
         gender = seg.get("gender", "Unknown")
 
@@ -77,50 +90,54 @@ def load_transcript(json_path: str, include_speaker=True, include_gender=True) -
     return "\n".join(lines)
 
 
-def clean_text(text: str) -> str:
-    text = re.sub(r"\s+", " ", text)
-    text = re.sub(r"(.)\1{3,}", r"\1", text)
-    return text.strip()
-
-
 def save_dialog_file(json_path: str, output_path: str) -> List[str]:
     """
-    Gộp lời thoại theo speaker → xuất file dialog.txt
+    Tạo file dialog với format đẹp.
+    
+    ✅ CHANGED: Sử dụng data_processor để xử lý segments
     """
     data = utils.load_json(json_path)
     segments = data if isinstance(data, list) else data.get("segments") or data.get("transcript")
 
+    # ✅ Chuẩn hóa format
+    segments = normalize_segment_format(segments)
+
+    # ✅ Merge adjacent segments cùng speaker
+    from data_processor import merge_adjacent_segments
+    segments = merge_adjacent_segments(segments, gap_threshold=1.0, same_speaker_only=True)
+
+    # Generate dialog lines
     dialog = []
-    cur_spk, cur_gender, buffer = None, None, []
-
     for seg in segments:
-        txt = seg.get("text", "").strip()
-        if not txt:
-            continue
-
-        spk = seg.get("speaker", "UNKNOWN")
+        speaker = seg.get("speaker", "UNKNOWN")
         gender = seg.get("gender", "Unknown")
+        text = seg.get("text", "").strip()
+        
+        if not text:
+            continue
+        
+        emoji = "👨" if gender == "Male" else "👩" if gender == "Female" else "❓"
+        
+        # ✅ Format với thời gian
+        start = format_duration(seg['start_time'])
+        dialog.append(f"[{start}] {emoji} {speaker} ({gender}): {text}")
 
-        if spk == cur_spk:
-            buffer.append(txt)
-        else:
-            if cur_spk:
-                emoji = "👨" if cur_gender == "Male" else "👩" if cur_gender == "Female" else "❓"
-                dialog.append(f"{emoji} {cur_spk} ({cur_gender}): {' '.join(buffer)}")
-
-            cur_spk, cur_gender = spk, gender
-            buffer = [txt]
-
-    if cur_spk:
-        emoji = "👨" if cur_gender == "Male" else "👩" if cur_gender == "Female" else "❓"
-        dialog.append(f"{emoji} {cur_spk} ({cur_gender}): {' '.join(buffer)}")
-
+    # Save file
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:
         f.write("=== DIALOG ===\n\n")
         for line in dialog:
             f.write(line + "\n\n")
-        f.write(f"Tổng lượt phát biểu: {len(dialog)}\n")
+        
+        # ✅ Thêm stats
+        stats = get_segments_stats(segments)
+        f.write("\n" + "="*80 + "\n")
+        f.write("📊 THỐNG KÊ:\n")
+        f.write(f"   - Tổng lượt phát biểu: {stats['total_segments']}\n")
+        f.write(f"   - Tổng thời lượng: {format_duration(stats['total_duration'])}\n")
+        f.write(f"   - Số người nói: {len(stats['speakers'])}\n")
+        for speaker, count in stats['speakers'].items():
+            f.write(f"      • {speaker}: {count} lượt\n")
 
     logger.info(f"✅ Saved dialog → {output_path}")
     return dialog
@@ -243,10 +260,11 @@ Bạn là trợ lý AI. Nhiệm vụ của bạn là TRÍCH XUẤT DANH SÁCH C�
 📌 YÊU CẦU NGHIÊM NGẶT:
 - Chỉ tạo task nếu cuộc họp thực sự đề cập hành động phải làm.
 - KHÔNG được suy diễn, không bịa thêm người hoặc deadline.
-- Không dùng dạng “Speaker 01 nói…”
+- Không dùng dạng "Speaker 01 nói…"
 - Chuyển nội dung hội thoại thành nhiệm vụ thực tế.
 - Nếu không rõ người thực hiện → assigned_to = null
 - Nếu không rõ thời hạn → deadline = null
+- ✅ QUAN TRỌNG: Thêm 1-2 dòng hướng dẫn NGẮN GỌN cách thực hiện task
 - Output BẮT BUỘC là JSON ARRAY hợp lệ.
 
 📌 FORMAT OUTPUT CHUẨN:
@@ -255,14 +273,17 @@ Bạn là trợ lý AI. Nhiệm vụ của bạn là TRÍCH XUẤT DANH SÁCH C�
   {{
     "task": "Công việc cần thực hiện (ngắn gọn, đúng trọng tâm)",
     "assigned_to": "Tên người hoặc null",
-    "deadline": "Thời gian cụ thể hoặc null"
+    "deadline": "Thời gian cụ thể hoặc null",
+    "how_to": "1-2 bước hướng dẫn thực hiện (ngắn gọn, cụ thể)"
   }}
-]
+]]
 
-📌 QUY TẮC XÁC ĐỊNH PRIORITY:
-- high: task gấp hoặc có deadline rõ ràng
-- medium: quan trọng nhưng không gấp
-- low: mang tính hỗ trợ / không cần làm ngay
+📌 QUY TẮC VIẾT HOW_TO (HƯỚNG DẪN):
+- Viết 1-2 câu ngắn gọn, cụ thể
+- Dùng dạng hành động: "Liên hệ...", "Chuẩn bị...", "Kiểm tra..."
+- Đề cập công cụ/phương pháp nếu có trong cuộc họp
+- VÍ DỤ TỐT: "Liên hệ team IT để xin quyền truy cập. Gửi email kèm form yêu cầu."
+- VÍ DỤ XẤU: "Làm việc này" (quá chung chung)
 
 ---
 HỘI THOẠI:
@@ -270,7 +291,6 @@ HỘI THOẠI:
 
 JSON OUTPUT (CHỈ JSON, KHÔNG GIẢI THÍCH):
 """
-
 
 
 # -------------------------
@@ -289,6 +309,11 @@ def summarize(text: str, model: str, output_dir="outputs"):
 
 
 def extract_tasks_stage(text: str, model: str, output_dir="outputs"):
+    """
+    Trích xuất tasks với hướng dẫn thực hiện.
+    
+    ✅ UPDATED: Thêm validation cho field 'how_to'
+    """
     chunks = chunk_text(text)
     prompt = build_tasks_prompt("\n---\n".join(chunks[:3]))
 
@@ -299,34 +324,59 @@ def extract_tasks_stage(text: str, model: str, output_dir="outputs"):
     raw = resp["message"]["content"]
 
     parsed = extract_json(raw)
+    
+    # ✅ Validate và thêm default values
     if isinstance(parsed, list):
-        return parsed
+        validated_tasks = []
+        for task in parsed:
+            # Đảm bảo có đầy đủ fields
+            validated_task = {
+                "task": task.get("task", ""),
+                "assigned_to": task.get("assigned_to"),
+                "deadline": task.get("deadline"),
+                "priority": task.get("priority", "medium"),
+                "how_to": task.get("how_to", "")  # ✅ Field mới
+            }
+            
+            # ✅ Nếu thiếu how_to, tạo placeholder
+            if not validated_task["how_to"] or validated_task["how_to"].strip() == "":
+                validated_task["how_to"] = "Thực hiện theo quy trình chuẩn của team."
+            
+            validated_tasks.append(validated_task)
+        
+        return validated_tasks
+    
     return []
-
 
 # -------------------------
 # Main pipeline WITH PREPROCESSING
 # -------------------------
 def run_pipeline(json_path, model, output_dir="outputs", enable_preprocessing=True):
     """
-    ✅ IMPROVED: Add 7-stage text preprocessing với fallback
+    ✅ MAIN API: LLM analysis pipeline
+    
+    Changes:
+        - Sử dụng shared utilities
+        - Loại bỏ duplicate logic
+        - Better error handling
     """
     os.makedirs(output_dir, exist_ok=True)
 
+    # ✅ STAGE 1: Load và generate dialog
     logger.info("▶ Load transcript + generate dialog")
     save_dialog_file(json_path, f"{output_dir}/dialog.txt")
 
-    # ✅ Load RAW segments
+    # ✅ STAGE 2: Load segments
     data = utils.load_json(json_path)
     segments = data if isinstance(data, list) else data.get("segments") or data.get("transcript")
     
     if not segments:
         raise ValueError(f"Không tìm thấy segments trong {json_path}")
     
-    # ✅ RUN PREPROCESSING PIPELINE (với fallback)
+    # ✅ STAGE 3: Preprocessing (optional)
     if enable_preprocessing and PREPROCESSING_AVAILABLE:
         try:
-            logger.info("▶ Running 7-stage text preprocessing...")
+            logger.info("▶ Running text preprocessing...")
             preprocessor = TextPreprocessor(
                 enable_content_filter=True,
                 max_length=5000
@@ -349,17 +399,18 @@ def run_pipeline(json_path, model, output_dir="outputs", enable_preprocessing=Tr
     if not enable_preprocessing or not PREPROCESSING_AVAILABLE:
         logger.info("▶ Using RAW transcript")
         text = load_transcript(json_path)
+        # ✅ Use shared clean_text
         text = clean_text(text)
         summary_text = text
         tasks_text = text
 
-    # Summary
+    # ✅ STAGE 4: Summary
     logger.info("▶ Tóm tắt cuộc họp")
     summary = summarize(summary_text, model, output_dir)
     with open(f"{output_dir}/summary.txt", "w", encoding="utf-8") as f:
         f.write(summary)
 
-    # Tasks
+    # ✅ STAGE 5: Tasks extraction
     logger.info("▶ Trích xuất tasks")
     tasks = extract_tasks_stage(tasks_text, model, output_dir)
     with open(f"{output_dir}/tasks.json", "w", encoding="utf-8") as f:

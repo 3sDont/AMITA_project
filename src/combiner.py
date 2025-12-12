@@ -1,61 +1,55 @@
-"""Combine all results into final output."""
+"""
+Combine all results into final output.
+
+✅ REFACTORED: Chỉ tập trung vào combine logic, không làm nhiệm vụ khác
+"""
 import sys
 import os
-# Thêm thư mục gốc vào sys.path để import config và utils
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import json
-import re
-import time
-from datetime import datetime
-from difflib import SequenceMatcher
 import config
 import utils
 
-
-def is_similar_text(text1, text2, threshold=0.85):
-    """Kiểm tra 2 text có giống nhau không."""
-    if not text1 or not text2:
-        return False
-    return SequenceMatcher(None, text1.lower(), text2.lower()).ratio() > threshold
+# ✅ IMPORT SHARED UTILITIES
+from text_utils import is_similar_text
 
 
 def assign_speakers(diarization_segments, transcript_segments):
-    """Gán speaker cho từng đoạn transcript."""
+    """
+    Gán speaker cho từng đoạn transcript.
+    
+    ✅ SIMPLIFIED: Chỉ làm assign logic, không filter spam (đã filter ở whisper)
+    
+    Args:
+        diarization_segments: List of diarization segments
+        transcript_segments: List of transcript segments
+    
+    Returns:
+        Tuple[List[Dict], List[Dict]]: (simple_output, detailed_output)
+            - simple_output: Version đơn giản (không có words)
+            - detailed_output: Version đầy đủ (có words)
+    """
     results = []
-    results_with_words = []  # ✅ Thêm list riêng cho version có words
-    prev_texts = []
-    window_size = 5
-    repeat_count = 0
+    results_with_words = []
     
     for seg in transcript_segments:
+        # Xác định speaker dựa trên overlap thời gian
         speaker_label = "UNKNOWN"
-        # ✅ So sánh với start_time/end_time từ diarization
         seg_start = seg.get("start_time", seg.get("start"))
         seg_end = seg.get("end_time", seg.get("end"))
         
         for d in diarization_segments:
             d_start = d.get("start_time", d.get("start"))
             d_end = d.get("end_time", d.get("end"))
+            
             # Kiểm tra overlap
             if not (seg_end < d_start or seg_start > d_end):
                 speaker_label = d["speaker"]
                 break
         
-        text = seg["text"]
+        text = seg.get("text", "").strip()
         
-        # Phát hiện lặp
-        is_repeat = False
-        for prev_text in prev_texts[-window_size:]:
-            if is_similar_text(text, prev_text, threshold=0.85):
-                repeat_count += 1
-                is_repeat = True
-                print(f"   🗑️  Bỏ qua repeat: {text[:50]}...")
-                break
-        
-        if is_repeat:
-            continue
-        
-        # ✅ Version đơn giản (không có words)
+        # Version đơn giản
         results.append({
             "speaker": speaker_label,
             "start": seg_start,
@@ -63,7 +57,7 @@ def assign_speakers(diarization_segments, transcript_segments):
             "text": text
         })
         
-        # ✅ Version đầy đủ (có words)
+        # Version đầy đủ
         results_with_words.append({
             "speaker": speaker_label,
             "start": seg_start,
@@ -71,93 +65,57 @@ def assign_speakers(diarization_segments, transcript_segments):
             "text": text,
             "words": seg.get("words", [])
         })
-        
-        # Update sliding window
-        prev_texts.append(text)
-        if len(prev_texts) > window_size * 2:
-            prev_texts.pop(0)
     
-    print(f"   🗑️  Đã loại bỏ {repeat_count} repeats trong combine")
-    return results, results_with_words  # ✅ Return cả 2
+    return results, results_with_words
 
 
 def combine_results():
-    """Kết hợp tất cả kết quả."""
-    #start_time = time.time()
-    #start_dt = datetime.now().strftime("%H:%M:%S")
+    """
+    ✅ MAIN API: Kết hợp tất cả kết quả.
+    
+    Changes:
+        - Đơn giản hóa: chỉ combine, không làm nhiệm vụ khác
+        - Lọc spam đã được xử lý ở whisper.py
+        - Format, dialog generation sẽ do LLM module xử lý
+    """
     print(f"🔗 Đang kết hợp kết quả...")
-    #print(f"   ⏰ Bắt đầu lúc: {start_dt}\n")
     
-    # ✅ Load dữ liệu từ các file cache
+    # Load dữ liệu
     print("   📂 Đang load dữ liệu...")
-    #load_start = time.time()
     
-    # Load diarization
     diar_data = utils.load_json(config.DIARIZATION_CACHE)
-    if isinstance(diar_data, list):
-        diar_segments = diar_data
-    else:
-        diar_segments = diar_data.get('segments', [])
+    diar_segments = diar_data if isinstance(diar_data, list) else diar_data.get('segments', [])
     
-    # Load whisper transcripts
     whisper_data = utils.load_json(config.WHISPER_CACHE)
-    if isinstance(whisper_data, list):
-        transcript_segments = whisper_data
-    else:
-        transcript_segments = whisper_data.get('segments', [])
+    transcript_segments = whisper_data if isinstance(whisper_data, list) else whisper_data.get('segments', [])
     
-    # Load gender info
     gender_info = utils.load_json(config.GENDER_CACHE)
     
-    #load_time = time.time() - load_start
-    #print(f"      ✅ Load hoàn thành ({load_time:.1f}s)")
     print(f"         - Diarization: {len(diar_segments)} segments")
     print(f"         - Transcripts: {len(transcript_segments)} segments")
     print(f"         - Gender info: {len(gender_info)} speakers\n")
 
-    # ✅ Assign speakers
+    # Assign speakers
     print("   🔀 Gán speakers cho transcripts...")
-    #assign_start = time.time()
     combined, combined_with_words = assign_speakers(diar_segments, transcript_segments)
-    #assign_time = time.time() - assign_start
-    #print(f"      ✅ {len(combined)} segments ({assign_time:.1f}s)\n")
     
-    # ✅ Thêm gender info
+    # Thêm gender info
     print("   👤 Thêm gender info...")
-    #gender_start = time.time()
     for seg in combined:
         seg["gender"] = gender_info.get(seg["speaker"], "Unknown")
     
     for seg in combined_with_words:
         seg["gender"] = gender_info.get(seg["speaker"], "Unknown")
-    #gender_time = time.time() - gender_start
-    #   print(f"      ✅ Hoàn thành ({gender_time:.1f}s)\n")
 
-    # ✅ Lưu file
+    # Lưu file
     print("   💾 Đang lưu kết quả...")
-    #save_start = time.time()
     
     utils.save_json(combined, config.COMBINING_CACHE)
-    
     utils.save_json(combined_with_words, config.COMBINING_DETAILED_CACHE)
     
-    #save_time = time.time() - save_start
-    #print(f"      ✅ Lưu file ({save_time:.1f}s)")
     print(f"\n✅ Đã lưu kết quả tổng hợp vào {config.COMBINING_CACHE}")
     print(f"   📝 File chi tiết (có words): {config.COMBINING_DETAILED_CACHE}")
 
-    #elapsed = time.time() - start_time
-    #end_dt = datetime.now().strftime("%H:%M:%S")
-    
-    #print(f"\n⏱️  THỜI GIAN CHI TIẾT:")
-    #print(f"   - Load data:          {load_time:>6.1f}s")
-    #print(f"   - Assign speakers:    {assign_time:>6.1f}s")
-    #print(f"   - Add gender info:    {gender_time:>6.1f}s")
-    #print(f"   - Save results:       {save_time:>6.1f}s")
-    #print(f"   {'─'*35}")
-    #print(f"   🕓 TOTAL:             {elapsed:>6.1f}s")
-    #print(f"   ⏰ Kết thúc lúc: {end_dt}\n")
-    
     return combined
 
 

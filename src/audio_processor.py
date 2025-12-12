@@ -1,16 +1,13 @@
 """
 GIAI ĐOẠN 0: Audio preprocessing để cải thiện chất lượng.
-- Convert sang WAV nếu cần
-- Normalize volume
-- Resample về 16kHz mono
-- High-pass filter để giảm nhiễu
+
+✅ REFACTORED: Tập trung vào audio processing, không duplicate logic
 """
 import sys
 import os
-# Thêm thư mục gốc vào sys.path để import config và utils
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import warnings
-warnings.filterwarnings('ignore')  # Tắt warnings
+warnings.filterwarnings('ignore')
 import time
 from datetime import datetime
 import numpy as np
@@ -22,35 +19,40 @@ import config
 
 def enhance_audio(input_path, output_path=None):
     """
-    Cải thiện chất lượng audio:
-    - Convert sang WAV nếu cần
-    - Normalize volume
-    - Resample về 16kHz mono
-    - High-pass filter để giảm nhiễu
+    Cải thiện chất lượng audio.
+    
+    Pipeline:
+        1. Convert sang WAV nếu cần (mp3/m4a/aac/ogg/flac → wav)
+        2. Convert stereo → mono
+        3. Normalize volume (0.95 peak)
+        4. Resample về 16kHz (chuẩn cho speech processing)
+        5. High-pass filter (loại bỏ noise <80Hz)
+        6. Final normalize
     
     Args:
         input_path: Đường dẫn file audio đầu vào
-        output_path: Đường dẫn file output (None = tạo tên tự động trong outputs/)
+        output_path: Đường dẫn file output (None = auto generate)
     
     Returns:
         str: Đường dẫn file đã xử lý
-    """
-    #start_time = time.time()
-    #start_dt = datetime.now().strftime("%H:%M:%S")
     
+    Use case:
+        - Preprocessing trước khi chạy diarization/whisper
+        - Cải thiện chất lượng audio kém
+    """
     print("🎵 Đang cải thiện chất lượng audio...")
-    #print(f"   ⏰ Bắt đầu lúc: {start_dt}")
     print(f"   📂 Input: {os.path.basename(input_path)}\n")
     
-    # Tạo output path nếu không được cung cấp
+    # ✅ STEP 1: Tạo output path
     if output_path is None:
         os.makedirs("outputs", exist_ok=True)
         basename = os.path.splitext(os.path.basename(input_path))[0]
         output_path = f"outputs/{basename}_enhanced.wav"
     
-    # Convert sang WAV nếu cần
+    # ✅ STEP 2: Convert to WAV if needed
     temp_wav = None
     file_ext = os.path.splitext(input_path)[1].lower()
+    
     if file_ext in ['.mp3', '.m4a', '.aac', '.ogg', '.flac']:
         print(f"   🔄 Convert {file_ext} → WAV...")
         convert_start = time.time()
@@ -60,79 +62,67 @@ def enhance_audio(input_path, output_path=None):
         audio.export(temp_wav, format='wav')
         
         convert_time = time.time() - convert_start
-        print(f"      ✅ Convert hoàn thành ({convert_time:.1f}s)")
-        print(f"      📄 File: {os.path.basename(temp_wav)}\n")
+        print(f"      ✅ Convert hoàn thành ({convert_time:.1f}s)\n")
         input_path = temp_wav
     
-    # Load audio
+    # ✅ STEP 3: Load audio
     print("   📥 Đang load audio...")
-    load_start = time.time()
     waveform, sample_rate = sf.read(input_path)
-    #load_time = time.time() - load_start
-    #print(f"      ✅ Load hoàn thành ({load_time:.1f}s)")
+    
     print(f"      📊 Sample rate: {sample_rate}Hz")
     print(f"      📊 Channels: {waveform.ndim}")
     print(f"      📊 Duration: {len(waveform)/sample_rate:.1f}s\n")
     
-    # Convert stereo → mono
+    # ✅ STEP 4: Convert stereo → mono
     if waveform.ndim > 1:
         print("   🔄 Convert stereo → mono...")
         waveform = np.mean(waveform, axis=1)
         print("      ✅ Đã convert sang mono\n")
     
-    # Normalize volume
-    print("   🔊 Normalize volume...")
+    # ✅ STEP 5: Normalize volume (first pass)
+    print("   🔊 Normalize volume (pass 1)...")
     max_val = np.max(np.abs(waveform))
     if max_val > 0:
         waveform = waveform / max_val * 0.95
         print(f"      ✅ Đã normalize (max: {max_val:.3f} → 0.95)\n")
     
-    # Resample về 16kHz
+    # ✅ STEP 6: Resample to 16kHz
     if sample_rate != 16000:
         print(f"   🔄 Resample {sample_rate}Hz → 16000Hz...")
         resample_start = time.time()
+        
         num_samples = int(len(waveform) * 16000 / sample_rate)
         waveform = signal.resample(waveform, num_samples)
         sample_rate = 16000
+        
         resample_time = time.time() - resample_start
         print(f"      ✅ Resample hoàn thành ({resample_time:.1f}s)\n")
     
-    # High-pass filter (loại bỏ nhiễu tần số thấp)
+    # ✅ STEP 7: High-pass filter (remove low-frequency noise)
     print("   🎛️  Apply high-pass filter (80Hz)...")
-    #filter_start = time.time()
     sos = signal.butter(4, 80, 'hp', fs=sample_rate, output='sos')
     waveform = signal.sosfilt(sos, waveform)
-    #filter_time = time.time() - filter_start
-    #print(f"      ✅ Filter hoàn thành ({filter_time:.1f}s)\n")
+    print("      ✅ Filter hoàn thành\n")
     
-    # Normalize lại sau filter
+    # ✅ STEP 8: Final normalize
     print("   🔊 Final normalize...")
     max_val = np.max(np.abs(waveform))
     if max_val > 0:
         waveform = waveform / max_val * 0.95
         print(f"      ✅ Đã normalize final\n")
     
-    # Lưu kết quả
+    # ✅ STEP 9: Save output
     print("   💾 Đang lưu audio đã xử lý...")
-    #save_start = time.time()
     sf.write(output_path, waveform, sample_rate)
-    #save_time = time.time() - save_start
-    #print(f"      ✅ Đã lưu ({save_time:.1f}s)")
     print(f"      📄 File: {os.path.basename(output_path)}\n")
     
-    # Cleanup temp file
+    # ✅ STEP 10: Cleanup temp file
     if temp_wav and os.path.exists(temp_wav):
         try:
             os.remove(temp_wav)
             print("   🗑️  Đã xóa file temp\n")
         except Exception as e:
             print(f"   ⚠️  Không thể xóa temp file: {e}\n")
-    
-    #elapsed = time.time() - start_time
-    #end_dt = datetime.now().strftime("%H:%M:%S")
-    
-    #print(f"⏱️  Thời gian preprocessing: {elapsed:.2f}s")
-    #print(f"   ⏰ Kết thúc lúc: {end_dt}\n")
     
     return output_path
 

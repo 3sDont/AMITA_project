@@ -19,7 +19,8 @@ Pipeline gồm 5 giai đoạn:
 # HuggingFace Token - Cần để sử dụng pyannote models
 # Lấy token tại: https://huggingface.co/settings/tokens
 # Cần accept terms: https://huggingface.co/pyannote/speaker-diarization-3.1
-HF_TOKEN = "..."
+import os
+HF_TOKEN = os.getenv("HF_TOKEN", "")  # Đặt token qua environment variable thay vì hardcode
 
 # File audio đầu vào - Hỗ trợ: MP3, WAV, M4A, AAC, OGG, FLAC
 # AUDIO_FILE = r"D:\Data\rgw-sxmw-fng-_2025-10-14-13_29-GMT-7_.mp3"
