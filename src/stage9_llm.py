@@ -34,7 +34,7 @@ class LLMAnalyzer:
         try:
             # Try to list models
             models = ollama_list()
-            model_names = [m['name'] for m in models.get('models', [])]
+            model_names = [m.model for m in models.models]
             # Check if our model exists (with or without tag)
             model_exists = any(
                 self.model in name or self.model.split(':')[0] in name 
@@ -184,3 +184,4 @@ Insights:"""
                 insights.append(line[1:].strip())
         
         return insights[:5]
+
