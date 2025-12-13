@@ -126,6 +126,10 @@ class MeetingPipeline:
         self.meeting_data["metadata"]["last_updated"] = datetime.now().isoformat()
         self._save_meeting_json()
     
+    def get_meeting_json_path(self) -> str:
+        """Get path to meeting.json file"""
+        return os.path.join(self.output_dir, f"{self.meeting_id}_meeting.json")
+    
     # ==================== STAGE RUNNERS ====================
     
     def run_stage1_preprocessing(self):
