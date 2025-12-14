@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+python-multipart
+
+# AMITA Pipeline Dependencies (lightweight - use existing PyTorch)
+faster-whisper>=0.10.0
+librosa>=0.10.0
+soundfile>=0.12.1
+python-dotenv>=1.0.0
