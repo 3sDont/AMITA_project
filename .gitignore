@@ -28,3 +28,16 @@ dist-ssr
 .env.local
 .env.*.local
 backend/.env
+
+# Large audio files
+*.wav
+*.mp3
+*.mp4
+*.webm
+*.m4a
+
+# Backend uploads and outputs
+backend/uploads/*
+backend/outputs/*
+!backend/outputs/.gitkeep
+uploads/*
