@@ -109,6 +109,10 @@ export default function App() {
 
       if (response.ok) {
         const data = await response.json();
+        console.log("✅ Processing response:", data);
+        console.log("📝 Transcript:", data.transcript?.length, "items");
+        console.log("📄 Summary:", data.summary?.substring(0, 50));
+        console.log("✓ Tasks:", data.tasks?.length, "items");
         setTranscript(data.transcript);
         setSummary(data.summary);
         setTasks(data.tasks);
@@ -684,7 +688,17 @@ export default function App() {
                 <ul className="space-y-3">
                   {tasks.map((task, index) => {
                     const isObject = typeof task === 'object' && task !== null;
-                    const taskText = typeof task === 'string' ? task : task.task || JSON.stringify(task);
+                    
+                    // Handle task text
+                    let taskText = '';
+                    if (typeof task === 'string') {
+                      taskText = task;
+                    } else if (isObject) {
+                      taskText = task.task || task.how_to || '';
+                      // Skip empty tasks
+                      if (!taskText.trim()) return null;
+                    }
+                    
                     const assignedTo = isObject ? task.assigned_to : null;
                     const deadline = isObject ? task.deadline : null;
                     const priority = isObject ? task.priority : null;

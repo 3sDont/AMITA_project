@@ -14,41 +14,37 @@ from datetime import datetime
 import time
 import asyncio
 from dotenv import load_dotenv
+import config
 
 # Load environment variables from .env file
 load_dotenv()
 
-# Add AMITA_project to path
-AMITA_PROJECT_PATH = Path("D:/File/Seminar/AMITA_project")
-sys.path.insert(0, str(AMITA_PROJECT_PATH))
-sys.path.insert(0, str(AMITA_PROJECT_PATH / "src"))
+# Add backend/src to path for local modules
+sys.path.insert(0, str(config.BACKEND_DIR / "src"))
 
 # Set HF_TOKEN from environment variable for diarization
 if os.getenv("HF_TOKEN"):
     os.environ["HF_TOKEN"] = os.getenv("HF_TOKEN")
     print("✅ HF_TOKEN loaded from .env")
 
-# Import AMITA modules
+# Import AMITA modules from backend/src
 try:
     # Workaround for torchaudio backend issue
     import warnings
     warnings.filterwarnings('ignore')
     
-    import config
-    import utils
+    # Import pipeline manager and stages from local src/
+    from pipeline_manager import MeetingPipeline
+    print("✅ MeetingPipeline loaded from backend/src")
     
-    # Import pipeline manager and stages
-    from src.pipeline_manager import MeetingPipeline
-    print("✅ MeetingPipeline loaded")
-    
-    from src.stage1_preprocessing import AudioPreprocessor
+    from stage1_preprocessing import AudioPreprocessor
     print("✅ AudioPreprocessor loaded")
     
-    from src.stage3_whisper import WhisperProcessor
+    from stage3_whisper import WhisperProcessor
     print("✅ WhisperProcessor loaded")
     
     try:
-        from src.stage4_diarization import DiarizationProcessor
+        from stage4_diarization import DiarizationProcessor
         print("✅ DiarizationProcessor loaded")
         DIARIZATION_AVAILABLE = True
     except Exception as e:
@@ -56,7 +52,7 @@ try:
         DIARIZATION_AVAILABLE = False
     
     try:
-        from src.stage7_gender import GenderClassifier
+        from stage7_gender import GenderClassifier
         print("✅ GenderClassifier loaded")
         GENDER_AVAILABLE = True
     except Exception as e:
@@ -64,7 +60,7 @@ try:
         GENDER_AVAILABLE = False
     
     try:
-        from src.stage9_llm import LLMAnalyzer
+        from stage9_llm import LLMAnalyzer
         print("✅ LLMAnalyzer loaded")
         LLM_AVAILABLE = True
     except Exception as e:
@@ -88,15 +84,16 @@ app = FastAPI(title="AMITA API", version="1.0.0")
 # Enable CORS for React frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Vite dev server
+    allow_origins=config.CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Create upload directory
-UPLOAD_DIR = Path("./uploads")
-UPLOAD_DIR.mkdir(exist_ok=True)
+# Create data directories from config
+config.DATA_DIR.mkdir(exist_ok=True)
+config.UPLOAD_DIR.mkdir(exist_ok=True)
+config.OUTPUT_DIR.mkdir(exist_ok=True)
 
 
 @app.get("/")
@@ -110,11 +107,11 @@ async def upload_audio(file: UploadFile = File(...)):
     """Upload audio file"""
     try:
         # Validate file type
-        if not file.filename.endswith(('.mp3', '.wav', '.m4a', '.ogg', '.flac', '.webm')):
-            raise HTTPException(400, "Invalid file type. Supported: mp3, wav, m4a, ogg, flac, webm")
+        if not any(file.filename.endswith(ext) for ext in config.ALLOWED_AUDIO_FORMATS):
+            raise HTTPException(400, f"Invalid file type. Supported: {', '.join(config.ALLOWED_AUDIO_FORMATS)}")
         
         # Save uploaded file
-        file_path = UPLOAD_DIR / file.filename
+        file_path = config.UPLOAD_DIR / file.filename
         with open(file_path, "wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
         
@@ -137,7 +134,7 @@ async def process_audio(data: dict):
         if not filename:
             raise HTTPException(400, "Filename is required")
         
-        audio_path = UPLOAD_DIR / filename
+        audio_path = config.UPLOAD_DIR / filename
         if not audio_path.exists():
             raise HTTPException(404, f"Audio file not found: {audio_path}")
         
@@ -148,9 +145,8 @@ async def process_audio(data: dict):
         if PIPELINE_ENABLED:
             # REAL PIPELINE - Process with AMITA MeetingPipeline
             try:
-                # Create output directory
-                output_dir = Path("./outputs")
-                output_dir.mkdir(exist_ok=True)
+                # Use centralized output directory from config
+                output_dir = config.OUTPUT_DIR
                 
                 # Initialize pipeline
                 print(f"🎯 Initializing MeetingPipeline for {filename}...")
@@ -179,15 +175,22 @@ async def process_audio(data: dict):
                 llm_data = pipeline.meeting_data.get("llm", {})
                 metadata = pipeline.meeting_data.get("metadata", {})
                 
-                # Format transcript for UI (first 30 segments)
+                print(f"📊 Pipeline results: {len(segments)} segments, {len(speakers_info)} speakers")
+                
+                # Format transcript for UI (limited by config)
                 transcript = []
-                for seg in segments[:30]:
+                for seg in segments[:config.MAX_TRANSCRIPT_SEGMENTS]:
                     start_time = seg.get('start', 0)
+                    text = seg.get('text', '').strip()
+                    if not text:  # Skip empty segments
+                        continue
                     transcript.append({
                         "time": f"{int(start_time//60):02d}:{int(start_time%60):02d}",
                         "speaker": seg.get('speaker', 'Speaker 1'),
-                        "text": seg.get('text', '')
+                        "text": text
                     })
+                
+                print(f"📝 Formatted {len(transcript)} transcript entries")
                 
                 # Get summary and tasks from LLM or default
                 summary = llm_data.get('summary') or "Meeting transcription completed successfully using AMITA Pipeline."
@@ -312,4 +315,4 @@ async def get_status():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host=config.API_HOST, port=config.API_PORT)

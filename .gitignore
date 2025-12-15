@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -36,8 +42,13 @@ backend/.env
 *.webm
 *.m4a
 
-# Backend uploads and outputs
+# Backend data directory (uploads and outputs)
+backend/data/uploads/*
+backend/data/outputs/*
+!backend/data/uploads/.gitkeep
+!backend/data/outputs/.gitkeep
+
+# Old directories (can be removed after migration)
 backend/uploads/*
 backend/outputs/*
-!backend/outputs/.gitkeep
 uploads/*
