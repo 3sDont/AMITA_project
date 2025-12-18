@@ -594,6 +594,11 @@ export default function App() {
               <h2 className="flex items-center gap-2 font-semibold text-lg">
                 <span className="text-2xl">💬</span>
                 Dialog / Transcript
+                {transcript.length > 0 && (
+                  <span className="ml-2 px-2 py-1 bg-white/20 rounded-lg text-sm">
+                    {transcript.length} segments
+                  </span>
+                )}
               </h2>
               {transcript.length > 0 && (
                 <button
@@ -607,7 +612,7 @@ export default function App() {
                 </button>
               )}
             </div>
-            <div className="p-6 max-h-96 overflow-y-auto">
+            <div className="p-6 max-h-[800px] overflow-y-auto">
               {transcript.length === 0 ? (
                 <p className="text-gray-400 text-sm text-center py-12">
                   Upload an audio file to see the transcript
@@ -691,12 +696,15 @@ export default function App() {
                     
                     // Handle task text
                     let taskText = '';
+                    let howToText = '';
+                    
                     if (typeof task === 'string') {
                       taskText = task;
                     } else if (isObject) {
-                      taskText = task.task || task.how_to || '';
+                      taskText = task.task || '';
+                      howToText = task.how_to || '';
                       // Skip empty tasks
-                      if (!taskText.trim()) return null;
+                      if (!taskText.trim() && !howToText.trim()) return null;
                     }
                     
                     const assignedTo = isObject ? task.assigned_to : null;
@@ -708,6 +716,11 @@ export default function App() {
                         <span className="text-green-600 text-xl mt-0.5">✓</span>
                         <div className="flex-1">
                           <p className="text-gray-700 font-medium mb-2">{taskText}</p>
+                          {howToText && (
+                            <p className="text-gray-600 text-sm mb-2 pl-4 border-l-2 border-blue-200 italic">
+                              💡 {howToText}
+                            </p>
+                          )}
                           <div className="flex flex-wrap gap-3 text-sm">
                             {assignedTo && (
                               <span className="flex items-center gap-1.5 text-blue-600">

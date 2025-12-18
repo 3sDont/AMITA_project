@@ -52,7 +52,8 @@ class LLMAnalyzer:
         
         try:
             models = ollama_list()
-            model_names = [m['name'] for m in models.get('models', [])]
+            model_names = [m.model for m in models.models]
+            #model_names = [m['name'] for m in models.get('models', [])]
             model_exists = any(
                 self.model in name or self.model.split(':')[0] in name 
                 for name in model_names
@@ -281,13 +282,18 @@ QUAN TRỌNG - FIELD "how_to":
 - Format: "..., ..." hoặc mô tả ngắn gọn trong 1 đến 2 câu
 
 OUTPUT FORMAT (JSON ARRAY):
+CHÚ Ý: 
+- Mỗi string PHẢI KHÔNG chứa dấu xuống dòng (newline)
+- Dùng dấu phẩy hoặc dấu chấm thay vì xuống dòng
+- Đảm bảo tất cả dấu ngoặc kép đều được đóng đúng
+
 [
   {
-    "task": "Công việc ngắn gọn (5-15 từ)",
+    "task": "Công việc ngắn gọn (5-15 từ, không xuống dòng)",
     "assigned_to": "Tên người hoặc null",
     "deadline": "Thời hạn hoặc null",
     "priority": "high/medium/low",
-    "how_to": "Hướng dẫn CỤ THỂ 1-2 câu (BẮT BUỘC phải có)",
+    "how_to": "Hướng dẫn CỤ THỂ 1-2 câu KHÔNG xuống dòng",
     "source": "Trích dẫn từ transcript"
   }
 ]"""
@@ -342,20 +348,62 @@ JSON OUTPUT:"""
                 ])
                 
                 content = response["message"]["content"].strip()
+                print(f"            📄 LLM response length: {len(content)} chars")
                 
-                # Extract JSON
-                match = re.search(r'\[.*\]', content, re.DOTALL)
+                # Clean up content - remove markdown code blocks
+                content = re.sub(r'```json\s*', '', content)
+                content = re.sub(r'```\s*', '', content)
+                
+                # Extract JSON array (first match only)
+                match = re.search(r'\[.*?\]', content, re.DOTALL)
                 if match:
-                    tasks = json.loads(match.group())
-                    validated = self._validate_tasks(tasks)
-                    all_tasks.extend(validated)
+                    json_str = match.group()
+                    print(f"            ✓ Found JSON array")
+                    
+                    # DEBUG: Log raw JSON
+                    print(f"            🔍 Raw JSON (first 500 chars):")
+                    print(f"            {json_str[:500]}")
+                    
+                    try:
+                        tasks = json.loads(json_str)
+                        if isinstance(tasks, list):
+                            print(f"            ✓ Parsed {len(tasks)} raw tasks")
+                            validated = self._validate_tasks(tasks)
+                            print(f"            ✓ Validated {len(validated)} tasks")
+                            all_tasks.extend(validated)
+                        else:
+                            print(f"         ⚠️  Chunk {i+1}: Expected list, got {type(tasks)}")
+                    except json.JSONDecodeError as je:
+                        print(f"         ⚠️  Chunk {i+1}: JSON decode error - {je}")
+                        print(f"            🔍 Error location in JSON:")
+                        # Show context around error
+                        error_pos = je.pos if hasattr(je, 'pos') else 364
+                        start = max(0, error_pos - 100)
+                        end = min(len(json_str), error_pos + 100)
+                        print(f"            {json_str[start:end]}")
+                        print(f"            {' ' * (error_pos - start)}^ ERROR HERE")
+                        
+                        # Try to fix common issues
+                        json_str = json_str.replace("'", '"')  # Single quotes to double
+                        json_str = re.sub(r',\s*]', ']', json_str)  # Remove trailing commas
+                        try:
+                            tasks = json.loads(json_str)
+                            if isinstance(tasks, list):
+                                validated = self._validate_tasks(tasks)
+                                all_tasks.extend(validated)
+                        except:
+                            pass  # Give up on this chunk
+                else:
+                    print(f"         ⚠️  Chunk {i+1}: No JSON array found in response")
             
             except Exception as e:
                 print(f"         ⚠️  Error in chunk {i+1}: {e}")
                 continue
         
         # Deduplicate
+        print(f"         📊 Total tasks before dedup: {len(all_tasks)}")
         unique_tasks = self._deduplicate_tasks(all_tasks)
+        print(f"         📊 Unique tasks after dedup: {len(unique_tasks)}")
         return unique_tasks
     
     def _validate_tasks(self, tasks: List[Dict]) -> List[Dict]:
@@ -364,11 +412,14 @@ JSON OUTPUT:"""
         
         for task in tasks:
             if 'task' not in task or not task['task']:
+                print(f"            ⚠️ Skipped: Missing 'task' field")
                 continue
             
-            # Skip generic tasks
-            generic = ['thảo luận', 'nói về', 'chia sẻ', 'đề cập']
-            if any(kw in task['task'].lower() for kw in generic):
+            # Skip generic tasks (less strict)
+            generic = ['thảo luận chung', 'nói về chung', 'chia sẻ thông tin']
+            task_lower = task['task'].lower()
+            if any(kw in task_lower for kw in generic):
+                print(f"            ⚠️ Skipped generic: {task['task'][:50]}")
                 continue
             
             # Create validated task

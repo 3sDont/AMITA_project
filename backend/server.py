@@ -179,7 +179,8 @@ async def process_audio(data: dict):
                 
                 # Format transcript for UI (limited by config)
                 transcript = []
-                for seg in segments[:config.MAX_TRANSCRIPT_SEGMENTS]:
+                #for seg in segments[:config.MAX_TRANSCRIPT_SEGMENTS]:
+                for seg in segments:
                     start_time = seg.get('start', 0)
                     text = seg.get('text', '').strip()
                     if not text:  # Skip empty segments
@@ -194,11 +195,18 @@ async def process_audio(data: dict):
                 
                 # Get summary and tasks from LLM or default
                 summary = llm_data.get('summary') or "Meeting transcription completed successfully using AMITA Pipeline."
-                tasks = llm_data.get('tasks') or [
-                    "Review the complete transcript",
-                    "Identify key action items",
-                    "Share with meeting participants"
-                ]
+                tasks = llm_data.get('tasks', [])
+                
+                # Debug: Check if tasks are empty
+                print(f"📊 LLM Data Keys: {list(llm_data.keys())}")
+                print(f"📊 Tasks from LLM: {len(tasks)} tasks")
+                if len(tasks) == 0:
+                    print(f"⚠️  No tasks from LLM, using fallback")
+                    tasks = [
+                        "Review the complete transcript",
+                        "Identify key action items",
+                        "Share with meeting participants"
+                    ]
                 
                 # Calculate duration
                 duration = 0
