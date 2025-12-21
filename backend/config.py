@@ -23,7 +23,19 @@ MAX_SPEAKERS = None  # None = auto-detect
 CHUNK_DURATION_MINUTES = 10  # Duration of each audio chunk
 ENABLE_VAD = True  # Voice Activity Detection
 ENABLE_GENDER = True  # Gender classification
+ENABLE_SPELL_CHECK = True  # LLM spell checking and grammar correction
 ENABLE_LLM_ANALYSIS = True  # LLM summary and tasks
+
+# ==================== PIPELINE CONFIG ====================
+PIPELINE_CONFIG = {
+    "chunk_duration_minutes": CHUNK_DURATION_MINUTES,
+    "enable_vad": ENABLE_VAD,
+    "enable_gender": ENABLE_GENDER,
+    "enable_spell_check": ENABLE_SPELL_CHECK,
+    "enable_llm": ENABLE_LLM_ANALYSIS,
+    "min_speakers": MIN_SPEAKERS,
+    "max_speakers": MAX_SPEAKERS
+}
 
 # ==================== API SETTINGS ====================
 API_HOST = "0.0.0.0"

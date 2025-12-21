@@ -115,13 +115,25 @@ async def upload_audio(file: UploadFile = File(...)):
         with open(file_path, "wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
         
+        # Validate file was written successfully
+        file_size = file_path.stat().st_size
+        if file_size == 0:
+            file_path.unlink()  # Delete empty file
+            raise HTTPException(400, "Upload failed: File is empty")
+        
+        if file_size < 1024:  # Less than 1KB is suspicious
+            file_path.unlink()  # Delete corrupted file
+            raise HTTPException(400, f"Upload failed: File too small ({file_size} bytes), possibly corrupted")
+        
         return JSONResponse({
             "success": True,
             "filename": file.filename,
             "path": str(file_path),
-            "size": file_path.stat().st_size
+            "size": file_size
         })
     
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(500, f"Upload failed: {str(e)}")
 
