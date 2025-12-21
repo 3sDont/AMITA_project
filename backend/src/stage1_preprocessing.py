@@ -50,6 +50,19 @@ class AudioPreprocessor:
         """
         print("   📂 Loading audio...")
         
+        # ✅ Validate file exists and has content
+        if not os.path.exists(self.audio_path):
+            raise FileNotFoundError(f"Audio file not found: {self.audio_path}")
+        
+        file_size = os.path.getsize(self.audio_path)
+        if file_size == 0:
+            raise ValueError(f"Audio file is empty (0 bytes): {self.audio_path}")
+        
+        if file_size < 1024:  # Less than 1KB
+            raise ValueError(f"Audio file too small ({file_size} bytes), possibly corrupted: {self.audio_path}")
+        
+        print(f"   📊 File size: {file_size:,} bytes ({file_size / 1024 / 1024:.2f} MB)")
+        
         # ✅ Try soundfile first, fallback to pydub for unsupported formats
         try:
             waveform, sr = sf.read(self.audio_path)
@@ -179,8 +192,17 @@ class AudioPreprocessor:
         Returns:
             Tuple[np.ndarray, int]: (waveform, sample_rate)
         """
-        # Load with pydub
-        audio = AudioSegment.from_file(audio_path)
+        try:
+            # Load with pydub
+            audio = AudioSegment.from_file(audio_path)
+        except Exception as e:
+            raise ValueError(
+                f"Failed to decode audio file. The file may be corrupted or in an invalid format. "
+                f"Error: {str(e)}\n"
+                f"File: {audio_path}\n"
+                f"Size: {os.path.getsize(audio_path)} bytes\n"
+                f"Tip: Try re-uploading the file or converting it to WAV/MP3 format."
+            )
         
         # Convert to mono
         if audio.channels > 1:
