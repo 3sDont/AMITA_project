@@ -106,6 +106,9 @@ class MeetingPipeline:
         # ✅ Load config from config.py
         self.config = PIPELINE_CONFIG.copy()
         
+        # ✅ Stage timing tracking
+        self.stage_timings = {}
+        
         os.makedirs(output_dir, exist_ok=True)
         
         print(f"\n{'='*80}")
@@ -145,10 +148,6 @@ class MeetingPipeline:
     
     def run_stage1_preprocessing(self):
         """[1] Audio Preprocessing"""
-        print(f"\n{'='*80}")
-        print(f"[STAGE 1] AUDIO PREPROCESSING")
-        print(f"{'='*80}\n")
-        
         self._update_status("processing", "preprocessing")
         
         preprocessor = AudioPreprocessor(self.audio_path)
@@ -170,10 +169,6 @@ class MeetingPipeline:
     
     def run_stage2_chunking(self):
         """[2] Unified Chunking"""
-        print(f"\n{'='*80}")
-        print(f"[STAGE 2] UNIFIED CHUNKING")
-        print(f"{'='*80}\n")
-        
         self._update_status("processing", "chunking")
         
         chunker = UnifiedChunker(self.preprocessed_audio)
@@ -193,10 +188,6 @@ class MeetingPipeline:
     
     def run_stage3_whisper(self):
         """[3] Whisper Transcription"""
-        print(f"\n{'='*80}")
-        print(f"[STAGE 3] WHISPER TRANSCRIPTION")
-        print(f"{'='*80}\n")
-        
         self._update_status("processing", "whisper")
         
         whisper = WhisperProcessor()
@@ -219,10 +210,6 @@ class MeetingPipeline:
     
     def run_stage4_diarization(self):
         """[4] Speaker Diarization"""
-        print(f"\n{'='*80}")
-        print(f"[STAGE 4] SPEAKER DIARIZATION")
-        print(f"{'='*80}\n")
-        
         self._update_status("processing", "diarization")
         
         diarizer = DiarizationProcessor()
@@ -245,10 +232,6 @@ class MeetingPipeline:
     
     def run_stage5_speaker_assignment(self):
         """[5] Speaker Assignment (word-level voting)"""
-        print(f"\n{'='*80}")
-        print(f"[STAGE 5] SPEAKER ASSIGNMENT")
-        print(f"{'='*80}\n")
-        
         self._update_status("processing", "speaker_assignment")
         
         assigner = SpeakerAssigner()
@@ -268,10 +251,6 @@ class MeetingPipeline:
     
     def run_stage6_merge_normalize(self):
         """[6] Merge & Normalize - TẬP TRUNG TẤT CẢ LOGIC"""
-        print(f"\n{'='*80}")
-        print(f"[STAGE 6] MERGE & NORMALIZE")
-        print(f"{'='*80}\n")
-        
         self._update_status("processing", "merge_normalize")
         
         normalizer = MergeNormalizer()
@@ -296,10 +275,6 @@ class MeetingPipeline:
         if not self.config["enable_gender"]:
             print(f"\n   ⏭️  Skipping gender classification (disabled)")
             return
-        
-        print(f"\n{'='*80}")
-        print(f"[STAGE 7] GENDER CLASSIFICATION")
-        print(f"{'='*80}\n")
         
         self._update_status("processing", "gender")
         
@@ -329,10 +304,6 @@ class MeetingPipeline:
         if not self.config["enable_spell_check"]:
             print(f"\n   ⏭️  Skipping spell check (disabled)")
             return
-        
-        print(f"\n{'='*80}")
-        print(f"[STAGE 7.5] LLM SPELL CHECK & GRAMMAR CORRECTION")
-        print(f"{'='*80}\n")
         
         self._update_status("processing", "spell_check")
         
@@ -379,10 +350,6 @@ class MeetingPipeline:
         - Create backup
         - Generate statistics report
         """
-        print(f"\n{'='*80}")
-        print(f"[STAGE 8] MEETING.JSON VALIDATION & EXPORT")
-        print(f"{'='*80}\n")
-        
         self._update_status("processing", "meeting_json_export")
         
         # ✅ Use Stage 8 processor
@@ -410,10 +377,6 @@ class MeetingPipeline:
         if not self.config["enable_llm"]:
             print(f"\n   ⏭️  Skipping LLM analysis (disabled)")
             return
-        
-        print(f"\n{'='*80}")
-        print(f"[STAGE 9] LLM ANALYSIS & INSIGHTS")
-        print(f"{'='*80}\n")
         
         self._update_status("processing", "llm_analysis")
         
@@ -619,53 +582,93 @@ class MeetingPipeline:
                 f.write(f"   Final Count: {proc_stats.get('final_count', 0)}\n")
                 f.write(f"   Removed by Quality: {proc_stats.get('removed_by_quality', 0)}\n")
     
+    # ==================== STAGE TIMING WRAPPER ====================
+    
+    def _run_stage(self, stage_name: str, stage_func, *args, **kwargs):
+        """Wrapper to track and print timing for each stage"""
+        print(f"\n{'='*80}")
+        print(f"[{stage_name}]")
+        print(f"{'='*80}\n")
+        
+        stage_start = time.time()
+        result = stage_func(*args, **kwargs)
+        stage_elapsed = time.time() - stage_start
+        
+        self.stage_timings[stage_name] = stage_elapsed
+        
+        print(f"\n   ⏱️  {stage_name} completed in {stage_elapsed:.2f}s ({stage_elapsed/60:.2f} min)")
+        
+        return result
+    
+    def _print_timing_summary(self):
+        """Print summary of all stage timings"""
+        print(f"\n{'='*80}")
+        print(f"⏱️  STAGE TIMING SUMMARY")
+        print(f"{'='*80}\n")
+        
+        total_time = sum(self.stage_timings.values())
+        
+        for stage_name, elapsed in self.stage_timings.items():
+            percentage = (elapsed / total_time * 100) if total_time > 0 else 0
+            print(f"   {stage_name:35} {elapsed:8.2f}s ({percentage:5.1f}%)")
+        
+        print(f"   {'-'*80}")
+        print(f"   {'TOTAL':35} {total_time:8.2f}s ({total_time/60:6.2f} min)")
+        print(f"\n{'='*80}\n")
+    
     # ==================== MAIN RUN (UPDATED) ====================
     
     def run(self):
         """Run toàn bộ pipeline"""
-        start_time = time.time()
+        pipeline_start = time.time()
         
         try:
             # Stage 1: Preprocessing
-            self.run_stage1_preprocessing()
+            self._run_stage("STAGE 1: Audio Preprocessing", self.run_stage1_preprocessing)
             
             # Stage 2: Unified Chunking
-            self.run_stage2_chunking()
+            self._run_stage("STAGE 2: Unified Chunking", self.run_stage2_chunking)
             
             # Stage 3: Whisper
-            self.run_stage3_whisper()
+            self._run_stage("STAGE 3: Whisper Transcription", self.run_stage3_whisper)
             
             # Stage 4: Diarization
-            self.run_stage4_diarization()
+            self._run_stage("STAGE 4: Speaker Diarization", self.run_stage4_diarization)
             
             # Stage 5: Speaker Assignment
-            self.run_stage5_speaker_assignment()
+            self._run_stage("STAGE 5: Speaker Assignment", self.run_stage5_speaker_assignment)
             
             # Stage 6: Merge & Normalize
-            self.run_stage6_merge_normalize()
+            self._run_stage("STAGE 6: Merge & Normalize", self.run_stage6_merge_normalize)
             
             # Stage 7: Gender (optional)
-            self.run_stage7_gender()
+            if self.config.get("enable_gender", True):
+                self._run_stage("STAGE 7: Gender Classification", self.run_stage7_gender)
             
             # Stage 7.5: Spell Check (optional, LLM-based)
-            self.run_stage7_5_spell_check()
+            if self.config.get("enable_spell_check", True):
+                self._run_stage("STAGE 7.5: LLM Spell Check", self.run_stage7_5_spell_check)
             
             # ✅ Stage 8: Meeting.json Validation & Export
-            self.run_stage8_meeting_json()
+            self._run_stage("STAGE 8: Validation & Export", self.run_stage8_meeting_json)
             
             # Stage 9: LLM (optional)
-            self.run_stage9_llm()
+            if self.config.get("enable_llm", True):
+                self._run_stage("STAGE 9: LLM Analysis", self.run_stage9_llm)
             
             # Final status
             self._update_status("completed")
             
-            elapsed = time.time() - start_time
+            pipeline_elapsed = time.time() - pipeline_start
+            
+            # Print timing summary
+            self._print_timing_summary()
             
             print(f"\n{'='*80}")
             print(f"✅ PIPELINE COMPLETED SUCCESSFULLY")
             print(f"{'='*80}")
             print(f"   Meeting ID: {self.meeting_id}")
-            print(f"   Total time: {elapsed:.1f}s ({elapsed/60:.1f} min)")
+            print(f"   Total time: {pipeline_elapsed:.1f}s ({pipeline_elapsed/60:.1f} min)")
             print(f"   Meeting JSON: {self.get_meeting_json_path()}")
             print(f"{'='*80}\n")
             
@@ -674,17 +677,55 @@ class MeetingPipeline:
         except Exception as e:
             self._update_status("failed")
             print(f"\n❌ Pipeline failed: {e}")
+            
+            # Print timing summary even on failure
+            if self.stage_timings:
+                print(f"\n⏱️  Stages completed before failure:")
+                for stage_name, elapsed in self.stage_timings.items():
+                    print(f"   {stage_name}: {elapsed:.2f}s")
+            
             raise
 
 # ==================== USAGE ====================
 if __name__ == "__main__":
     import sys
     
+    # ✅ Load .env file để lấy HF_TOKEN khi chạy standalone
+    try:
+        from dotenv import load_dotenv
+        env_path = BACKEND_DIR / ".env"
+        if env_path.exists():
+            load_dotenv(env_path)
+            print(f"✅ Loaded .env from: {env_path}")
+            if os.getenv("HF_TOKEN"):
+                os.environ["HF_TOKEN"] = os.getenv("HF_TOKEN")
+                print(f"✅ HF_TOKEN loaded successfully")
+            else:
+                print(f"⚠️  Warning: HF_TOKEN not found in .env")
+        else:
+            print(f"⚠️  Warning: .env file not found at {env_path}")
+    except ImportError:
+        print("⚠️  python-dotenv not installed, skipping .env loading")
+    
     if len(sys.argv) < 2:
-        print("Usage: python pipeline_manager.py <audio_file>")
+        print("\nUsage: python pipeline_manager.py <audio_file>")
+        print("\nExample:")
+        print("  python pipeline_manager.py 'D:\\Audio\\meeting.mp3'")
         sys.exit(1)
     
     audio_file = sys.argv[1]
+    
+    # Verify audio file exists
+    if not os.path.exists(audio_file):
+        print(f"❌ Error: Audio file not found: {audio_file}")
+        sys.exit(1)
+    
+    print(f"\n{'='*80}")
+    print(f"🎯 AMITA PIPELINE - Standalone Mode")
+    print(f"{'='*80}")
+    print(f"Audio file: {audio_file}")
+    print(f"Output dir: outputs/")
+    print(f"{'='*80}\n")
     
     # Create pipeline
     pipeline = MeetingPipeline(audio_file)
@@ -694,10 +735,16 @@ if __name__ == "__main__":
         "chunk_duration_minutes": 10,
         "enable_vad": True,
         "enable_gender": True,
+        "enable_spell_check": True,
         "enable_llm": True
     })
     
     # Run
-    result = pipeline.run()
-    
-    print(f"\n✅ Meeting JSON saved at: {pipeline.get_meeting_json_path()}")
+    try:
+        result = pipeline.run()
+        print(f"\n✅ Meeting JSON saved at: {pipeline.get_meeting_json_path()}")
+    except Exception as e:
+        print(f"\n❌ Pipeline failed: {e}")
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)
