@@ -188,22 +188,45 @@ class LLMAnalyzer:
     def _generate_summary(self, context: str) -> str:
         """Generate summary với improved prompts"""
         system_prompt = """Vai trò: Bạn là một Thư ký điều hành và Chuyên gia phân tích dữ liệu hội thoại. Nhiệm vụ của bạn là trích xuất "giá trị cốt lõi" từ bản ghi chép cuộc họp (transcript) dưới đây.
-QUY TẮC XỬ LÝ DỮ LIỆU:
-Trung thực: Chỉ sử dụng thông tin có trong transcript. Tuyệt đối không suy diễn ý định của người nói.
-Loại bỏ nhiễu: Bỏ qua các lời chào hỏi, chuyện phiếm, hoặc các thảo luận ngoài lề không đi đến kết quả.
-Độ dài: Tối ưu trong khoảng 150-250 từ để đảm bảo đủ ý nhưng vẫn súc tích.
-Đối tượng: Viết cho cấp quản lý đọc để nắm bắt tình hình trong 1 phút.
-CẤU TRÚC ĐẦU RA (FORMAT):
 
-🎯 Mục tiêu chính: [Tóm tắt lý do cuộc họp diễn ra trong 1 câu]
+QUY TẮC XỬ LÝ DỮ LIỆU:
+1. Trung thực: CHỈ sử dụng thông tin CÓ TRONG transcript. Tuyệt đối KHÔNG suy diễn ý định của người nói.
+2. Loại bỏ nhiễu: Bỏ qua các lời chào hỏi, chuyện phiếm, hoặc các thảo luận ngoài lề không đi đến kết quả cụ thể.
+3. Độ dài: Tối ưu trong khoảng 150-250 từ (không tính emoji) để đảm bảo đủ ý nhưng vẫn súc tích.
+4. Đối tượng: Viết cho cấp quản lý đọc để nắm bắt toàn bộ tình hình trong 1-2 phút.
+5. Ngôn ngữ: Tiếng Việt chuyên nghiệp, rõ ràng, tránh văn nói.
+
+CẤU TRÚC ĐẦU RA (BẮT BUỘC):
+
+🎯 Mục tiêu chính: 
+[Mô tả ngắn gọn lý do cuộc họp diễn ra trong 1 câu, khoảng 15-25 từ]
 
 📋 Nội dung thảo luận trọng tâm:
-Điểm 1: [Vấn đề thảo luận + Ý kiến chính/Giải pháp đưa ra]
-Điểm 2: [Vấn đề thảo luận + Ý kiến chính/Giải pháp đưa ra]
-(Tối đa 3-4 gạch đầu dòng tùy vào độ dài cuộc họp)
+- [Vấn đề/Topic 1]: [Ý kiến chính hoặc giải pháp được đề xuất]
+- [Vấn đề/Topic 2]: [Ý kiến chính hoặc giải pháp được đề xuất]
+- [Vấn đề/Topic 3]: [Ý kiến chính hoặc giải pháp được đề xuất]
+(Tối thiểu 2, tối đa 5 điểm tùy vào độ dài và mật độ thông tin. Mỗi điểm 20-40 từ)
 
 ✅ Kết luận & Quyết định:
-[Ghi rõ các quyết định đã được thống nhất hoặc sự đồng thuận cuối cùng]"""
+[Ghi rõ các quyết định được thống nhất, sự đồng thuận, hoặc next steps. Nếu không có kết luận rõ ràng, ghi: "Cuộc họp chưa đi đến kết luận cụ thể, cần họp tiếp để quyết định."]
+
+EDGE CASES:
+- Nếu cuộc họp chỉ có 1 topic → Chỉ cần 1 điểm trong phần "Nội dung thảo luận"
+- Nếu không có quyết định rõ ràng → Ghi: "Chưa có quyết định cụ thể"
+- Nếu transcript quá ngắn (<100 từ) → Tóm tắt ngắn gọn, không ép format phức tạp
+
+VÍ DỤ OUTPUT:
+
+🎯 Mục tiêu chính: 
+Họp đánh giá tiến độ dự án Website và giải quyết các vấn đề kỹ thuật đang gặp phải.
+
+📋 Nội dung thảo luận trọng tâm:
+- Tiến độ Frontend: Team đã hoàn thành 80% giao diện, còn lại phần responsive mobile. Dự kiến xong vào cuối tuần.
+- Vấn đề Backend API: Phát hiện lỗi performance khi query database lớn. Anh Minh đề xuất optimize bằng cách thêm indexing và caching.
+- Timeline Launch: Đội nhóm thống nhất gia hạn thêm 1 tuần để đảm bảo chất lượng, launch dự kiến vào 15/01.
+
+✅ Kết luận & Quyết định:
+Chốt launch date là 15/01/2025. Anh Minh sẽ xử lý backend optimization trong 3 ngày. Team Frontend tập trung hoàn thiện responsive. Họp review lại vào thứ 5 tuần sau."""
 
         chunks = self._chunk_context(context, chunk_size=6000)
         
@@ -233,37 +256,52 @@ TÓM TẮT:"""
             # Long meeting - chunked processing
             print(f"      💡 Long meeting: {len(chunks)} chunks")
             
-            chunk_summaries = []
+            # Strategy: Extract key points from each chunk first, then synthesize
+            chunk_keypoints = []
             for i, chunk in enumerate(chunks):
                 print(f"         Processing chunk {i+1}/{len(chunks)}...")
                 
-                user_prompt = f"""Tóm tắt phần này (50-100 từ):
+                # Extract key points (not full summary) to preserve context
+                user_prompt = f"""Trích xuất các điểm chính (key points) từ phần transcript này:
 
 {chunk}
 
-TÓM TẮT:"""
+YÊU CẦU:
+- Liệt kê 3-5 điểm chính được thảo luận
+- Mỗi điểm: 1 câu ngắn (10-20 từ)
+- Giữ nguyên tên người, số liệu, quyết định cụ thể
+- Format: "- [Điểm 1], - [Điểm 2], ..."
+
+KEY POINTS:"""
                 
                 response = chat(
                     model=self.model,
                     messages=[
-                        {"role": "system", "content": system_prompt},
+                        {"role": "system", "content": "Bạn là trợ lý trích xuất thông tin chính xác từ transcript."},
                         {"role": "user", "content": user_prompt}
                     ],
                     options={
-                        "temperature": 0.3,
+                        "temperature": 0.2,  # More deterministic for extraction
                         "top_p": 0.9,
                         "repeat_penalty": 1.1
                     }
                 )
                 
-                chunk_summaries.append(response["message"]["content"].strip())
+                chunk_keypoints.append(response["message"]["content"].strip())
             
-            # Combine
-            combined = "\n\n".join([f"Phần {i+1}: {s}" for i, s in enumerate(chunk_summaries)])
+            # Synthesize all key points into final summary
+            combined_keypoints = "\n\n".join([f"Phần {i+1}:\n{kp}" for i, kp in enumerate(chunk_keypoints)])
             
-            final_prompt = f"""Kết hợp các phần tóm tắt thành TÓM TẮT TỔNG HỢP:
+            final_prompt = f"""Dựa vào các key points từ các phần của cuộc họp, hãy tổng hợp thành TÓM TẮT HOÀN CHỈNH theo format đã cho:
 
-{combined}
+=== KEY POINTS TỪ CÁC PHẦN ===
+{combined_keypoints}
+
+=== YÊU CẦU ===
+- Tổng hợp thành summary mạch lạc, theo đúng format (🎯 → 📋 → ✅)
+- Ưu tiên thông tin quan trọng, loại bỏ trùng lặp
+- Độ dài: 150-250 từ
+- Giữ nguyên tên người, số liệu, deadline
 
 TÓM TẮT TỔNG HỢP:"""
             
@@ -284,78 +322,119 @@ TÓM TẮT TỔNG HỢP:"""
     
     def _extract_tasks(self, context: str) -> List[Dict]:
         """Extract tasks với validation"""
-        system_prompt = """
-Vai trò: Bạn là một Trợ lý Cuộc Họp chuyên nghiệp, có khả năng phân tích hội thoại và chuyển hóa các thảo luận thành danh sách công việc thực thi (Actionable Tasks).
+        system_prompt = """Vai trò: Bạn là một Trợ lý Cuộc Họp chuyên nghiệp, có khả năng phân tích hội thoại và chuyển hóa các thảo luận thành danh sách công việc thực thi (Actionable Tasks).
 
 NHIỆM VỤ: TRÍCH XUẤT TẤT CẢ các TASK/CÔNG VIỆC từ transcript cuộc họp và trả về định dạng JSON đã chuẩn hóa.
 
-QUY TẮC NGHIÊM NGẶT:
+QUY TẮC NGHIÊM NGẶT (7 ĐIỂM):
 1. CHỈ trích xuất tasks được ĐỀ CẬP RÕ RÀNG trong transcript
 2. KHÔNG tự suy luận, KHÔNG gán thêm trách nhiệm, KHÔNG suy diễn mục tiêu ẩn
-3. TASK hợp lệ PHẢI có ít nhất 1 trong các dấu hiệu: Có người thực hiện, Có deadline, Có động từ hành động
-4. KHÔNG phải TASK: Thảo luận chung, nhận xét, chia sẻ thông tin; chỉ trích, phản hồi, tóm tắt, cảm ơn, hỏi đáp; 
-5. Có người thực hiện → ghi tên
-6. Có deadline → ghi cụ thể
-7. Không có task nào → trả về []
+3. TASK hợp lệ PHẢI có ít nhất 1 trong các dấu hiệu sau:
+   → Có người được giao việc cụ thể
+   → Có deadline/thời hạn
+   → Có động từ hành động mạnh (chuẩn bị, liên hệ, gửi, hoàn thành...)
+4. KHÔNG phải TASK (loại bỏ):
+   → Thảo luận chung, trao đổi ý kiến
+   → Nhận xét, đánh giá, chia sẻ thông tin
+   → Phản hồi, cảm ơn, chào hỏi
+   → Câu hỏi, hỏi đáp không có kết luận
+5. Có người thực hiện → Ghi đầy đủ tên/vai trò
+6. Có deadline → Ghi cụ thể (ví dụ: "Trước ngày 25/12", "Cuối tuần này")
+7. Không tìm thấy task nào → Trả về mảng rỗng: []
 
-DẤU HIỆU TASK:
-- Từ khóa: "sẽ", "phải", "cần", "được giao", "nhớ", "bắt buộc", "yêu cầu", "deadline", "trước ngày", "hoàn thành vào"
-- Động từ: "chuẩn bị", "liên hệ", "gửi", "kiểm tra", "hoàn thành"
-- Có deadline hoặc người thực hiện
+DẤU HIỆU NHẬN BIẾT TASK:
+✓ Từ khóa cam kết: "sẽ làm", "phải", "cần", "được giao", "nhớ", "bắt buộc", "yêu cầu"
+✓ Thời hạn: "deadline", "trước ngày", "hoàn thành vào", "trong tuần này"
+✓ Động từ hành động: "chuẩn bị", "liên hệ", "gửi", "kiểm tra", "review", "setup", "deploy"
+✓ Chủ ngữ rõ ràng: "Anh A sẽ...", "Em B phải...", "Team C cần..."
 
+FIELD "how_to" - HƯỚNG DẪN THỰC HIỆN (QUAN TRỌNG):
+📌 Nếu transcript ĐÃ NÓI cách làm → Trích xuất chính xác từ transcript
+📌 Nếu transcript CHƯA NÓI cách làm → Dựa vào context và best practices, đề xuất 2-3 bước CỤ THỂ và KHẢ THI
+📌 Format: Viết liền trên 1 dòng, các bước ngăn cách bằng dấu chấm phẩy (;)
+📌 Độ dài: 15-40 từ mỗi how_to
+📌 TRÁNH: Hướng dẫn quá chung chung như "Thực hiện theo quy trình", "Làm theo hướng dẫn"
 
-QUAN TRỌNG - FIELD "how_to":
-- Nếu cuộc họp ĐÃ NÓI cách thực hiện → Ghi lại chính xác
-- Nếu cuộc họp CHƯA NÓI → Dựa vào context và kinh nghiệm, đề xuất 1-2 bước cụ thể
-- LUÔN PHẢI có nội dung hữu ích, KHÔNG để trống hoặc chung chung
-- Format: Viết liền trên 1 dòng, dùng dấu phẩy ngăn cách các bước
+FIELD "priority" - ƯU TIÊN:
+🔴 high: Có deadline gấp (<3 ngày), blocking task, hoặc được nhấn mạnh trong họp
+🟡 medium: Deadline bình thường (3-7 ngày), công việc thường xuyên
+🟢 low: Không có deadline, hoặc deadline dài hạn (>7 ngày), công việc phụ
 
-QUAN TRỌNG - FORMAT JSON (BẮT BUỘC - KHÔNG VI PHẠM):
-- Output PHẢI là JSON ARRAY gồm các OBJECT
-- KHÔNG sử dụng dấu xuống dòng trong bất kỳ giá trị string nào
-- Tất cả nội dung phải viết liền trên 1 dòng
-- Nếu cần nhiều ý, dùng dấu phẩy (,) hoặc chấm phẩy (;) để ngăn cách
-- Đảm bảo đóng dấu ngoặc kép đúng cách
+JSON FORMAT (BẮT BUỘC - KHÔNG VI PHẠM):
+⚠️ Output PHẢI là JSON ARRAY hợp lệ
+⚠️ KHÔNG xuống dòng trong bất kỳ giá trị string nào
+⚠️ Tất cả nội dung viết liền trên 1 dòng
+⚠️ Dùng dấu phẩy (,) hoặc chấm phẩy (;) thay cho xuống dòng
+⚠️ Đảm bảo đóng dấu ngoặc kép đúng
 
-OUTPUT FORMAT (JSON ARRAY - KHÔNG XUỐNG DÒNG):
+OUTPUT STRUCTURE:
 [
   {
-    "task": "Công việc ngắn gọn (5-15 từ)",
+    "task": "Tên task ngắn gọn (5-15 từ)",
     "assigned_to": "Tên người hoặc null",
-    "deadline": "Thời hạn hoặc null",
+    "deadline": "Thời hạn cụ thể hoặc null",
     "priority": "high/medium/low",
-    "how_to": "Hướng dẫn CỤ THỂ 1-2 câu, viết liền không xuống dòng, dùng dấu phẩy hoặc chấm phẩy ngăn cách các bước"
+    "how_to": "Hướng dẫn CỤ THỂ 2-3 bước, viết liền, ngăn cách bằng dấu chấm phẩy"
   }
 ]"""
 
-#         few_shot = """
-# VÍ DỤ:
+        # ✅ Few-shot examples - QUAN TRỌNG cho JSON extraction
+        few_shot_examples = """
+=== VÍ DỤ 1: Task với đầy đủ thông tin ===
 
-# Input: "Anh Minh sẽ chuẩn bị báo cáo Q4 trước ngày 15. Em Lan liên hệ team IT setup server."
+Input transcript:
+"Anh Minh sẽ chuẩn bị báo cáo Q4 trước ngày 15/01. Báo cáo cần bao gồm doanh thu, chi phí, và lợi nhuận. Em Lan liên hệ team IT để setup server mới cho dự án."
 
-# Output:
-# [
-#   {
-#     "task": "Chuẩn bị báo cáo Q4",
-#     "assigned_to": "Anh Minh",
-#     "deadline": "Trước ngày 15",
-#     "priority": "high",
-#     "how_to": "Thu thập số liệu doanh thu, chi phí, lợi nhuận Q4; Tạo file báo cáo theo template công ty; Gửi approval"
-#   },
-#   {
-#     "task": "Liên hệ team IT setup server",
-#     "assigned_to": "Em Lan",
-#     "deadline": null,
-#     "priority": "medium",
-#     "how_to": "Soạn email mô tả yêu cầu cấu hình server (RAM, CPU, storage), gửi đến it-support@company.com hoặc liên hệ trực tiếp qua Slack"
-#   }
-# ]
+Output JSON:
+[
+  {
+    "task": "Chuẩn bị báo cáo Q4",
+    "assigned_to": "Anh Minh",
+    "deadline": "Trước ngày 15/01",
+    "priority": "high",
+    "how_to": "Thu thập số liệu doanh thu, chi phí, lợi nhuận Q4 từ hệ thống kế toán; Tạo báo cáo theo template công ty; Gửi draft cho phê duyệt"
+  },
+  {
+    "task": "Liên hệ team IT setup server mới",
+    "assigned_to": "Em Lan",
+    "deadline": null,
+    "priority": "medium",
+    "how_to": "Soạn email mô tả yêu cầu cấu hình (RAM 32GB, CPU 8 core, storage 1TB); Gửi đến it-support@company.com; Follow up sau 2 ngày nếu chưa có phản hồi"
+  }
+]
 
-# CHÚ Ý: 
-# - Field "how_to" phải CỤ THỂ và KHẢ THI
-# - Tất cả string phải viết liền, KHÔNG xuống dòng
-# - Dùng dấu chấm phẩy (;) hoặc dấu phẩy (,) để ngăn cách các bước
-# """
+=== VÍ DỤ 2: Không có task ===
+
+Input transcript:
+"Chúng ta đã thảo luận về tình hình thị trường. Anh A chia sẻ quan điểm về chiến lược marketing. Mọi người đồng ý là cần cải thiện nhưng chưa quyết định cụ thể."
+
+Output JSON:
+[]
+
+Lý do: Chỉ có thảo luận chung, không có action cụ thể được giao.
+
+=== VÍ DỤ 3: Task không có người thực hiện ===
+
+Input transcript:
+"Cần phải kiểm tra lại code trước khi deploy. Deadline là thứ 6 tuần này."
+
+Output JSON:
+[
+  {
+    "task": "Kiểm tra code trước khi deploy",
+    "assigned_to": null,
+    "deadline": "Thứ 6 tuần này",
+    "priority": "high",
+    "how_to": "Chạy unit tests và integration tests; Review code changes trên PR; Kiểm tra performance và security issues; Confirm với QA team"
+  }
+]
+
+CHÚ Ý:
+✓ Field "how_to" LUÔN phải có nội dung cụ thể và hữu ích
+✓ Priority dựa vào deadline và mức độ quan trọng được nhấn mạnh
+✓ Tất cả string viết liền, KHÔNG xuống dòng
+✓ Dùng dấu chấm phẩy (;) ngăn cách các bước trong how_to
+"""
 
         chunks = self._chunk_context(context, chunk_size=6000)
         all_tasks = []
@@ -364,11 +443,18 @@ OUTPUT FORMAT (JSON ARRAY - KHÔNG XUỐNG DÒNG):
             if len(chunks) > 1:
                 print(f"         Chunk {i+1}/{len(chunks)}...")
             
-            user_prompt = f"""
+            # ✅ Include few-shot examples in EVERY request
+            user_prompt = f"""{few_shot_examples}
 
-Trích xuất tasks từ transcript:
+=== BÂY GIỜ, TRÍCH XUẤT TASKS TỪ TRANSCRIPT SAU ===
 
 {chunk}
+
+=== YÊU CẦU ===
+- Chỉ trích xuất tasks được đề cập RÕ RÀNG
+- Tuân thủ 7 quy tắc nghiêm ngặt
+- Output: JSON array hợp lệ, KHÔNG xuống dòng
+- Nếu không có task → trả về []
 
 JSON OUTPUT:"""
             
