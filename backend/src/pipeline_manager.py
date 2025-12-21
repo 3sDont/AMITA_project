@@ -5,7 +5,7 @@ Single Source of Truth: meeting.json
 Pipeline:
 [1] Preprocessing → [2] Unified Chunking → [3] Whisper → [4] Diarization →
 [5] Speaker Assignment → [6] Merge & Normalize → [7] Gender → 
-[8] meeting.json → [9] LLM → [10] Export
+[7.5] Spell Check (LLM) → [8] meeting.json → [9] LLM Analysis → [10] Export
 """
 import os
 import json
@@ -13,7 +13,25 @@ import time
 from datetime import datetime
 from typing import Dict, List, Optional
 from pathlib import Path
+# Import config
+import sys
+BACKEND_DIR = Path(__file__).parent.parent
+if str(BACKEND_DIR) not in sys.path:
+    sys.path.insert(0, str(BACKEND_DIR))
 
+try:
+    from config import PIPELINE_CONFIG
+except ImportError:
+    # Fallback config if import fails
+    PIPELINE_CONFIG = {
+        "chunk_duration_minutes": 10,
+        "enable_vad": True,
+        "enable_gender": True,
+        "enable_spell_check": True,
+        "enable_llm": True,
+        "min_speakers": None,
+        "max_speakers": None
+    }
 # ✅ FIX: Import với absolute path từ src
 try:
     from src.stage1_preprocessing import AudioPreprocessor
@@ -85,15 +103,8 @@ class MeetingPipeline:
             }
         }
         
-        # Config
-        self.config = {
-            "chunk_duration_minutes": 10,
-            "enable_vad": True,
-            "enable_gender": True,
-            "enable_llm": True,
-            "min_speakers": None,
-            "max_speakers": None
-        }
+        # ✅ Load config from config.py
+        self.config = PIPELINE_CONFIG.copy()
         
         os.makedirs(output_dir, exist_ok=True)
         
@@ -310,6 +321,51 @@ class MeetingPipeline:
         for speaker, gender in speakers_gender.items():
             emoji = "👨" if gender == "Male" else "👩" if gender == "Female" else "❓"
             print(f"      {emoji} {speaker}: {gender}")
+        
+        self._save_meeting_json()
+    
+    def run_stage7_5_spell_check(self):
+        """[7.5] LLM Spell Check & Grammar Correction (Optional)"""
+        if not self.config["enable_spell_check"]:
+            print(f"\n   ⏭️  Skipping spell check (disabled)")
+            return
+        
+        print(f"\n{'='*80}")
+        print(f"[STAGE 7.5] LLM SPELL CHECK & GRAMMAR CORRECTION")
+        print(f"{'='*80}\n")
+        
+        self._update_status("processing", "spell_check")
+        
+        # Initialize LLM analyzer
+        llm_analyzer = LLMAnalyzer()
+        
+        if not llm_analyzer.available:
+            print(f"   ⚠️  LLM not available - skipping spell check")
+            print(f"   💡 To enable spell check: install Ollama and pull model")
+            return
+        
+        # Get segments to correct
+        segments = self.meeting_data.get("segments", [])
+        
+        if not segments:
+            print(f"   ⚠️  No segments found to spell check")
+            return
+        
+        print(f"   📝 Correcting {len(segments)} segments...")
+        
+        # Run spell check
+        corrected_segments = llm_analyzer.spell_check_segments(segments)
+        
+        # Update SSoT
+        self.meeting_data["segments"] = corrected_segments
+        
+        # Count corrections
+        num_corrected = sum(1 for seg in corrected_segments if 'text_original' in seg)
+        
+        print(f"   ✅ Spell check complete")
+        print(f"      - Total segments: {len(segments)}")
+        print(f"      - Corrected: {num_corrected}")
+        print(f"      - Unchanged: {len(segments) - num_corrected}")
         
         self._save_meeting_json()
     
@@ -590,6 +646,9 @@ class MeetingPipeline:
             
             # Stage 7: Gender (optional)
             self.run_stage7_gender()
+            
+            # Stage 7.5: Spell Check (optional, LLM-based)
+            self.run_stage7_5_spell_check()
             
             # ✅ Stage 8: Meeting.json Validation & Export
             self.run_stage8_meeting_json()
