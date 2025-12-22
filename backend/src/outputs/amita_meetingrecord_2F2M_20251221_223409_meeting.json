@@ -1,0 +1,5996 @@
+{
+  "metadata": {
+    "meeting_id": "amita_meetingrecord_2F2M_20251221_223409",
+    "audio_file": "D:\\Data\\amita_meetingrecord_2F2M.mp3",
+    "created_at": "2025-12-21T22:34:09.934621",
+    "pipeline_version": "2.0",
+    "status": "failed",
+    "current_stage": "diarization",
+    "last_updated": "2025-12-21T22:34:34.139462"
+  },
+  "preprocessing": {
+    "output_path": "D:\\Data\\amita_meetingrecord_2F2M_preprocessed.wav",
+    "duration": 200.2973125,
+    "sample_rate": 16000,
+    "vad_regions": [
+      [
+        0.96,
+        1.35
+      ],
+      [
+        1.365,
+        2.055
+      ],
+      [
+        2.07,
+        3.0
+      ],
+      [
+        3.045,
+        4.305
+      ],
+      [
+        4.32,
+        4.905
+      ],
+      [
+        4.95,
+        5.73
+      ],
+      [
+        5.76,
+        7.2
+      ],
+      [
+        7.23,
+        7.245
+      ],
+      [
+        7.38,
+        7.44
+      ],
+      [
+        7.455,
+        8.64
+      ],
+      [
+        8.655,
+        9.21
+      ],
+      [
+        9.225,
+        9.255
+      ],
+      [
+        9.72,
+        10.38
+      ],
+      [
+        10.395,
+        12.66
+      ],
+      [
+        12.69,
+        12.735
+      ],
+      [
+        12.795,
+        12.81
+      ],
+      [
+        12.84,
+        15.435
+      ],
+      [
+        15.6,
+        15.615
+      ],
+      [
+        15.855,
+        17.415
+      ],
+      [
+        17.475,
+        18.54
+      ],
+      [
+        18.555,
+        18.69
+      ],
+      [
+        18.705,
+        19.02
+      ],
+      [
+        19.095,
+        19.23
+      ],
+      [
+        19.26,
+        19.56
+      ],
+      [
+        19.695,
+        19.8
+      ],
+      [
+        19.815,
+        19.98
+      ],
+      [
+        20.43,
+        20.64
+      ],
+      [
+        20.67,
+        20.685
+      ],
+      [
+        20.88,
+        21.18
+      ],
+      [
+        21.225,
+        21.405
+      ],
+      [
+        21.435,
+        21.96
+      ],
+      [
+        21.99,
+        22.455
+      ],
+      [
+        22.47,
+        22.95
+      ],
+      [
+        23.49,
+        24.48
+      ],
+      [
+        24.495,
+        25.86
+      ],
+      [
+        25.89,
+        26.505
+      ],
+      [
+        26.55,
+        26.64
+      ],
+      [
+        26.67,
+        26.94
+      ],
+      [
+        26.97,
+        28.095
+      ],
+      [
+        28.125,
+        29.055
+      ],
+      [
+        29.085,
+        30.72
+      ],
+      [
+        30.78,
+        30.975
+      ],
+      [
+        31.035,
+        31.065
+      ],
+      [
+        31.125,
+        31.305
+      ],
+      [
+        31.41,
+        32.115
+      ],
+      [
+        32.145,
+        32.235
+      ],
+      [
+        32.325,
+        32.475
+      ],
+      [
+        32.505,
+        32.595
+      ],
+      [
+        32.655,
+        34.695
+      ],
+      [
+        34.74,
+        34.815
+      ],
+      [
+        34.83,
+        37.44
+      ],
+      [
+        37.47,
+        38.475
+      ],
+      [
+        38.895,
+        39.3
+      ],
+      [
+        39.39,
+        39.615
+      ],
+      [
+        39.63,
+        39.84
+      ],
+      [
+        39.87,
+        39.945
+      ],
+      [
+        39.975,
+        40.035
+      ],
+      [
+        40.095,
+        40.755
+      ],
+      [
+        40.77,
+        40.815
+      ],
+      [
+        40.83,
+        40.875
+      ],
+      [
+        40.92,
+        41.04
+      ],
+      [
+        41.115,
+        41.64
+      ],
+      [
+        41.67,
+        43.335
+      ],
+      [
+        43.44,
+        43.5
+      ],
+      [
+        43.515,
+        43.74
+      ],
+      [
+        43.755,
+        43.77
+      ],
+      [
+        43.8,
+        44.28
+      ],
+      [
+        44.295,
+        44.475
+      ],
+      [
+        44.505,
+        44.565
+      ],
+      [
+        44.97,
+        45.57
+      ],
+      [
+        45.66,
+        46.02
+      ],
+      [
+        46.11,
+        46.29
+      ],
+      [
+        46.365,
+        46.56
+      ],
+      [
+        46.635,
+        47.085
+      ],
+      [
+        47.115,
+        47.16
+      ],
+      [
+        47.325,
+        47.445
+      ],
+      [
+        47.46,
+        47.52
+      ],
+      [
+        47.55,
+        48.03
+      ],
+      [
+        48.06,
+        48.09
+      ],
+      [
+        48.12,
+        48.165
+      ],
+      [
+        48.195,
+        48.285
+      ],
+      [
+        48.33,
+        49.47
+      ],
+      [
+        49.5,
+        50.04
+      ],
+      [
+        50.085,
+        50.1
+      ],
+      [
+        50.115,
+        50.475
+      ],
+      [
+        50.49,
+        51.225
+      ],
+      [
+        51.255,
+        51.27
+      ],
+      [
+        51.33,
+        51.345
+      ],
+      [
+        51.45,
+        51.555
+      ],
+      [
+        51.57,
+        51.93
+      ],
+      [
+        51.99,
+        52.05
+      ],
+      [
+        52.155,
+        52.47
+      ],
+      [
+        52.695,
+        54.84
+      ],
+      [
+        54.9,
+        55.47
+      ],
+      [
+        55.62,
+        56.22
+      ],
+      [
+        56.235,
+        56.805
+      ],
+      [
+        57.165,
+        59.595
+      ],
+      [
+        60.42,
+        60.45
+      ],
+      [
+        60.525,
+        60.93
+      ],
+      [
+        60.945,
+        61.74
+      ],
+      [
+        61.875,
+        61.89
+      ],
+      [
+        61.95,
+        63.075
+      ],
+      [
+        63.105,
+        64.23
+      ],
+      [
+        64.485,
+        64.515
+      ],
+      [
+        64.605,
+        65.085
+      ],
+      [
+        65.145,
+        66.36
+      ],
+      [
+        66.375,
+        66.48
+      ],
+      [
+        66.54,
+        66.99
+      ],
+      [
+        67.125,
+        67.155
+      ],
+      [
+        67.41,
+        67.515
+      ],
+      [
+        67.635,
+        71.67
+      ],
+      [
+        72.12,
+        72.165
+      ],
+      [
+        72.18,
+        72.33
+      ],
+      [
+        72.54,
+        74.475
+      ],
+      [
+        74.49,
+        74.505
+      ],
+      [
+        75.06,
+        76.23
+      ],
+      [
+        76.26,
+        76.275
+      ],
+      [
+        76.305,
+        76.32
+      ],
+      [
+        76.335,
+        76.545
+      ],
+      [
+        76.665,
+        76.77
+      ],
+      [
+        76.845,
+        76.86
+      ],
+      [
+        76.89,
+        76.92
+      ],
+      [
+        76.965,
+        77.97
+      ],
+      [
+        77.985,
+        78.015
+      ],
+      [
+        78.045,
+        80.73
+      ],
+      [
+        80.745,
+        80.895
+      ],
+      [
+        80.91,
+        81.09
+      ],
+      [
+        81.165,
+        81.18
+      ],
+      [
+        81.24,
+        81.72
+      ],
+      [
+        81.735,
+        82.275
+      ],
+      [
+        82.335,
+        84.24
+      ],
+      [
+        84.255,
+        84.27
+      ],
+      [
+        84.3,
+        85.035
+      ],
+      [
+        85.05,
+        85.335
+      ],
+      [
+        85.35,
+        86.58
+      ],
+      [
+        86.85,
+        90.135
+      ],
+      [
+        90.15,
+        90.315
+      ],
+      [
+        90.345,
+        90.51
+      ],
+      [
+        90.54,
+        95.76
+      ],
+      [
+        95.775,
+        95.805
+      ],
+      [
+        95.85,
+        96.0
+      ],
+      [
+        96.135,
+        96.15
+      ],
+      [
+        96.18,
+        97.245
+      ],
+      [
+        97.32,
+        97.38
+      ],
+      [
+        97.395,
+        97.53
+      ],
+      [
+        97.545,
+        97.905
+      ],
+      [
+        97.92,
+        100.8
+      ],
+      [
+        100.89,
+        101.325
+      ],
+      [
+        101.34,
+        105.0
+      ],
+      [
+        105.015,
+        105.045
+      ],
+      [
+        105.075,
+        105.45
+      ],
+      [
+        105.9,
+        106.35
+      ],
+      [
+        106.485,
+        109.275
+      ],
+      [
+        109.29,
+        109.425
+      ],
+      [
+        109.44,
+        109.98
+      ],
+      [
+        110.025,
+        110.115
+      ],
+      [
+        110.19,
+        110.43
+      ],
+      [
+        110.46,
+        110.805
+      ],
+      [
+        110.85,
+        110.985
+      ],
+      [
+        111.015,
+        111.09
+      ],
+      [
+        111.12,
+        111.27
+      ],
+      [
+        111.285,
+        111.435
+      ],
+      [
+        111.465,
+        111.93
+      ],
+      [
+        111.945,
+        112.32
+      ],
+      [
+        112.365,
+        112.725
+      ],
+      [
+        112.74,
+        112.755
+      ],
+      [
+        112.77,
+        112.8
+      ],
+      [
+        112.83,
+        112.845
+      ],
+      [
+        112.905,
+        112.935
+      ],
+      [
+        112.965,
+        112.98
+      ],
+      [
+        112.995,
+        113.13
+      ],
+      [
+        113.145,
+        113.79
+      ],
+      [
+        113.895,
+        113.925
+      ],
+      [
+        113.955,
+        113.985
+      ],
+      [
+        114.09,
+        114.195
+      ],
+      [
+        114.255,
+        119.31
+      ],
+      [
+        119.355,
+        119.52
+      ],
+      [
+        119.595,
+        119.76
+      ],
+      [
+        119.775,
+        120.525
+      ],
+      [
+        120.57,
+        122.685
+      ],
+      [
+        122.715,
+        123.72
+      ],
+      [
+        123.75,
+        124.005
+      ],
+      [
+        124.02,
+        124.08
+      ],
+      [
+        124.11,
+        124.215
+      ],
+      [
+        124.26,
+        124.77
+      ],
+      [
+        124.785,
+        125.025
+      ],
+      [
+        125.07,
+        125.085
+      ],
+      [
+        125.49,
+        127.065
+      ],
+      [
+        127.08,
+        127.215
+      ],
+      [
+        127.26,
+        127.665
+      ],
+      [
+        127.695,
+        127.83
+      ],
+      [
+        127.845,
+        128.175
+      ],
+      [
+        128.19,
+        128.265
+      ],
+      [
+        128.535,
+        128.55
+      ],
+      [
+        128.7,
+        129.66
+      ],
+      [
+        129.69,
+        129.765
+      ],
+      [
+        130.35,
+        131.49
+      ],
+      [
+        131.52,
+        131.535
+      ],
+      [
+        131.565,
+        131.58
+      ],
+      [
+        131.655,
+        131.685
+      ],
+      [
+        131.76,
+        131.775
+      ],
+      [
+        131.985,
+        132.015
+      ],
+      [
+        132.42,
+        132.45
+      ],
+      [
+        132.465,
+        132.48
+      ],
+      [
+        132.495,
+        132.525
+      ],
+      [
+        132.585,
+        132.615
+      ],
+      [
+        132.645,
+        132.705
+      ],
+      [
+        132.735,
+        135.42
+      ],
+      [
+        135.495,
+        135.66
+      ],
+      [
+        135.675,
+        136.005
+      ],
+      [
+        136.02,
+        136.17
+      ],
+      [
+        136.185,
+        136.665
+      ],
+      [
+        136.68,
+        136.71
+      ],
+      [
+        136.8,
+        137.715
+      ],
+      [
+        137.73,
+        137.925
+      ],
+      [
+        137.985,
+        138.0
+      ],
+      [
+        138.015,
+        138.9
+      ],
+      [
+        138.945,
+        139.83
+      ],
+      [
+        139.86,
+        140.835
+      ],
+      [
+        140.88,
+        144.09
+      ],
+      [
+        144.21,
+        144.225
+      ],
+      [
+        144.285,
+        147.12
+      ],
+      [
+        147.135,
+        147.165
+      ],
+      [
+        147.33,
+        147.375
+      ],
+      [
+        147.435,
+        149.01
+      ],
+      [
+        149.04,
+        149.145
+      ],
+      [
+        149.16,
+        149.175
+      ],
+      [
+        149.205,
+        149.28
+      ],
+      [
+        149.31,
+        149.355
+      ],
+      [
+        149.43,
+        149.535
+      ],
+      [
+        149.625,
+        150.99
+      ],
+      [
+        151.365,
+        151.38
+      ],
+      [
+        151.425,
+        151.47
+      ],
+      [
+        151.53,
+        152.43
+      ],
+      [
+        152.475,
+        152.505
+      ],
+      [
+        152.52,
+        152.55
+      ],
+      [
+        152.565,
+        152.58
+      ],
+      [
+        152.655,
+        156.075
+      ],
+      [
+        156.09,
+        156.51
+      ],
+      [
+        156.555,
+        156.72
+      ],
+      [
+        156.735,
+        161.1
+      ],
+      [
+        161.145,
+        162.21
+      ],
+      [
+        162.24,
+        162.27
+      ],
+      [
+        162.285,
+        163.515
+      ],
+      [
+        163.545,
+        163.74
+      ],
+      [
+        163.785,
+        164.01
+      ],
+      [
+        164.085,
+        165.555
+      ],
+      [
+        165.855,
+        168.135
+      ],
+      [
+        168.18,
+        168.81
+      ],
+      [
+        168.96,
+        169.785
+      ],
+      [
+        169.845,
+        170.115
+      ],
+      [
+        170.22,
+        170.985
+      ],
+      [
+        171.0,
+        171.765
+      ],
+      [
+        172.155,
+        172.86
+      ],
+      [
+        172.89,
+        173.025
+      ],
+      [
+        173.055,
+        173.325
+      ],
+      [
+        173.34,
+        174.75
+      ],
+      [
+        174.78,
+        174.885
+      ],
+      [
+        174.945,
+        174.975
+      ],
+      [
+        175.02,
+        175.035
+      ],
+      [
+        175.08,
+        175.2
+      ],
+      [
+        175.305,
+        175.32
+      ],
+      [
+        175.44,
+        175.455
+      ],
+      [
+        175.485,
+        175.53
+      ],
+      [
+        175.56,
+        175.86
+      ],
+      [
+        175.89,
+        176.175
+      ],
+      [
+        176.22,
+        176.325
+      ],
+      [
+        176.4,
+        176.61
+      ],
+      [
+        176.625,
+        176.85
+      ],
+      [
+        176.895,
+        176.91
+      ],
+      [
+        176.925,
+        177.09
+      ],
+      [
+        177.15,
+        177.165
+      ],
+      [
+        177.315,
+        177.36
+      ],
+      [
+        177.525,
+        178.545
+      ],
+      [
+        178.575,
+        179.73
+      ],
+      [
+        179.76,
+        180.72
+      ],
+      [
+        180.84,
+        181.815
+      ],
+      [
+        181.83,
+        181.86
+      ],
+      [
+        181.92,
+        181.95
+      ],
+      [
+        182.04,
+        182.175
+      ],
+      [
+        182.19,
+        182.22
+      ],
+      [
+        182.25,
+        183.765
+      ],
+      [
+        183.78,
+        184.035
+      ],
+      [
+        184.11,
+        184.77
+      ],
+      [
+        184.8,
+        185.235
+      ],
+      [
+        185.25,
+        185.265
+      ],
+      [
+        185.31,
+        186.72
+      ],
+      [
+        186.735,
+        186.765
+      ],
+      [
+        186.78,
+        187.08
+      ],
+      [
+        187.305,
+        187.74
+      ],
+      [
+        188.1,
+        188.16
+      ],
+      [
+        188.28,
+        188.31
+      ],
+      [
+        188.49,
+        189.045
+      ],
+      [
+        189.06,
+        190.665
+      ],
+      [
+        190.71,
+        192.6
+      ],
+      [
+        192.705,
+        197.565
+      ],
+      [
+        197.655,
+        199.02
+      ],
+      [
+        199.08,
+        199.11
+      ],
+      [
+        199.17,
+        199.215
+      ],
+      [
+        199.275,
+        199.335
+      ],
+      [
+        199.365,
+        199.425
+      ],
+      [
+        199.485,
+        199.68
+      ],
+      [
+        199.71,
+        199.995
+      ]
+    ]
+  },
+  "chunks": [
+    {
+      "chunk_id": 0,
+      "start": 0.0,
+      "end": 199.995,
+      "duration": 199.995,
+      "has_speech": true
+    }
+  ],
+  "whisper": {
+    "segments": [
+      {
+        "start_time": 1.1,
+        "end_time": 9.16,
+        "text": "Chào mọi người, cảm ơn đã có mặt đúng giờ. Hôm nay chúng ta sẽ hợp ngắn để cảm nhận tiến độ dự án quan tích xu hướng của Kinh Tế năm 2025",
+        "no_speech_prob": 0.288330078125,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 9.66,
+        "end_time": 12.46,
+        "text": "và hóng nhất các công việc cần hoàn hành trong 2 tuần tới.",
+        "no_speech_prob": 0.288330078125,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 13.18,
+        "end_time": 15.44,
+        "text": "Linh, em có thể bắt đầu hoàn báo cáo dữ liệu.",
+        "no_speech_prob": 0.288330078125,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 16.0,
+        "end_time": 20.4,
+        "text": "Dạ, dạ, dạ. Hiện tại nhóm dữ liệu đã hoàn thiện được phần học,",
+        "no_speech_prob": 0.288330078125,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 20.52,
+        "end_time": 23.02,
+        "text": "thu lập số liệu từ tổng cục thống kê của những hai nhà nước.",
+        "no_speech_prob": 0.288330078125,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 23.52,
+        "end_time": 29.02,
+        "text": "Nhưng dữ liệu xuất nhập khẩu tháng 9 vẫn còn thiếu một vài triệu tiêu phụ về nhóm hàng công nghệ cao.",
+        "no_speech_prob": 0.288330078125,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 29.02,
+        "end_time": 34.1,
+        "text": "Em đã gửi các yêu cầu cập nhật cũng như là dự kiến của tuần này sẽ nhận được anh.",
+        "no_speech_prob": 0.67626953125,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 34.12,
+        "end_time": 38.52,
+        "text": "Ok, khi mà có dữ liệu đầy đủ thì em sẽ làm gì nữa?",
+        "no_speech_prob": 0.67626953125,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 39.3,
+        "end_time": 47.24,
+        "text": "Chắc là em sẽ bắt đầu với bước tiền xử lý trước, sau đó là chuẩn hóa dữ liệu cũng như là trạm mô hình dự báo GDB theo khu vực Kinh Tế.",
+        "no_speech_prob": 0.67626953125,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 47.6,
+        "end_time": 52.6,
+        "text": "Dự kiến là khoảng thứ 4 tuần sau em sẽ gửi cho anh báo cáo phân tích số bộ.",
+        "no_speech_prob": 0.67626953125,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 53.12,
+        "end_time": 55.64,
+        "text": "Ok, nhớ đúng hạn deadline nha, cảm ơn em.",
+        "no_speech_prob": 0.67626953125,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 55.64,
+        "end_time": 59.68,
+        "text": "Còn mình ở mạng phân tích vĩ mô thì tình hình thế nào?",
+        "no_speech_prob": 0.221923828125,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 61.56,
+        "end_time": 67.02,
+        "text": "Ở cái phần đó em đã hoàn thiện báo cáo về lạm phát với trên sách tiền tả.",
+        "no_speech_prob": 0.221923828125,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 67.78,
+        "end_time": 76.9,
+        "text": "Nhưng mà phần dự báo tăng trưởng quý thứ 4 cần phải thêm đầu vào từ nhóm của Linh để có thể hiệu chỉnh mô hình.",
+        "no_speech_prob": 0.221923828125,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 77.64,
+        "end_time": 83.08,
+        "text": "Ngoài ra thì em có đề xuất một cái mục nhỏ về cái tác động của biến động kỳ giá.",
+        "no_speech_prob": 0.64990234375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 83.36,
+        "end_time": 86.84,
+        "text": "Vì gần đây nó có cái tín hiệu để chú ý từ mũi.",
+        "no_speech_prob": 0.64990234375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 89.0,
+        "end_time": 95.54,
+        "text": "Ok, thì em nhớ bỏ xuân phần đó nhưng mà em nhớ lưu ý là giữ dung lượng báo cáo trong giá hạn 10 trang nha.",
+        "no_speech_prob": 0.64990234375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 96.34,
+        "end_time": 100.9,
+        "text": "Dạ ok anh ơi, em sẽ cân đối nội dung với lại người bạn cập nhập vào thứ 6 tháng này nha.",
+        "no_speech_prob": 0.64990234375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 101.92,
+        "end_time": 104.96,
+        "text": "Ok, rồi còn Hương, nhóm truyền thông và báo cáo tiến độ.",
+        "no_speech_prob": 0.64990234375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 104.96,
+        "end_time": 112.67,
+        "text": "Hàng thẳng đề ý cho báo cáo chuẩn bày và thiết kế em cô gác thức cho phần số 4 đầu tiên của nước ngoài.",
+        "no_speech_prob": 0.32568359375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 113.55,
+        "end_time": 119.75,
+        "text": "Nhưng mà em cứ xin em gửi gửi khoản ảnh về chỉ số S.I.A để mũi họa.",
+        "no_speech_prob": 0.32568359375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 120.21,
+        "end_time": 123.45,
+        "text": "Thì không biết là Linh em có gửi cho chị bộ số vậy đó được không?",
+        "no_speech_prob": 0.32568359375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 124.35,
+        "end_time": 128.21,
+        "text": "Dạ được chị, để em gửi chiều nay cho chị nha.",
+        "no_speech_prob": 0.32568359375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 128.83,
+        "end_time": 131.31,
+        "text": "Ok, anh kêu em nha.",
+        "no_speech_prob": 0.32568359375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 132.48,
+        "end_time": 140.08,
+        "text": "Em cũng muốn hỏi anh Nam về cái bản thiền chiến cuối cùng thì mình có còn bổ sung phần tiến lĩ chính sách không?",
+        "no_speech_prob": 0.28662109375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 140.32,
+        "end_time": 146.06,
+        "text": "Có chứ, phần đó nó quan trọng, tại vì mình mình sẽ chịu trách nhiệm với nội dung.",
+        "no_speech_prob": 0.28662109375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 146.16,
+        "end_time": 149.04,
+        "text": "Còn Hương thì sẽ lo phần trình bài cho đẹp mắt.",
+        "no_speech_prob": 0.28662109375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 149.7,
+        "end_time": 150.96,
+        "text": "Hai người cùng nhau khói hợp nha.",
+        "no_speech_prob": 0.28662109375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 152.02,
+        "end_time": 156.32,
+        "text": "Dạ ok, em với Hương sẽ cố gắng làm việc riêng để phóng nhất phần đó trong tuần này nha.",
+        "no_speech_prob": 0.28662109375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 156.32,
+        "end_time": 160.36,
+        "text": "Ok, giờ chốt lại cuối cùng thì deadline của Như sao?",
+        "no_speech_prob": 0.1910400390625,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 160.68,
+        "end_time": 165.76,
+        "text": "Đó là thứ 6 này sẽ có bản cập nhật phân tích vĩ mô và dữ liệu bổ sung.",
+        "no_speech_prob": 0.1910400390625,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 165.88,
+        "end_time": 170.16,
+        "text": "Còn thứ 4 tuần sau sẽ có bản dữ báo GDP từ Linh.",
+        "no_speech_prob": 0.1910400390625,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 170.22,
+        "end_time": 174.54,
+        "text": "Cuối tuần sau sẽ là hoàn hiện báo cáo trình chiếu và khuyến nghị cách chính sách.",
+        "no_speech_prob": 0.1910400390625,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 176.03,
+        "end_time": 177.59,
+        "text": "Dạ ok, rõ xếp.",
+        "no_speech_prob": 0.1910400390625,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 178.16,
+        "end_time": 180.78,
+        "text": "Dạ em cũng sẽ hoàn hiện phần trình bài đúng hạn.",
+        "no_speech_prob": 0.1910400390625,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 182.06,
+        "end_time": 186.8,
+        "text": "Em sẽ gửi cái bản dự thảo khuyến nghị chính sách sớm để cho mọi người có biết nha.",
+        "no_speech_prob": 0.6318359375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 188.8,
+        "end_time": 192.66,
+        "text": "Ok, nếu không ai có ý kiến gì nữa thì buổi hợp kết thúc.",
+        "no_speech_prob": 0.6318359375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 192.88,
+        "end_time": 195.08,
+        "text": "Cảm ơn mọi người, chúc mọi người có một tuần vui mẻ nha.",
+        "no_speech_prob": 0.6318359375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 195.54,
+        "end_time": 196.1,
+        "text": "Dạ cảm ơn.",
+        "no_speech_prob": 0.6318359375,
+        "chunk_id": 0
+      },
+      {
+        "start_time": 197.76,
+        "end_time": 198.6,
+        "text": "Tạm biệt anh nha.",
+        "no_speech_prob": 0.6318359375,
+        "chunk_id": 0
+      }
+    ],
+    "words": [
+      {
+        "word": " Chào",
+        "start_time": 1.1,
+        "end_time": 1.54,
+        "probability": 0.6243896484375,
+        "chunk_id": 0
+      },
+      {
+        "word": " mọi",
+        "start_time": 1.54,
+        "end_time": 1.74,
+        "probability": 0.923095703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " người,",
+        "start_time": 1.74,
+        "end_time": 2.04,
+        "probability": 0.99462890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " cảm",
+        "start_time": 2.12,
+        "end_time": 2.36,
+        "probability": 0.86767578125,
+        "chunk_id": 0
+      },
+      {
+        "word": " ơn",
+        "start_time": 2.36,
+        "end_time": 2.56,
+        "probability": 0.9951171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " đã",
+        "start_time": 2.56,
+        "end_time": 2.8,
+        "probability": 0.85498046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " có",
+        "start_time": 2.8,
+        "end_time": 2.92,
+        "probability": 0.91357421875,
+        "chunk_id": 0
+      },
+      {
+        "word": " mặt",
+        "start_time": 2.92,
+        "end_time": 3.06,
+        "probability": 0.900390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " đúng",
+        "start_time": 3.06,
+        "end_time": 3.22,
+        "probability": 0.537933349609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " giờ.",
+        "start_time": 3.22,
+        "end_time": 3.5,
+        "probability": 0.97705078125,
+        "chunk_id": 0
+      },
+      {
+        "word": " Hôm",
+        "start_time": 3.7,
+        "end_time": 3.8,
+        "probability": 0.9638671875,
+        "chunk_id": 0
+      },
+      {
+        "word": " nay",
+        "start_time": 3.8,
+        "end_time": 4.08,
+        "probability": 0.99609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " chúng",
+        "start_time": 4.08,
+        "end_time": 4.54,
+        "probability": 0.5439453125,
+        "chunk_id": 0
+      },
+      {
+        "word": " ta",
+        "start_time": 4.54,
+        "end_time": 4.62,
+        "probability": 0.97509765625,
+        "chunk_id": 0
+      },
+      {
+        "word": " sẽ",
+        "start_time": 4.62,
+        "end_time": 4.82,
+        "probability": 0.984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " hợp",
+        "start_time": 4.82,
+        "end_time": 5.04,
+        "probability": 0.94140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " ngắn",
+        "start_time": 5.04,
+        "end_time": 5.26,
+        "probability": 0.962158203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " để",
+        "start_time": 5.26,
+        "end_time": 5.44,
+        "probability": 0.93408203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " cảm",
+        "start_time": 5.44,
+        "end_time": 5.64,
+        "probability": 0.88623046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhận",
+        "start_time": 5.64,
+        "end_time": 5.74,
+        "probability": 0.973388671875,
+        "chunk_id": 0
+      },
+      {
+        "word": " tiến",
+        "start_time": 5.74,
+        "end_time": 6.0,
+        "probability": 0.885009765625,
+        "chunk_id": 0
+      },
+      {
+        "word": " độ",
+        "start_time": 6.0,
+        "end_time": 6.16,
+        "probability": 0.297607421875,
+        "chunk_id": 0
+      },
+      {
+        "word": " dự",
+        "start_time": 6.16,
+        "end_time": 6.34,
+        "probability": 0.9365234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " án",
+        "start_time": 6.34,
+        "end_time": 6.5,
+        "probability": 0.989990234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " quan",
+        "start_time": 6.5,
+        "end_time": 6.76,
+        "probability": 0.412109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " tích",
+        "start_time": 6.76,
+        "end_time": 6.76,
+        "probability": 0.863525390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " xu",
+        "start_time": 6.76,
+        "end_time": 7.1,
+        "probability": 0.88720703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " hướng",
+        "start_time": 7.1,
+        "end_time": 7.58,
+        "probability": 0.8779296875,
+        "chunk_id": 0
+      },
+      {
+        "word": " của",
+        "start_time": 7.58,
+        "end_time": 8.02,
+        "probability": 0.86181640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " Kinh",
+        "start_time": 8.02,
+        "end_time": 8.28,
+        "probability": 0.898193359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " Tế",
+        "start_time": 8.28,
+        "end_time": 8.34,
+        "probability": 0.816162109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " năm",
+        "start_time": 8.34,
+        "end_time": 8.52,
+        "probability": 0.72265625,
+        "chunk_id": 0
+      },
+      {
+        "word": " 2025",
+        "start_time": 8.52,
+        "end_time": 9.16,
+        "probability": 0.99462890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " và",
+        "start_time": 9.66,
+        "end_time": 10.1,
+        "probability": 0.77587890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " hóng",
+        "start_time": 10.1,
+        "end_time": 10.28,
+        "probability": 0.7293294270833334,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhất",
+        "start_time": 10.28,
+        "end_time": 10.42,
+        "probability": 0.68994140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " các",
+        "start_time": 10.42,
+        "end_time": 10.64,
+        "probability": 0.95556640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " công",
+        "start_time": 10.64,
+        "end_time": 10.86,
+        "probability": 0.9638671875,
+        "chunk_id": 0
+      },
+      {
+        "word": " việc",
+        "start_time": 10.86,
+        "end_time": 11.0,
+        "probability": 0.99755859375,
+        "chunk_id": 0
+      },
+      {
+        "word": " cần",
+        "start_time": 11.0,
+        "end_time": 11.22,
+        "probability": 0.966796875,
+        "chunk_id": 0
+      },
+      {
+        "word": " hoàn",
+        "start_time": 11.22,
+        "end_time": 11.5,
+        "probability": 0.987548828125,
+        "chunk_id": 0
+      },
+      {
+        "word": " hành",
+        "start_time": 11.5,
+        "end_time": 11.6,
+        "probability": 0.6680908203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " trong",
+        "start_time": 11.6,
+        "end_time": 11.86,
+        "probability": 0.95263671875,
+        "chunk_id": 0
+      },
+      {
+        "word": " 2",
+        "start_time": 11.86,
+        "end_time": 11.96,
+        "probability": 0.7080078125,
+        "chunk_id": 0
+      },
+      {
+        "word": " tuần",
+        "start_time": 11.96,
+        "end_time": 12.1,
+        "probability": 0.98974609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " tới.",
+        "start_time": 12.1,
+        "end_time": 12.46,
+        "probability": 0.978515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " Linh,",
+        "start_time": 13.18,
+        "end_time": 13.52,
+        "probability": 0.59783935546875,
+        "chunk_id": 0
+      },
+      {
+        "word": " em",
+        "start_time": 13.56,
+        "end_time": 13.76,
+        "probability": 0.91015625,
+        "chunk_id": 0
+      },
+      {
+        "word": " có",
+        "start_time": 13.76,
+        "end_time": 13.96,
+        "probability": 0.99658203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " thể",
+        "start_time": 13.96,
+        "end_time": 14.16,
+        "probability": 0.8837890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " bắt",
+        "start_time": 14.16,
+        "end_time": 14.38,
+        "probability": 0.984619140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " đầu",
+        "start_time": 14.38,
+        "end_time": 14.56,
+        "probability": 0.99951171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " hoàn",
+        "start_time": 14.56,
+        "end_time": 14.72,
+        "probability": 0.6683349609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " báo",
+        "start_time": 14.72,
+        "end_time": 14.86,
+        "probability": 0.993896484375,
+        "chunk_id": 0
+      },
+      {
+        "word": " cáo",
+        "start_time": 14.86,
+        "end_time": 15.08,
+        "probability": 0.984619140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " dữ",
+        "start_time": 15.08,
+        "end_time": 15.22,
+        "probability": 0.92578125,
+        "chunk_id": 0
+      },
+      {
+        "word": " liệu.",
+        "start_time": 15.22,
+        "end_time": 15.44,
+        "probability": 0.96728515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " Dạ,",
+        "start_time": 16.0,
+        "end_time": 16.3,
+        "probability": 0.8037109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " dạ,",
+        "start_time": 16.54,
+        "end_time": 16.54,
+        "probability": 0.79443359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " dạ.",
+        "start_time": 16.54,
+        "end_time": 16.88,
+        "probability": 0.973388671875,
+        "chunk_id": 0
+      },
+      {
+        "word": " Hiện",
+        "start_time": 17.42,
+        "end_time": 17.78,
+        "probability": 0.7059326171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " tại",
+        "start_time": 17.78,
+        "end_time": 17.96,
+        "probability": 0.99560546875,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhóm",
+        "start_time": 17.96,
+        "end_time": 18.16,
+        "probability": 0.868896484375,
+        "chunk_id": 0
+      },
+      {
+        "word": " dữ",
+        "start_time": 18.16,
+        "end_time": 18.4,
+        "probability": 0.981689453125,
+        "chunk_id": 0
+      },
+      {
+        "word": " liệu",
+        "start_time": 18.4,
+        "end_time": 18.48,
+        "probability": 0.9970703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " đã",
+        "start_time": 18.48,
+        "end_time": 18.72,
+        "probability": 0.9912109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " hoàn",
+        "start_time": 18.72,
+        "end_time": 19.12,
+        "probability": 0.9921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " thiện",
+        "start_time": 19.12,
+        "end_time": 19.4,
+        "probability": 0.7384033203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " được",
+        "start_time": 19.4,
+        "end_time": 19.68,
+        "probability": 0.962890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " phần",
+        "start_time": 19.68,
+        "end_time": 19.92,
+        "probability": 0.98193359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " học,",
+        "start_time": 19.92,
+        "end_time": 20.4,
+        "probability": 0.66015625,
+        "chunk_id": 0
+      },
+      {
+        "word": " thu",
+        "start_time": 20.52,
+        "end_time": 20.6,
+        "probability": 0.80908203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " lập",
+        "start_time": 20.6,
+        "end_time": 20.76,
+        "probability": 0.613037109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " số",
+        "start_time": 20.76,
+        "end_time": 21.02,
+        "probability": 0.638671875,
+        "chunk_id": 0
+      },
+      {
+        "word": " liệu",
+        "start_time": 21.02,
+        "end_time": 21.22,
+        "probability": 0.97119140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " từ",
+        "start_time": 21.22,
+        "end_time": 21.46,
+        "probability": 0.9765625,
+        "chunk_id": 0
+      },
+      {
+        "word": " tổng",
+        "start_time": 21.46,
+        "end_time": 21.66,
+        "probability": 0.8927408854166666,
+        "chunk_id": 0
+      },
+      {
+        "word": " cục",
+        "start_time": 21.66,
+        "end_time": 21.92,
+        "probability": 0.5898030598958334,
+        "chunk_id": 0
+      },
+      {
+        "word": " thống",
+        "start_time": 21.92,
+        "end_time": 22.06,
+        "probability": 0.689453125,
+        "chunk_id": 0
+      },
+      {
+        "word": " kê",
+        "start_time": 22.06,
+        "end_time": 22.22,
+        "probability": 0.966552734375,
+        "chunk_id": 0
+      },
+      {
+        "word": " của",
+        "start_time": 22.22,
+        "end_time": 22.4,
+        "probability": 0.26904296875,
+        "chunk_id": 0
+      },
+      {
+        "word": " những",
+        "start_time": 22.4,
+        "end_time": 22.52,
+        "probability": 0.456787109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " hai",
+        "start_time": 22.52,
+        "end_time": 22.62,
+        "probability": 0.45751953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhà",
+        "start_time": 22.62,
+        "end_time": 22.8,
+        "probability": 0.99267578125,
+        "chunk_id": 0
+      },
+      {
+        "word": " nước.",
+        "start_time": 22.8,
+        "end_time": 23.02,
+        "probability": 0.99755859375,
+        "chunk_id": 0
+      },
+      {
+        "word": " Nhưng",
+        "start_time": 23.52,
+        "end_time": 23.8,
+        "probability": 0.98388671875,
+        "chunk_id": 0
+      },
+      {
+        "word": " dữ",
+        "start_time": 23.8,
+        "end_time": 24.18,
+        "probability": 0.87744140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " liệu",
+        "start_time": 24.18,
+        "end_time": 24.48,
+        "probability": 0.99853515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " xuất",
+        "start_time": 24.48,
+        "end_time": 24.7,
+        "probability": 0.906982421875,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhập",
+        "start_time": 24.7,
+        "end_time": 24.86,
+        "probability": 0.9306640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " khẩu",
+        "start_time": 24.86,
+        "end_time": 25.04,
+        "probability": 0.8150227864583334,
+        "chunk_id": 0
+      },
+      {
+        "word": " tháng",
+        "start_time": 25.04,
+        "end_time": 25.2,
+        "probability": 0.865234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " 9",
+        "start_time": 25.2,
+        "end_time": 25.46,
+        "probability": 0.984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " vẫn",
+        "start_time": 25.46,
+        "end_time": 25.7,
+        "probability": 0.951171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " còn",
+        "start_time": 25.7,
+        "end_time": 25.94,
+        "probability": 0.9853515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " thiếu",
+        "start_time": 25.94,
+        "end_time": 26.16,
+        "probability": 0.988037109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " một",
+        "start_time": 26.16,
+        "end_time": 26.4,
+        "probability": 0.7958984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " vài",
+        "start_time": 26.4,
+        "end_time": 26.62,
+        "probability": 0.995361328125,
+        "chunk_id": 0
+      },
+      {
+        "word": " triệu",
+        "start_time": 26.62,
+        "end_time": 26.82,
+        "probability": 0.4783935546875,
+        "chunk_id": 0
+      },
+      {
+        "word": " tiêu",
+        "start_time": 26.82,
+        "end_time": 27.04,
+        "probability": 0.623046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " phụ",
+        "start_time": 27.04,
+        "end_time": 27.28,
+        "probability": 0.981689453125,
+        "chunk_id": 0
+      },
+      {
+        "word": " về",
+        "start_time": 27.28,
+        "end_time": 27.46,
+        "probability": 0.97265625,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhóm",
+        "start_time": 27.46,
+        "end_time": 27.78,
+        "probability": 0.96484375,
+        "chunk_id": 0
+      },
+      {
+        "word": " hàng",
+        "start_time": 27.78,
+        "end_time": 28.08,
+        "probability": 0.9765625,
+        "chunk_id": 0
+      },
+      {
+        "word": " công",
+        "start_time": 28.08,
+        "end_time": 28.36,
+        "probability": 0.86474609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " nghệ",
+        "start_time": 28.36,
+        "end_time": 28.46,
+        "probability": 0.862548828125,
+        "chunk_id": 0
+      },
+      {
+        "word": " cao.",
+        "start_time": 28.46,
+        "end_time": 29.02,
+        "probability": 0.9970703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " Em",
+        "start_time": 29.02,
+        "end_time": 29.32,
+        "probability": 0.33056640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " đã",
+        "start_time": 29.32,
+        "end_time": 29.58,
+        "probability": 0.80712890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " gửi",
+        "start_time": 29.58,
+        "end_time": 30.38,
+        "probability": 0.9820963541666666,
+        "chunk_id": 0
+      },
+      {
+        "word": " các",
+        "start_time": 30.38,
+        "end_time": 30.66,
+        "probability": 0.73583984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " yêu",
+        "start_time": 30.66,
+        "end_time": 30.8,
+        "probability": 0.9423828125,
+        "chunk_id": 0
+      },
+      {
+        "word": " cầu",
+        "start_time": 30.8,
+        "end_time": 31.02,
+        "probability": 0.99853515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " cập",
+        "start_time": 31.02,
+        "end_time": 31.18,
+        "probability": 0.9716796875,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhật",
+        "start_time": 31.18,
+        "end_time": 31.38,
+        "probability": 0.98828125,
+        "chunk_id": 0
+      },
+      {
+        "word": " cũng",
+        "start_time": 31.38,
+        "end_time": 31.58,
+        "probability": 0.6875,
+        "chunk_id": 0
+      },
+      {
+        "word": " như",
+        "start_time": 31.58,
+        "end_time": 32.04,
+        "probability": 0.99267578125,
+        "chunk_id": 0
+      },
+      {
+        "word": " là",
+        "start_time": 32.04,
+        "end_time": 32.24,
+        "probability": 0.7158203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " dự",
+        "start_time": 32.24,
+        "end_time": 32.34,
+        "probability": 0.966552734375,
+        "chunk_id": 0
+      },
+      {
+        "word": " kiến",
+        "start_time": 32.34,
+        "end_time": 32.48,
+        "probability": 0.981201171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " của",
+        "start_time": 32.48,
+        "end_time": 32.66,
+        "probability": 0.452392578125,
+        "chunk_id": 0
+      },
+      {
+        "word": " tuần",
+        "start_time": 32.66,
+        "end_time": 32.82,
+        "probability": 0.96533203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " này",
+        "start_time": 32.82,
+        "end_time": 33.0,
+        "probability": 0.9794921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " sẽ",
+        "start_time": 33.0,
+        "end_time": 33.18,
+        "probability": 0.99462890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhận",
+        "start_time": 33.18,
+        "end_time": 33.32,
+        "probability": 0.9775390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " được",
+        "start_time": 33.32,
+        "end_time": 33.48,
+        "probability": 0.93408203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " anh.",
+        "start_time": 33.48,
+        "end_time": 34.1,
+        "probability": 0.86474609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " Ok,",
+        "start_time": 34.12,
+        "end_time": 34.4,
+        "probability": 0.01461029052734375,
+        "chunk_id": 0
+      },
+      {
+        "word": " khi",
+        "start_time": 35.3,
+        "end_time": 35.62,
+        "probability": 0.96826171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " mà",
+        "start_time": 35.62,
+        "end_time": 35.94,
+        "probability": 0.91259765625,
+        "chunk_id": 0
+      },
+      {
+        "word": " có",
+        "start_time": 35.94,
+        "end_time": 36.16,
+        "probability": 0.9609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " dữ",
+        "start_time": 36.16,
+        "end_time": 36.36,
+        "probability": 0.5001983642578125,
+        "chunk_id": 0
+      },
+      {
+        "word": " liệu",
+        "start_time": 36.36,
+        "end_time": 36.42,
+        "probability": 0.989990234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " đầy",
+        "start_time": 36.42,
+        "end_time": 36.6,
+        "probability": 0.9890950520833334,
+        "chunk_id": 0
+      },
+      {
+        "word": " đủ",
+        "start_time": 36.6,
+        "end_time": 36.8,
+        "probability": 0.987060546875,
+        "chunk_id": 0
+      },
+      {
+        "word": " thì",
+        "start_time": 36.8,
+        "end_time": 37.3,
+        "probability": 0.83056640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " em",
+        "start_time": 37.3,
+        "end_time": 37.48,
+        "probability": 0.9677734375,
+        "chunk_id": 0
+      },
+      {
+        "word": " sẽ",
+        "start_time": 37.48,
+        "end_time": 37.6,
+        "probability": 0.98876953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " làm",
+        "start_time": 37.6,
+        "end_time": 37.74,
+        "probability": 0.9931640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " gì",
+        "start_time": 37.74,
+        "end_time": 38.12,
+        "probability": 0.9794921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " nữa?",
+        "start_time": 38.12,
+        "end_time": 38.52,
+        "probability": 0.97412109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " Chắc",
+        "start_time": 39.3,
+        "end_time": 39.56,
+        "probability": 0.9072265625,
+        "chunk_id": 0
+      },
+      {
+        "word": " là",
+        "start_time": 39.56,
+        "end_time": 39.68,
+        "probability": 0.95947265625,
+        "chunk_id": 0
+      },
+      {
+        "word": " em",
+        "start_time": 39.68,
+        "end_time": 39.86,
+        "probability": 0.98046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " sẽ",
+        "start_time": 39.86,
+        "end_time": 40.02,
+        "probability": 0.9833984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " bắt",
+        "start_time": 40.02,
+        "end_time": 40.24,
+        "probability": 0.9921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " đầu",
+        "start_time": 40.24,
+        "end_time": 40.38,
+        "probability": 0.99951171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " với",
+        "start_time": 40.38,
+        "end_time": 40.96,
+        "probability": 0.7490234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " bước",
+        "start_time": 40.96,
+        "end_time": 41.12,
+        "probability": 0.94677734375,
+        "chunk_id": 0
+      },
+      {
+        "word": " tiền",
+        "start_time": 41.12,
+        "end_time": 41.34,
+        "probability": 0.9931640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " xử",
+        "start_time": 41.34,
+        "end_time": 41.54,
+        "probability": 0.5205078125,
+        "chunk_id": 0
+      },
+      {
+        "word": " lý",
+        "start_time": 41.54,
+        "end_time": 41.62,
+        "probability": 0.95166015625,
+        "chunk_id": 0
+      },
+      {
+        "word": " trước,",
+        "start_time": 41.62,
+        "end_time": 41.96,
+        "probability": 0.98828125,
+        "chunk_id": 0
+      },
+      {
+        "word": " sau",
+        "start_time": 42.0,
+        "end_time": 42.16,
+        "probability": 0.93603515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " đó",
+        "start_time": 42.16,
+        "end_time": 42.36,
+        "probability": 0.99658203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " là",
+        "start_time": 42.36,
+        "end_time": 42.5,
+        "probability": 0.86962890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " chuẩn",
+        "start_time": 42.5,
+        "end_time": 42.7,
+        "probability": 0.7666829427083334,
+        "chunk_id": 0
+      },
+      {
+        "word": " hóa",
+        "start_time": 42.7,
+        "end_time": 42.82,
+        "probability": 0.9853515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " dữ",
+        "start_time": 42.82,
+        "end_time": 42.98,
+        "probability": 0.984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " liệu",
+        "start_time": 42.98,
+        "end_time": 43.4,
+        "probability": 0.994140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " cũng",
+        "start_time": 43.4,
+        "end_time": 43.6,
+        "probability": 0.525390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " như",
+        "start_time": 43.6,
+        "end_time": 43.74,
+        "probability": 0.994140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " là",
+        "start_time": 43.74,
+        "end_time": 43.86,
+        "probability": 0.79345703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " trạm",
+        "start_time": 43.86,
+        "end_time": 43.96,
+        "probability": 0.62890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " mô",
+        "start_time": 43.96,
+        "end_time": 44.18,
+        "probability": 0.77197265625,
+        "chunk_id": 0
+      },
+      {
+        "word": " hình",
+        "start_time": 44.18,
+        "end_time": 44.9,
+        "probability": 0.99462890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " dự",
+        "start_time": 44.9,
+        "end_time": 45.38,
+        "probability": 0.8203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " báo",
+        "start_time": 45.38,
+        "end_time": 45.62,
+        "probability": 0.992919921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " GDB",
+        "start_time": 45.62,
+        "end_time": 46.06,
+        "probability": 0.704833984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " theo",
+        "start_time": 46.06,
+        "end_time": 46.36,
+        "probability": 0.96337890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " khu",
+        "start_time": 46.36,
+        "end_time": 46.54,
+        "probability": 0.912109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " vực",
+        "start_time": 46.54,
+        "end_time": 46.6,
+        "probability": 0.995849609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " Kinh",
+        "start_time": 46.6,
+        "end_time": 46.9,
+        "probability": 0.49500274658203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " Tế.",
+        "start_time": 46.9,
+        "end_time": 47.24,
+        "probability": 0.64501953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " Dự",
+        "start_time": 47.6,
+        "end_time": 47.74,
+        "probability": 0.9873046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " kiến",
+        "start_time": 47.74,
+        "end_time": 47.96,
+        "probability": 0.98681640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " là",
+        "start_time": 47.96,
+        "end_time": 48.18,
+        "probability": 0.9580078125,
+        "chunk_id": 0
+      },
+      {
+        "word": " khoảng",
+        "start_time": 48.18,
+        "end_time": 48.32,
+        "probability": 0.919677734375,
+        "chunk_id": 0
+      },
+      {
+        "word": " thứ",
+        "start_time": 48.32,
+        "end_time": 48.58,
+        "probability": 0.97998046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " 4",
+        "start_time": 48.58,
+        "end_time": 48.74,
+        "probability": 0.724609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " tuần",
+        "start_time": 48.74,
+        "end_time": 48.92,
+        "probability": 0.947998046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " sau",
+        "start_time": 48.92,
+        "end_time": 49.36,
+        "probability": 0.99951171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " em",
+        "start_time": 49.36,
+        "end_time": 49.76,
+        "probability": 0.5703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " sẽ",
+        "start_time": 49.76,
+        "end_time": 49.88,
+        "probability": 0.98583984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " gửi",
+        "start_time": 49.88,
+        "end_time": 50.18,
+        "probability": 0.9186197916666666,
+        "chunk_id": 0
+      },
+      {
+        "word": " cho",
+        "start_time": 50.18,
+        "end_time": 50.54,
+        "probability": 0.96533203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " anh",
+        "start_time": 50.54,
+        "end_time": 51.46,
+        "probability": 0.9853515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " báo",
+        "start_time": 51.46,
+        "end_time": 51.68,
+        "probability": 0.974853515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " cáo",
+        "start_time": 51.68,
+        "end_time": 51.8,
+        "probability": 0.99951171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " phân",
+        "start_time": 51.8,
+        "end_time": 52.04,
+        "probability": 0.85009765625,
+        "chunk_id": 0
+      },
+      {
+        "word": " tích",
+        "start_time": 52.04,
+        "end_time": 52.12,
+        "probability": 0.969970703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " số",
+        "start_time": 52.12,
+        "end_time": 52.36,
+        "probability": 0.31494140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " bộ.",
+        "start_time": 52.36,
+        "end_time": 52.6,
+        "probability": 0.984130859375,
+        "chunk_id": 0
+      },
+      {
+        "word": " Ok,",
+        "start_time": 53.12,
+        "end_time": 53.52,
+        "probability": 0.76611328125,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhớ",
+        "start_time": 53.56,
+        "end_time": 53.76,
+        "probability": 0.98486328125,
+        "chunk_id": 0
+      },
+      {
+        "word": " đúng",
+        "start_time": 53.76,
+        "end_time": 53.94,
+        "probability": 0.976318359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " hạn",
+        "start_time": 53.94,
+        "end_time": 54.18,
+        "probability": 0.7890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " deadline",
+        "start_time": 54.18,
+        "end_time": 54.54,
+        "probability": 0.6513671875,
+        "chunk_id": 0
+      },
+      {
+        "word": " nha,",
+        "start_time": 54.54,
+        "end_time": 54.84,
+        "probability": 0.975830078125,
+        "chunk_id": 0
+      },
+      {
+        "word": " cảm",
+        "start_time": 54.96,
+        "end_time": 55.1,
+        "probability": 0.81591796875,
+        "chunk_id": 0
+      },
+      {
+        "word": " ơn",
+        "start_time": 55.1,
+        "end_time": 55.2,
+        "probability": 0.9990234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " em.",
+        "start_time": 55.2,
+        "end_time": 55.64,
+        "probability": 0.96630859375,
+        "chunk_id": 0
+      },
+      {
+        "word": " Còn",
+        "start_time": 55.64,
+        "end_time": 56.46,
+        "probability": 0.25042724609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " mình",
+        "start_time": 56.46,
+        "end_time": 57.04,
+        "probability": 0.2115478515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " ở",
+        "start_time": 57.04,
+        "end_time": 57.54,
+        "probability": 0.5537109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " mạng",
+        "start_time": 57.54,
+        "end_time": 57.78,
+        "probability": 0.6532389322916666,
+        "chunk_id": 0
+      },
+      {
+        "word": " phân",
+        "start_time": 57.78,
+        "end_time": 57.96,
+        "probability": 0.9453125,
+        "chunk_id": 0
+      },
+      {
+        "word": " tích",
+        "start_time": 57.96,
+        "end_time": 58.04,
+        "probability": 0.942138671875,
+        "chunk_id": 0
+      },
+      {
+        "word": " vĩ",
+        "start_time": 58.04,
+        "end_time": 58.24,
+        "probability": 0.57470703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " mô",
+        "start_time": 58.24,
+        "end_time": 58.54,
+        "probability": 0.926025390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " thì",
+        "start_time": 58.54,
+        "end_time": 58.9,
+        "probability": 0.78662109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " tình",
+        "start_time": 58.9,
+        "end_time": 59.08,
+        "probability": 0.94677734375,
+        "chunk_id": 0
+      },
+      {
+        "word": " hình",
+        "start_time": 59.08,
+        "end_time": 59.16,
+        "probability": 0.9951171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " thế",
+        "start_time": 59.16,
+        "end_time": 59.4,
+        "probability": 0.845703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " nào?",
+        "start_time": 59.4,
+        "end_time": 59.68,
+        "probability": 0.99853515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " Ở",
+        "start_time": 61.56,
+        "end_time": 62.04,
+        "probability": 0.6212158203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " cái",
+        "start_time": 62.04,
+        "end_time": 62.28,
+        "probability": 0.6220703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " phần",
+        "start_time": 62.28,
+        "end_time": 62.3,
+        "probability": 0.99462890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " đó",
+        "start_time": 62.3,
+        "end_time": 62.52,
+        "probability": 0.994140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " em",
+        "start_time": 62.52,
+        "end_time": 62.76,
+        "probability": 0.367431640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " đã",
+        "start_time": 62.76,
+        "end_time": 62.94,
+        "probability": 0.94873046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " hoàn",
+        "start_time": 62.94,
+        "end_time": 63.18,
+        "probability": 0.734130859375,
+        "chunk_id": 0
+      },
+      {
+        "word": " thiện",
+        "start_time": 63.18,
+        "end_time": 63.28,
+        "probability": 0.91650390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " báo",
+        "start_time": 63.28,
+        "end_time": 63.58,
+        "probability": 0.900390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " cáo",
+        "start_time": 63.58,
+        "end_time": 63.82,
+        "probability": 0.99853515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " về",
+        "start_time": 63.82,
+        "end_time": 64.78,
+        "probability": 0.71484375,
+        "chunk_id": 0
+      },
+      {
+        "word": " lạm",
+        "start_time": 64.78,
+        "end_time": 65.22,
+        "probability": 0.7383626302083334,
+        "chunk_id": 0
+      },
+      {
+        "word": " phát",
+        "start_time": 65.22,
+        "end_time": 65.4,
+        "probability": 0.97900390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " với",
+        "start_time": 65.4,
+        "end_time": 66.22,
+        "probability": 0.1982421875,
+        "chunk_id": 0
+      },
+      {
+        "word": " trên",
+        "start_time": 66.22,
+        "end_time": 66.46,
+        "probability": 0.71630859375,
+        "chunk_id": 0
+      },
+      {
+        "word": " sách",
+        "start_time": 66.46,
+        "end_time": 66.54,
+        "probability": 0.938232421875,
+        "chunk_id": 0
+      },
+      {
+        "word": " tiền",
+        "start_time": 66.54,
+        "end_time": 66.78,
+        "probability": 0.383544921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " tả.",
+        "start_time": 66.78,
+        "end_time": 67.02,
+        "probability": 0.43212890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " Nhưng",
+        "start_time": 67.78,
+        "end_time": 67.9,
+        "probability": 0.959228515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " mà",
+        "start_time": 67.9,
+        "end_time": 68.0,
+        "probability": 0.425048828125,
+        "chunk_id": 0
+      },
+      {
+        "word": " phần",
+        "start_time": 68.0,
+        "end_time": 68.32,
+        "probability": 0.7734375,
+        "chunk_id": 0
+      },
+      {
+        "word": " dự",
+        "start_time": 68.32,
+        "end_time": 68.52,
+        "probability": 0.92919921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " báo",
+        "start_time": 68.52,
+        "end_time": 68.7,
+        "probability": 0.53729248046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " tăng",
+        "start_time": 68.7,
+        "end_time": 68.96,
+        "probability": 0.91748046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " trưởng",
+        "start_time": 68.96,
+        "end_time": 69.2,
+        "probability": 0.97900390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " quý",
+        "start_time": 69.2,
+        "end_time": 70.1,
+        "probability": 0.75,
+        "chunk_id": 0
+      },
+      {
+        "word": " thứ",
+        "start_time": 70.1,
+        "end_time": 70.4,
+        "probability": 0.7685546875,
+        "chunk_id": 0
+      },
+      {
+        "word": " 4",
+        "start_time": 70.4,
+        "end_time": 70.68,
+        "probability": 0.5556640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " cần",
+        "start_time": 70.68,
+        "end_time": 71.18,
+        "probability": 0.892578125,
+        "chunk_id": 0
+      },
+      {
+        "word": " phải",
+        "start_time": 71.18,
+        "end_time": 72.34,
+        "probability": 0.7001953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " thêm",
+        "start_time": 72.5,
+        "end_time": 72.72,
+        "probability": 0.94189453125,
+        "chunk_id": 0
+      },
+      {
+        "word": " đầu",
+        "start_time": 72.72,
+        "end_time": 73.0,
+        "probability": 0.99072265625,
+        "chunk_id": 0
+      },
+      {
+        "word": " vào",
+        "start_time": 73.0,
+        "end_time": 73.2,
+        "probability": 0.98095703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " từ",
+        "start_time": 73.2,
+        "end_time": 73.5,
+        "probability": 0.95947265625,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhóm",
+        "start_time": 73.5,
+        "end_time": 73.68,
+        "probability": 0.812255859375,
+        "chunk_id": 0
+      },
+      {
+        "word": " của",
+        "start_time": 73.68,
+        "end_time": 73.86,
+        "probability": 0.943359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " Linh",
+        "start_time": 73.86,
+        "end_time": 74.08,
+        "probability": 0.867919921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " để",
+        "start_time": 74.08,
+        "end_time": 75.04,
+        "probability": 0.96337890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " có",
+        "start_time": 75.04,
+        "end_time": 75.22,
+        "probability": 0.329345703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " thể",
+        "start_time": 75.22,
+        "end_time": 75.34,
+        "probability": 0.9970703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " hiệu",
+        "start_time": 75.34,
+        "end_time": 75.52,
+        "probability": 0.5394287109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " chỉnh",
+        "start_time": 75.52,
+        "end_time": 75.66,
+        "probability": 0.7481689453125,
+        "chunk_id": 0
+      },
+      {
+        "word": " mô",
+        "start_time": 75.66,
+        "end_time": 75.96,
+        "probability": 0.824951171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " hình.",
+        "start_time": 75.96,
+        "end_time": 76.9,
+        "probability": 0.99462890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " Ngoài",
+        "start_time": 77.64,
+        "end_time": 78.04,
+        "probability": 0.4654134114583333,
+        "chunk_id": 0
+      },
+      {
+        "word": " ra",
+        "start_time": 78.04,
+        "end_time": 78.44,
+        "probability": 0.99951171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " thì",
+        "start_time": 78.44,
+        "end_time": 78.62,
+        "probability": 0.55224609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " em",
+        "start_time": 78.62,
+        "end_time": 78.8,
+        "probability": 0.560546875,
+        "chunk_id": 0
+      },
+      {
+        "word": " có",
+        "start_time": 78.8,
+        "end_time": 78.96,
+        "probability": 0.82470703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " đề",
+        "start_time": 78.96,
+        "end_time": 79.12,
+        "probability": 0.97509765625,
+        "chunk_id": 0
+      },
+      {
+        "word": " xuất",
+        "start_time": 79.12,
+        "end_time": 79.26,
+        "probability": 0.950439453125,
+        "chunk_id": 0
+      },
+      {
+        "word": " một",
+        "start_time": 79.26,
+        "end_time": 79.44,
+        "probability": 0.5205078125,
+        "chunk_id": 0
+      },
+      {
+        "word": " cái",
+        "start_time": 79.44,
+        "end_time": 79.5,
+        "probability": 0.191162109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " mục",
+        "start_time": 79.5,
+        "end_time": 79.64,
+        "probability": 0.967041015625,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhỏ",
+        "start_time": 79.64,
+        "end_time": 80.1,
+        "probability": 0.99072265625,
+        "chunk_id": 0
+      },
+      {
+        "word": " về",
+        "start_time": 80.1,
+        "end_time": 80.62,
+        "probability": 0.76025390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " cái",
+        "start_time": 80.62,
+        "end_time": 80.84,
+        "probability": 0.369873046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " tác",
+        "start_time": 80.84,
+        "end_time": 81.0,
+        "probability": 0.9814453125,
+        "chunk_id": 0
+      },
+      {
+        "word": " động",
+        "start_time": 81.0,
+        "end_time": 81.2,
+        "probability": 0.99853515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " của",
+        "start_time": 81.2,
+        "end_time": 81.9,
+        "probability": 0.85693359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " biến",
+        "start_time": 81.9,
+        "end_time": 82.18,
+        "probability": 0.956787109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " động",
+        "start_time": 82.18,
+        "end_time": 82.3,
+        "probability": 0.8857421875,
+        "chunk_id": 0
+      },
+      {
+        "word": " kỳ",
+        "start_time": 82.3,
+        "end_time": 82.56,
+        "probability": 0.6540120442708334,
+        "chunk_id": 0
+      },
+      {
+        "word": " giá.",
+        "start_time": 82.56,
+        "end_time": 83.08,
+        "probability": 0.9951171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " Vì",
+        "start_time": 83.36,
+        "end_time": 83.44,
+        "probability": 0.90673828125,
+        "chunk_id": 0
+      },
+      {
+        "word": " gần",
+        "start_time": 83.44,
+        "end_time": 83.6,
+        "probability": 0.912353515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " đây",
+        "start_time": 83.6,
+        "end_time": 83.84,
+        "probability": 0.9970703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " nó",
+        "start_time": 83.84,
+        "end_time": 84.02,
+        "probability": 0.85498046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " có",
+        "start_time": 84.02,
+        "end_time": 84.3,
+        "probability": 0.97998046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " cái",
+        "start_time": 84.3,
+        "end_time": 84.46,
+        "probability": 0.73193359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " tín",
+        "start_time": 84.46,
+        "end_time": 84.6,
+        "probability": 0.84130859375,
+        "chunk_id": 0
+      },
+      {
+        "word": " hiệu",
+        "start_time": 84.6,
+        "end_time": 84.88,
+        "probability": 0.99560546875,
+        "chunk_id": 0
+      },
+      {
+        "word": " để",
+        "start_time": 84.88,
+        "end_time": 85.12,
+        "probability": 0.83642578125,
+        "chunk_id": 0
+      },
+      {
+        "word": " chú",
+        "start_time": 85.12,
+        "end_time": 85.26,
+        "probability": 0.943115234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " ý",
+        "start_time": 85.26,
+        "end_time": 85.36,
+        "probability": 0.9951171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " từ",
+        "start_time": 85.36,
+        "end_time": 85.56,
+        "probability": 0.61865234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " mũi.",
+        "start_time": 85.56,
+        "end_time": 86.84,
+        "probability": 0.577545166015625,
+        "chunk_id": 0
+      },
+      {
+        "word": " Ok,",
+        "start_time": 89.0,
+        "end_time": 89.4,
+        "probability": 0.276611328125,
+        "chunk_id": 0
+      },
+      {
+        "word": " thì",
+        "start_time": 89.4,
+        "end_time": 89.8,
+        "probability": 0.55517578125,
+        "chunk_id": 0
+      },
+      {
+        "word": " em",
+        "start_time": 89.8,
+        "end_time": 90.72,
+        "probability": 0.95751953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhớ",
+        "start_time": 90.72,
+        "end_time": 90.82,
+        "probability": 0.992919921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " bỏ",
+        "start_time": 90.82,
+        "end_time": 90.98,
+        "probability": 0.57177734375,
+        "chunk_id": 0
+      },
+      {
+        "word": " xuân",
+        "start_time": 90.98,
+        "end_time": 91.14,
+        "probability": 0.75341796875,
+        "chunk_id": 0
+      },
+      {
+        "word": " phần",
+        "start_time": 91.14,
+        "end_time": 91.26,
+        "probability": 0.9736328125,
+        "chunk_id": 0
+      },
+      {
+        "word": " đó",
+        "start_time": 91.26,
+        "end_time": 91.52,
+        "probability": 0.998046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhưng",
+        "start_time": 91.52,
+        "end_time": 91.74,
+        "probability": 0.48193359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " mà",
+        "start_time": 91.74,
+        "end_time": 92.02,
+        "probability": 0.951171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " em",
+        "start_time": 92.02,
+        "end_time": 92.14,
+        "probability": 0.92626953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhớ",
+        "start_time": 92.14,
+        "end_time": 92.28,
+        "probability": 0.979248046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " lưu",
+        "start_time": 92.28,
+        "end_time": 92.46,
+        "probability": 0.96923828125,
+        "chunk_id": 0
+      },
+      {
+        "word": " ý",
+        "start_time": 92.46,
+        "end_time": 92.6,
+        "probability": 0.9921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " là",
+        "start_time": 92.6,
+        "end_time": 93.2,
+        "probability": 0.9208984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " giữ",
+        "start_time": 93.2,
+        "end_time": 93.38,
+        "probability": 0.9052734375,
+        "chunk_id": 0
+      },
+      {
+        "word": " dung",
+        "start_time": 93.38,
+        "end_time": 93.82,
+        "probability": 0.59814453125,
+        "chunk_id": 0
+      },
+      {
+        "word": " lượng",
+        "start_time": 93.82,
+        "end_time": 93.94,
+        "probability": 0.905517578125,
+        "chunk_id": 0
+      },
+      {
+        "word": " báo",
+        "start_time": 93.94,
+        "end_time": 94.22,
+        "probability": 0.907958984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " cáo",
+        "start_time": 94.22,
+        "end_time": 94.36,
+        "probability": 0.9990234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " trong",
+        "start_time": 94.36,
+        "end_time": 94.54,
+        "probability": 0.94482421875,
+        "chunk_id": 0
+      },
+      {
+        "word": " giá",
+        "start_time": 94.54,
+        "end_time": 94.68,
+        "probability": 0.958740234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " hạn",
+        "start_time": 94.68,
+        "end_time": 94.78,
+        "probability": 0.767822265625,
+        "chunk_id": 0
+      },
+      {
+        "word": " 10",
+        "start_time": 94.78,
+        "end_time": 95.04,
+        "probability": 0.953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " trang",
+        "start_time": 95.04,
+        "end_time": 95.18,
+        "probability": 0.656982421875,
+        "chunk_id": 0
+      },
+      {
+        "word": " nha.",
+        "start_time": 95.18,
+        "end_time": 95.54,
+        "probability": 0.96875,
+        "chunk_id": 0
+      },
+      {
+        "word": " Dạ",
+        "start_time": 96.34,
+        "end_time": 96.44,
+        "probability": 0.884033203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " ok",
+        "start_time": 96.44,
+        "end_time": 96.64,
+        "probability": 0.324462890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " anh",
+        "start_time": 96.64,
+        "end_time": 96.9,
+        "probability": 0.94677734375,
+        "chunk_id": 0
+      },
+      {
+        "word": " ơi,",
+        "start_time": 96.9,
+        "end_time": 97.36,
+        "probability": 0.8095703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " em",
+        "start_time": 97.56,
+        "end_time": 97.74,
+        "probability": 0.94970703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " sẽ",
+        "start_time": 97.74,
+        "end_time": 97.94,
+        "probability": 0.99658203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " cân",
+        "start_time": 97.94,
+        "end_time": 98.16,
+        "probability": 0.91796875,
+        "chunk_id": 0
+      },
+      {
+        "word": " đối",
+        "start_time": 98.16,
+        "end_time": 98.34,
+        "probability": 0.99462890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " nội",
+        "start_time": 98.34,
+        "end_time": 98.58,
+        "probability": 0.86181640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " dung",
+        "start_time": 98.58,
+        "end_time": 98.72,
+        "probability": 0.991455078125,
+        "chunk_id": 0
+      },
+      {
+        "word": " với",
+        "start_time": 98.72,
+        "end_time": 98.94,
+        "probability": 0.9296875,
+        "chunk_id": 0
+      },
+      {
+        "word": " lại",
+        "start_time": 98.94,
+        "end_time": 99.14,
+        "probability": 0.45263671875,
+        "chunk_id": 0
+      },
+      {
+        "word": " người",
+        "start_time": 99.14,
+        "end_time": 99.26,
+        "probability": 0.8935546875,
+        "chunk_id": 0
+      },
+      {
+        "word": " bạn",
+        "start_time": 99.26,
+        "end_time": 99.4,
+        "probability": 0.382568359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " cập",
+        "start_time": 99.4,
+        "end_time": 99.58,
+        "probability": 0.536865234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhập",
+        "start_time": 99.58,
+        "end_time": 99.74,
+        "probability": 0.764404296875,
+        "chunk_id": 0
+      },
+      {
+        "word": " vào",
+        "start_time": 99.74,
+        "end_time": 100.12,
+        "probability": 0.85986328125,
+        "chunk_id": 0
+      },
+      {
+        "word": " thứ",
+        "start_time": 100.12,
+        "end_time": 100.34,
+        "probability": 0.9326171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " 6",
+        "start_time": 100.34,
+        "end_time": 100.4,
+        "probability": 0.8505859375,
+        "chunk_id": 0
+      },
+      {
+        "word": " tháng",
+        "start_time": 100.4,
+        "end_time": 100.54,
+        "probability": 0.5728759765625,
+        "chunk_id": 0
+      },
+      {
+        "word": " này",
+        "start_time": 100.54,
+        "end_time": 100.66,
+        "probability": 0.7197265625,
+        "chunk_id": 0
+      },
+      {
+        "word": " nha.",
+        "start_time": 100.66,
+        "end_time": 100.9,
+        "probability": 0.966796875,
+        "chunk_id": 0
+      },
+      {
+        "word": " Ok,",
+        "start_time": 101.92,
+        "end_time": 101.92,
+        "probability": 0.55517578125,
+        "chunk_id": 0
+      },
+      {
+        "word": " rồi",
+        "start_time": 102.14,
+        "end_time": 102.38,
+        "probability": 0.68115234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " còn",
+        "start_time": 102.38,
+        "end_time": 102.52,
+        "probability": 0.94775390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " Hương,",
+        "start_time": 102.52,
+        "end_time": 102.8,
+        "probability": 0.83984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhóm",
+        "start_time": 102.88,
+        "end_time": 103.02,
+        "probability": 0.78955078125,
+        "chunk_id": 0
+      },
+      {
+        "word": " truyền",
+        "start_time": 103.02,
+        "end_time": 103.26,
+        "probability": 0.95458984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " thông",
+        "start_time": 103.26,
+        "end_time": 103.58,
+        "probability": 0.991943359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " và",
+        "start_time": 103.58,
+        "end_time": 104.26,
+        "probability": 0.966796875,
+        "chunk_id": 0
+      },
+      {
+        "word": " báo",
+        "start_time": 104.26,
+        "end_time": 104.48,
+        "probability": 0.987548828125,
+        "chunk_id": 0
+      },
+      {
+        "word": " cáo",
+        "start_time": 104.48,
+        "end_time": 104.6,
+        "probability": 0.99951171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " tiến",
+        "start_time": 104.6,
+        "end_time": 104.82,
+        "probability": 0.9716796875,
+        "chunk_id": 0
+      },
+      {
+        "word": " độ.",
+        "start_time": 104.82,
+        "end_time": 104.96,
+        "probability": 0.458984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " Hàng",
+        "start_time": 104.96,
+        "end_time": 105.62,
+        "probability": 0.03119659423828125,
+        "chunk_id": 0
+      },
+      {
+        "word": " thẳng",
+        "start_time": 108.12,
+        "end_time": 108.36,
+        "probability": 0.637359619140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " đề",
+        "start_time": 108.36,
+        "end_time": 108.6,
+        "probability": 0.40802001953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " ý",
+        "start_time": 108.6,
+        "end_time": 108.74,
+        "probability": 0.443359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " cho",
+        "start_time": 108.74,
+        "end_time": 108.96,
+        "probability": 0.90234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " báo",
+        "start_time": 109.05,
+        "end_time": 109.33,
+        "probability": 0.44146728515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " cáo",
+        "start_time": 109.33,
+        "end_time": 109.43,
+        "probability": 0.98583984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " chuẩn",
+        "start_time": 109.43,
+        "end_time": 109.71,
+        "probability": 0.7057291666666666,
+        "chunk_id": 0
+      },
+      {
+        "word": " bày",
+        "start_time": 109.71,
+        "end_time": 109.87,
+        "probability": 0.623046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " và",
+        "start_time": 109.87,
+        "end_time": 110.05,
+        "probability": 0.8701171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " thiết",
+        "start_time": 110.05,
+        "end_time": 110.27,
+        "probability": 0.765380859375,
+        "chunk_id": 0
+      },
+      {
+        "word": " kế",
+        "start_time": 110.27,
+        "end_time": 110.35,
+        "probability": 0.94921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " em",
+        "start_time": 110.35,
+        "end_time": 110.57,
+        "probability": 0.2056884765625,
+        "chunk_id": 0
+      },
+      {
+        "word": " cô",
+        "start_time": 110.57,
+        "end_time": 110.67,
+        "probability": 0.4912109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " gác",
+        "start_time": 110.67,
+        "end_time": 110.89,
+        "probability": 0.5792236328125,
+        "chunk_id": 0
+      },
+      {
+        "word": " thức",
+        "start_time": 110.89,
+        "end_time": 111.13,
+        "probability": 0.3616943359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " cho",
+        "start_time": 111.13,
+        "end_time": 111.33,
+        "probability": 0.5576171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " phần",
+        "start_time": 111.33,
+        "end_time": 111.49,
+        "probability": 0.843994140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " số",
+        "start_time": 111.49,
+        "end_time": 111.61,
+        "probability": 0.982421875,
+        "chunk_id": 0
+      },
+      {
+        "word": " 4",
+        "start_time": 111.61,
+        "end_time": 111.75,
+        "probability": 0.3330078125,
+        "chunk_id": 0
+      },
+      {
+        "word": " đầu",
+        "start_time": 111.75,
+        "end_time": 112.03,
+        "probability": 0.98193359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " tiên",
+        "start_time": 112.03,
+        "end_time": 112.11,
+        "probability": 0.770751953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " của",
+        "start_time": 112.11,
+        "end_time": 112.21,
+        "probability": 0.95068359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " nước",
+        "start_time": 112.21,
+        "end_time": 112.45,
+        "probability": 0.293701171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " ngoài.",
+        "start_time": 112.45,
+        "end_time": 112.67,
+        "probability": 0.976806640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " Nhưng",
+        "start_time": 113.55,
+        "end_time": 113.99,
+        "probability": 0.57025146484375,
+        "chunk_id": 0
+      },
+      {
+        "word": " mà",
+        "start_time": 113.99,
+        "end_time": 114.43,
+        "probability": 0.7724609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " em",
+        "start_time": 114.43,
+        "end_time": 115.49,
+        "probability": 0.66650390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " cứ",
+        "start_time": 115.49,
+        "end_time": 115.93,
+        "probability": 0.13818359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " xin",
+        "start_time": 115.93,
+        "end_time": 116.39,
+        "probability": 0.89208984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " em",
+        "start_time": 116.39,
+        "end_time": 116.61,
+        "probability": 0.1220703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " gửi",
+        "start_time": 116.61,
+        "end_time": 116.79,
+        "probability": 0.89208984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " gửi",
+        "start_time": 116.79,
+        "end_time": 117.09,
+        "probability": 0.501953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " khoản",
+        "start_time": 117.09,
+        "end_time": 117.43,
+        "probability": 0.4384765625,
+        "chunk_id": 0
+      },
+      {
+        "word": " ảnh",
+        "start_time": 117.43,
+        "end_time": 117.59,
+        "probability": 0.9108072916666666,
+        "chunk_id": 0
+      },
+      {
+        "word": " về",
+        "start_time": 117.59,
+        "end_time": 117.75,
+        "probability": 0.8515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " chỉ",
+        "start_time": 117.75,
+        "end_time": 117.93,
+        "probability": 0.1883544921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " số",
+        "start_time": 117.93,
+        "end_time": 118.17,
+        "probability": 0.99609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " S",
+        "start_time": 118.17,
+        "end_time": 118.63,
+        "probability": 0.51806640625,
+        "chunk_id": 0
+      },
+      {
+        "word": ".I",
+        "start_time": 118.63,
+        "end_time": 118.63,
+        "probability": 0.23687744140625,
+        "chunk_id": 0
+      },
+      {
+        "word": ".A",
+        "start_time": 118.63,
+        "end_time": 118.77,
+        "probability": 0.966064453125,
+        "chunk_id": 0
+      },
+      {
+        "word": " để",
+        "start_time": 118.77,
+        "end_time": 118.95,
+        "probability": 0.80322265625,
+        "chunk_id": 0
+      },
+      {
+        "word": " mũi",
+        "start_time": 118.95,
+        "end_time": 119.21,
+        "probability": 0.45677947998046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " họa.",
+        "start_time": 119.21,
+        "end_time": 119.75,
+        "probability": 0.75390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " Thì",
+        "start_time": 120.21,
+        "end_time": 120.65,
+        "probability": 0.818603515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " không",
+        "start_time": 120.65,
+        "end_time": 120.87,
+        "probability": 0.7177734375,
+        "chunk_id": 0
+      },
+      {
+        "word": " biết",
+        "start_time": 120.87,
+        "end_time": 121.03,
+        "probability": 0.9931640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " là",
+        "start_time": 121.03,
+        "end_time": 121.27,
+        "probability": 0.95703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " Linh",
+        "start_time": 121.27,
+        "end_time": 121.51,
+        "probability": 0.96142578125,
+        "chunk_id": 0
+      },
+      {
+        "word": " em",
+        "start_time": 121.51,
+        "end_time": 121.69,
+        "probability": 0.93359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " có",
+        "start_time": 121.69,
+        "end_time": 121.75,
+        "probability": 0.98046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " gửi",
+        "start_time": 121.75,
+        "end_time": 122.05,
+        "probability": 0.9921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " cho",
+        "start_time": 122.05,
+        "end_time": 122.19,
+        "probability": 0.96630859375,
+        "chunk_id": 0
+      },
+      {
+        "word": " chị",
+        "start_time": 122.19,
+        "end_time": 122.45,
+        "probability": 0.9755859375,
+        "chunk_id": 0
+      },
+      {
+        "word": " bộ",
+        "start_time": 122.45,
+        "end_time": 122.73,
+        "probability": 0.7291259765625,
+        "chunk_id": 0
+      },
+      {
+        "word": " số",
+        "start_time": 122.73,
+        "end_time": 122.85,
+        "probability": 0.9990234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " vậy",
+        "start_time": 122.85,
+        "end_time": 123.03,
+        "probability": 0.410400390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " đó",
+        "start_time": 123.03,
+        "end_time": 123.11,
+        "probability": 0.8203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " được",
+        "start_time": 123.11,
+        "end_time": 123.29,
+        "probability": 0.931640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " không?",
+        "start_time": 123.29,
+        "end_time": 123.45,
+        "probability": 0.94189453125,
+        "chunk_id": 0
+      },
+      {
+        "word": " Dạ",
+        "start_time": 124.35,
+        "end_time": 124.55,
+        "probability": 0.743408203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " được",
+        "start_time": 124.55,
+        "end_time": 124.77,
+        "probability": 0.8740234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " chị,",
+        "start_time": 124.77,
+        "end_time": 125.25,
+        "probability": 0.9765625,
+        "chunk_id": 0
+      },
+      {
+        "word": " để",
+        "start_time": 125.95,
+        "end_time": 126.23,
+        "probability": 0.88232421875,
+        "chunk_id": 0
+      },
+      {
+        "word": " em",
+        "start_time": 126.23,
+        "end_time": 126.43,
+        "probability": 0.99072265625,
+        "chunk_id": 0
+      },
+      {
+        "word": " gửi",
+        "start_time": 126.43,
+        "end_time": 127.23,
+        "probability": 0.9978841145833334,
+        "chunk_id": 0
+      },
+      {
+        "word": " chiều",
+        "start_time": 127.23,
+        "end_time": 127.41,
+        "probability": 0.964599609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " nay",
+        "start_time": 127.41,
+        "end_time": 127.65,
+        "probability": 0.958984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " cho",
+        "start_time": 127.65,
+        "end_time": 127.85,
+        "probability": 0.9931640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " chị",
+        "start_time": 127.85,
+        "end_time": 128.03,
+        "probability": 0.99365234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " nha.",
+        "start_time": 128.03,
+        "end_time": 128.21,
+        "probability": 0.947021484375,
+        "chunk_id": 0
+      },
+      {
+        "word": " Ok,",
+        "start_time": 128.83,
+        "end_time": 129.27,
+        "probability": 0.1568603515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " anh",
+        "start_time": 130.19,
+        "end_time": 130.47,
+        "probability": 0.2373046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " kêu",
+        "start_time": 130.47,
+        "end_time": 130.67,
+        "probability": 0.931396484375,
+        "chunk_id": 0
+      },
+      {
+        "word": " em",
+        "start_time": 130.67,
+        "end_time": 130.89,
+        "probability": 0.98681640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " nha.",
+        "start_time": 130.89,
+        "end_time": 131.31,
+        "probability": 0.982177734375,
+        "chunk_id": 0
+      },
+      {
+        "word": " Em",
+        "start_time": 132.48,
+        "end_time": 132.88,
+        "probability": 0.328125,
+        "chunk_id": 0
+      },
+      {
+        "word": " cũng",
+        "start_time": 132.88,
+        "end_time": 133.04,
+        "probability": 0.83984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " muốn",
+        "start_time": 133.04,
+        "end_time": 133.24,
+        "probability": 0.9765625,
+        "chunk_id": 0
+      },
+      {
+        "word": " hỏi",
+        "start_time": 133.24,
+        "end_time": 133.72,
+        "probability": 0.9794921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " anh",
+        "start_time": 133.72,
+        "end_time": 134.18,
+        "probability": 0.8759765625,
+        "chunk_id": 0
+      },
+      {
+        "word": " Nam",
+        "start_time": 134.18,
+        "end_time": 134.34,
+        "probability": 0.380615234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " về",
+        "start_time": 134.34,
+        "end_time": 134.88,
+        "probability": 0.73681640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " cái",
+        "start_time": 134.88,
+        "end_time": 135.6,
+        "probability": 0.1324462890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " bản",
+        "start_time": 135.6,
+        "end_time": 135.68,
+        "probability": 0.62109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " thiền",
+        "start_time": 135.68,
+        "end_time": 135.88,
+        "probability": 0.5880126953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " chiến",
+        "start_time": 135.88,
+        "end_time": 136.0,
+        "probability": 0.7137451171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " cuối",
+        "start_time": 136.0,
+        "end_time": 136.24,
+        "probability": 0.9814453125,
+        "chunk_id": 0
+      },
+      {
+        "word": " cùng",
+        "start_time": 136.24,
+        "end_time": 136.52,
+        "probability": 0.99462890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " thì",
+        "start_time": 136.52,
+        "end_time": 136.96,
+        "probability": 0.31005859375,
+        "chunk_id": 0
+      },
+      {
+        "word": " mình",
+        "start_time": 136.96,
+        "end_time": 137.26,
+        "probability": 0.91015625,
+        "chunk_id": 0
+      },
+      {
+        "word": " có",
+        "start_time": 137.26,
+        "end_time": 138.14,
+        "probability": 0.8525390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " còn",
+        "start_time": 138.14,
+        "end_time": 138.26,
+        "probability": 0.267578125,
+        "chunk_id": 0
+      },
+      {
+        "word": " bổ",
+        "start_time": 138.26,
+        "end_time": 138.46,
+        "probability": 0.5595703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " sung",
+        "start_time": 138.46,
+        "end_time": 138.66,
+        "probability": 0.97265625,
+        "chunk_id": 0
+      },
+      {
+        "word": " phần",
+        "start_time": 138.66,
+        "end_time": 138.94,
+        "probability": 0.879638671875,
+        "chunk_id": 0
+      },
+      {
+        "word": " tiến",
+        "start_time": 138.94,
+        "end_time": 139.18,
+        "probability": 0.646728515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " lĩ",
+        "start_time": 139.18,
+        "end_time": 139.26,
+        "probability": 0.494140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " chính",
+        "start_time": 139.26,
+        "end_time": 139.46,
+        "probability": 0.7705078125,
+        "chunk_id": 0
+      },
+      {
+        "word": " sách",
+        "start_time": 139.46,
+        "end_time": 139.58,
+        "probability": 0.8701171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " không?",
+        "start_time": 139.58,
+        "end_time": 140.08,
+        "probability": 0.9287109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " Có",
+        "start_time": 140.32,
+        "end_time": 140.38,
+        "probability": 0.828125,
+        "chunk_id": 0
+      },
+      {
+        "word": " chứ,",
+        "start_time": 140.38,
+        "end_time": 140.86,
+        "probability": 0.89208984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " phần",
+        "start_time": 141.16,
+        "end_time": 141.34,
+        "probability": 0.98828125,
+        "chunk_id": 0
+      },
+      {
+        "word": " đó",
+        "start_time": 141.34,
+        "end_time": 141.52,
+        "probability": 0.99951171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " nó",
+        "start_time": 141.52,
+        "end_time": 142.12,
+        "probability": 0.8505859375,
+        "chunk_id": 0
+      },
+      {
+        "word": " quan",
+        "start_time": 142.12,
+        "end_time": 142.32,
+        "probability": 0.98291015625,
+        "chunk_id": 0
+      },
+      {
+        "word": " trọng,",
+        "start_time": 142.32,
+        "end_time": 142.56,
+        "probability": 0.998046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " tại",
+        "start_time": 142.74,
+        "end_time": 142.84,
+        "probability": 0.9169921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " vì",
+        "start_time": 142.84,
+        "end_time": 143.1,
+        "probability": 0.97802734375,
+        "chunk_id": 0
+      },
+      {
+        "word": " mình",
+        "start_time": 143.1,
+        "end_time": 144.44,
+        "probability": 0.97412109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " mình",
+        "start_time": 144.44,
+        "end_time": 144.54,
+        "probability": 0.492919921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " sẽ",
+        "start_time": 144.54,
+        "end_time": 144.92,
+        "probability": 0.253662109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " chịu",
+        "start_time": 144.92,
+        "end_time": 145.18,
+        "probability": 0.991943359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " trách",
+        "start_time": 145.18,
+        "end_time": 145.32,
+        "probability": 0.84912109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhiệm",
+        "start_time": 145.32,
+        "end_time": 145.4,
+        "probability": 0.9910481770833334,
+        "chunk_id": 0
+      },
+      {
+        "word": " với",
+        "start_time": 145.4,
+        "end_time": 145.54,
+        "probability": 0.1435546875,
+        "chunk_id": 0
+      },
+      {
+        "word": " nội",
+        "start_time": 145.54,
+        "end_time": 145.78,
+        "probability": 0.940185546875,
+        "chunk_id": 0
+      },
+      {
+        "word": " dung.",
+        "start_time": 145.78,
+        "end_time": 146.06,
+        "probability": 0.971923828125,
+        "chunk_id": 0
+      },
+      {
+        "word": " Còn",
+        "start_time": 146.16,
+        "end_time": 146.48,
+        "probability": 0.987548828125,
+        "chunk_id": 0
+      },
+      {
+        "word": " Hương",
+        "start_time": 146.48,
+        "end_time": 146.7,
+        "probability": 0.843994140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " thì",
+        "start_time": 146.7,
+        "end_time": 147.62,
+        "probability": 0.92431640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " sẽ",
+        "start_time": 147.62,
+        "end_time": 147.78,
+        "probability": 0.67041015625,
+        "chunk_id": 0
+      },
+      {
+        "word": " lo",
+        "start_time": 147.78,
+        "end_time": 147.94,
+        "probability": 0.958984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " phần",
+        "start_time": 147.94,
+        "end_time": 148.16,
+        "probability": 0.97412109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " trình",
+        "start_time": 148.16,
+        "end_time": 148.34,
+        "probability": 0.870849609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " bài",
+        "start_time": 148.34,
+        "end_time": 148.48,
+        "probability": 0.696044921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " cho",
+        "start_time": 148.48,
+        "end_time": 148.62,
+        "probability": 0.841796875,
+        "chunk_id": 0
+      },
+      {
+        "word": " đẹp",
+        "start_time": 148.62,
+        "end_time": 148.84,
+        "probability": 0.9716796875,
+        "chunk_id": 0
+      },
+      {
+        "word": " mắt.",
+        "start_time": 148.84,
+        "end_time": 149.04,
+        "probability": 0.979248046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " Hai",
+        "start_time": 149.7,
+        "end_time": 149.8,
+        "probability": 0.6044921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " người",
+        "start_time": 149.8,
+        "end_time": 150.08,
+        "probability": 0.98388671875,
+        "chunk_id": 0
+      },
+      {
+        "word": " cùng",
+        "start_time": 150.08,
+        "end_time": 150.28,
+        "probability": 0.93505859375,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhau",
+        "start_time": 150.28,
+        "end_time": 150.42,
+        "probability": 0.986572265625,
+        "chunk_id": 0
+      },
+      {
+        "word": " khói",
+        "start_time": 150.42,
+        "end_time": 150.62,
+        "probability": 0.6956380208333334,
+        "chunk_id": 0
+      },
+      {
+        "word": " hợp",
+        "start_time": 150.62,
+        "end_time": 150.76,
+        "probability": 0.9873046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " nha.",
+        "start_time": 150.76,
+        "end_time": 150.96,
+        "probability": 0.958740234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " Dạ",
+        "start_time": 152.02,
+        "end_time": 152.1,
+        "probability": 0.8701171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " ok,",
+        "start_time": 152.1,
+        "end_time": 152.48,
+        "probability": 0.451904296875,
+        "chunk_id": 0
+      },
+      {
+        "word": " em",
+        "start_time": 152.7,
+        "end_time": 152.94,
+        "probability": 0.82080078125,
+        "chunk_id": 0
+      },
+      {
+        "word": " với",
+        "start_time": 152.94,
+        "end_time": 153.0,
+        "probability": 0.86083984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " Hương",
+        "start_time": 153.0,
+        "end_time": 153.24,
+        "probability": 0.98974609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " sẽ",
+        "start_time": 153.24,
+        "end_time": 153.72,
+        "probability": 0.95751953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " cố",
+        "start_time": 153.72,
+        "end_time": 153.92,
+        "probability": 0.98828125,
+        "chunk_id": 0
+      },
+      {
+        "word": " gắng",
+        "start_time": 153.92,
+        "end_time": 154.0,
+        "probability": 0.998779296875,
+        "chunk_id": 0
+      },
+      {
+        "word": " làm",
+        "start_time": 154.0,
+        "end_time": 154.2,
+        "probability": 0.92138671875,
+        "chunk_id": 0
+      },
+      {
+        "word": " việc",
+        "start_time": 154.2,
+        "end_time": 154.36,
+        "probability": 0.9931640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " riêng",
+        "start_time": 154.36,
+        "end_time": 154.66,
+        "probability": 0.82763671875,
+        "chunk_id": 0
+      },
+      {
+        "word": " để",
+        "start_time": 154.66,
+        "end_time": 154.8,
+        "probability": 0.9755859375,
+        "chunk_id": 0
+      },
+      {
+        "word": " phóng",
+        "start_time": 154.8,
+        "end_time": 155.06,
+        "probability": 0.79052734375,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhất",
+        "start_time": 155.06,
+        "end_time": 155.18,
+        "probability": 0.56640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " phần",
+        "start_time": 155.18,
+        "end_time": 155.48,
+        "probability": 0.7183837890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " đó",
+        "start_time": 155.48,
+        "end_time": 155.68,
+        "probability": 0.99658203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " trong",
+        "start_time": 155.68,
+        "end_time": 155.84,
+        "probability": 0.970703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " tuần",
+        "start_time": 155.84,
+        "end_time": 156.0,
+        "probability": 0.96875,
+        "chunk_id": 0
+      },
+      {
+        "word": " này",
+        "start_time": 156.0,
+        "end_time": 156.16,
+        "probability": 0.99072265625,
+        "chunk_id": 0
+      },
+      {
+        "word": " nha.",
+        "start_time": 156.16,
+        "end_time": 156.32,
+        "probability": 0.9501953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " Ok,",
+        "start_time": 156.32,
+        "end_time": 156.92,
+        "probability": 0.283935546875,
+        "chunk_id": 0
+      },
+      {
+        "word": " giờ",
+        "start_time": 157.2,
+        "end_time": 157.44,
+        "probability": 0.496826171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " chốt",
+        "start_time": 157.44,
+        "end_time": 157.6,
+        "probability": 0.7099609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " lại",
+        "start_time": 157.6,
+        "end_time": 157.92,
+        "probability": 0.99365234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " cuối",
+        "start_time": 157.92,
+        "end_time": 158.06,
+        "probability": 0.87744140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " cùng",
+        "start_time": 158.06,
+        "end_time": 158.46,
+        "probability": 0.9970703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " thì",
+        "start_time": 158.46,
+        "end_time": 158.78,
+        "probability": 0.74365234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " deadline",
+        "start_time": 158.78,
+        "end_time": 159.24,
+        "probability": 0.677734375,
+        "chunk_id": 0
+      },
+      {
+        "word": " của",
+        "start_time": 159.24,
+        "end_time": 159.94,
+        "probability": 0.95458984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " Như",
+        "start_time": 159.94,
+        "end_time": 160.14,
+        "probability": 0.5086212158203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " sao?",
+        "start_time": 160.14,
+        "end_time": 160.36,
+        "probability": 0.251953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " Đó",
+        "start_time": 160.68,
+        "end_time": 160.68,
+        "probability": 0.900146484375,
+        "chunk_id": 0
+      },
+      {
+        "word": " là",
+        "start_time": 160.68,
+        "end_time": 160.98,
+        "probability": 0.998046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " thứ",
+        "start_time": 160.98,
+        "end_time": 161.2,
+        "probability": 0.56201171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " 6",
+        "start_time": 161.2,
+        "end_time": 161.38,
+        "probability": 0.884765625,
+        "chunk_id": 0
+      },
+      {
+        "word": " này",
+        "start_time": 161.38,
+        "end_time": 161.94,
+        "probability": 0.95068359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " sẽ",
+        "start_time": 161.94,
+        "end_time": 162.48,
+        "probability": 0.73291015625,
+        "chunk_id": 0
+      },
+      {
+        "word": " có",
+        "start_time": 162.48,
+        "end_time": 163.28,
+        "probability": 0.974609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " bản",
+        "start_time": 163.28,
+        "end_time": 163.44,
+        "probability": 0.886474609375,
+        "chunk_id": 0
+      },
+      {
+        "word": " cập",
+        "start_time": 163.44,
+        "end_time": 163.6,
+        "probability": 0.9794921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " nhật",
+        "start_time": 163.6,
+        "end_time": 163.76,
+        "probability": 0.970458984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " phân",
+        "start_time": 163.76,
+        "end_time": 164.0,
+        "probability": 0.9541015625,
+        "chunk_id": 0
+      },
+      {
+        "word": " tích",
+        "start_time": 164.0,
+        "end_time": 164.08,
+        "probability": 0.992431640625,
+        "chunk_id": 0
+      },
+      {
+        "word": " vĩ",
+        "start_time": 164.08,
+        "end_time": 164.36,
+        "probability": 0.5435791015625,
+        "chunk_id": 0
+      },
+      {
+        "word": " mô",
+        "start_time": 164.36,
+        "end_time": 164.56,
+        "probability": 0.9619140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " và",
+        "start_time": 164.56,
+        "end_time": 164.76,
+        "probability": 0.98388671875,
+        "chunk_id": 0
+      },
+      {
+        "word": " dữ",
+        "start_time": 164.76,
+        "end_time": 164.92,
+        "probability": 0.93212890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " liệu",
+        "start_time": 164.92,
+        "end_time": 165.02,
+        "probability": 0.994873046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " bổ",
+        "start_time": 165.02,
+        "end_time": 165.26,
+        "probability": 0.98583984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " sung.",
+        "start_time": 165.26,
+        "end_time": 165.76,
+        "probability": 0.77001953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " Còn",
+        "start_time": 165.88,
+        "end_time": 166.0,
+        "probability": 0.982177734375,
+        "chunk_id": 0
+      },
+      {
+        "word": " thứ",
+        "start_time": 166.0,
+        "end_time": 166.14,
+        "probability": 0.40625,
+        "chunk_id": 0
+      },
+      {
+        "word": " 4",
+        "start_time": 166.14,
+        "end_time": 166.24,
+        "probability": 0.94970703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " tuần",
+        "start_time": 166.24,
+        "end_time": 166.42,
+        "probability": 0.924560546875,
+        "chunk_id": 0
+      },
+      {
+        "word": " sau",
+        "start_time": 166.42,
+        "end_time": 166.76,
+        "probability": 0.986328125,
+        "chunk_id": 0
+      },
+      {
+        "word": " sẽ",
+        "start_time": 166.76,
+        "end_time": 167.06,
+        "probability": 0.97119140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " có",
+        "start_time": 167.06,
+        "end_time": 167.4,
+        "probability": 0.9912109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " bản",
+        "start_time": 167.4,
+        "end_time": 167.64,
+        "probability": 0.9775390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " dữ",
+        "start_time": 167.64,
+        "end_time": 167.86,
+        "probability": 0.6566162109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " báo",
+        "start_time": 167.86,
+        "end_time": 168.14,
+        "probability": 0.99267578125,
+        "chunk_id": 0
+      },
+      {
+        "word": " GDP",
+        "start_time": 168.14,
+        "end_time": 168.8,
+        "probability": 0.53515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " từ",
+        "start_time": 168.8,
+        "end_time": 169.34,
+        "probability": 0.9462890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " Linh.",
+        "start_time": 169.34,
+        "end_time": 170.16,
+        "probability": 0.953857421875,
+        "chunk_id": 0
+      },
+      {
+        "word": " Cuối",
+        "start_time": 170.22,
+        "end_time": 170.38,
+        "probability": 0.968505859375,
+        "chunk_id": 0
+      },
+      {
+        "word": " tuần",
+        "start_time": 170.38,
+        "end_time": 170.56,
+        "probability": 0.96533203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " sau",
+        "start_time": 170.56,
+        "end_time": 171.0,
+        "probability": 0.99658203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " sẽ",
+        "start_time": 171.0,
+        "end_time": 172.1,
+        "probability": 0.96875,
+        "chunk_id": 0
+      },
+      {
+        "word": " là",
+        "start_time": 172.1,
+        "end_time": 172.24,
+        "probability": 0.90283203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " hoàn",
+        "start_time": 172.24,
+        "end_time": 172.38,
+        "probability": 0.973876953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " hiện",
+        "start_time": 172.38,
+        "end_time": 172.5,
+        "probability": 0.8935546875,
+        "chunk_id": 0
+      },
+      {
+        "word": " báo",
+        "start_time": 172.5,
+        "end_time": 172.76,
+        "probability": 0.990478515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " cáo",
+        "start_time": 172.76,
+        "end_time": 172.9,
+        "probability": 0.999267578125,
+        "chunk_id": 0
+      },
+      {
+        "word": " trình",
+        "start_time": 172.9,
+        "end_time": 173.12,
+        "probability": 0.79736328125,
+        "chunk_id": 0
+      },
+      {
+        "word": " chiếu",
+        "start_time": 173.12,
+        "end_time": 173.34,
+        "probability": 0.970947265625,
+        "chunk_id": 0
+      },
+      {
+        "word": " và",
+        "start_time": 173.34,
+        "end_time": 173.74,
+        "probability": 0.98095703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " khuyến",
+        "start_time": 173.74,
+        "end_time": 173.94,
+        "probability": 0.8487955729166666,
+        "chunk_id": 0
+      },
+      {
+        "word": " nghị",
+        "start_time": 173.94,
+        "end_time": 174.0,
+        "probability": 0.951171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " cách",
+        "start_time": 174.0,
+        "end_time": 174.14,
+        "probability": 0.95263671875,
+        "chunk_id": 0
+      },
+      {
+        "word": " chính",
+        "start_time": 174.14,
+        "end_time": 174.4,
+        "probability": 0.92578125,
+        "chunk_id": 0
+      },
+      {
+        "word": " sách.",
+        "start_time": 174.4,
+        "end_time": 174.54,
+        "probability": 0.7978515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " Dạ",
+        "start_time": 176.03,
+        "end_time": 176.21,
+        "probability": 0.938720703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " ok,",
+        "start_time": 176.21,
+        "end_time": 176.61,
+        "probability": 0.338623046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " rõ",
+        "start_time": 176.67,
+        "end_time": 176.93,
+        "probability": 0.994384765625,
+        "chunk_id": 0
+      },
+      {
+        "word": " xếp.",
+        "start_time": 176.93,
+        "end_time": 177.59,
+        "probability": 0.87109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " Dạ",
+        "start_time": 178.16,
+        "end_time": 178.4,
+        "probability": 0.96826171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " em",
+        "start_time": 178.4,
+        "end_time": 178.58,
+        "probability": 0.48291015625,
+        "chunk_id": 0
+      },
+      {
+        "word": " cũng",
+        "start_time": 178.58,
+        "end_time": 178.84,
+        "probability": 0.9921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " sẽ",
+        "start_time": 178.84,
+        "end_time": 179.34,
+        "probability": 0.96044921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " hoàn",
+        "start_time": 179.34,
+        "end_time": 179.6,
+        "probability": 0.974853515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " hiện",
+        "start_time": 179.6,
+        "end_time": 179.74,
+        "probability": 0.449462890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " phần",
+        "start_time": 179.74,
+        "end_time": 179.96,
+        "probability": 0.774658203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " trình",
+        "start_time": 179.96,
+        "end_time": 180.06,
+        "probability": 0.5501708984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " bài",
+        "start_time": 180.06,
+        "end_time": 180.22,
+        "probability": 0.3897705078125,
+        "chunk_id": 0
+      },
+      {
+        "word": " đúng",
+        "start_time": 180.22,
+        "end_time": 180.48,
+        "probability": 0.96728515625,
+        "chunk_id": 0
+      },
+      {
+        "word": " hạn.",
+        "start_time": 180.48,
+        "end_time": 180.78,
+        "probability": 0.5394287109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " Em",
+        "start_time": 182.06,
+        "end_time": 182.5,
+        "probability": 0.1795654296875,
+        "chunk_id": 0
+      },
+      {
+        "word": " sẽ",
+        "start_time": 182.5,
+        "end_time": 182.66,
+        "probability": 0.86767578125,
+        "chunk_id": 0
+      },
+      {
+        "word": " gửi",
+        "start_time": 182.66,
+        "end_time": 182.92,
+        "probability": 0.9669596354166666,
+        "chunk_id": 0
+      },
+      {
+        "word": " cái",
+        "start_time": 182.92,
+        "end_time": 183.06,
+        "probability": 0.48046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " bản",
+        "start_time": 183.06,
+        "end_time": 183.52,
+        "probability": 0.8193359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " dự",
+        "start_time": 183.52,
+        "end_time": 183.82,
+        "probability": 0.588623046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " thảo",
+        "start_time": 183.82,
+        "end_time": 184.08,
+        "probability": 0.734619140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " khuyến",
+        "start_time": 184.08,
+        "end_time": 184.36,
+        "probability": 0.7003580729166666,
+        "chunk_id": 0
+      },
+      {
+        "word": " nghị",
+        "start_time": 184.36,
+        "end_time": 184.86,
+        "probability": 0.49462890625,
+        "chunk_id": 0
+      },
+      {
+        "word": " chính",
+        "start_time": 184.86,
+        "end_time": 185.12,
+        "probability": 0.00424957275390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " sách",
+        "start_time": 185.12,
+        "end_time": 185.3,
+        "probability": 0.691650390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " sớm",
+        "start_time": 185.3,
+        "end_time": 185.62,
+        "probability": 0.8504231770833334,
+        "chunk_id": 0
+      },
+      {
+        "word": " để",
+        "start_time": 185.62,
+        "end_time": 185.78,
+        "probability": 0.79638671875,
+        "chunk_id": 0
+      },
+      {
+        "word": " cho",
+        "start_time": 185.78,
+        "end_time": 185.94,
+        "probability": 0.9775390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " mọi",
+        "start_time": 185.94,
+        "end_time": 186.06,
+        "probability": 0.9833984375,
+        "chunk_id": 0
+      },
+      {
+        "word": " người",
+        "start_time": 186.06,
+        "end_time": 186.2,
+        "probability": 0.98828125,
+        "chunk_id": 0
+      },
+      {
+        "word": " có",
+        "start_time": 186.2,
+        "end_time": 186.36,
+        "probability": 0.058441162109375,
+        "chunk_id": 0
+      },
+      {
+        "word": " biết",
+        "start_time": 186.36,
+        "end_time": 186.58,
+        "probability": 0.22998046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " nha.",
+        "start_time": 186.58,
+        "end_time": 186.8,
+        "probability": 0.88720703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " Ok,",
+        "start_time": 188.8,
+        "end_time": 189.24,
+        "probability": 0.21826171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " nếu",
+        "start_time": 190.04,
+        "end_time": 190.28,
+        "probability": 0.705078125,
+        "chunk_id": 0
+      },
+      {
+        "word": " không",
+        "start_time": 190.28,
+        "end_time": 190.56,
+        "probability": 0.92578125,
+        "chunk_id": 0
+      },
+      {
+        "word": " ai",
+        "start_time": 190.56,
+        "end_time": 190.7,
+        "probability": 0.5966796875,
+        "chunk_id": 0
+      },
+      {
+        "word": " có",
+        "start_time": 190.7,
+        "end_time": 190.86,
+        "probability": 0.95751953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " ý",
+        "start_time": 190.86,
+        "end_time": 191.0,
+        "probability": 0.994140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " kiến",
+        "start_time": 191.0,
+        "end_time": 191.08,
+        "probability": 0.942626953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " gì",
+        "start_time": 191.08,
+        "end_time": 191.24,
+        "probability": 0.91455078125,
+        "chunk_id": 0
+      },
+      {
+        "word": " nữa",
+        "start_time": 191.24,
+        "end_time": 191.46,
+        "probability": 0.970703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " thì",
+        "start_time": 191.46,
+        "end_time": 191.96,
+        "probability": 0.9296875,
+        "chunk_id": 0
+      },
+      {
+        "word": " buổi",
+        "start_time": 191.96,
+        "end_time": 192.1,
+        "probability": 0.9248046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " hợp",
+        "start_time": 192.1,
+        "end_time": 192.28,
+        "probability": 0.7547200520833334,
+        "chunk_id": 0
+      },
+      {
+        "word": " kết",
+        "start_time": 192.28,
+        "end_time": 192.46,
+        "probability": 0.9619140625,
+        "chunk_id": 0
+      },
+      {
+        "word": " thúc.",
+        "start_time": 192.46,
+        "end_time": 192.66,
+        "probability": 0.9970703125,
+        "chunk_id": 0
+      },
+      {
+        "word": " Cảm",
+        "start_time": 192.88,
+        "end_time": 192.96,
+        "probability": 0.9718424479166666,
+        "chunk_id": 0
+      },
+      {
+        "word": " ơn",
+        "start_time": 192.96,
+        "end_time": 192.98,
+        "probability": 0.9990234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " mọi",
+        "start_time": 192.98,
+        "end_time": 193.12,
+        "probability": 0.994873046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " người,",
+        "start_time": 193.12,
+        "end_time": 193.34,
+        "probability": 0.998046875,
+        "chunk_id": 0
+      },
+      {
+        "word": " chúc",
+        "start_time": 193.4,
+        "end_time": 193.5,
+        "probability": 0.992919921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " mọi",
+        "start_time": 193.5,
+        "end_time": 193.64,
+        "probability": 0.996826171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " người",
+        "start_time": 193.64,
+        "end_time": 193.82,
+        "probability": 0.98876953125,
+        "chunk_id": 0
+      },
+      {
+        "word": " có",
+        "start_time": 193.82,
+        "end_time": 193.96,
+        "probability": 0.68408203125,
+        "chunk_id": 0
+      },
+      {
+        "word": " một",
+        "start_time": 193.96,
+        "end_time": 194.08,
+        "probability": 0.67919921875,
+        "chunk_id": 0
+      },
+      {
+        "word": " tuần",
+        "start_time": 194.08,
+        "end_time": 194.3,
+        "probability": 0.926025390625,
+        "chunk_id": 0
+      },
+      {
+        "word": " vui",
+        "start_time": 194.3,
+        "end_time": 194.52,
+        "probability": 0.921630859375,
+        "chunk_id": 0
+      },
+      {
+        "word": " mẻ",
+        "start_time": 194.52,
+        "end_time": 194.74,
+        "probability": 0.8193359375,
+        "chunk_id": 0
+      },
+      {
+        "word": " nha.",
+        "start_time": 194.74,
+        "end_time": 195.08,
+        "probability": 0.965576171875,
+        "chunk_id": 0
+      },
+      {
+        "word": " Dạ",
+        "start_time": 195.54,
+        "end_time": 195.54,
+        "probability": 0.6014404296875,
+        "chunk_id": 0
+      },
+      {
+        "word": " cảm",
+        "start_time": 195.54,
+        "end_time": 195.8,
+        "probability": 0.255615234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " ơn.",
+        "start_time": 195.8,
+        "end_time": 196.1,
+        "probability": 0.9990234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " Tạm",
+        "start_time": 197.76,
+        "end_time": 198.08,
+        "probability": 0.6638997395833334,
+        "chunk_id": 0
+      },
+      {
+        "word": " biệt",
+        "start_time": 198.08,
+        "end_time": 198.14,
+        "probability": 0.91552734375,
+        "chunk_id": 0
+      },
+      {
+        "word": " anh",
+        "start_time": 198.14,
+        "end_time": 198.26,
+        "probability": 0.615234375,
+        "chunk_id": 0
+      },
+      {
+        "word": " nha.",
+        "start_time": 198.26,
+        "end_time": 198.6,
+        "probability": 0.940185546875,
+        "chunk_id": 0
+      }
+    ],
+    "language": "vi"
+  },
+  "diarization": {
+    "timeline": [],
+    "speakers": {}
+  },
+  "speakers": {},
+  "segments": [],
+  "llm": {
+    "summary": null,
+    "tasks": [],
+    "insights": []
+  }
+}

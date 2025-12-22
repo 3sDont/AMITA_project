@@ -71,8 +71,13 @@ class MeetingPipeline:
     
     def __init__(self, audio_path: str, output_dir: str = "outputs"):
         self.audio_path = audio_path
-        self.output_dir = output_dir
+        self.base_output_dir = output_dir  # Base outputs folder
         self.meeting_id = self._generate_meeting_id()
+        
+        # ✅ Create dedicated folder for this audio file
+        audio_folder_name = Path(audio_path).stem  # Get filename without extension
+        self.output_dir = os.path.join(output_dir, audio_folder_name)
+        os.makedirs(self.output_dir, exist_ok=True)
         
         # ✅ SSoT - Single Source of Truth
         self.meeting_data = {
@@ -109,14 +114,12 @@ class MeetingPipeline:
         # ✅ Stage timing tracking
         self.stage_timings = {}
         
-        os.makedirs(output_dir, exist_ok=True)
-        
         print(f"\n{'='*80}")
         print(f"🎯 MEETING PIPELINE INITIALIZED")
         print(f"{'='*80}")
         print(f"   Meeting ID: {self.meeting_id}")
         print(f"   Audio: {Path(audio_path).name}")
-        print(f"   Output: {output_dir}")
+        print(f"   Output Folder: {self.output_dir}")
         print(f"{'='*80}\n")
     
     def _generate_meeting_id(self) -> str:
@@ -127,10 +130,32 @@ class MeetingPipeline:
     
     def _save_meeting_json(self):
         """Save meeting.json (SSoT)"""
-        meeting_json_path = os.path.join(self.output_dir, f"{self.meeting_id}_meeting.json")
+        meeting_json_path = os.path.join(self.output_dir, "meeting.json")
         with open(meeting_json_path, 'w', encoding='utf-8') as f:
             json.dump(self.meeting_data, f, ensure_ascii=False, indent=2)
         return meeting_json_path
+    
+    def _save_stage_output(self, stage_name: str, data: dict, file_type: str = 'json'):
+        """Save intermediate stage outputs"""
+        filename = f"{stage_name}.{file_type}"
+        output_path = os.path.join(self.output_dir, filename)
+        
+        if file_type == 'json':
+            with open(output_path, 'w', encoding='utf-8') as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+        elif file_type == 'txt':
+            with open(output_path, 'w', encoding='utf-8') as f:
+                if isinstance(data, dict):
+                    for key, value in data.items():
+                        f.write(f"{key}: {value}\n")
+                elif isinstance(data, list):
+                    for item in data:
+                        f.write(f"{item}\n")
+                else:
+                    f.write(str(data))
+        
+        print(f"      💾 Saved: {filename}")
+        return output_path
     
     def _update_status(self, status: str, stage: str = None):
         """Update pipeline status"""
@@ -142,7 +167,7 @@ class MeetingPipeline:
     
     def get_meeting_json_path(self) -> str:
         """Get path to meeting.json file"""
-        return os.path.join(self.output_dir, f"{self.meeting_id}_meeting.json")
+        return os.path.join(self.output_dir, "meeting.json")
     
     # ==================== STAGE RUNNERS ====================
     
@@ -165,6 +190,8 @@ class MeetingPipeline:
         if self.config["enable_vad"]:
             print(f"      - Speech regions: {len(result['vad_regions'])}")
         
+        # Save stage output
+        self._save_stage_output('stage1_preprocessing', result, 'json')
         self._save_meeting_json()
     
     def run_stage2_chunking(self):
@@ -184,6 +211,8 @@ class MeetingPipeline:
         for i, chunk in enumerate(chunks):
             print(f"      Chunk {i+1}: [{chunk['start']:.1f}s - {chunk['end']:.1f}s]")
         
+        # Save stage output
+        self._save_stage_output('stage2_chunks', {'chunks': chunks, 'count': len(chunks)}, 'json')
         self._save_meeting_json()
     
     def run_stage3_whisper(self):
@@ -206,6 +235,8 @@ class MeetingPipeline:
         print(f"      - Words: {len(result['words'])}")
         print(f"      - Language: {result['language']}")
         
+        # Save stage output
+        self._save_stage_output('stage3_whisper', result, 'json')
         self._save_meeting_json()
     
     def run_stage4_diarization(self):
@@ -228,6 +259,8 @@ class MeetingPipeline:
         print(f"      - Speakers: {len(result['speakers'])}")
         print(f"      - Timeline entries: {len(result['timeline'])}")
         
+        # Save stage output
+        self._save_stage_output('stage4_diarization', result, 'json')
         self._save_meeting_json()
     
     def run_stage5_speaker_assignment(self):
@@ -247,6 +280,8 @@ class MeetingPipeline:
         print(f"   ✅ Speaker assignment complete")
         print(f"      - Assigned segments: {len(segments)}")
         
+        # Save stage output
+        self._save_stage_output('stage5_speaker_assignment', {'segments': segments, 'count': len(segments)}, 'json')
         self._save_meeting_json()
     
     def run_stage6_merge_normalize(self):
@@ -268,6 +303,8 @@ class MeetingPipeline:
         print(f"      - After dedup: {result['stats']['after_dedup']} segments")
         print(f"      - Final: {result['stats']['final_count']} segments")
         
+        # Save stage output
+        self._save_stage_output('stage6_merge_normalize', result, 'json')
         self._save_meeting_json()
     
     def run_stage7_gender(self):
@@ -297,6 +334,8 @@ class MeetingPipeline:
             emoji = "👨" if gender == "Male" else "👩" if gender == "Female" else "❓"
             print(f"      {emoji} {speaker}: {gender}")
         
+        # Save stage output
+        self._save_stage_output('stage7_gender', {'speakers_gender': speakers_gender}, 'json')
         self._save_meeting_json()
     
     def run_stage7_5_spell_check(self):
@@ -338,6 +377,15 @@ class MeetingPipeline:
         print(f"      - Corrected: {num_corrected}")
         print(f"      - Unchanged: {len(segments) - num_corrected}")
         
+        # Save stage output
+        self._save_stage_output('stage7.5_spell_check', {
+            'corrected_segments': corrected_segments,
+            'stats': {
+                'total': len(segments),
+                'corrected': num_corrected,
+                'unchanged': len(segments) - num_corrected
+            }
+        }, 'json')
         self._save_meeting_json()
     
     def run_stage8_meeting_json(self):
@@ -397,6 +445,8 @@ class MeetingPipeline:
         print(f"      - Tasks: {len(llm_result.get('tasks', []))}")
         print(f"      - Insights: {len(llm_result.get('insights', []))}")
         
+        # Save stage output
+        self._save_stage_output('stage9_llm', llm_result, 'json')
         self._save_meeting_json()
     
     def _validate_meeting_json(self) -> Dict:

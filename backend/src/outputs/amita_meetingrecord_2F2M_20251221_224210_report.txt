@@ -1,0 +1,45 @@
+================================================================================
+MEETING STATISTICS REPORT
+================================================================================
+
+📊 BASIC STATISTICS:
+   Total Segments: 13
+   Total Duration: 186.3s (3.1 min)
+   Total Words: 599
+   Avg Segment Duration: 14.3s
+   Avg Words/Segment: 46.1
+   Number of Speakers: 2
+
+👥 SPEAKER STATISTICS:
+
+   SPEAKER_01:
+      Speaking Time: 114.5s (61.5%)
+      Number of Turns: 8
+      Total Words: 371
+      Avg Words/Minute: 194.4
+
+   SPEAKER_00:
+      Speaking Time: 71.8s (38.5%)
+      Number of Turns: 5
+      Total Words: 228
+      Avg Words/Minute: 190.4
+
+================================================================================
+⚙️ PIPELINE INFO:
+   Pipeline Version: 2.0
+   Meeting ID: amita_meetingrecord_2F2M_20251221_224210
+   Created At: 2025-12-21T22:42:10.206339
+   Audio File: D:\Data\amita_meetingrecord_2F2M.mp3
+   Status: processing
+
+================================================================================
+🔧 PROCESSING STATISTICS:
+   Input Segments: 40
+   After Merge: 13
+   After Dedup: 13
+   After Clean: 13
+   Final Count: 13
+   Removed by Quality: 0
+   Fillers Removed: 33
+
+================================================================================

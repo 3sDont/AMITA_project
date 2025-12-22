@@ -1,0 +1,55 @@
+================================================================================
+MEETING TRANSCRIPT
+================================================================================
+Meeting ID: amita_meetingrecord_2F2M_20251221_224210
+Date: 2025-12-21T22:42:10.206339
+Pipeline Version: 2.0
+Audio File: D:\Data\amita_meetingrecord_2F2M.mp3
+================================================================================
+
+[00:01 - 00:15] 👨 Speaker 01:
+Chào mọi người, cảm ơn đã có mặt đúng giờ. Hôm nay chúng ta sẽ hợp lại để cảm nhận tiến độ dự án quan trọng theo xu hướng của Kinh tế năm 2025 và chờ đợi những công việc cần hoàn thành trong hai tuần tới. Linh, em có thể bắt đầu hoàn thành báo cáo dữ liệu.
+
+[00:16 - 00:34] 👩 Speaker 00:
+Dạ, dạ, dạ. Hiện tại nhóm đã hoàn thiện được phần thu thập, lập số liệu từ tổng cục thống kê của hai nhà nước. Nhưng dữ liệu xuất nhập khẩu tháng 9 vẫn còn thiếu một vài triệu tiêu về nhóm hàng công nghệ cao. Em đã gửi các yêu cầu cập nhật cũng như dự kiến của tuần sẽ nhận được anh.
+
+[00:34 - 00:38] 👨 Speaker 01:
+Ok, khi có dữ liệu đầy đủ em sẽ làm tiếp theo.
+
+[00:39 - 00:52] 👩 Speaker 00:
+Chắc chắn em sẽ bắt đầu với bước tiền xử lý trước, sau đó chuẩn hóa dữ liệu và trạm (cũng như) mô hình dự báo GDB theo khu vực Kinh tế. Dự kiến khoảng thứ 4 tuần sau em sẽ gửi cho anh báo cáo phân tích số liệu.
+
+[00:53 - 01:26] 👨 Speaker 01:
+Ok, nhớ đúng hạn deadline nha, cảm ơn em. Còn mình ở mạng phân tích vĩ mô tình hình thế nào? Ở cái phần em đã hoàn thiện báo cáo về lạm phát trên sách tiền tệ. Nhưng phần dự báo tăng trưởng quý thứ 4 cần phải thêm đầu vào từ nhóm của Linh để có thể hiệu chỉnh mô hình. Ngoài ra, em có đề xuất một mục nhỏ về tác động của biến động kỳ giá. Vì gần đây nó có tín hiệu cần chú ý từ mũi.
+
+[01:29 - 01:44] 👨 Speaker 01:
+Ok, em nhớ bỏ xuân phần nhưng em nhớ lưu ý giữ dung lượng báo cáo trong giá hạn 10 trang nha. Dạ ok anh ơi, em sẽ cân đối nội dung với lại người bạn cập nhật vào thứ 6 tháng nha. Ok, rồi còn Hương, nhóm truyền thông và báo cáo tiến độ.
+
+[01:44 - 02:20] 👩 Speaker 00:
+Hàng thẳng đề ý cho báo cáo chuẩn bày và thiết kế tôi cô gác thức cho phần số 4 đầu tiên của nước ngoài. Nhưng tôi cứ xin tôi gửi gửi khoản ảnh về chỉ số S. I. A để minh họa. không biết Linh tôi có gửi cho chị bộ số vậy được không? Dạ được chị, để tôi gửi chiều nay cho chị nha. Ok, anh kêu tôi nha. Tôi cũng muốn hỏi anh Nam về cái bản thiền chiến cuối cùng mình có còn bổ sung phần tiến lí chính sách không?
+
+[02:20 - 02:54] 👨 Speaker 01:
+Có chứ, phần nó quan trọng, tại vì mình mình sẽ chịu trách nhiệm với nội dung. Còn Hương sẽ lo phần trình bày cho đẹp mắt. Hai người cùng nhau làm hợp nha. Dạ ok, tôi với Hương sẽ cố gắng làm việc riêng để phóng nhanh phần trong tuần nha. Ok, giờ chốt lại cuối cùng deadline của Như sao? Thứ 6 sẽ có bản cập nhật phân tích vĩ mô và dữ liệu bổ sung. Còn thứ 4 tuần sau sẽ có bản báo cáo GDP từ Linh. Cuối tuần sau sẽ hoàn hiện báo cáo trình chiếu và khuyến nghị cách chính sách.
+
+[02:56 - 03:00] 👩 Speaker 00:
+Dạ ok, rõ xếp. Dạ tôi cũng sẽ hoàn hiện phần trình bày đúng hạn.
+
+[03:02 - 03:06] 👨 Speaker 01:
+Tôi sẽ gửi cái bản dự thảo khuyến nghị chính sách sớm để cho mọi người có biết nha.
+
+[03:08 - 03:15] 👨 Speaker 01:
+Ok, nếu không ai có ý kiến gì nữa buổi kết thúc. Cảm ơn mọi người, chúc mọi người có một tuần vui mẻ nhé.
+
+[03:15 - 03:16] 👩 Speaker 00:
+Dạ cảm ơn.
+
+[03:17 - 03:18] 👨 Speaker 01:
+Tạm biệt anh.
+
+
+================================================================================
+STATISTICS
+================================================================================
+Total Segments: 13
+Total Duration: 03:06
+Number of Speakers: 2

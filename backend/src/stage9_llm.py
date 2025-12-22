@@ -91,8 +91,10 @@ class LLMAnalyzer:
         
         print(f"   🤖 Using model: {self.model}")
         
-        # Build context
-        context = self._build_context(segments, speakers, metadata)
+        # Build context (NO truncation - full transcript)
+        context = self._build_context(segments, speakers, metadata, truncate=False)
+        context_length = len(context)
+        print(f"   📊 Context: {context_length:,} chars, {len(segments)} segments")
         
         # Generate summary
         print(f"   📝 Generating summary...")
@@ -102,14 +104,12 @@ class LLMAnalyzer:
         print(f"   ✅ Extracting tasks...")
         tasks = self._extract_tasks(context)
         
-        # Extract insights
-        print(f"   💡 Extracting insights...")
-        insights = self._extract_insights(context)
+        # Note: insights extraction removed as per user request
         
         return {
             'summary': summary,
             'tasks': tasks,
-            'insights': insights
+            'insights': []  # Empty - insights extraction disabled
         }
     
     def _build_context(
@@ -117,7 +117,8 @@ class LLMAnalyzer:
         segments: List[Dict], 
         speakers: Dict, 
         metadata: Dict,
-        max_length: Optional[int] = None
+        max_length: Optional[int] = None,
+        truncate: bool = False  # ✅ New parameter to control truncation
     ) -> str:
         """Build context string với smart formatting"""
         if max_length is None:
@@ -142,6 +143,7 @@ class LLMAnalyzer:
         
         # Build transcript
         current_length = len("\n".join(lines))
+        segments_included = 0
         
         for seg in segments:
             speaker = seg.get('speaker_display', seg['speaker'])
@@ -150,12 +152,18 @@ class LLMAnalyzer:
             
             line = f"[{time_str}] {speaker}: {text}"
             
-            if current_length + len(line) + 1 > max_length:
-                lines.append("\n[... transcript truncated ...]")
+            # ✅ Only truncate if explicitly requested (for preview purposes)
+            if truncate and current_length + len(line) + 1 > max_length:
+                lines.append(f"\n[... {len(segments) - segments_included} more segments ...]")
                 break
             
             lines.append(line)
             current_length += len(line) + 1
+            segments_included += 1
+        
+        # ✅ Add footer showing coverage
+        if segments_included == len(segments):
+            lines.append(f"\n=== END OF TRANSCRIPT ({segments_included} segments) ===")
         
         return "\n".join(lines)
     
@@ -166,6 +174,7 @@ class LLMAnalyzer:
         
         chunks = []
         start = 0
+        chunk_num = 0
         
         while start < len(context):
             end = start + chunk_size
@@ -178,9 +187,13 @@ class LLMAnalyzer:
             
             chunk = context[start:end]
             chunks.append(chunk)
+            chunk_num += 1
             
+            # ✅ Better overlap calculation to ensure no segments are missed
             start = end - overlap
-            if start >= len(context):
+            
+            # Avoid infinite loop
+            if start >= len(context) or end >= len(context):
                 break
         
         return chunks
@@ -289,9 +302,9 @@ KEY POINTS:"""
                         {"role": "user", "content": user_prompt}
                     ],
                     options={
-                        "temperature": 0.2,  # More deterministic for extraction
+                        "temperature": 0.3,  # More deterministic for extraction
                         "top_p": 0.9,
-                        "repeat_penalty": 1.1
+                        "repeat_penalty": 1.2
                     }
                 )
                 
@@ -462,9 +475,12 @@ CHÚ Ý:
         chunks = self._chunk_context(context, chunk_size=6000)
         all_tasks = []
         
+        print(f"      📦 Split into {len(chunks)} chunks for processing")
+        print(f"      📏 Chunk sizes: {[len(c) for c in chunks]} chars")
+        
         for i, chunk in enumerate(chunks):
             if len(chunks) > 1:
-                print(f"         Chunk {i+1}/{len(chunks)}...")
+                print(f"         Processing chunk {i+1}/{len(chunks)} ({len(chunk)} chars)...")
             
             # ✅ Include few-shot examples in EVERY request
             user_prompt = f"""{few_shot_examples}
@@ -489,9 +505,9 @@ JSON OUTPUT:"""
                         {"role": "user", "content": user_prompt}
                     ],
                     options={
-                        "temperature": 0.0,  # Critical for consistent JSON output
+                        "temperature": 0.2,  # Critical for consistent JSON output
                         "top_p": 0.9,
-                        "repeat_penalty": 1.1
+                        "repeat_penalty": 1.2
                     }
                 )
                 
@@ -726,80 +742,6 @@ VĂN BẢN ĐÃ SỬA (giữ nguyên số thứ tự):"""
         
         print(f"   ✅ Spell check complete: {total_corrected}/{len(segments)} segments corrected")
         return corrected_segments
-    
-    def _extract_insights(self, context: str) -> List[str]:
-        """Extract key insights"""
-        system_prompt = """Bạn là chuyên gia phân tích cuộc họp.
-
-NHIỆM VỤ: Trích xuất INSIGHTS (hiểu biết sâu sắc) từ cuộc họp
-
-INSIGHTS LÀ:
-- Phát hiện quan trọng, xu hướng, vấn đề được nhấn mạnh
-- Nguyên nhân gốc rễ của vấn đề
-- Cơ hội hoặc rủi ro được xác định
-- Mâu thuẫn/gap trong kế hoạch
-- Bài học/best practices
-
-KHÔNG PHẢI:
-- Chỉ tóm tắt lại nội dung
-- Ý kiến không có dữ liệu
-- Thông tin quá chung chung
-
-OUTPUT: Bullet points (bắt đầu bằng "- ")
-Mỗi insight: 15-30 từ
-Số lượng: 3-7 insights"""
-
-        chunks = self._chunk_context(context, chunk_size=6000)
-        all_insights = []
-        
-        for i, chunk in enumerate(chunks):
-            if len(chunks) > 1:
-                print(f"         Chunk {i+1}/{len(chunks)}...")
-            
-            user_prompt = f"""Trích xuất insights:
-
-{chunk}
-
-INSIGHTS:"""
-            
-            try:
-                response = chat(
-                    model=self.model,
-                    messages=[
-                        {"role": "system", "content": system_prompt},
-                        {"role": "user", "content": user_prompt}
-                    ],
-                    options={
-                        "temperature": 0.3,
-                        "top_p": 0.9,
-                        "repeat_penalty": 1.1
-                    }
-                )
-                
-                content = response["message"]["content"]
-                
-                for line in content.split('\n'):
-                    line = line.strip()
-                    if line.startswith('-') or line.startswith('•') or line.startswith('*'):
-                        insight = line[1:].strip()
-                        if len(insight) > 20:
-                            all_insights.append(insight)
-            
-            except Exception as e:
-                print(f"         ⚠️  Error in chunk {i+1}: {e}")
-                continue
-        
-        # Deduplicate
-        unique = []
-        seen = set()
-        
-        for insight in all_insights:
-            key = insight.lower()
-            if not any(key in s or s in key for s in seen):
-                unique.append(insight)
-                seen.add(key)
-        
-        return unique[:7]
     
     def _sanitize_json(self, json_str: str) -> str:
         """
