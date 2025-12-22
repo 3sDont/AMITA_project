@@ -213,29 +213,37 @@ CẤU TRÚC ĐẦU RA (BẮT BUỘC):
 EDGE CASES:
 - Nếu cuộc họp chỉ có 1 topic → Chỉ cần 1 điểm trong phần "Nội dung thảo luận"
 - Nếu không có quyết định rõ ràng → Ghi: "Chưa có quyết định cụ thể"
-- Nếu transcript quá ngắn (<100 từ) → Tóm tắt ngắn gọn, không ép format phức tạp
-
-VÍ DỤ OUTPUT:
-
-🎯 Mục tiêu chính: 
-Họp đánh giá tiến độ dự án Website và giải quyết các vấn đề kỹ thuật đang gặp phải.
-
-📋 Nội dung thảo luận trọng tâm:
-- Tiến độ Frontend: Team đã hoàn thành 80% giao diện, còn lại phần responsive mobile. Dự kiến xong vào cuối tuần.
-- Vấn đề Backend API: Phát hiện lỗi performance khi query database lớn. Anh Minh đề xuất optimize bằng cách thêm indexing và caching.
-- Timeline Launch: Đội nhóm thống nhất gia hạn thêm 1 tuần để đảm bảo chất lượng, launch dự kiến vào 15/01.
-
-✅ Kết luận & Quyết định:
-Chốt launch date là 15/01/2025. Anh Minh sẽ xử lý backend optimization trong 3 ngày. Team Frontend tập trung hoàn thiện responsive. Họp review lại vào thứ 5 tuần sau."""
+- Nếu transcript quá ngắn (<100 từ) → Tóm tắt ngắn gọn, không ép format phức tạp"""
 
         chunks = self._chunk_context(context, chunk_size=6000)
         
         if len(chunks) == 1:
-            user_prompt = f"""Dựa vào transcript cuộc họp, hãy tóm tắt theo format đã cho:
-
+            user_prompt = f"""TRANSCRIPT CUỘC HỌP:
 {chunks[0]}
 
-TÓM TẮT:"""
+---
+
+YÊU CẦU:
+Hãy đọc transcript trên và tóm tắt theo ĐÚNG FORMAT sau (bao gồm cả emoji):
+
+🎯 Mục tiêu chính: 
+[1 câu ngắn gọn, 15-25 từ]
+
+📋 Nội dung thảo luận trọng tâm:
+- [Topic 1]: [Nội dung chi tiết, 20-40 từ]
+- [Topic 2]: [Nội dung chi tiết, 20-40 từ]
+- [Topic 3]: [Nội dung chi tiết, 20-40 từ]
+(Tối thiểu 2, tối đa 5 điểm)
+
+✅ Kết luận & Quyết định:
+[Quyết định cụ thể hoặc "Chưa có kết luận cụ thể"]
+
+QUAN TRỌNG:
+- BẮT ĐẦU output bằng emoji 🎯, KHÔNG phải "===" hay header khác
+- GIỮ NGUYÊN format và emoji
+- KHÔNG thêm header "MEETING INFORMATION" hay "TRANSCRIPT"
+
+BẮT ĐẦU TÓM TẮT:"""
             
             response = chat(
                 model=self.model,
@@ -246,7 +254,7 @@ TÓM TẮT:"""
                 options={
                     "temperature": 0.3,  # Deterministic output
                     "top_p": 0.9,
-                    "repeat_penalty": 1.1
+                    "repeat_penalty": 1.2  # Tăng để tránh lặp lại pattern
                 }
             )
             
@@ -292,18 +300,33 @@ KEY POINTS:"""
             # Synthesize all key points into final summary
             combined_keypoints = "\n\n".join([f"Phần {i+1}:\n{kp}" for i, kp in enumerate(chunk_keypoints)])
             
-            final_prompt = f"""Dựa vào các key points từ các phần của cuộc họp, hãy tổng hợp thành TÓM TẮT HOÀN CHỈNH theo format đã cho:
+            final_prompt = f"""KEY POINTS TỪ CÁC PHẦN CỦA CUỘC HỌP:
 
-=== KEY POINTS TỪ CÁC PHẦN ===
 {combined_keypoints}
 
-=== YÊU CẦU ===
-- Tổng hợp thành summary mạch lạc, theo đúng format (🎯 → 📋 → ✅)
-- Ưu tiên thông tin quan trọng, loại bỏ trùng lặp
-- Độ dài: 150-250 từ
-- Giữ nguyên tên người, số liệu, deadline
+---
 
-TÓM TẮT TỔNG HỢP:"""
+YÊU CẦU:
+Tổng hợp các key points trên thành TÓM TẮT HOÀN CHỈNH theo ĐÚNG FORMAT (bao gồm emoji):
+
+🎯 Mục tiêu chính: 
+[1 câu ngắn gọn, 15-25 từ]
+
+📋 Nội dung thảo luận trọng tâm:
+- [Topic 1]: [Nội dung chi tiết, 20-40 từ]
+- [Topic 2]: [Nội dung chi tiết, 20-40 từ]
+- [Topic 3]: [Nội dung chi tiết, 20-40 từ]
+(Tối thiểu 2, tối đa 5 điểm)
+
+✅ Kết luận & Quyết định:
+[Quyết định cụ thể hoặc "Chưa có kết luận cụ thể"]
+
+QUAN TRỌNG:
+- BẮT ĐẦU output bằng emoji 🎯, KHÔNG phải "===" hay header khác
+- GIỮ NGUYÊN format và emoji
+- Loại bỏ thông tin trùng lặp
+
+BẮT ĐẦU TÓM TẮT TỔNG HỢP:"""
             
             response = chat(
                 model=self.model,
@@ -314,7 +337,7 @@ TÓM TẮT TỔNG HỢP:"""
                 options={
                     "temperature": 0.3,
                     "top_p": 0.9,
-                    "repeat_penalty": 1.1
+                    "repeat_penalty": 1.2
                 }
             )
             
