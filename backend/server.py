@@ -193,13 +193,14 @@ async def process_audio(data: dict):
                 transcript = []
                 #for seg in segments[:config.MAX_TRANSCRIPT_SEGMENTS]:
                 for seg in segments:
-                    start_time = seg.get('start', 0)
+                    # Try multiple keys for start time (pipeline uses 'start_time', some stages use 'start')
+                    start_time = seg.get('start_time', seg.get('start', 0))
                     text = seg.get('text', '').strip()
                     if not text:  # Skip empty segments
                         continue
                     transcript.append({
                         "time": f"{int(start_time//60):02d}:{int(start_time%60):02d}",
-                        "speaker": seg.get('speaker', 'Speaker 1'),
+                        "speaker": seg.get('speaker_display', seg.get('speaker', 'Speaker 1')),
                         "text": text
                     })
                 

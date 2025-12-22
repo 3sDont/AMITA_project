@@ -342,6 +342,10 @@ class MergeNormalizer:
             # Add formatted time string (for display)
             formatted_seg['time_str'] = f"{self._format_time(seg['start_time'])} - {self._format_time(seg['end_time'])}"
             
+            # Add 'start' and 'end' keys for compatibility with server.py
+            formatted_seg['start'] = seg['start_time']
+            formatted_seg['end'] = seg['end_time']
+            
             # Calculate word count
             formatted_seg['word_count'] = len(seg['text'].split())
             
