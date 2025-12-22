@@ -10,6 +10,7 @@ export default function App() {
   const [duration, setDuration] = useState(0);
   const [isRecording, setIsRecording] = useState(false);
   const [recordingTime, setRecordingTime] = useState(0);
+  const [recordingSource, setRecordingSource] = useState('microphone'); // 'microphone' or 'system'
   const [uploadedFilename, setUploadedFilename] = useState(null); // Store backend filename
   const waveformRef = useRef(null);
   const wavesurfer = useRef(null);
@@ -198,7 +199,31 @@ export default function App() {
       setSummary("");
       setTasks([]);
       
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      let stream;
+      if (recordingSource === 'system') {
+        // Capture system audio using getDisplayMedia
+        stream = await navigator.mediaDevices.getDisplayMedia({
+          video: {
+            displaySurface: "monitor"
+          },
+          audio: {
+            echoCancellation: false,
+            noiseSuppression: false,
+            autoGainControl: false
+          }
+        });
+        
+        // Stop video track if not needed, keep only audio
+        const videoTrack = stream.getVideoTracks()[0];
+        if (videoTrack) {
+          videoTrack.stop();
+          stream.removeTrack(videoTrack);
+        }
+      } else {
+        // Capture from microphone
+        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      }
+      
       mediaRecorder.current = new MediaRecorder(stream);
       audioChunks.current = [];
 
@@ -446,6 +471,35 @@ export default function App() {
                 </span>
               )}
             </label>
+            
+            {/* Audio Source Selection */}
+            {!isRecording && (
+              <div className="mb-4 flex gap-2">
+                <button
+                  onClick={() => setRecordingSource('microphone')}
+                  disabled={isProcessing}
+                  className={`flex-1 py-2 px-4 rounded-lg font-medium transition-all ${
+                    recordingSource === 'microphone'
+                      ? 'bg-blue-600 text-white shadow-md'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  } disabled:opacity-50`}
+                >
+                  🎤 Microphone
+                </button>
+                <button
+                  onClick={() => setRecordingSource('system')}
+                  disabled={isProcessing}
+                  className={`flex-1 py-2 px-4 rounded-lg font-medium transition-all ${
+                    recordingSource === 'system'
+                      ? 'bg-blue-600 text-white shadow-md'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  } disabled:opacity-50`}
+                >
+                  🔊 System Audio
+                </button>
+              </div>
+            )}
+            
             <div className="flex flex-col gap-4">
               <button
                 onClick={isRecording ? stopRecording : startRecording}
@@ -472,7 +526,9 @@ export default function App() {
                 )}
               </button>
               <p className="text-xs text-gray-500 text-center">
-                Click to record audio directly from your microphone
+                {recordingSource === 'microphone' 
+                  ? 'Click to record audio from your microphone'
+                  : 'Click to capture audio playing on your device (browser tab or system audio)'}
               </p>
             </div>
           </div>
