@@ -1,6 +1,6 @@
 """
 Stage 9: LLM Analysis (IMPROVED VERSION)
-Generate summary, extract tasks, insights
+Generate summary, extract tasks
 
 ✅ IMPROVEMENTS:
     - Better prompt engineering với system prompts
@@ -74,8 +74,7 @@ class LLMAnalyzer:
         Returns:
             Dict: {
                 summary: str,
-                tasks: List[Dict],
-                insights: List[str]
+                tasks: List[Dict]
             }
         """
         if not self.available:
@@ -85,8 +84,7 @@ class LLMAnalyzer:
             print(f"      2. Pull model: ollama pull {self.model}")
             return {
                 'summary': "[LLM not available - please install Ollama and pull model]",
-                'tasks': [],
-                'insights': []
+                'tasks': []
             }
         
         print(f"   🤖 Using model: {self.model}")
@@ -103,13 +101,10 @@ class LLMAnalyzer:
         # Extract tasks
         print(f"   ✅ Extracting tasks...")
         tasks = self._extract_tasks(context)
-        
-        # Note: insights extraction removed as per user request
-        
+
         return {
             'summary': summary,
-            'tasks': tasks,
-            'insights': []  # Empty - insights extraction disabled
+            'tasks': tasks
         }
     
     def _build_context(
@@ -406,71 +401,71 @@ JSON FORMAT (BẮT BUỘC - KHÔNG VI PHẠM):
 OUTPUT STRUCTURE:
 [
   {
-    "task": "Tên task ngắn gọn (5-15 từ)",
-    "assigned_to": "Tên người hoặc null",
-    "deadline": "Thời hạn cụ thể hoặc null",
-    "priority": "high/medium/low",
+    "task": "Tên task (công việc) ngắn gọn (5-15 từ)",
+    "assigned_to": "Tên người (Hoặc Null)",
+    "deadline": "Thời hạn cụ thể (Hoặc Null)",
+    "priority": "Cao/Trung bình/Thấp",
     "how_to": "Hướng dẫn CỤ THỂ 2-3 bước, viết liền, ngăn cách bằng dấu chấm phẩy"
   }
 ]"""
 
         # ✅ Few-shot examples - QUAN TRỌNG cho JSON extraction
-        few_shot_examples = """
-=== VÍ DỤ 1: Task với đầy đủ thông tin ===
+#         few_shot_examples = """
+# === VÍ DỤ 1: Task với đầy đủ thông tin ===
 
-Input transcript:
-"Anh Minh sẽ chuẩn bị báo cáo Q4 trước ngày 15/01. Báo cáo cần bao gồm doanh thu, chi phí, và lợi nhuận. Em Lan liên hệ team IT để setup server mới cho dự án."
+# Input transcript:
+# "Anh Minh sẽ chuẩn bị báo cáo Q4 trước ngày 15/01. Báo cáo cần bao gồm doanh thu, chi phí, và lợi nhuận. Em Lan liên hệ team IT để setup server mới cho dự án."
 
-Output JSON:
-[
-  {
-    "task": "Chuẩn bị báo cáo Q4",
-    "assigned_to": "Anh Minh",
-    "deadline": "Trước ngày 15/01",
-    "priority": "high",
-    "how_to": "Thu thập số liệu doanh thu, chi phí, lợi nhuận Q4 từ hệ thống kế toán; Tạo báo cáo theo template công ty; Gửi draft cho phê duyệt"
-  },
-  {
-    "task": "Liên hệ team IT setup server mới",
-    "assigned_to": "Em Lan",
-    "deadline": null,
-    "priority": "medium",
-    "how_to": "Soạn email mô tả yêu cầu cấu hình (RAM 32GB, CPU 8 core, storage 1TB); Gửi đến it-support@company.com; Follow up sau 2 ngày nếu chưa có phản hồi"
-  }
-]
+# Output JSON:
+# [
+#   {
+#     "task": "Chuẩn bị báo cáo Q4",
+#     "assigned_to": "Anh Minh",
+#     "deadline": "Trước ngày 15/01",
+#     "priority": "high",
+#     "how_to": "Thu thập số liệu doanh thu, chi phí, lợi nhuận Q4 từ hệ thống kế toán; Tạo báo cáo theo template công ty; Gửi draft cho phê duyệt"
+#   },
+#   {
+#     "task": "Liên hệ team IT setup server mới",
+#     "assigned_to": "Em Lan",
+#     "deadline": null,
+#     "priority": "medium",
+#     "how_to": "Soạn email mô tả yêu cầu cấu hình (RAM 32GB, CPU 8 core, storage 1TB); Gửi đến it-support@company.com; Follow up sau 2 ngày nếu chưa có phản hồi"
+#   }
+# ]
 
-=== VÍ DỤ 2: Không có task ===
+# === VÍ DỤ 2: Không có task ===
 
-Input transcript:
-"Chúng ta đã thảo luận về tình hình thị trường. Anh A chia sẻ quan điểm về chiến lược marketing. Mọi người đồng ý là cần cải thiện nhưng chưa quyết định cụ thể."
+# Input transcript:
+# "Chúng ta đã thảo luận về tình hình thị trường. Anh A chia sẻ quan điểm về chiến lược marketing. Mọi người đồng ý là cần cải thiện nhưng chưa quyết định cụ thể."
 
-Output JSON:
-[]
+# Output JSON:
+# []
 
-Lý do: Chỉ có thảo luận chung, không có action cụ thể được giao.
+# Lý do: Chỉ có thảo luận chung, không có action cụ thể được giao.
 
-=== VÍ DỤ 3: Task không có người thực hiện ===
+# === VÍ DỤ 3: Task không có người thực hiện ===
 
-Input transcript:
-"Cần phải kiểm tra lại code trước khi deploy. Deadline là thứ 6 tuần này."
+# Input transcript:
+# "Cần phải kiểm tra lại code trước khi deploy. Deadline là thứ 6 tuần này."
 
-Output JSON:
-[
-  {
-    "task": "Kiểm tra code trước khi deploy",
-    "assigned_to": null,
-    "deadline": "Thứ 6 tuần này",
-    "priority": "high",
-    "how_to": "Chạy unit tests và integration tests; Review code changes trên PR; Kiểm tra performance và security issues; Confirm với QA team"
-  }
-]
+# Output JSON:
+# [
+#   {
+#     "task": "Kiểm tra code trước khi deploy",
+#     "assigned_to": null,
+#     "deadline": "Thứ 6 tuần này",
+#     "priority": "high",
+#     "how_to": "Chạy unit tests và integration tests; Review code changes trên PR; Kiểm tra performance và security issues; Confirm với QA team"
+#   }
+# ]
 
-CHÚ Ý:
-✓ Field "how_to" LUÔN phải có nội dung cụ thể và hữu ích
-✓ Priority dựa vào deadline và mức độ quan trọng được nhấn mạnh
-✓ Tất cả string viết liền, KHÔNG xuống dòng
-✓ Dùng dấu chấm phẩy (;) ngăn cách các bước trong how_to
-"""
+# CHÚ Ý:
+# ✓ Field "how_to" LUÔN phải có nội dung cụ thể và hữu ích
+# ✓ Priority dựa vào deadline và mức độ quan trọng được nhấn mạnh
+# ✓ Tất cả string viết liền, KHÔNG xuống dòng
+# ✓ Dùng dấu chấm phẩy (;) ngăn cách các bước trong how_to
+# """
 
         chunks = self._chunk_context(context, chunk_size=6000)
         all_tasks = []
@@ -483,7 +478,7 @@ CHÚ Ý:
                 print(f"         Processing chunk {i+1}/{len(chunks)} ({len(chunk)} chars)...")
             
             # ✅ Include few-shot examples in EVERY request
-            user_prompt = f"""{few_shot_examples}
+            user_prompt = f"""
 
 === BÂY GIỜ, TRÍCH XUẤT TASKS TỪ TRANSCRIPT SAU ===
 
@@ -505,7 +500,7 @@ JSON OUTPUT:"""
                         {"role": "user", "content": user_prompt}
                     ],
                     options={
-                        "temperature": 0.2,  # Critical for consistent JSON output
+                        "temperature": 0.3,  # Critical for consistent JSON output
                         "top_p": 0.9,
                         "repeat_penalty": 1.2
                     }

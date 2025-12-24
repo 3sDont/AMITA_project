@@ -15,7 +15,8 @@ from typing import Dict, List, Optional
 from pathlib import Path
 # Import config
 import sys
-BACKEND_DIR = Path(__file__).parent.parent
+# ✅ BACKEND_DIR should be 'backend' folder, not 'backend/src'
+BACKEND_DIR = Path(__file__).parent.parent  # backend/src/pipeline_manager.py → backend
 if str(BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(BACKEND_DIR))
 
@@ -69,8 +70,14 @@ class MeetingPipeline:
         config: Pipeline configuration
     """
     
-    def __init__(self, audio_path: str, output_dir: str = "outputs"):
+    def __init__(self, audio_path: str, output_dir: str = None):
         self.audio_path = audio_path
+        
+        # ✅ Default output_dir to backend/src/outputs if not specified
+        if output_dir is None:
+            src_dir = Path(__file__).parent  # backend/src
+            output_dir = str(src_dir / "outputs")
+        
         self.base_output_dir = output_dir  # Base outputs folder
         self.meeting_id = self._generate_meeting_id()
         
@@ -744,16 +751,26 @@ if __name__ == "__main__":
     try:
         from dotenv import load_dotenv
         env_path = BACKEND_DIR / ".env"
+        
+        print(f"🔍 Debug info:")
+        print(f"   BACKEND_DIR: {BACKEND_DIR}")
+        print(f"   Env path: {env_path}")
+        print(f"   Env exists: {env_path.exists()}")
+        
         if env_path.exists():
             load_dotenv(env_path)
             print(f"✅ Loaded .env from: {env_path}")
-            if os.getenv("HF_TOKEN"):
-                os.environ["HF_TOKEN"] = os.getenv("HF_TOKEN")
-                print(f"✅ HF_TOKEN loaded successfully")
+            
+            hf_token = os.getenv("HF_TOKEN")
+            if hf_token:
+                os.environ["HF_TOKEN"] = hf_token
+                print(f"✅ HF_TOKEN loaded: {hf_token[:10]}...{hf_token[-5:]}")
             else:
                 print(f"⚠️  Warning: HF_TOKEN not found in .env")
+                print(f"⚠️  Available env vars: {list(os.environ.keys())[:10]}")
         else:
-            print(f"⚠️  Warning: .env file not found at {env_path}")
+            print(f"❌ Error: .env file not found at {env_path}")
+            print(f"   Current working dir: {os.getcwd()}")
     except ImportError:
         print("⚠️  python-dotenv not installed, skipping .env loading")
     
@@ -774,10 +791,10 @@ if __name__ == "__main__":
     print(f"🎯 AMITA PIPELINE - Standalone Mode")
     print(f"{'='*80}")
     print(f"Audio file: {audio_file}")
-    print(f"Output dir: outputs/")
+    print(f"Output dir: backend/src/outputs/")
     print(f"{'='*80}\n")
     
-    # Create pipeline
+    # Create pipeline (output_dir will default to backend/src/outputs)
     pipeline = MeetingPipeline(audio_file)
     
     # Configure (optional)
