@@ -121,6 +121,9 @@ class MeetingPipeline:
         # ✅ Stage timing tracking
         self.stage_timings = {}
         
+        # ✅ Debug mode: save intermediate stage outputs
+        self.debug_mode = self.config.get("debug_mode", False)
+        
         print(f"\n{'='*80}")
         print(f"🎯 MEETING PIPELINE INITIALIZED")
         print(f"{'='*80}")
@@ -137,13 +140,17 @@ class MeetingPipeline:
     
     def _save_meeting_json(self):
         """Save meeting.json (SSoT)"""
-        meeting_json_path = os.path.join(self.output_dir, "meeting.json")
+        # ✅ Use meeting_id in filename for consistency
+        meeting_json_path = os.path.join(self.output_dir, f"{self.meeting_id}_meeting.json")
         with open(meeting_json_path, 'w', encoding='utf-8') as f:
             json.dump(self.meeting_data, f, ensure_ascii=False, indent=2)
         return meeting_json_path
     
     def _save_stage_output(self, stage_name: str, data: dict, file_type: str = 'json'):
-        """Save intermediate stage outputs"""
+        """Save intermediate stage outputs (only if debug_mode enabled)"""
+        if not self.debug_mode:
+            return None
+        
         filename = f"{stage_name}.{file_type}"
         output_path = os.path.join(self.output_dir, filename)
         
@@ -174,7 +181,7 @@ class MeetingPipeline:
     
     def get_meeting_json_path(self) -> str:
         """Get path to meeting.json file"""
-        return os.path.join(self.output_dir, "meeting.json")
+        return os.path.join(self.output_dir, f"{self.meeting_id}_meeting.json")
     
     # ==================== STAGE RUNNERS ====================
     
@@ -234,6 +241,7 @@ class MeetingPipeline:
         
         # Update SSoT
         self.meeting_data["whisper"]["segments"] = result["segments"]
+        # ✅ Store words temporarily (will be used in stage5, then can be cleared)
         self.meeting_data["whisper"]["words"] = result["words"]
         self.meeting_data["whisper"]["language"] = result["language"]
         
@@ -283,6 +291,10 @@ class MeetingPipeline:
         
         # Update SSoT (tạm thời, chưa merge)
         self.meeting_data["segments_raw"] = segments
+        
+        # ✅ Clear words after assignment to save memory (words no longer needed)
+        if not self.debug_mode:
+            self.meeting_data["whisper"]["words"] = []  # Keep structure but clear data
         
         print(f"   ✅ Speaker assignment complete")
         print(f"      - Assigned segments: {len(segments)}")

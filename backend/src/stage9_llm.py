@@ -409,64 +409,6 @@ OUTPUT STRUCTURE:
   }
 ]"""
 
-        # ✅ Few-shot examples - QUAN TRỌNG cho JSON extraction
-#         few_shot_examples = """
-# === VÍ DỤ 1: Task với đầy đủ thông tin ===
-
-# Input transcript:
-# "Anh Minh sẽ chuẩn bị báo cáo Q4 trước ngày 15/01. Báo cáo cần bao gồm doanh thu, chi phí, và lợi nhuận. Em Lan liên hệ team IT để setup server mới cho dự án."
-
-# Output JSON:
-# [
-#   {
-#     "task": "Chuẩn bị báo cáo Q4",
-#     "assigned_to": "Anh Minh",
-#     "deadline": "Trước ngày 15/01",
-#     "priority": "high",
-#     "how_to": "Thu thập số liệu doanh thu, chi phí, lợi nhuận Q4 từ hệ thống kế toán; Tạo báo cáo theo template công ty; Gửi draft cho phê duyệt"
-#   },
-#   {
-#     "task": "Liên hệ team IT setup server mới",
-#     "assigned_to": "Em Lan",
-#     "deadline": null,
-#     "priority": "medium",
-#     "how_to": "Soạn email mô tả yêu cầu cấu hình (RAM 32GB, CPU 8 core, storage 1TB); Gửi đến it-support@company.com; Follow up sau 2 ngày nếu chưa có phản hồi"
-#   }
-# ]
-
-# === VÍ DỤ 2: Không có task ===
-
-# Input transcript:
-# "Chúng ta đã thảo luận về tình hình thị trường. Anh A chia sẻ quan điểm về chiến lược marketing. Mọi người đồng ý là cần cải thiện nhưng chưa quyết định cụ thể."
-
-# Output JSON:
-# []
-
-# Lý do: Chỉ có thảo luận chung, không có action cụ thể được giao.
-
-# === VÍ DỤ 3: Task không có người thực hiện ===
-
-# Input transcript:
-# "Cần phải kiểm tra lại code trước khi deploy. Deadline là thứ 6 tuần này."
-
-# Output JSON:
-# [
-#   {
-#     "task": "Kiểm tra code trước khi deploy",
-#     "assigned_to": null,
-#     "deadline": "Thứ 6 tuần này",
-#     "priority": "high",
-#     "how_to": "Chạy unit tests và integration tests; Review code changes trên PR; Kiểm tra performance và security issues; Confirm với QA team"
-#   }
-# ]
-
-# CHÚ Ý:
-# ✓ Field "how_to" LUÔN phải có nội dung cụ thể và hữu ích
-# ✓ Priority dựa vào deadline và mức độ quan trọng được nhấn mạnh
-# ✓ Tất cả string viết liền, KHÔNG xuống dòng
-# ✓ Dùng dấu chấm phẩy (;) ngăn cách các bước trong how_to
-# """
-
         chunks = self._chunk_context(context, chunk_size=6000)
         all_tasks = []
         
@@ -546,12 +488,8 @@ JSON OUTPUT:"""
                             end = min(len(json_str), error_pos + 100)
                             print(f"            Context: ...{json_str[start:end]}...")
                         
-                        # ✅ FALLBACK: Try aggressive fixes
-                        print(f"            🔧 Attempting aggressive JSON repair...")
-                        fixed_tasks = self._fallback_parse_tasks(json_str)
-                        if fixed_tasks:
-                            print(f"            ✓ Recovered {len(fixed_tasks)} tasks via fallback")
-                            all_tasks.extend(fixed_tasks)
+                        # Skip this chunk - JSON parsing failed
+                        print(f"            ⚠️  Skipping this chunk - invalid JSON")
                 else:
                     print(f"         ⚠️  Chunk {i+1}: No JSON array found in response")
             
@@ -598,28 +536,16 @@ JSON OUTPUT:"""
         return validated
     
     def _deduplicate_tasks(self, tasks: List[Dict]) -> List[Dict]:
-        """Remove duplicate tasks"""
-        if len(tasks) <= 1:
+        """Remove duplicate tasks based on task name"""
+        if not tasks:
             return tasks
         
-        unique = []
         seen = set()
+        unique = []
         
         for task in tasks:
             task_key = task['task'].lower().strip()
-            
-            if task_key in seen:
-                continue
-            
-            # Check similarity
-            is_dup = False
-            for existing in unique:
-                existing_key = existing['task'].lower().strip()
-                if task_key in existing_key or existing_key in task_key:
-                    is_dup = True
-                    break
-            
-            if not is_dup:
+            if task_key not in seen:
                 unique.append(task)
                 seen.add(task_key)
         
@@ -739,104 +665,16 @@ VĂN BẢN ĐÃ SỬA (giữ nguyên số thứ tự):"""
         return corrected_segments
     
     def _sanitize_json(self, json_str: str) -> str:
-        """
-        Sanitize JSON string to fix common LLM errors
-        
-        Fixes:
-        - Unescaped quotes inside strings
-        - Newlines in strings (both literal and escaped)
-        - Trailing commas
-        - Single quotes instead of double quotes
-        - Unicode escapes
-        """
-        # STEP 1: Fix structural issues
+        """Sanitize JSON string to fix common LLM errors"""
         # Remove trailing commas before ] or }
         json_str = re.sub(r',\s*([}\]])', r'\1', json_str)
         
-        # STEP 2: Fix string content issues - BEFORE collapsing whitespace
-        # Replace actual newline characters with escaped version
-        # This is crucial - LLM often puts real newlines in strings
-        json_str = json_str.replace('\r\n', '\\n')  # Windows newlines
-        json_str = json_str.replace('\n', '\\n')     # Unix newlines
-        json_str = json_str.replace('\r', '\\n')     # Old Mac newlines
+        # Replace newlines with spaces
+        json_str = json_str.replace('\r\n', ' ').replace('\n', ' ').replace('\r', ' ')
         
-        # Now unescape them to spaces (more readable)
-        json_str = json_str.replace('\\n', ' ')
-        
-        # STEP 3: Normalize whitespace
-        json_str = re.sub(r'\s+', ' ', json_str)  # Multiple spaces → single space
-        json_str = json_str.strip()
-        
-        # STEP 4: Fix quotes
-        # Replace single quotes with double (but not in contractions)
-        # This is a simple approach - might need refinement
-        # json_str = json_str.replace("'", '"')  # Disabled - too aggressive
+        # Normalize whitespace
+        json_str = re.sub(r'\s+', ' ', json_str).strip()
         
         return json_str
     
-    def _fallback_parse_tasks(self, json_str: str) -> List[Dict]:
-        """
-        Fallback parser when JSON parsing fails
-        
-        Strategy:
-        1. Try to manually fix the JSON and re-parse
-        2. If that fails, use regex to extract fields
-        """
-        tasks = []
-        
-        # ATTEMPT 1: More aggressive JSON fixing
-        try:
-            # Remove all literal newlines and replace with space
-            fixed_json = json_str
-            
-            # Fix common patterns where LLM breaks JSON:
-            # Pattern: "source": "text\n  },
-            # Should be: "source": "text" },
-            
-            # Find all string values and fix them
-            def fix_string_value(match):
-                key = match.group(1)
-                value = match.group(2)
-                # Remove newlines and extra spaces
-                value = value.replace('\n', ' ').replace('\r', ' ')
-                value = re.sub(r'\s+', ' ', value).strip()
-                return f'"{key}": "{value}"'
-            
-            # Pattern: "key": "value with possible newlines"
-            fixed_json = re.sub(r'"(\w+)"\s*:\s*"([^"]*?)"', fix_string_value, fixed_json, flags=re.DOTALL)
-            
-            # Try parsing fixed JSON
-            tasks = json.loads(fixed_json)
-            if isinstance(tasks, list) and len(tasks) > 0:
-                print(f"            ✓ Recovered via aggressive JSON repair")
-                return self._validate_tasks(tasks)
-        except Exception as e:
-            print(f"            ⚠️  Aggressive repair failed: {e}")
-        
-        # ATTEMPT 2: Regex extraction (last resort)
-        try:
-            # Split into individual task objects more carefully
-            # Look for opening { followed by "task"
-            task_pattern = r'\{\s*"task"\s*:\s*"([^"]+)"[^}]*?"assigned_to"\s*:\s*(?:"([^"]+)"|null)[^}]*?"deadline"\s*:\s*(?:"([^"]+)"|null)[^}]*?"priority"\s*:\s*"([^"]+)"[^}]*?"how_to"\s*:\s*"([^"]+)"'
-            
-            matches = re.finditer(task_pattern, json_str, re.DOTALL)
-            
-            for match in matches:
-                task = {
-                    'task': match.group(1).strip(),
-                    'assigned_to': match.group(2).strip() if match.group(2) else None,
-                    'deadline': match.group(3).strip() if match.group(3) else None,
-                    'priority': match.group(4).strip() if match.group(4) else 'medium',
-                    'how_to': match.group(5).strip() if match.group(5) else 'Chi tiết sẽ được bổ sung.'
-                }
-                tasks.append(task)
-            
-            if tasks:
-                print(f"            ✓ Recovered {len(tasks)} tasks via regex extraction")
-        except Exception as e:
-            print(f"            ⚠️  Regex extraction failed: {e}")
-        
-        # Validate extracted tasks
-        if tasks:
-            return self._validate_tasks(tasks)
-        return []
+
