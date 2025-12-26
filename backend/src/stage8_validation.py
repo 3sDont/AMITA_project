@@ -65,31 +65,31 @@ class MeetingValidator:
         exports = {}
         
         # TXT export
-        txt_path = os.path.join(output_dir, "transcript.txt")
+        txt_path = os.path.join(output_dir, f"{meeting_id}_transcript.txt")
         self.export_to_txt(meeting_data, txt_path)
         exports['txt'] = txt_path
-        print(f"      ✅ Text: transcript.txt")
+        print(f"      ✅ Text: {meeting_id}_transcript.txt")
         
         # CSV export
-        csv_path = os.path.join(output_dir, "segments.csv")
+        csv_path = os.path.join(output_dir, f"{meeting_id}_segments.csv")
         self.export_to_csv(meeting_data, csv_path)
         exports['csv'] = csv_path
-        print(f"      ✅ CSV: segments.csv")
+        print(f"      ✅ CSV: {meeting_id}_segments.csv")
         
         # Step 4: Create backup
-        json_path = os.path.join(output_dir, "meeting.json")
-        backup_path = os.path.join(output_dir, "meeting_backup.json")
+        json_path = os.path.join(output_dir, f"{meeting_id}_meeting.json")
+        backup_path = os.path.join(output_dir, f"{meeting_id}_meeting_backup.json")
         
         if os.path.exists(json_path):
             shutil.copy2(json_path, backup_path)
             exports['backup'] = backup_path
-            print(f"   💾 Backup created: meeting_backup.json")
+            print(f"   💾 Backup created: {meeting_id}_meeting_backup.json")
         
         # Step 5: Generate report
-        report_path = os.path.join(output_dir, "report.txt")
+        report_path = os.path.join(output_dir, f"{meeting_id}_report.txt")
         self.generate_report(meeting_data, stats, report_path)
         exports['report'] = report_path
-        print(f"   📋 Stats report: report.txt")
+        print(f"   📋 Stats report: {meeting_id}_report.txt")
         
         return {
             'valid': True,

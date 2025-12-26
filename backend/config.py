@@ -25,6 +25,7 @@ ENABLE_VAD = True  # Voice Activity Detection
 ENABLE_GENDER = True  # Gender classification
 ENABLE_SPELL_CHECK = True  # LLM spell checking and grammar correction
 ENABLE_LLM_ANALYSIS = True  # LLM summary and tasks
+DEBUG_MODE = True  # Save intermediate stage outputs for debugging
 
 # ==================== PIPELINE CONFIG ====================
 PIPELINE_CONFIG = {
@@ -34,7 +35,8 @@ PIPELINE_CONFIG = {
     "enable_spell_check": ENABLE_SPELL_CHECK,
     "enable_llm": ENABLE_LLM_ANALYSIS,
     "min_speakers": MIN_SPEAKERS,
-    "max_speakers": MAX_SPEAKERS
+    "max_speakers": MAX_SPEAKERS,
+    "debug_mode": DEBUG_MODE
 }
 
 # ==================== API SETTINGS ====================
