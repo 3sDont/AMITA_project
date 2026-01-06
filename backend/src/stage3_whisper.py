@@ -20,15 +20,19 @@ class WhisperProcessor:
         - Batch processing với chunks
     """
     
-    def __init__(self, model_size: str = "medium", device: str = "auto"):
+    def __init__(self, model_size: str = "medium", device: str = "auto", beam_size: int = 5, vad_filter: bool = True):
         """
-        Initialize Whisper model
+        Initialize faster-whisper model
         
         Args:
-            model_size: Model size (tiny/base/small/medium/large)
+            model_size: Model size (tiny/base/small/medium/large-v2/large-v3)
             device: cuda/cpu/auto
+            beam_size: Beam size for decoding (lower = faster, 1-10)
+            vad_filter: Enable Voice Activity Detection (recommended for long files)
         """
         self.model_size = model_size
+        self.beam_size = beam_size
+        self.vad_filter = vad_filter
         
         # Auto-detect device
         if device == "auto":
@@ -40,9 +44,9 @@ class WhisperProcessor:
         self.model = None
     
     def _load_model(self):
-        """Lazy load model khi cần"""
+        """Lazy load faster-whisper model"""
         if self.model is None:
-            print(f"   📥 Loading Whisper model '{self.model_size}' on {self.device}...")
+            print(f"   📥 Loading faster-whisper '{self.model_size}' on {self.device}...")
             try:
                 self.model = WhisperModel(
                     self.model_size,
@@ -51,10 +55,10 @@ class WhisperProcessor:
                     cpu_threads=4 if self.device == "cpu" else 1,
                     num_workers=1
                 )
-                print(f"      ✅ Model loaded")
+                print(f"      ✅ Model loaded successfully")
             except RuntimeError as e:
                 if "CUDA" in str(e) and self.device == "cuda":
-                    print(f"      ⚠️  CUDA failed ({e}), falling back to CPU...")
+                    print(f"      ⚠️  CUDA failed, falling back to CPU...")
                     self.device = "cpu"
                     self.compute_type = "int8"
                     self.model = WhisperModel(
@@ -96,14 +100,15 @@ class WhisperProcessor:
             segments, info = self.model.transcribe(
                 temp_path,
                 language="vi",
-                beam_size=5,
-                vad_filter=True,  # ✅ VAD tự động
+                beam_size=self.beam_size,
+                vad_filter=self.vad_filter,  # ✅ Configurable VAD
                 vad_parameters=dict(
-                    min_silence_duration_ms=500,
-                    threshold=0.5
+                    min_silence_duration_ms=500,  # Bỏ qua đoạn im lặng > 500ms
+                    threshold=0.5,
+                    min_speech_duration_ms=250
                 ),
-                word_timestamps=True,  # ✅ QUAN TRỌNG cho speaker assignment
-                condition_on_previous_text=True
+                word_timestamps=True,  # ✅ Required for speaker assignment
+                condition_on_previous_text=False  # ✅ False for long files to avoid error accumulation
             )
             
             # Collect results
@@ -118,7 +123,6 @@ class WhisperProcessor:
                     "start_time": seg.start + chunk_start_offset,
                     "end_time": seg.end + chunk_start_offset,
                     "text": seg.text.strip(),
-                    "no_speech_prob": seg.no_speech_prob,
                     "chunk_id": chunk_info['chunk_id']
                 }
                 result_segments.append(seg_data)
@@ -130,7 +134,6 @@ class WhisperProcessor:
                             "word": word.word,
                             "start_time": word.start + chunk_start_offset,
                             "end_time": word.end + chunk_start_offset,
-                            "probability": word.probability,
                             "chunk_id": chunk_info['chunk_id']
                         }
                         result_words.append(word_data)
@@ -193,6 +196,9 @@ class WhisperProcessor:
                 detected_language = result['language']
             
             print(f"      ✅ {len(result['segments'])} segments, {len(result['words'])} words")
+            
+            # ✅ Clear chunk audio from memory immediately
+            del chunk_audio
         
         return {
             "segments": all_segments,
