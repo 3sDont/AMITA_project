@@ -10,6 +10,7 @@ Pipeline:
 import os
 import json
 import time
+import sys
 from datetime import datetime
 from typing import Dict, List, Optional
 from pathlib import Path
@@ -21,7 +22,15 @@ if str(BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(BACKEND_DIR))
 
 try:
-    from config import PIPELINE_CONFIG
+    from config import (
+        PIPELINE_CONFIG, 
+        WHISPER_MODEL, 
+        WHISPER_BEAM_SIZE, 
+        WHISPER_VAD_FILTER, 
+        USE_GPU,
+        OUTPUT_DIR,
+        HF_TOKEN as CONFIG_HF_TOKEN
+    )
 except ImportError:
     # Fallback config if import fails
     PIPELINE_CONFIG = {
@@ -33,6 +42,12 @@ except ImportError:
         "min_speakers": None,
         "max_speakers": None
     }
+    WHISPER_MODEL = "medium"
+    WHISPER_BEAM_SIZE = 5
+    WHISPER_VAD_FILTER = True
+    USE_GPU = False
+    OUTPUT_DIR = None
+    CONFIG_HF_TOKEN = None
 # ✅ FIX: Import với absolute path từ src
 try:
     from src.stage1_preprocessing import AudioPreprocessor
@@ -73,10 +88,14 @@ class MeetingPipeline:
     def __init__(self, audio_path: str, output_dir: str = None):
         self.audio_path = audio_path
         
-        # ✅ Default output_dir to backend/src/outputs if not specified
+        # ✅ Use OUTPUT_DIR from config if not specified
         if output_dir is None:
-            src_dir = Path(__file__).parent  # backend/src
-            output_dir = str(src_dir / "outputs")
+            if OUTPUT_DIR is not None:
+                output_dir = str(OUTPUT_DIR)
+            else:
+                # Fallback to backend/data/outputs
+                src_dir = Path(__file__).parent  # backend/src
+                output_dir = str(src_dir.parent / "data" / "outputs")
         
         self.base_output_dir = output_dir  # Base outputs folder
         self.meeting_id = self._generate_meeting_id()
@@ -142,34 +161,59 @@ class MeetingPipeline:
         """Save meeting.json (SSoT)"""
         # ✅ Use meeting_id in filename for consistency
         meeting_json_path = os.path.join(self.output_dir, f"{self.meeting_id}_meeting.json")
-        with open(meeting_json_path, 'w', encoding='utf-8') as f:
-            json.dump(self.meeting_data, f, ensure_ascii=False, indent=2)
-        return meeting_json_path
+        
+        try:
+            print(f"      💾 Saving meeting.json...")
+            
+            # Ensure output directory exists
+            os.makedirs(self.output_dir, exist_ok=True)
+            
+            # Count data size
+            segments_count = len(self.meeting_data.get("whisper", {}).get("segments", []))
+            print(f"      📊 Serializing {segments_count} segments...")
+            
+            with open(meeting_json_path, 'w', encoding='utf-8') as f:
+                json.dump(self.meeting_data, f, ensure_ascii=False, indent=2)
+            
+            print(f"      ✅ meeting.json saved successfully")
+            return meeting_json_path
+            
+        except Exception as e:
+            print(f"      ❌ Failed to save meeting.json: {e}", flush=True)
+            print(f"      📍 Path: {meeting_json_path}", flush=True)
+            import traceback
+            traceback.print_exc()
+            raise
     
     def _save_stage_output(self, stage_name: str, data: dict, file_type: str = 'json'):
         """Save intermediate stage outputs (only if debug_mode enabled)"""
         if not self.debug_mode:
             return None
         
-        filename = f"{stage_name}.{file_type}"
-        output_path = os.path.join(self.output_dir, filename)
-        
-        if file_type == 'json':
-            with open(output_path, 'w', encoding='utf-8') as f:
-                json.dump(data, f, ensure_ascii=False, indent=2)
-        elif file_type == 'txt':
-            with open(output_path, 'w', encoding='utf-8') as f:
-                if isinstance(data, dict):
-                    for key, value in data.items():
-                        f.write(f"{key}: {value}\n")
-                elif isinstance(data, list):
-                    for item in data:
-                        f.write(f"{item}\n")
-                else:
-                    f.write(str(data))
-        
-        print(f"      💾 Saved: {filename}")
-        return output_path
+        try:
+            filename = f"{stage_name}.{file_type}"
+            output_path = os.path.join(self.output_dir, filename)
+            
+            if file_type == 'json':
+                with open(output_path, 'w', encoding='utf-8') as f:
+                    json.dump(data, f, ensure_ascii=False, indent=2)
+            elif file_type == 'txt':
+                with open(output_path, 'w', encoding='utf-8') as f:
+                    if isinstance(data, dict):
+                        for key, value in data.items():
+                            f.write(f"{key}: {value}\n")
+                    elif isinstance(data, list):
+                        for item in data:
+                            f.write(f"{item}\n")
+                    else:
+                        f.write(str(data))
+            
+            print(f"      💾 Saved: {filename}")
+            return output_path
+            
+        except Exception as e:
+            print(f"      ⚠️ Failed to save {stage_name}: {e}", flush=True)
+            return None
     
     def _update_status(self, status: str, stage: str = None):
         """Update pipeline status"""
@@ -233,26 +277,65 @@ class MeetingPipeline:
         """[3] Whisper Transcription"""
         self._update_status("processing", "whisper")
         
-        whisper = WhisperProcessor()
+        # ✅ Use faster-whisper with config
+        device_mode = "cuda" if USE_GPU else "cpu"
+        
+        whisper = WhisperProcessor(
+            model_size=WHISPER_MODEL,
+            device=device_mode,  # ✅ Force device from config
+            beam_size=WHISPER_BEAM_SIZE,
+            vad_filter=WHISPER_VAD_FILTER
+        )
         result = whisper.process(
             audio_path=self.preprocessed_audio,
             chunks=self.meeting_data["chunks"]
         )
         
-        # Update SSoT
+        # Delete whisper object to free memory/GPU
+        del whisper
+        import gc
+        gc.collect()
+        
+        # ✅ Save words to TEMP FILE (not memory, not JSON) to avoid OS killing process
+        import pickle
+        import os
+        words_temp_path = os.path.join(self.output_dir, "_temp_words.pkl")
+        with open(words_temp_path, 'wb') as f:
+            pickle.dump(result["words"], f)
+        
+        # Update SSoT - but DON'T store words in JSON
         self.meeting_data["whisper"]["segments"] = result["segments"]
-        # ✅ Store words temporarily (will be used in stage5, then can be cleared)
-        self.meeting_data["whisper"]["words"] = result["words"]
+        self.meeting_data["whisper"]["words"] = []  # Empty - not saved to disk
         self.meeting_data["whisper"]["language"] = result["language"]
+        self.meeting_data["whisper"]["word_count"] = len(result["words"])
         
         print(f"   ✅ Transcription complete")
         print(f"      - Segments: {len(result['segments'])}")
-        print(f"      - Words: {len(result['words'])}")
-        print(f"      - Language: {result['language']}")
+        print(f"      - Words: {len(result['words'])} (saved to temp file)")
         
-        # Save stage output
-        self._save_stage_output('stage3_whisper', result, 'json')
+        # Clear result from memory immediately
+        del result
+        
+        # Save outputs
+        stage_output = {
+            "segments": self.meeting_data["whisper"]["segments"],
+            "word_count": self.meeting_data["whisper"]["word_count"],
+            "language": self.meeting_data["whisper"]["language"]
+        }
+        self._save_stage_output('stage3_whisper', stage_output, 'json')
         self._save_meeting_json()
+        
+        # Force cleanup and release GPU memory
+        import gc
+        gc.collect()
+        
+        try:
+            import torch
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+                torch.cuda.synchronize()
+        except Exception:
+            pass
     
     def run_stage4_diarization(self):
         """[4] Speaker Diarization"""
@@ -282,25 +365,44 @@ class MeetingPipeline:
         """[5] Speaker Assignment (word-level voting)"""
         self._update_status("processing", "speaker_assignment")
         
-        assigner = SpeakerAssigner()
-        segments = assigner.assign(
-            whisper_segments=self.meeting_data["whisper"]["segments"],
-            whisper_words=self.meeting_data["whisper"]["words"],
-            diarization_timeline=self.meeting_data["diarization"]["timeline"]
-        )
+        # ✅ Load words from temp file
+        import pickle
+        import os
+        words_temp_path = os.path.join(self.output_dir, "_temp_words.pkl")
         
-        # Update SSoT (tạm thời, chưa merge)
-        self.meeting_data["segments_raw"] = segments
+        if not os.path.exists(words_temp_path):
+            print(f"   ⚠️ Warning: Temp words file not found")
+            whisper_words = []
+        else:
+            with open(words_temp_path, 'rb') as f:
+                whisper_words = pickle.load(f)
         
-        # ✅ Clear words after assignment to save memory (words no longer needed)
-        if not self.debug_mode:
-            self.meeting_data["whisper"]["words"] = []  # Keep structure but clear data
+        if not whisper_words:
+            print(f"   ⚠️ Warning: No whisper words available")
+            # Fallback to empty assignment
+            segments = self.meeting_data["whisper"]["segments"]
+            for seg in segments:
+                seg["speaker"] = "UNKNOWN"
+            self.meeting_data["segments_raw"] = segments
+        else:
+            assigner = SpeakerAssigner()
+            segments = assigner.assign(
+                whisper_segments=self.meeting_data["whisper"]["segments"],
+                whisper_words=whisper_words,  # From temp file
+                diarization_timeline=self.meeting_data["diarization"]["timeline"]
+            )
+            self.meeting_data["segments_raw"] = segments
+        
+        # ✅ Delete temp file after use
+        if os.path.exists(words_temp_path):
+            os.remove(words_temp_path)
+            print(f"   🗑️ Temp words file deleted")
         
         print(f"   ✅ Speaker assignment complete")
-        print(f"      - Assigned segments: {len(segments)}")
+        print(f"      - Assigned segments: {len(self.meeting_data['segments_raw'])}")
         
         # Save stage output
-        self._save_stage_output('stage5_speaker_assignment', {'segments': segments, 'count': len(segments)}, 'json')
+        self._save_stage_output('stage5_speaker_assignment', {'segments': self.meeting_data["segments_raw"], 'count': len(self.meeting_data["segments_raw"])}, 'json')
         self._save_meeting_json()
     
     def run_stage6_merge_normalize(self):
@@ -664,7 +766,6 @@ class MeetingPipeline:
         stage_elapsed = time.time() - stage_start
         
         self.stage_timings[stage_name] = stage_elapsed
-        
         print(f"\n   ⏱️  {stage_name} completed in {stage_elapsed:.2f}s ({stage_elapsed/60:.2f} min)")
         
         return result
@@ -700,6 +801,10 @@ class MeetingPipeline:
             
             # Stage 3: Whisper
             self._run_stage("STAGE 3: Whisper Transcription", self.run_stage3_whisper)
+            
+            # Small delay to let OS cleanup memory
+            import time as time_module
+            time_module.sleep(0.5)
             
             # Stage 4: Diarization
             self._run_stage("STAGE 4: Speaker Diarization", self.run_stage4_diarization)
@@ -747,6 +852,11 @@ class MeetingPipeline:
             self._update_status("failed")
             print(f"\n❌ Pipeline failed: {e}")
             
+            # Print full traceback for debugging
+            import traceback
+            print(f"\n📋 Full traceback:")
+            traceback.print_exc()
+            
             # Print timing summary even on failure
             if self.stage_timings:
                 print(f"\n⏱️  Stages completed before failure:")
@@ -759,30 +869,30 @@ class MeetingPipeline:
 if __name__ == "__main__":
     import sys
     
-    # ✅ Load .env file để lấy HF_TOKEN khi chạy standalone
+    # Load .env file để lấy HF_TOKEN khi chạy standalone
     try:
         from dotenv import load_dotenv
         env_path = BACKEND_DIR / ".env"
-        
-        print(f"🔍 Debug info:")
-        print(f"   BACKEND_DIR: {BACKEND_DIR}")
-        print(f"   Env path: {env_path}")
-        print(f"   Env exists: {env_path.exists()}")
         
         if env_path.exists():
             load_dotenv(env_path)
             print(f"✅ Loaded .env from: {env_path}")
             
-            hf_token = os.getenv("HF_TOKEN")
+            # Priority: .env > config.py
+            hf_token = os.getenv("HF_TOKEN") or CONFIG_HF_TOKEN
             if hf_token:
                 os.environ["HF_TOKEN"] = hf_token
                 print(f"✅ HF_TOKEN loaded: {hf_token[:10]}...{hf_token[-5:]}")
             else:
-                print(f"⚠️  Warning: HF_TOKEN not found in .env")
-                print(f"⚠️  Available env vars: {list(os.environ.keys())[:10]}")
+                print(f"⚠️  Warning: HF_TOKEN not found in .env or config.py")
         else:
-            print(f"❌ Error: .env file not found at {env_path}")
-            print(f"   Current working dir: {os.getcwd()}")
+            # Use config.py value if .env doesn't exist
+            print(f"⚠️  .env file not found at {env_path}")
+            if CONFIG_HF_TOKEN:
+                os.environ["HF_TOKEN"] = CONFIG_HF_TOKEN
+                print(f"✅ HF_TOKEN loaded from config.py")
+            else:
+                print(f"⚠️  Warning: HF_TOKEN not in config.py either")
     except ImportError:
         print("⚠️  python-dotenv not installed, skipping .env loading")
     
