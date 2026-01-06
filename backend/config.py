@@ -11,16 +11,50 @@ UPLOAD_DIR = DATA_DIR / "uploads"
 OUTPUT_DIR = DATA_DIR / "outputs"
 
 # ==================== WHISPER SETTINGS ====================
-WHISPER_MODEL = "NhutP/ViWhisper-medium"
-LANGUAGE = "vi"
-USE_GPU = True  # Set to False to force CPU
+# 🎯 WHISPER_MODEL - faster-whisper official models
+# Options: 
+#   - "tiny" or "tiny.en" (very fast, ~1GB VRAM, 32x realtime)
+#   - "base" or "base.en" (fast, ~1GB VRAM, 16x realtime)
+#   - "small" or "small.en" (balanced, ~2GB VRAM, 6x realtime)
+#   - "medium" or "medium.en" (good accuracy, ~5GB VRAM, 2x realtime) ✅ Recommended
+#   - "large-v2" (high accuracy, ~10GB VRAM, 1x realtime)
+#   - "large-v3" (best accuracy, ~10GB VRAM, 1x realtime)
+# Note: Use ".en" suffix for English-only models (faster but English only)
+WHISPER_MODEL = "small"
+
+LANGUAGE = "vi"  # ISO 639-1 code, e.g., "en" for English, "vi" for Vietnamese, or None for auto-detect
+USE_GPU = False  # ✅ TEST: Disable GPU to check if CUDA is causing crash
+
+# ⚙️ WHISPER_BEAM_SIZE - Balance giữa speed và accuracy
+# - 1: Greedy decoding, rất nhanh, accuracy thấp (không khuyến nghị)
+# - 3: Nhanh, accuracy tốt (cho file dài)
+# - 5: Cân bằng (default, recommended) ✅
+# - 10: Chậm, accuracy cao (cho file ngắn quan trọng)
+WHISPER_BEAM_SIZE = 5
+
+# ⚙️ WHISPER_VAD_FILTER - Voice Activity Detection
+# True: Tự động bỏ qua đoạn im lặng (recommended cho file dài)
+# False: Transcribe toàn bộ audio
+WHISPER_VAD_FILTER = True
 
 # ==================== DIARIZATION SETTINGS ====================
 MIN_SPEAKERS = None  # None = auto-detect
 MAX_SPEAKERS = None  # None = auto-detect
 
+# ==================== HUGGING FACE SETTINGS ====================
+# Required for PyAnnote diarization model
+# Get token from: https://huggingface.co/settings/tokens
+HF_TOKEN = None  # Will be loaded from .env file if not set here
+
 # ==================== PROCESSING SETTINGS ====================
-CHUNK_DURATION_MINUTES = 10  # Duration of each audio chunk
+# ⚙️ CHUNK_DURATION_MINUTES - Quan trọng nhất cho file audio lớn
+# - File ngắn (<30 phút): 10 phút
+# - File trung bình (30-60 phút): 7 phút  
+# - File dài (1-2 giờ): 5 phút
+# - File rất dài (>2 giờ): 3 phút
+# Trade-off: Nhỏ hơn = ít memory hơn nhưng lâu hơn
+CHUNK_DURATION_MINUTES = 5
+
 ENABLE_VAD = True  # Voice Activity Detection
 ENABLE_GENDER = True  # Gender classification
 ENABLE_SPELL_CHECK = True  # LLM spell checking and grammar correction
@@ -51,6 +85,13 @@ ALLOWED_AUDIO_FORMATS = ['.mp3', '.wav', '.m4a', '.ogg', '.flac', '.webm']
 # ==================== OUTPUT SETTINGS ====================
 MAX_TRANSCRIPT_SEGMENTS = 30  # Number of segments to send to UI
 KEEP_OUTPUTS_DAYS = 7  # Auto-cleanup old outputs after N days
+
+# ==================== AUDIO PROCESSING SETTINGS ====================
+# Preprocessing thresholds
+SAMPLE_RATE = 16000  # Target sample rate (Hz)
+HIGH_PASS_FILTER_FREQ = 80  # Hz - Remove low frequency noise
+NORMALIZE_TARGET = 0.95  # Target normalization level (0.0-1.0)
+LARGE_FILE_THRESHOLD_MB = 500  # Use streaming mode for files larger than this
 
 # ==================== LOGGING ====================
 LOG_LEVEL = "INFO"  # DEBUG, INFO, WARNING, ERROR
