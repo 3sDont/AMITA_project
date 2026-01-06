@@ -8,6 +8,7 @@ Stage 1: Audio Preprocessing
 import os
 import numpy as np
 import soundfile as sf
+import librosa
 from scipy import signal
 from typing import Dict, List, Tuple, Optional
 
@@ -17,6 +18,21 @@ try:
     PYDUB_AVAILABLE = True
 except ImportError:
     PYDUB_AVAILABLE = False
+
+# ✅ Load config values
+try:
+    from config import (
+        SAMPLE_RATE,
+        HIGH_PASS_FILTER_FREQ,
+        NORMALIZE_TARGET,
+        LARGE_FILE_THRESHOLD_MB
+    )
+except ImportError:
+    # Fallback values
+    SAMPLE_RATE = 16000
+    HIGH_PASS_FILTER_FREQ = 80
+    NORMALIZE_TARGET = 0.95
+    LARGE_FILE_THRESHOLD_MB = 500
 
 
 class AudioPreprocessor:
@@ -34,7 +50,7 @@ class AudioPreprocessor:
     
     def __init__(self, audio_path: str):
         self.audio_path = audio_path
-        self.sample_rate = 16000
+        self.sample_rate = SAMPLE_RATE
     
     def process(self, enable_vad: bool = True) -> Dict:
         """
@@ -63,43 +79,51 @@ class AudioPreprocessor:
         
         print(f"   📊 File size: {file_size:,} bytes ({file_size / 1024 / 1024:.2f} MB)")
         
-        # ✅ Try soundfile first, fallback to pydub for unsupported formats
-        try:
-            waveform, sr = sf.read(self.audio_path)
-        except Exception as e:
-            if PYDUB_AVAILABLE:
-                print(f"   ⚠️  soundfile failed, using pydub for format conversion...")
-                waveform, sr = self._load_with_pydub(self.audio_path)
-            else:
-                raise Exception(f"Cannot load audio: {e}. Install pydub for more format support.")
+        # ✅ For very large files, use streaming with librosa
+        already_processed = False
+        large_file_threshold = LARGE_FILE_THRESHOLD_MB * 1024 * 1024
+        if file_size > large_file_threshold:
+            print(f"   ⚠️  Large file detected ({file_size / 1024 / 1024:.0f}MB), using streaming mode...")
+            waveform, sr = librosa.load(self.audio_path, sr=SAMPLE_RATE, mono=True)  # Direct to target SR
+            print(f"   ✅ Loaded with librosa (already resampled to {SAMPLE_RATE}Hz, mono)")
+            already_processed = True
+        else:
+            # ✅ Try soundfile first, fallback to pydub for unsupported formats
+            try:
+                waveform, sr = sf.read(self.audio_path)
+            except Exception as e:
+                if PYDUB_AVAILABLE:
+                    print(f"   ⚠️  soundfile failed, using pydub for format conversion...")
+                    waveform, sr = self._load_with_pydub(self.audio_path)
+                else:
+                    raise Exception(f"Cannot load audio: {e}. Install pydub for more format support.")
         
-        # Convert stereo → mono
-        if waveform.ndim > 1:
+        # Convert stereo → mono (skip if already processed by librosa)
+        if not already_processed and waveform.ndim > 1:
             print("   🔄 Converting stereo → mono...")
             waveform = np.mean(waveform, axis=1)
         
-        # Resample to 16kHz
-        if sr != 16000:
-            print(f"   🔄 Resampling {sr}Hz → 16000Hz...")
-            num_samples = int(len(waveform) * 16000 / sr)
-            waveform = signal.resample(waveform, num_samples)
-            sr = 16000
+        # Resample to target sample rate using librosa (skip if already processed)
+        if not already_processed and sr != SAMPLE_RATE:
+            print(f"   🔄 Resampling {sr}Hz → {SAMPLE_RATE}Hz...")
+            waveform = librosa.resample(waveform, orig_sr=sr, target_sr=SAMPLE_RATE)
+            sr = SAMPLE_RATE
         
         # Normalize
         print("   🔊 Normalizing volume...")
         max_val = np.max(np.abs(waveform))
         if max_val > 0:
-            waveform = waveform / max_val * 0.95
+            waveform = waveform / max_val * NORMALIZE_TARGET
         
-        # High-pass filter (remove <80Hz noise)
-        print("   🎛️  Applying high-pass filter (80Hz)...")
-        sos = signal.butter(4, 80, 'hp', fs=sr, output='sos')
+        # High-pass filter (remove low frequency noise)
+        print(f"   🎛️  Applying high-pass filter ({HIGH_PASS_FILTER_FREQ}Hz)...")
+        sos = signal.butter(4, HIGH_PASS_FILTER_FREQ, 'hp', fs=sr, output='sos')
         waveform = signal.sosfilt(sos, waveform)
         
         # Final normalize
         max_val = np.max(np.abs(waveform))
         if max_val > 0:
-            waveform = waveform / max_val * 0.95
+            waveform = waveform / max_val * NORMALIZE_TARGET
         
         # VAD (Voice Activity Detection)
         vad_regions = []
