@@ -61,6 +61,63 @@ ENABLE_SPELL_CHECK = True  # LLM spell checking and grammar correction
 ENABLE_LLM_ANALYSIS = True  # LLM summary and tasks
 DEBUG_MODE = True  # Save intermediate stage outputs for debugging
 
+# ==================== PROCESSING MODES ====================
+# 🎯 Three processing modes with different speed/accuracy trade-offs
+
+PROCESSING_MODES = {
+    "flash": {
+        "name": "Flash Mode",
+        "description": "⚡ Fastest - Quick results for short meetings",
+        "whisper_model": "base",
+        "whisper_beam_size": 3,
+        "whisper_vad_filter": True,
+        "chunk_duration_minutes": 10,
+        "enable_vad": True,
+        "enable_gender": False,
+        "enable_spell_check": False,
+        "enable_llm": True,
+        "llm_detail_level": "brief",  # brief summary only
+        "min_speakers": None,
+        "max_speakers": None,
+        "use_gpu": USE_GPU
+    },
+    "flow": {
+        "name": "Flow Mode",
+        "description": "⚖️ Balanced - Recommended for most meetings",
+        "whisper_model": "small",
+        "whisper_beam_size": 5,
+        "whisper_vad_filter": True,
+        "chunk_duration_minutes": 7,
+        "enable_vad": True,
+        "enable_gender": True,
+        "enable_spell_check": True,
+        "enable_llm": True,
+        "llm_detail_level": "standard",  # full summary + tasks
+        "min_speakers": None,
+        "max_speakers": None,
+        "use_gpu": USE_GPU
+    },
+    "deep": {
+        "name": "Deep Mode",
+        "description": "🎯 Most Accurate - Detailed analysis for important meetings",
+        "whisper_model": "medium",
+        "whisper_beam_size": 10,
+        "whisper_vad_filter": True,
+        "chunk_duration_minutes": 3,
+        "enable_vad": True,
+        "enable_gender": True,
+        "enable_spell_check": True,
+        "enable_llm": True,
+        "llm_detail_level": "detailed",  # comprehensive analysis
+        "min_speakers": MIN_SPEAKERS,
+        "max_speakers": MAX_SPEAKERS,
+        "use_gpu": USE_GPU
+    }
+}
+
+# Default processing mode
+DEFAULT_PROCESSING_MODE = "flow"
+
 # ==================== PIPELINE CONFIG ====================
 PIPELINE_CONFIG = {
     "chunk_duration_minutes": CHUNK_DURATION_MINUTES,
