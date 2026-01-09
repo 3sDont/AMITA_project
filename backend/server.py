@@ -140,11 +140,21 @@ async def upload_audio(file: UploadFile = File(...)):
 
 @app.post("/api/process")
 async def process_audio(data: dict):
-    """Process audio through AMITA pipeline"""
+    """Process audio through AMITA pipeline with selected processing mode"""
     try:
         filename = data.get("filename")
         if not filename:
             raise HTTPException(400, "Filename is required")
+        
+        # Get processing mode (default to 'flow')
+        mode = data.get("mode", config.DEFAULT_PROCESSING_MODE).lower()
+        if mode not in config.PROCESSING_MODES:
+            raise HTTPException(400, f"Invalid mode. Choose from: {', '.join(config.PROCESSING_MODES.keys())}")
+        
+        # Get mode configuration
+        mode_config = config.PROCESSING_MODES[mode]
+        print(f"🎯 Processing mode: {mode_config['name']}")
+        print(f"📝 {mode_config['description']}")
         
         audio_path = config.UPLOAD_DIR / filename
         if not audio_path.exists():
@@ -167,15 +177,21 @@ async def process_audio(data: dict):
                     output_dir=str(output_dir)
                 )
                 
-                # Configure pipeline
+                # Configure pipeline with selected mode settings
                 pipeline.config.update({
-                    "chunk_duration_minutes": 10,
-                    "enable_vad": True,
-                    "enable_gender": GENDER_AVAILABLE,
-                    "enable_llm": LLM_AVAILABLE and hasattr(config, 'ENABLE_LLM_ANALYSIS') and config.ENABLE_LLM_ANALYSIS,
-                    "min_speakers": getattr(config, 'MIN_SPEAKERS', None),
-                    "max_speakers": getattr(config, 'MAX_SPEAKERS', None)
+                    "chunk_duration_minutes": mode_config["chunk_duration_minutes"],
+                    "enable_vad": mode_config["enable_vad"],
+                    "enable_gender": mode_config["enable_gender"] and GENDER_AVAILABLE,
+                    "enable_llm": mode_config["enable_llm"] and LLM_AVAILABLE,
+                    "min_speakers": mode_config.get("min_speakers"),
+                    "max_speakers": mode_config.get("max_speakers"),
+                    "processing_mode": mode,
+                    "llm_detail_level": mode_config.get("llm_detail_level", "standard")
                 })
+                
+                # Update Whisper settings for this processing session
+                print(f"🤖 Whisper Model: {mode_config['whisper_model']}")
+                print(f"📊 Beam Size: {mode_config['whisper_beam_size']}")
                 
                 # Run full pipeline
                 print("🚀 Running full pipeline...")
@@ -243,9 +259,12 @@ async def process_audio(data: dict):
                         "pipeline": "AMITA Pipeline v2.0",
                         "pipeline_version": metadata.get("pipeline_version", "2.0"),
                         "meeting_id": metadata.get("meeting_id"),
+                        "processing_mode": mode,
+                        "mode_name": mode_config["name"],
+                        "whisper_model": mode_config["whisper_model"],
                         "diarization": DIARIZATION_AVAILABLE,
-                        "gender_classification": GENDER_AVAILABLE,
-                        "llm_analysis": LLM_AVAILABLE
+                        "gender_classification": mode_config["enable_gender"] and GENDER_AVAILABLE,
+                        "llm_analysis": mode_config["enable_llm"] and LLM_AVAILABLE
                     }
                 })
             
@@ -312,7 +331,7 @@ async def process_audio(data: dict):
 
 @app.get("/api/status")
 async def get_status():
-    """Get system status"""
+    """Get system status and available processing modes"""
     if PIPELINE_ENABLED:
         return JSONResponse({
             "status": "running",
@@ -320,7 +339,16 @@ async def get_status():
             "whisper_model": config.WHISPER_MODEL,
             "language": config.LANGUAGE,
             "gpu_enabled": config.USE_GPU,
-            "llm_enabled": config.ENABLE_LLM_ANALYSIS
+            "llm_enabled": config.ENABLE_LLM_ANALYSIS,
+            "processing_modes": {
+                mode_key: {
+                    "name": mode_val["name"],
+                    "description": mode_val["description"],
+                    "whisper_model": mode_val["whisper_model"]
+                }
+                for mode_key, mode_val in config.PROCESSING_MODES.items()
+            },
+            "default_mode": config.DEFAULT_PROCESSING_MODE
         })
     else:
         return JSONResponse({
