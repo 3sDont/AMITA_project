@@ -12,6 +12,8 @@ export default function App() {
   const [recordingTime, setRecordingTime] = useState(0);
   const [recordingSource, setRecordingSource] = useState('microphone'); // 'microphone' or 'system'
   const [uploadedFilename, setUploadedFilename] = useState(null); // Store backend filename
+  const [processingMode, setProcessingMode] = useState('flow'); // 'flash', 'flow', 'deep'
+  const [activeSegmentIndex, setActiveSegmentIndex] = useState(null); // Track which segment is currently playing
   const waveformRef = useRef(null);
   const wavesurfer = useRef(null);
   const mediaRecorder = useRef(null);
@@ -91,11 +93,11 @@ export default function App() {
       alert("Please upload or record an audio file first!");
       return;
     }
-    console.log("Processing file:", uploadedFilename);
-    await processAudio(uploadedFilename);
+    console.log("Processing file:", uploadedFilename, "with mode:", processingMode);
+    await processAudio(uploadedFilename, processingMode);
   };
 
-  const processAudio = async (filename) => {
+  const processAudio = async (filename, mode = 'flow') => {
     setIsProcessing(true);
     setTranscript([{ time: "00:00", speaker: "System", text: "Processing audio... Please wait..." }]);
     setSummary("Processing...");
@@ -105,7 +107,7 @@ export default function App() {
       const response = await fetch(`${API_URL}/api/process`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ filename }),
+        body: JSON.stringify({ filename, mode }),
       });
 
       if (response.ok) {
@@ -153,10 +155,12 @@ export default function App() {
 
       wavesurfer.current.on('audioprocess', () => {
         setCurrentTime(wavesurfer.current.getCurrentTime());
+        updateActiveSegment(wavesurfer.current.getCurrentTime());
       });
 
       wavesurfer.current.on('finish', () => {
         setIsPlaying(false);
+        setActiveSegmentIndex(null);
       });
     }
   }, [audioFile]);
@@ -188,6 +192,60 @@ export default function App() {
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  // Parse timestamp string (MM:SS) to seconds
+  const parseTimestamp = (timeString) => {
+    const parts = timeString.split(':');
+    if (parts.length === 2) {
+      const minutes = parseInt(parts[0], 10);
+      const seconds = parseInt(parts[1], 10);
+      return minutes * 60 + seconds;
+    }
+    return 0;
+  };
+
+  // Handle timestamp click - jump audio to that position
+  const handleTimestampClick = (timeString, index) => {
+    if (!wavesurfer.current || !audioFile) {
+      alert('⚠️ Please upload an audio file first!');
+      return;
+    }
+
+    const targetSeconds = parseTimestamp(timeString);
+    const targetPosition = targetSeconds / duration; // Position from 0 to 1
+    
+    // Jump to position
+    wavesurfer.current.seekTo(targetPosition);
+    
+    // Set active segment
+    setActiveSegmentIndex(index);
+    
+    // Auto-play if not playing
+    if (!isPlaying) {
+      wavesurfer.current.play();
+      setIsPlaying(true);
+    }
+  };
+
+  // Update active segment based on current audio time
+  const updateActiveSegment = (currentSeconds) => {
+    if (transcript.length === 0) return;
+
+    // Find which segment matches current time
+    for (let i = 0; i < transcript.length; i++) {
+      const segmentTime = parseTimestamp(transcript[i].time);
+      const nextSegmentTime = i < transcript.length - 1 
+        ? parseTimestamp(transcript[i + 1].time) 
+        : duration;
+
+      if (currentSeconds >= segmentTime && currentSeconds < nextSegmentTime) {
+        if (activeSegmentIndex !== i) {
+          setActiveSegmentIndex(i);
+        }
+        break;
+      }
+    }
   };
 
   // Recording functions
@@ -411,31 +469,54 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header Section with Navy Blue Background */}
-      <div className="bg-gradient-to-r from-[#1e3a8a] to-[#1e40af] text-white py-16 px-4">
-        <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-5xl font-bold mb-3">AMITA</h1>
-          <p className="text-xl text-blue-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      {/* Header Section with Modern Gradient */}
+      <div className="relative bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-500 text-white py-20 px-4 overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-10">
+          <div className="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="max-w-6xl mx-auto text-center relative z-10">
+          <div className="inline-flex items-center gap-3 mb-4 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+            <span className="text-sm font-medium">AI-Powered Meeting Assistant</span>
+          </div>
+          <h1 className="text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">
+            AMITA
+          </h1>
+          <p className="text-xl text-blue-50 font-light tracking-wide">
             Meeting Insight & Task Assistant
+          </p>
+          <p className="text-sm text-blue-100 mt-2 max-w-2xl mx-auto">
+            Transform your meetings into actionable insights with AI-powered transcription, summarization, and task extraction
           </p>
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-4 py-10">
         {/* Upload and Record Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           {/* Upload Audio */}
-          <div className="bg-white border-2 border-gray-200 rounded-xl p-8 shadow-sm">
-            <label className="flex items-center gap-2 font-semibold text-gray-800 mb-4 text-lg">
-              <span className="text-2xl">📁</span>
-              Upload Audio File
-              {isProcessing && (
-                <span className="text-sm text-blue-600 font-normal ml-2 animate-pulse">
-                  Processing...
-                </span>
-              )}
-            </label>
+          <div className="group bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                </svg>
+              </div>
+              <div>
+                <label className="font-bold text-gray-800 text-lg block">
+                  Upload Audio File
+                </label>
+                {isProcessing && (
+                  <span className="text-xs text-blue-600 font-medium animate-pulse">
+                    Processing...
+                  </span>
+                )}
+              </div>
+            </div>
             <div className="relative">
               <input
                 type="file"
@@ -444,58 +525,75 @@ export default function App() {
                 disabled={isProcessing || isRecording}
                 className="block w-full text-sm text-gray-600
                   file:mr-4 file:py-3 file:px-6
-                  file:rounded-lg file:border-0
-                  file:text-sm file:font-semibold
-                  file:bg-blue-600 file:text-white
-                  hover:file:bg-blue-700
+                  file:rounded-xl file:border-0
+                  file:text-sm file:font-bold
+                  file:bg-gradient-to-r file:from-blue-600 file:to-indigo-600 file:text-white
+                  hover:file:from-blue-700 hover:file:to-indigo-700
                   file:cursor-pointer cursor-pointer
-                  file:transition-colors
+                  file:transition-all file:duration-300
+                  file:shadow-md hover:file:shadow-lg
                   disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
             {uploadedFile && !isRecording && (
-              <p className="mt-3 text-sm text-gray-600">
-                Selected: <span className="font-medium">{uploadedFile.name}</span>
-              </p>
+              <div className="mt-4 p-3 bg-blue-50 rounded-xl border border-blue-100">
+                <p className="text-sm text-gray-700">
+                  <span className="font-semibold text-blue-700">Selected:</span> {uploadedFile.name}
+                </p>
+              </div>
             )}
           </div>
 
           {/* Record Audio */}
-          <div className="bg-white border-2 border-gray-200 rounded-xl p-8 shadow-sm">
-            <label className="flex items-center gap-2 font-semibold text-gray-800 mb-4 text-lg">
-              <span className="text-2xl">🎙️</span>
-              Record Audio
-              {isRecording && (
-                <span className="text-sm text-red-600 font-normal ml-2 animate-pulse">
-                  Recording... {formatTime(recordingTime)}
-                </span>
-              )}
-            </label>
+          <div className="group bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+            <div className="flex items-center gap-3 mb-6">
+              <div className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-lg transition-all ${
+                isRecording 
+                  ? 'bg-gradient-to-br from-red-500 to-pink-600 animate-pulse' 
+                  : 'bg-gradient-to-br from-green-500 to-emerald-600'
+              }`}>
+                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <label className="font-bold text-gray-800 text-lg block">
+                  Record Audio
+                </label>
+                {isRecording && (
+                  <span className="text-xs text-red-600 font-medium animate-pulse">
+                    Recording... {formatTime(recordingTime)}
+                  </span>
+                )}
+              </div>
+            </div>
             
             {/* Audio Source Selection */}
             {!isRecording && (
-              <div className="mb-4 flex gap-2">
+              <div className="mb-5 flex gap-3">
                 <button
                   onClick={() => setRecordingSource('microphone')}
                   disabled={isProcessing}
-                  className={`flex-1 py-2 px-4 rounded-lg font-medium transition-all ${
+                  className={`flex-1 py-3 px-4 rounded-xl font-semibold transition-all duration-300 ${
                     recordingSource === 'microphone'
-                      ? 'bg-blue-600 text-white shadow-md'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg scale-105'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105'
                   } disabled:opacity-50`}
                 >
-                  🎤 Microphone
+                  <span className="text-lg mr-2">🎤</span>
+                  Microphone
                 </button>
                 <button
                   onClick={() => setRecordingSource('system')}
                   disabled={isProcessing}
-                  className={`flex-1 py-2 px-4 rounded-lg font-medium transition-all ${
+                  className={`flex-1 py-3 px-4 rounded-xl font-semibold transition-all duration-300 ${
                     recordingSource === 'system'
-                      ? 'bg-blue-600 text-white shadow-md'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg scale-105'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105'
                   } disabled:opacity-50`}
                 >
-                  🔊 System Audio
+                  <span className="text-lg mr-2">🔊</span>
+                  System Audio
                 </button>
               </div>
             )}
@@ -504,184 +602,348 @@ export default function App() {
               <button
                 onClick={isRecording ? stopRecording : startRecording}
                 disabled={isProcessing}
-                className={`py-4 px-6 rounded-lg font-semibold text-white transition-all
+                className={`py-4 px-6 rounded-xl font-bold text-white transition-all duration-300 shadow-lg
                   ${isRecording 
-                    ? 'bg-red-600 hover:bg-red-700 animate-pulse' 
-                    : 'bg-green-600 hover:bg-green-700'
-                  } disabled:opacity-50 disabled:cursor-not-allowed
-                  flex items-center justify-center gap-2`}
+                    ? 'bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 hover:shadow-xl hover:scale-105' 
+                    : 'bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 hover:shadow-xl hover:scale-105'
+                  } disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100
+                  flex items-center justify-center gap-3`}
               >
                 {isRecording ? (
                   <>
-                    <span className="w-4 h-4 bg-white rounded-full animate-pulse"></span>
+                    <span className="w-4 h-4 bg-white rounded-sm"></span>
                     Stop Recording
                   </>
                 ) : (
                   <>
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd" />
-                    </svg>
+                    <span className="w-4 h-4 bg-white rounded-full"></span>
                     Start Recording
                   </>
                 )}
               </button>
-              <p className="text-xs text-gray-500 text-center">
+              <p className="text-xs text-gray-500 text-center leading-relaxed">
                 {recordingSource === 'microphone' 
-                  ? 'Click to record audio from your microphone'
-                  : 'Click to capture audio playing on your device (browser tab or system audio)'}
+                  ? '🎙️ Record audio from your microphone'
+                  : '💻 Capture audio playing on your device'}
               </p>
             </div>
           </div>
         </div>
 
-        {/* Run Processing Button */}
+        {/* Processing Mode Selector */}
         {uploadedFilename && !isProcessing && (
           <div className="mb-6">
+            <label className="block text-center font-bold text-gray-800 mb-4 text-lg">
+              🎯 Select Processing Mode
+            </label>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {/* Flash Mode */}
+              <button
+                onClick={() => setProcessingMode('flash')}
+                className={`group relative p-6 rounded-2xl border-2 transition-all duration-300 hover:scale-105 ${
+                  processingMode === 'flash'
+                    ? 'border-orange-500 bg-gradient-to-br from-orange-50 to-red-50 shadow-xl'
+                    : 'border-gray-200 bg-white hover:border-orange-300 hover:shadow-lg'
+                }`}
+              >
+                <div className="text-center">
+                  <div className={`w-16 h-16 rounded-xl mx-auto mb-3 flex items-center justify-center transition-all ${
+                    processingMode === 'flash'
+                      ? 'bg-gradient-to-br from-orange-500 to-red-500 scale-110'
+                      : 'bg-gradient-to-br from-orange-400 to-red-400 group-hover:scale-110'
+                  }`}>
+                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <h3 className="font-bold text-lg text-gray-800 mb-2">Flash Mode</h3>
+                  <p className="text-sm text-gray-600 mb-2">⚡ Fastest Processing</p>
+                  <p className="text-xs text-gray-500">Quick results for short meetings</p>
+                  <div className="mt-3 flex items-center justify-center gap-2 text-xs text-gray-600">
+                    <span className="px-2 py-1 bg-orange-100 rounded">Base Model</span>
+                    <span className="px-2 py-1 bg-gray-100 rounded">~5-10 min</span>
+                  </div>
+                </div>
+              </button>
+
+              {/* Flow Mode */}
+              <button
+                onClick={() => setProcessingMode('flow')}
+                className={`group relative p-6 rounded-2xl border-2 transition-all duration-300 hover:scale-105 ${
+                  processingMode === 'flow'
+                    ? 'border-blue-500 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-xl'
+                    : 'border-gray-200 bg-white hover:border-blue-300 hover:shadow-lg'
+                }`}
+              >
+                <div className="text-center">
+                  <div className={`w-16 h-16 rounded-xl mx-auto mb-3 flex items-center justify-center transition-all ${
+                    processingMode === 'flow'
+                      ? 'bg-gradient-to-br from-blue-500 to-indigo-600 scale-110'
+                      : 'bg-gradient-to-br from-blue-400 to-indigo-500 group-hover:scale-110'
+                  }`}>
+                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <h3 className="font-bold text-lg text-gray-800 mb-2">Flow Mode</h3>
+                  <p className="text-sm text-gray-600 mb-2">⚖️ Balanced Quality</p>
+                  <p className="text-xs text-gray-500">Recommended for most meetings</p>
+                  <div className="mt-3 flex items-center justify-center gap-2 text-xs text-gray-600">
+                    <span className="px-2 py-1 bg-blue-100 rounded">Small Model</span>
+                    <span className="px-2 py-1 bg-gray-100 rounded">~10-20 min</span>
+                  </div>
+                </div>
+              </button>
+
+              {/* Deep Mode */}
+              <button
+                onClick={() => setProcessingMode('deep')}
+                className={`group relative p-6 rounded-2xl border-2 transition-all duration-300 hover:scale-105 ${
+                  processingMode === 'deep'
+                    ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-pink-50 shadow-xl'
+                    : 'border-gray-200 bg-white hover:border-purple-300 hover:shadow-lg'
+                }`}
+              >
+                <div className="text-center">
+                  <div className={`w-16 h-16 rounded-xl mx-auto mb-3 flex items-center justify-center transition-all ${
+                    processingMode === 'deep'
+                      ? 'bg-gradient-to-br from-purple-500 to-pink-600 scale-110'
+                      : 'bg-gradient-to-br from-purple-400 to-pink-500 group-hover:scale-110'
+                  }`}>
+                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                      <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <h3 className="font-bold text-lg text-gray-800 mb-2">Deep Mode</h3>
+                  <p className="text-sm text-gray-600 mb-2">🎯 Highest Accuracy</p>
+                  <p className="text-xs text-gray-500">Detailed analysis for important meetings</p>
+                  <div className="mt-3 flex items-center justify-center gap-2 text-xs text-gray-600">
+                    <span className="px-2 py-1 bg-purple-100 rounded">Medium Model</span>
+                    <span className="px-2 py-1 bg-gray-100 rounded">~20-40 min</span>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Run Processing Button */}
+        {uploadedFilename && !isProcessing && (
+          <div className="mb-8">
             <button
               onClick={handleRunProcessing}
-              className="w-full py-6 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600
-                       text-white font-bold text-xl rounded-xl shadow-xl transition-all transform hover:scale-[1.02]
-                       flex items-center justify-center gap-3"
+              className="group relative w-full py-7 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 
+                       hover:from-orange-600 hover:via-red-600 hover:to-pink-600
+                       text-white font-bold text-xl rounded-2xl shadow-2xl 
+                       transition-all duration-300 transform hover:scale-[1.02]
+                       flex items-center justify-center gap-4 overflow-hidden"
             >
-              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 
+                            translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+              <svg className="w-9 h-9 relative z-10" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
               </svg>
-              RUN - Start Processing Audio
+              <span className="relative z-10">
+                RUN - Start AI Processing 
+                {processingMode === 'flash' && ' ⚡'}
+                {processingMode === 'flow' && ' ⚖️'}
+                {processingMode === 'deep' && ' 🎯'}
+              </span>
             </button>
-            <p className="text-center text-sm text-gray-600 mt-2">
-              Click to analyze your audio and extract transcript, summary, and tasks
+            <p className="text-center text-sm text-gray-600 mt-3 font-medium">
+              🚀 Processing with {processingMode === 'flash' ? 'Flash' : processingMode === 'flow' ? 'Flow' : 'Deep'} mode - 
+              {processingMode === 'flash' && ' Fastest speed, good quality'}
+              {processingMode === 'flow' && ' Balanced speed and quality'}
+              {processingMode === 'deep' && ' Best quality, detailed analysis'}
             </p>
           </div>
         )}
 
         {isProcessing && (
-          <div className="mb-6 text-center">
-            <div className="inline-flex items-center gap-3 px-6 py-4 bg-blue-50 border-2 border-blue-200 rounded-xl">
-              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
-              <span className="text-blue-600 font-semibold">Processing your audio... Please wait</span>
+          <div className="mb-8 text-center">
+            <div className="inline-flex items-center gap-4 px-8 py-5 bg-gradient-to-r from-blue-50 to-indigo-50 
+                          border-2 border-blue-200 rounded-2xl shadow-lg">
+              <div className="relative">
+                <div className="animate-spin rounded-full h-8 w-8 border-4 border-blue-200"></div>
+                <div className="animate-spin rounded-full h-8 w-8 border-4 border-blue-600 border-t-transparent absolute top-0"></div>
+              </div>
+              <div className="text-left">
+                <span className="text-blue-700 font-bold text-lg block">Processing your audio...</span>
+                <span className="text-blue-600 text-sm">AI is analyzing your meeting content</span>
+              </div>
             </div>
           </div>
         )}
 
         {/* Audio Player Section */}
         {audioFile && (
-          <div className="bg-gradient-to-br from-[#1e3a8a] to-[#2563eb] text-white rounded-xl p-10 mb-6 shadow-lg">
-            <div className="text-center mb-4">
-              <p className="text-blue-200 text-sm mb-2">
-                Audio Player
-              </p>
-              <div className="text-white font-mono text-lg">
-                {formatTime(currentTime)} / {formatTime(duration)}
+          <div className="relative bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-500 text-white rounded-2xl p-10 mb-8 shadow-2xl overflow-hidden">
+            {/* Decorative background */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+            </div>
+            
+            <div className="relative z-10">
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-3">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  <p className="text-white/90 text-sm font-medium">
+                    Audio Player Active
+                  </p>
+                </div>
+                <div className="text-white font-mono text-2xl font-bold">
+                  {formatTime(currentTime)} <span className="text-white/60">/</span> {formatTime(duration)}
+                </div>
               </div>
-            </div>
-            
-            <div ref={waveformRef} className="w-full mb-6 rounded-lg bg-white/10 p-4" />
-            
-            <div className="flex justify-center items-center gap-4">
-              {/* Skip Backward 5s */}
-              <button
-                onClick={skipBackward}
-                className="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-700 
-                         flex items-center justify-center shadow-lg
-                         transition-all duration-200 transform hover:scale-105"
-                title="Lùi 5 giây"
-              >
-                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M11.99 5V1l-5 5 5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6h-2c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8zm-1.1 11h-.85v-3.26l-1.01.31v-.69l1.77-.63h.09V16zm4.28-1.76c0 .32-.03.6-.1.82s-.17.42-.29.57-.28.26-.45.33-.37.1-.59.1-.41-.03-.59-.1-.33-.18-.46-.33-.23-.34-.3-.57-.11-.5-.11-.82v-.74c0-.32.03-.6.1-.82s.17-.42.29-.57.28-.26.45-.33.37-.1.59-.1.41.03.59.1.33.18.46.33.23.34.3.57.11.5.11.82v.74zm-.85-.86c0-.19-.01-.35-.04-.48s-.07-.23-.12-.31-.11-.14-.19-.17-.16-.05-.25-.05-.18.02-.25.05-.14.09-.19.17-.09.18-.12.31-.04.29-.04.48v.97c0 .19.01.35.04.48s.07.24.12.32.11.14.19.17.16.05.25.05.18-.02.25-.05.14-.09.19-.17.09-.19.11-.32.04-.29.04-.48v-.97z"/>
-                </svg>
-              </button>
-
-              {/* Play/Pause Button */}
-              <button
-                onClick={togglePlay}
-                className="w-20 h-20 rounded-full bg-red-500 hover:bg-red-600 
-                         flex items-center justify-center shadow-xl
-                         transition-all duration-200 transform hover:scale-105"
-              >
-                <svg 
-                  className="w-8 h-8 text-white" 
-                  fill="currentColor" 
-                  viewBox="0 0 20 20"
+              
+              <div ref={waveformRef} className="w-full mb-8 rounded-xl bg-white/10 backdrop-blur-sm p-5 shadow-inner" />
+              
+              <div className="flex justify-center items-center gap-6">
+                {/* Skip Backward 5s */}
+                <button
+                  onClick={skipBackward}
+                  className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 
+                           flex items-center justify-center shadow-xl
+                           transition-all duration-300 transform hover:scale-110
+                           border border-white/30"
+                  title="Lùi 5 giây"
                 >
-                  {isPlaying ? (
-                    <rect x="6" y="4" width="3" height="12" />
-                  ) : (
-                    <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
-                  )}
-                  {isPlaying && <rect x="11" y="4" width="3" height="12" />}
-                </svg>
-              </button>
+                  <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M11.99 5V1l-5 5 5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6h-2c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8zm-1.1 11h-.85v-3.26l-1.01.31v-.69l1.77-.63h.09V16zm4.28-1.76c0 .32-.03.6-.1.82s-.17.42-.29.57-.28.26-.45.33-.37.1-.59.1-.41-.03-.59-.1-.33-.18-.46-.33-.23-.34-.3-.57-.11-.5-.11-.82v-.74c0-.32.03-.6.1-.82s.17-.42.29-.57.28-.26.45-.33.37-.1.59-.1.41.03.59.1.33.18.46.33.23.34.3.57.11.5.11.82v.74zm-.85-.86c0-.19-.01-.35-.04-.48s-.07-.23-.12-.31-.11-.14-.19-.17-.16-.05-.25-.05-.18.02-.25.05-.14.09-.19.17-.09.18-.12.31-.04.29-.04.48v.97c0 .19.01.35.04.48s.07.24.12.32.11.14.19.17.16.05.25.05.18-.02.25-.05.14-.09.19-.17.09-.19.11-.32.04-.29.04-.48v-.97z"/>
+                  </svg>
+                </button>
 
-              {/* Skip Forward 5s */}
-              <button
-                onClick={skipForward}
-                className="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-700 
-                         flex items-center justify-center shadow-lg
-                         transition-all duration-200 transform hover:scale-105"
-                title="Tiến 5 giây"
-              >
-                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8zm-.36 11h-.85v-3.26l-1.01.31v-.69l1.77-.63h.09V16zm4.28-1.76c0 .32-.03.6-.1.82s-.17.42-.29.57-.28.26-.45.33-.37.1-.59.1-.41-.03-.59-.1-.33-.18-.46-.33-.23-.34-.3-.57-.11-.5-.11-.82v-.74c0-.32.03-.6.1-.82s.17-.42.29-.57.28-.26.45-.33.37-.1.59-.1.41.03.59.1.33.18.46.33.23.34.3.57.11.5.11.82v.74zm-.85-.86c0-.19-.01-.35-.04-.48s-.07-.23-.12-.31-.11-.14-.19-.17-.16-.05-.25-.05-.18.02-.25.05-.14.09-.19.17-.09.18-.12.31-.04.29-.04.48v.97c0 .19.01.35.04.48s.07.24.12.32.11.14.19.17.16.05.25.05.18-.02.25-.05.14-.09.19-.17.09-.19.11-.32.04-.29.04-.48v-.97z"/>
-                </svg>
-              </button>
-            </div>
+                {/* Play/Pause Button */}
+                <button
+                  onClick={togglePlay}
+                  className="w-24 h-24 rounded-full bg-white text-indigo-600
+                           flex items-center justify-center shadow-2xl
+                           transition-all duration-300 transform hover:scale-110
+                           hover:shadow-white/50"
+                >
+                  <svg 
+                    className="w-10 h-10" 
+                    fill="currentColor" 
+                    viewBox="0 0 20 20"
+                  >
+                    {isPlaying ? (
+                      <>
+                        <rect x="5" y="3" width="3" height="14" rx="1" />
+                        <rect x="12" y="3" width="3" height="14" rx="1" />
+                      </>
+                    ) : (
+                      <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                    )}
+                  </svg>
+                </button>
 
-            {/* Download Audio Button */}
-            <div className="mt-4 text-center">
-              <button
-                onClick={downloadAudio}
-                className="px-6 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg 
-                         transition-all flex items-center gap-2 mx-auto"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                Download Audio
-              </button>
+                {/* Skip Forward 5s */}
+                <button
+                  onClick={skipForward}
+                  className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 
+                           flex items-center justify-center shadow-xl
+                           transition-all duration-300 transform hover:scale-110
+                           border border-white/30"
+                  title="Tiến 5 giây"
+                >
+                  <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8zm-.36 11h-.85v-3.26l-1.01.31v-.69l1.77-.63h.09V16zm4.28-1.76c0 .32-.03.6-.1.82s-.17.42-.29.57-.28.26-.45.33-.37.1-.59.1-.41-.03-.59-.1-.33-.18-.46-.33-.23-.34-.3-.57-.11-.5-.11-.82v-.74c0-.32.03-.6.1-.82s.17-.42.29-.57.28-.26.45-.33.37-.1.59-.1.41.03.59.1.33.18.46.33.23.34.3.57.11.5.11.82v.74zm-.85-.86c0-.19-.01-.35-.04-.48s-.07-.23-.12-.31-.11-.14-.19-.17-.16-.05-.25-.05-.18.02-.25.05-.14.09-.19.17-.09.18-.12.31-.04.29-.04.48v.97c0 .19.01.35.04.48s.07.24.12.32.11.14.19.17.16.05.25.05.18-.02.25-.05.14-.09.19-.17.09-.19.11-.32.04-.29.04-.48v-.97z"/>
+                  </svg>
+                </button>
+              </div>
+
+              {/* Download Audio Button */}
+              <div className="mt-8 text-center">
+                <button
+                  onClick={downloadAudio}
+                  className="px-8 py-3 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white rounded-xl 
+                           transition-all duration-300 flex items-center gap-3 mx-auto
+                           border border-white/30 hover:scale-105 font-semibold shadow-lg"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  Download Audio
+                </button>
+              </div>
             </div>
           </div>
         )}
 
         {/* Content Sections - Vertical Layout */}
-        <div className="space-y-6">
+        <div className="space-y-8">
           {/* Dialog/Transcript */}
-          <div className="bg-white border-2 border-gray-200 rounded-xl shadow-sm">
-            <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-4 rounded-t-xl flex items-center justify-between">
-              <h2 className="flex items-center gap-2 font-semibold text-lg">
-                <span className="text-2xl">💬</span>
-                Dialog / Transcript
-                {transcript.length > 0 && (
-                  <span className="ml-2 px-2 py-1 bg-white/20 rounded-lg text-sm">
-                    {transcript.length} segments
-                  </span>
-                )}
-              </h2>
+          <div className="group bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden">
+            <div className="bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 text-white px-8 py-5 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <h2 className="font-bold text-xl">
+                    Dialog / Transcript
+                  </h2>
+                  {transcript.length > 0 && (
+                    <span className="text-xs text-blue-100">
+                      {transcript.length} segments {audioFile && '• Click timestamp to jump ⏯️'}
+                    </span>
+                  )}
+                </div>
+              </div>
               {transcript.length > 0 && (
                 <button
                   onClick={downloadDialog}
-                  className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-all flex items-center gap-2"
+                  className="px-5 py-2.5 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-xl transition-all duration-300 flex items-center gap-2 font-semibold hover:scale-105"
                 >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                   </svg>
                   Download
                 </button>
               )}
             </div>
-            <div className="p-6 max-h-[800px] overflow-y-auto">
+            <div className="p-8 max-h-[800px] overflow-y-auto">
               {transcript.length === 0 ? (
-                <p className="text-gray-400 text-sm text-center py-12">
-                  Upload an audio file to see the transcript
-                </p>
+                <div className="text-center py-16">
+                  <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-10 h-10 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-400 font-medium">
+                    Upload and process an audio file to see the transcript
+                  </p>
+                </div>
               ) : (
-                <div className="space-y-4">
+                <div className="space-y-5">
                   {transcript.map((line, index) => (
-                    <div key={index} className="border-l-4 border-blue-400 pl-4 py-2 hover:bg-blue-50 transition-colors">
-                      <div className="flex items-center gap-3 mb-1">
-                        <span className="text-blue-600 font-medium text-xs">{line.time}</span>
-                        <span className="font-semibold text-gray-800">{line.speaker}</span>
+                    <div 
+                      key={index} 
+                      className={`group/item border-l-4 pl-5 py-3 rounded-r-lg transition-all duration-200 cursor-pointer ${
+                        activeSegmentIndex === index
+                          ? 'border-green-500 bg-gradient-to-r from-green-50 to-green-100 shadow-md scale-[1.02]'
+                          : 'border-blue-400 hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent hover:border-blue-500'
+                      }`}
+                      onClick={() => handleTimestampClick(line.time, index)}
+                    >
+                      <div className="flex items-center gap-3 mb-2">
+                        <button
+                          className={`px-3 py-1.5 font-semibold text-xs rounded-lg transition-all hover:scale-110 ${
+                            activeSegmentIndex === index
+                              ? 'bg-green-500 text-white shadow-md'
+                              : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
+                          }`}
+                          title="Click to jump to this timestamp"
+                        >
+                          {audioFile && '▶ '}{line.time}
+                        </button>
+                        <span className="font-bold text-gray-800 text-base">{line.speaker}</span>
                       </div>
-                      <p className="text-gray-700 text-sm leading-relaxed">{line.text}</p>
+                      <p className="text-gray-700 leading-relaxed">{line.text}</p>
                     </div>
                   ))}
                 </div>
@@ -690,63 +952,91 @@ export default function App() {
           </div>
 
           {/* Summary */}
-          <div className="bg-white border-2 border-gray-200 rounded-xl shadow-sm">
-            <div className="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-4 rounded-t-xl flex items-center justify-between">
-              <h2 className="flex items-center gap-2 font-semibold text-lg">
-                <span className="text-2xl">📊</span>
-                Summary
-              </h2>
+          <div className="group bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden">
+            <div className="bg-gradient-to-r from-purple-500 via-purple-600 to-pink-600 text-white px-8 py-5 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                    <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <h2 className="font-bold text-xl">
+                  Summary
+                </h2>
+              </div>
               {summary && (
                 <button
                   onClick={downloadSummary}
-                  className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-all flex items-center gap-2"
+                  className="px-5 py-2.5 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-xl transition-all duration-300 flex items-center gap-2 font-semibold hover:scale-105"
                 >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                   </svg>
                   Download
                 </button>
               )}
             </div>
-            <div className="p-6 max-h-64 overflow-y-auto">
+            <div className="p-8 max-h-96 overflow-y-auto">
               {summary ? (
-                <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+                <div className="text-gray-700 leading-relaxed whitespace-pre-wrap prose prose-sm max-w-none">
                   {summary}
                 </div>
               ) : (
-                <p className="text-gray-400 text-sm text-center py-12">
-                  Summary will appear here after processing
-                </p>
+                <div className="text-center py-16">
+                  <div className="w-20 h-20 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-10 h-10 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                      <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-400 font-medium">
+                    Summary will appear here after processing
+                  </p>
+                </div>
               )}
             </div>
           </div>
 
           {/* Tasks */}
-          <div className="bg-white border-2 border-gray-200 rounded-xl shadow-sm">
-            <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-4 rounded-t-xl flex items-center justify-between">
-              <h2 className="flex items-center gap-2 font-semibold text-lg">
-                <span className="text-2xl">✅</span>
-                Next Actions / Tasks
-              </h2>
+          <div className="group bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden">
+            <div className="bg-gradient-to-r from-green-500 via-emerald-600 to-teal-600 text-white px-8 py-5 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <h2 className="font-bold text-xl">
+                  Next Actions / Tasks
+                </h2>
+              </div>
               {tasks.length > 0 && (
                 <button
                   onClick={downloadTasks}
-                  className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-all flex items-center gap-2"
+                  className="px-5 py-2.5 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-xl transition-all duration-300 flex items-center gap-2 font-semibold hover:scale-105"
                 >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                   </svg>
                   Download
                 </button>
               )}
             </div>
-            <div className="p-6 max-h-64 overflow-y-auto">
+            <div className="p-8 max-h-96 overflow-y-auto">
               {tasks.length === 0 ? (
-                <p className="text-gray-400 text-sm text-center py-12">
-                  Tasks will be extracted after processing
-                </p>
+                <div className="text-center py-16">
+                  <div className="w-20 h-20 bg-gradient-to-br from-green-100 to-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-10 h-10 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-400 font-medium">
+                    Tasks will be extracted after processing
+                  </p>
+                </div>
               ) : (
-                <ul className="space-y-3">
+                <ul className="space-y-4">
                   {tasks.map((task, index) => {
                     const isObject = typeof task === 'object' && task !== null;
                     
@@ -768,18 +1058,22 @@ export default function App() {
                     const priority = isObject ? task.priority : null;
                     
                     return (
-                      <li key={index} className="flex items-start gap-3 p-4 hover:bg-green-50 rounded-lg transition-colors border border-gray-100">
-                        <span className="text-green-600 text-xl mt-0.5">✓</span>
+                      <li key={index} className="group/item flex items-start gap-4 p-5 hover:bg-gradient-to-r hover:from-green-50 hover:to-transparent transition-all duration-200 rounded-xl border border-gray-200 hover:border-green-300 hover:shadow-md">
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center flex-shrink-0 mt-1 shadow-md">
+                          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
                         <div className="flex-1">
-                          <p className="text-gray-700 font-medium mb-2">{taskText}</p>
+                          <p className="text-gray-800 font-semibold mb-2 text-base">{taskText}</p>
                           {howToText && (
-                            <p className="text-gray-600 text-sm mb-2 pl-4 border-l-2 border-blue-200 italic">
+                            <p className="text-gray-600 text-sm mb-3 pl-4 border-l-2 border-blue-300 italic bg-blue-50/50 py-2 rounded-r">
                               💡 {howToText}
                             </p>
                           )}
-                          <div className="flex flex-wrap gap-3 text-sm">
+                          <div className="flex flex-wrap gap-2">
                             {assignedTo && (
-                              <span className="flex items-center gap-1.5 text-blue-600">
+                              <span className="flex items-center gap-1.5 px-3 py-1 bg-blue-100 text-blue-700 rounded-lg text-sm font-medium">
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                 </svg>
@@ -787,7 +1081,7 @@ export default function App() {
                               </span>
                             )}
                             {deadline && (
-                              <span className="flex items-center gap-1.5 text-orange-600">
+                              <span className="flex items-center gap-1.5 px-3 py-1 bg-orange-100 text-orange-700 rounded-lg text-sm font-medium">
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                 </svg>
@@ -795,7 +1089,7 @@ export default function App() {
                               </span>
                             )}
                             {priority && (
-                              <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
+                              <span className={`px-3 py-1 rounded-lg text-sm font-bold uppercase ${
                                 priority === 'high' ? 'bg-red-100 text-red-700' :
                                 priority === 'medium' ? 'bg-yellow-100 text-yellow-700' :
                                 'bg-green-100 text-green-700'
@@ -816,43 +1110,65 @@ export default function App() {
 
         {/* Download All Button */}
         {(transcript.length > 0 || summary || tasks.length > 0) && (
-          <div className="mt-8 text-center">
+          <div className="mt-10 text-center">
             <button
               onClick={downloadAll}
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 
-                       text-white font-semibold rounded-xl shadow-lg transition-all transform hover:scale-105
-                       flex items-center gap-3 mx-auto"
+              className="group relative px-10 py-5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 
+                       hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700
+                       text-white font-bold rounded-2xl shadow-2xl 
+                       transition-all duration-300 transform hover:scale-105
+                       flex items-center gap-4 mx-auto overflow-hidden"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 
+                            translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+              <svg className="w-7 h-7 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-              Download Complete Report
+              <span className="relative z-10 text-lg">Download Complete Report</span>
             </button>
+            <p className="text-gray-600 text-sm mt-3 font-medium">
+              Get all transcript, summary and tasks in one file
+            </p>
           </div>
         )}
 
         {/* Bottom Info Section */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-          <div className="bg-gray-50 rounded-xl p-6">
-            <h3 className="font-semibold text-gray-800 mb-2">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+              <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-gray-800 mb-3 text-lg">
               Online Voice Recorder
             </h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-gray-600 leading-relaxed">
               Our Voice Recorder is a convenient and simple online tool that can be used right in your browser.
             </p>
           </div>
-          <div className="bg-gray-50 rounded-xl p-6">
-            <h3 className="font-semibold text-gray-800 mb-2">Free to use</h3>
-            <p className="text-sm text-gray-600">
+          <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+              <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-gray-800 mb-3 text-lg">Free to use</h3>
+            <p className="text-gray-600 leading-relaxed">
               Voice Recorder is completely free. No hidden payments, activation fees, or charges for extra features.
             </p>
           </div>
-          <div className="bg-gray-50 rounded-xl p-6">
-            <h3 className="font-semibold text-gray-800 mb-2">
-              Microphone settings
+          <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+              <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-gray-800 mb-3 text-lg">
+              AI-Powered Analysis
             </h3>
-            <p className="text-sm text-gray-600">
-              You can adjust your microphone settings using standard Adobe Flash Player tools.
+            <p className="text-gray-600 leading-relaxed">
+              Advanced AI technology for accurate transcription, intelligent summarization and automatic task extraction.
             </p>
           </div>
         </div>
