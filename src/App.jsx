@@ -571,6 +571,60 @@ export default function App() {
     link.click();
   };
 
+  // Format markdown-like text to HTML with bold headers and bullet points
+  const formatSummary = (text) => {
+    if (!text) return '';
+    
+    // Split by lines
+    const lines = text.split('\n');
+    let html = '';
+    
+    for (let i = 0; i < lines.length; i++) {
+      let line = lines[i];
+      
+      // Check if line starts with emoji icons (🎯, 📋, ✅, etc.)
+      const emojiHeaderMatch = line.match(/^([🎯📋✅💡🔍📊🗣️💬🤝📌⚡🎤📝]+)\s*(.+?):\s*$/);
+      if (emojiHeaderMatch) {
+        const emoji = emojiHeaderMatch[1];
+        const headerText = emojiHeaderMatch[2];
+        html += `<div class="font-bold text-lg mt-4 mb-2 text-purple-700">${emoji} ${headerText}:</div>`;
+        continue;
+      }
+      
+      // Check for **Bold Header**: pattern
+      const boldHeaderMatch = line.match(/^\*\*(.+?)\*\*:\s*$/);
+      if (boldHeaderMatch) {
+        html += `<div class="font-bold text-lg mt-4 mb-2 text-purple-700">${boldHeaderMatch[1]}:</div>`;
+        continue;
+      }
+      
+      // Check for bullet points starting with "- "
+      if (line.trim().startsWith('- ')) {
+        let bulletText = line.trim().substring(2);
+        
+        // Handle **bold text**: within bullet points
+        bulletText = bulletText.replace(/\*\*(.+?)\*\*:/g, '<strong class="text-purple-600">$1:</strong>');
+        
+        html += `<div class="ml-4 mb-2 flex items-start gap-2">
+          <span class="text-purple-500 mt-1">•</span>
+          <span class="flex-1">${bulletText}</span>
+        </div>`;
+        continue;
+      }
+      
+      // Empty lines
+      if (line.trim() === '') {
+        html += '<br/>';
+        continue;
+      }
+      
+      // Regular text
+      html += `<div class="mb-1">${line}</div>`;
+    }
+    
+    return html;
+  };
+
   const downloadAll = () => {
     if (transcript.length === 0 && !summary && tasks.length === 0) return;
     
@@ -1179,9 +1233,10 @@ export default function App() {
             </div>
             <div className="p-8 max-h-96 overflow-y-auto">
               {summary ? (
-                <div className="text-gray-700 leading-relaxed whitespace-pre-wrap prose prose-sm max-w-none">
-                  {summary}
-                </div>
+                <div 
+                  className="text-gray-700 leading-relaxed prose prose-sm max-w-none"
+                  dangerouslySetInnerHTML={{ __html: formatSummary(summary) }}
+                />
               ) : (
                 <div className="text-center py-16">
                   <div className="w-20 h-20 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
