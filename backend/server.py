@@ -167,41 +167,62 @@ async def process_audio(data: dict):
         if PIPELINE_ENABLED:
             # REAL PIPELINE - Process with AMITA MeetingPipeline
             try:
-                # Use centralized output directory from config
-                output_dir = config.OUTPUT_DIR
+                # Create async task for processing (for cancellation support)
+                async def process_pipeline():
+                    # Use centralized output directory from config
+                    output_dir = config.OUTPUT_DIR
+                    
+                    # Initialize pipeline
+                    print(f"🎯 Initializing MeetingPipeline for {filename}...")
+                    pipeline = MeetingPipeline(
+                        audio_path=str(audio_path),
+                        output_dir=str(output_dir)
+                    )
+                    
+                    # Configure pipeline with selected mode settings
+                    pipeline.config.update({
+                        "chunk_duration_minutes": mode_config["chunk_duration_minutes"],
+                        "enable_vad": mode_config["enable_vad"],
+                        "enable_gender": mode_config["enable_gender"] and GENDER_AVAILABLE,
+                        "enable_llm": mode_config["enable_llm"] and LLM_AVAILABLE,
+                        "min_speakers": mode_config.get("min_speakers"),
+                        "max_speakers": mode_config.get("max_speakers"),
+                        "processing_mode": mode,
+                        "llm_detail_level": mode_config.get("llm_detail_level", "standard")
+                    })
+                    
+                    # Update Whisper settings for this processing session
+                    print(f"🤖 Whisper Model: {mode_config['whisper_model']}")
+                    print(f"📊 Beam Size: {mode_config['whisper_beam_size']}")
+                    
+                    # Run full pipeline
+                    print("🚀 Running full pipeline...")
+                    pipeline.run()
+                    
+                    return pipeline.meeting_data
                 
-                # Initialize pipeline
-                print(f"🎯 Initializing MeetingPipeline for {filename}...")
-                pipeline = MeetingPipeline(
-                    audio_path=str(audio_path),
-                    output_dir=str(output_dir)
-                )
+                # Create and track task
+                task = asyncio.create_task(process_pipeline())
+                processing_tasks[filename] = task
                 
-                # Configure pipeline with selected mode settings
-                pipeline.config.update({
-                    "chunk_duration_minutes": mode_config["chunk_duration_minutes"],
-                    "enable_vad": mode_config["enable_vad"],
-                    "enable_gender": mode_config["enable_gender"] and GENDER_AVAILABLE,
-                    "enable_llm": mode_config["enable_llm"] and LLM_AVAILABLE,
-                    "min_speakers": mode_config.get("min_speakers"),
-                    "max_speakers": mode_config.get("max_speakers"),
-                    "processing_mode": mode,
-                    "llm_detail_level": mode_config.get("llm_detail_level", "standard")
-                })
+                # Wait for completion or cancellation
+                try:
+                    meeting_data = await task
+                except asyncio.CancelledError:
+                    print(f"🛑 Processing cancelled for {filename}")
+                    if filename in processing_tasks:
+                        del processing_tasks[filename]
+                    raise HTTPException(499, "Processing cancelled by client")
                 
-                # Update Whisper settings for this processing session
-                print(f"🤖 Whisper Model: {mode_config['whisper_model']}")
-                print(f"📊 Beam Size: {mode_config['whisper_beam_size']}")
-                
-                # Run full pipeline
-                print("🚀 Running full pipeline...")
-                pipeline.run()
+                # Remove from tracking
+                if filename in processing_tasks:
+                    del processing_tasks[filename]
                 
                 # Extract results from meeting_data
-                segments = pipeline.meeting_data.get("segments", [])
-                speakers_info = pipeline.meeting_data.get("speakers", {})
-                llm_data = pipeline.meeting_data.get("llm", {})
-                metadata = pipeline.meeting_data.get("metadata", {})
+                segments = meeting_data.get("segments", [])
+                speakers_info = meeting_data.get("speakers", {})
+                llm_data = meeting_data.get("llm", {})
+                metadata = meeting_data.get("metadata", {})
                 
                 print(f"📊 Pipeline results: {len(segments)} segments, {len(speakers_info)} speakers")
                 
@@ -359,6 +380,35 @@ async def get_status():
             "language": "vi",
             "gpu_enabled": False,
             "llm_enabled": False
+        })
+
+
+# Track processing tasks for cancellation
+processing_tasks = {}
+
+
+@app.post("/api/cancel/{filename}")
+async def cancel_processing(filename: str):
+    """Cancel ongoing processing for a file"""
+    try:
+        if filename in processing_tasks:
+            task = processing_tasks[filename]
+            task.cancel()
+            del processing_tasks[filename]
+            print(f"🛑 Cancelled processing for: {filename}")
+            return JSONResponse({
+                "success": True,
+                "message": f"Processing cancelled for {filename}"
+            })
+        else:
+            return JSONResponse({
+                "success": False,
+                "message": f"No active processing found for {filename}"
+            })
+    except Exception as e:
+        return JSONResponse({
+            "success": False,
+            "message": str(e)
         })
 
 

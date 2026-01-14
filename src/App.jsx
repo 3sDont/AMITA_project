@@ -14,11 +14,21 @@ export default function App() {
   const [uploadedFilename, setUploadedFilename] = useState(null); // Store backend filename
   const [processingMode, setProcessingMode] = useState('flow'); // 'flash', 'flow', 'deep'
   const [activeSegmentIndex, setActiveSegmentIndex] = useState(null); // Track which segment is currently playing
+  const [processingProgress, setProcessingProgress] = useState(0); // 0-100
+  const [processingStage, setProcessingStage] = useState(''); // Current stage name
+  const [processingStartTime, setProcessingStartTime] = useState(null);
+  const [estimatedTimeRemaining, setEstimatedTimeRemaining] = useState(null);
+  const [processingHistory, setProcessingHistory] = useState(() => {
+    const saved = localStorage.getItem('amita_history');
+    return saved ? JSON.parse(saved) : [];
+  });
   const waveformRef = useRef(null);
   const wavesurfer = useRef(null);
   const mediaRecorder = useRef(null);
   const audioChunks = useRef([]);
   const recordingInterval = useRef(null);
+  const processingAbortController = useRef(null);
+  const progressInterval = useRef(null);
 
   const [transcript, setTranscript] = useState(() => {
     const saved = localStorage.getItem('amita_transcript');
@@ -52,6 +62,13 @@ export default function App() {
       localStorage.setItem('amita_tasks', JSON.stringify(tasks));
     }
   }, [tasks]);
+
+  // Save processing history
+  useEffect(() => {
+    if (processingHistory.length > 0) {
+      localStorage.setItem('amita_history', JSON.stringify(processingHistory));
+    }
+  }, [processingHistory]);
 
   const handleUpload = async (event) => {
     const file = event.target.files[0];
@@ -97,17 +114,108 @@ export default function App() {
     await processAudio(uploadedFilename, processingMode);
   };
 
+  // Cancel processing
+  const handleCancelProcessing = async () => {
+    if (processingAbortController.current) {
+      processingAbortController.current.abort();
+      console.log("🛑 Processing cancelled by user");
+    }
+    if (progressInterval.current) {
+      clearInterval(progressInterval.current);
+    }
+    
+    // Try to cancel backend processing
+    if (uploadedFilename) {
+      try {
+        await fetch(`${API_URL}/api/cancel/${uploadedFilename}`, {
+          method: "POST",
+        });
+        console.log("✅ Backend cancel request sent");
+      } catch (error) {
+        console.log("⚠️ Could not send cancel to backend:", error);
+      }
+    }
+    
+    setIsProcessing(false);
+    setProcessingProgress(0);
+    setProcessingStage('');
+    setEstimatedTimeRemaining(null);
+    setTranscript([]);
+    setSummary("");
+    setTasks([]);
+  };
+
+  // Simulate progress stages - More realistic estimation based on audio duration
+  const simulateProgress = (mode, audioDuration = 60) => {
+    // Calculate actual estimated time based on mode and audio duration
+    const processingSpeed = {
+      'flash': 0.5,  // 30s for 1min audio
+      'flow': 1.5,   // 90s for 1min audio  
+      'deep': 3.0    // 180s for 1min audio
+    };
+    
+    const totalEstimatedSeconds = Math.ceil(audioDuration * processingSpeed[mode]);
+    
+    const stages = [
+      { name: '⬆️ Uploading & Preprocessing', progress: 10, percentage: 0.10 },
+      { name: '🎵 Audio Analysis', progress: 25, percentage: 0.15 },
+      { name: '🗣️ Speech Recognition', progress: 60, percentage: 0.50 },
+      { name: '👥 Speaker Identification', progress: 85, percentage: 0.20 },
+      { name: '🤖 AI Analysis & Summary', progress: 95, percentage: 0.05 },
+    ];
+
+    let currentStageIndex = 0;
+    let currentProgress = 0;
+    setProcessingStage(stages[0].name);
+    setProcessingProgress(5);
+    setEstimatedTimeRemaining(totalEstimatedSeconds);
+
+    const updateInterval = 500; // Update every 500ms
+    const progressPerUpdate = 100 / (totalEstimatedSeconds * (1000 / updateInterval));
+
+    progressInterval.current = setInterval(() => {
+      currentProgress += progressPerUpdate;
+      
+      // Don't exceed 98% until actually complete
+      if (currentProgress > 98) currentProgress = 98;
+      
+      // Update stage based on progress
+      const currentStage = stages.find((s, idx) => 
+        currentProgress < s.progress && (idx === 0 || currentProgress >= stages[idx - 1].progress)
+      ) || stages[stages.length - 1];
+      
+      setProcessingStage(currentStage.name);
+      setProcessingProgress(Math.floor(currentProgress));
+      
+      // Calculate remaining time
+      const elapsed = (Date.now() - processingStartTime) / 1000;
+      const remaining = Math.max(0, Math.ceil(totalEstimatedSeconds - elapsed));
+      setEstimatedTimeRemaining(remaining);
+      
+    }, updateInterval);
+  };
+
   const processAudio = async (filename, mode = 'flow') => {
+    // Create abort controller
+    processingAbortController.current = new AbortController();
+    
     setIsProcessing(true);
+    setProcessingProgress(0);
+    setProcessingStartTime(Date.now());
     setTranscript([{ time: "00:00", speaker: "System", text: "Processing audio... Please wait..." }]);
     setSummary("Processing...");
     setTasks(["Audio processing in progress..."]);
+
+    // Start progress simulation - use audio duration if available
+    const audioDuration = duration || 60; // fallback to 60s if not available
+    simulateProgress(mode, audioDuration);
 
     try {
       const response = await fetch(`${API_URL}/api/process`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ filename, mode }),
+        signal: processingAbortController.current.signal,
       });
 
       if (response.ok) {
@@ -116,19 +224,61 @@ export default function App() {
         console.log("📝 Transcript:", data.transcript?.length, "items");
         console.log("📄 Summary:", data.summary?.substring(0, 50));
         console.log("✓ Tasks:", data.tasks?.length, "items");
+        
+        // Clear progress interval
+        if (progressInterval.current) {
+          clearInterval(progressInterval.current);
+        }
+        
+        // Set final progress
+        setProcessingProgress(100);
+        setProcessingStage('✅ Complete');
+        setEstimatedTimeRemaining(0);
+        
         setTranscript(data.transcript);
         setSummary(data.summary);
         setTasks(data.tasks);
+        
+        // Save to processing history
+        const processingTime = Math.ceil((Date.now() - processingStartTime) / 1000);
+        const historyEntry = {
+          id: Date.now(),
+          filename: filename,
+          mode: mode,
+          timestamp: new Date().toISOString(),
+          processingTime: processingTime,
+          segmentCount: data.transcript?.length || 0,
+          success: true
+        };
+        
+        setProcessingHistory(prev => [historyEntry, ...prev.slice(0, 9)]); // Keep last 10
+        
+        console.log(`✅ Processing completed in ${processingTime}s`);
       } else {
         throw new Error("Processing failed");
       }
     } catch (error) {
-      console.error("Processing failed:", error);
-      setTranscript([{ time: "00:00", speaker: "Error", text: "Processing failed. Check backend server." }]);
-      setSummary("Error occurred during processing.");
-      setTasks(["Please try again"]);
+      // Clear progress interval on error
+      if (progressInterval.current) {
+        clearInterval(progressInterval.current);
+      }
+      
+      if (error.name === 'AbortError') {
+        console.log("Processing was cancelled");
+        setTranscript([{ time: "00:00", speaker: "System", text: "Processing cancelled by user." }]);
+        setSummary("Processing was cancelled.");
+        setTasks([]);
+      } else {
+        console.error("Processing failed:", error);
+        setTranscript([{ time: "00:00", speaker: "Error", text: "Processing failed. Check backend server." }]);
+        setSummary("Error occurred during processing.");
+        setTasks(["Please try again"]);
+      }
     } finally {
       setIsProcessing(false);
+      setProcessingProgress(0);
+      setProcessingStage('');
+      setEstimatedTimeRemaining(null);
     }
   };
 
@@ -661,7 +811,6 @@ export default function App() {
                   <p className="text-xs text-gray-500">Quick results for short meetings</p>
                   <div className="mt-3 flex items-center justify-center gap-2 text-xs text-gray-600">
                     <span className="px-2 py-1 bg-orange-100 rounded">Base Model</span>
-                    <span className="px-2 py-1 bg-gray-100 rounded">~5-10 min</span>
                   </div>
                 </div>
               </button>
@@ -690,7 +839,6 @@ export default function App() {
                   <p className="text-xs text-gray-500">Recommended for most meetings</p>
                   <div className="mt-3 flex items-center justify-center gap-2 text-xs text-gray-600">
                     <span className="px-2 py-1 bg-blue-100 rounded">Small Model</span>
-                    <span className="px-2 py-1 bg-gray-100 rounded">~10-20 min</span>
                   </div>
                 </div>
               </button>
@@ -720,7 +868,6 @@ export default function App() {
                   <p className="text-xs text-gray-500">Detailed analysis for important meetings</p>
                   <div className="mt-3 flex items-center justify-center gap-2 text-xs text-gray-600">
                     <span className="px-2 py-1 bg-purple-100 rounded">Medium Model</span>
-                    <span className="px-2 py-1 bg-gray-100 rounded">~20-40 min</span>
                   </div>
                 </div>
               </button>
@@ -761,16 +908,69 @@ export default function App() {
         )}
 
         {isProcessing && (
-          <div className="mb-8 text-center">
-            <div className="inline-flex items-center gap-4 px-8 py-5 bg-gradient-to-r from-blue-50 to-indigo-50 
-                          border-2 border-blue-200 rounded-2xl shadow-lg">
-              <div className="relative">
-                <div className="animate-spin rounded-full h-8 w-8 border-4 border-blue-200"></div>
-                <div className="animate-spin rounded-full h-8 w-8 border-4 border-blue-600 border-t-transparent absolute top-0"></div>
+          <div className="mb-8">
+            <div className="max-w-3xl mx-auto bg-white/80 backdrop-blur-sm border-2 border-blue-200 rounded-2xl p-8 shadow-2xl">
+              {/* Header */}
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-4">
+                  <div className="relative">
+                    <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-200"></div>
+                    <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-600 border-t-transparent absolute top-0"></div>
+                  </div>
+                  <div>
+                    <h3 className="text-blue-700 font-bold text-xl">Processing Audio</h3>
+                    <p className="text-blue-600 text-sm">{processingStage || 'Initializing...'}</p>
+                  </div>
+                </div>
+                
+                {/* Cancel Button */}
+                <button
+                  onClick={handleCancelProcessing}
+                  className="px-6 py-3 bg-red-500 hover:bg-red-600 text-white rounded-xl font-semibold 
+                           transition-all duration-300 hover:scale-105 shadow-lg flex items-center gap-2"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                  Cancel
+                </button>
               </div>
-              <div className="text-left">
-                <span className="text-blue-700 font-bold text-lg block">Processing your audio...</span>
-                <span className="text-blue-600 text-sm">AI is analyzing your meeting content</span>
+
+              {/* Progress Bar */}
+              <div className="mb-4">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-sm font-semibold text-gray-700">Progress</span>
+                  <span className="text-sm font-bold text-blue-600">{processingProgress}%</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-4 overflow-hidden shadow-inner">
+                  <div 
+                    className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 h-4 rounded-full transition-all duration-500 ease-out relative overflow-hidden"
+                    style={{ width: `${processingProgress}%` }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30 animate-shimmer"></div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Time Remaining */}
+              {estimatedTimeRemaining !== null && estimatedTimeRemaining > 0 && (
+                <div className="flex items-center justify-center gap-2 text-gray-600 text-sm">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Estimated time remaining: <strong>{estimatedTimeRemaining}s</strong></span>
+                </div>
+              )}
+
+              {/* Processing Mode Info */}
+              <div className="mt-4 pt-4 border-t border-gray-200">
+                <div className="flex items-center justify-center gap-3 text-xs text-gray-500">
+                  <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-semibold">
+                    {processingMode === 'flash' ? '⚡ Flash Mode' : processingMode === 'flow' ? '⚖️ Flow Mode' : '🎯 Deep Mode'}
+                  </span>
+                  <span>•</span>
+                  <span>{uploadedFilename}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1172,6 +1372,72 @@ export default function App() {
             </p>
           </div>
         </div>
+
+        {/* Processing History */}
+        {processingHistory.length > 0 && (
+          <div className="mt-12">
+            <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl shadow-xl overflow-hidden">
+              <div className="bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white px-8 py-5">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h2 className="font-bold text-xl">Processing History</h2>
+                    <span className="text-xs text-gray-300">Recent processing sessions</span>
+                  </div>
+                </div>
+              </div>
+              <div className="p-6 max-h-96 overflow-y-auto">
+                <div className="space-y-3">
+                  {processingHistory.map((item, index) => (
+                    <div 
+                      key={item.id}
+                      className="flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl hover:from-blue-50 hover:to-indigo-50 transition-all duration-200 border border-gray-200"
+                    >
+                      <div className="flex items-center gap-4 flex-1">
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold">
+                          {index + 1}
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-semibold text-gray-800 text-sm truncate">{item.filename}</h4>
+                          <div className="flex items-center gap-3 mt-1">
+                            <span className="text-xs text-gray-600">
+                              {new Date(item.timestamp).toLocaleString('vi-VN', {
+                                year: 'numeric',
+                                month: '2-digit',
+                                day: '2-digit',
+                                hour: '2-digit',
+                                minute: '2-digit'
+                              })}
+                            </span>
+                            <span className="text-xs text-gray-400">•</span>
+                            <span className="text-xs px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full font-medium">
+                              {item.mode === 'flash' ? '⚡ Flash' : item.mode === 'flow' ? '⚖️ Flow' : '🎯 Deep'}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-4">
+                        <div className="text-right">
+                          <div className="text-sm font-bold text-green-600">{item.processingTime}s</div>
+                          <div className="text-xs text-gray-500">{item.segmentCount} segments</div>
+                        </div>
+                        <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                          <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
