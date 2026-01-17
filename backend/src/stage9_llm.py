@@ -675,6 +675,35 @@ VĂN BẢN ĐÃ SỬA (giữ nguyên số thứ tự):"""
         # Normalize whitespace
         json_str = re.sub(r'\s+', ' ', json_str).strip()
         
+        # Fix unquoted string values (most common LLM error)
+        # Pattern: "field": value, -> "field": "value",
+        # Where value is not null/true/false/number and not already quoted
+        def quote_unquoted_values(match):
+            field = match.group(1)
+            value = match.group(2).strip()
+            
+            # Skip if already valid: null, true, false, numbers, or already quoted
+            if value in ['null', 'true', 'false'] or value.startswith('"') or value.replace('.', '').replace('-', '').isdigit():
+                return match.group(0)
+            
+            # Quote the value
+            return f'"{field}": "{value}",'
+        
+        # Match: "field": unquoted_value,
+        json_str = re.sub(r'"([^"]+)":\s*([^,}\]]+),', quote_unquoted_values, json_str)
+        
+        # Fix last field in object (no trailing comma)
+        def quote_last_field(match):
+            field = match.group(1)
+            value = match.group(2).strip()
+            
+            if value in ['null', 'true', 'false'] or value.startswith('"') or value.replace('.', '').replace('-', '').isdigit():
+                return match.group(0)
+            
+            return f'"{field}": "{value}"}}'
+        
+        json_str = re.sub(r'"([^"]+)":\s*([^,}\]]+)\}', quote_last_field, json_str)
+        
         return json_str
     
 
