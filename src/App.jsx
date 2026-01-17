@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import WaveSurfer from "wavesurfer.js";
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function App() {
   const [audioFile, setAudioFile] = useState(null);
@@ -18,6 +19,7 @@ export default function App() {
   const [processingStage, setProcessingStage] = useState(''); // Current stage name
   const [processingStartTime, setProcessingStartTime] = useState(null);
   const [estimatedTimeRemaining, setEstimatedTimeRemaining] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(''); // Search transcript
   const [processingHistory, setProcessingHistory] = useState(() => {
     const saved = localStorage.getItem('amita_history');
     return saved ? JSON.parse(saved) : [];
@@ -101,13 +103,13 @@ export default function App() {
       }
     } catch (error) {
       console.error("[UPLOAD] Upload failed:", error);
-      alert("Upload failed. Make sure backend server is running!");
+      toast.error("Upload failed. Make sure backend server is running!");
     }
   };
 
   const handleRunProcessing = async () => {
     if (!uploadedFilename) {
-      alert("Please upload or record an audio file first!");
+      toast.error("Please upload or record an audio file first!");
       return;
     }
     console.log("Processing file:", uploadedFilename, "with mode:", processingMode);
@@ -358,7 +360,7 @@ export default function App() {
   // Handle timestamp click - jump audio to that position
   const handleTimestampClick = (timeString, index) => {
     if (!wavesurfer.current || !audioFile) {
-      alert('⚠️ Please upload an audio file first!');
+      toast.error('⚠️ Please upload an audio file first!');
       return;
     }
 
@@ -467,7 +469,7 @@ export default function App() {
 
     } catch (error) {
       console.error('Error accessing microphone:', error);
-      alert('Could not access microphone. Please grant permission.');
+      toast.error('Could not access microphone. Please grant permission.');
     }
   };
 
@@ -501,7 +503,7 @@ export default function App() {
       }
     } catch (error) {
       console.error("[RECORDING] Upload failed:", error);
-      alert("Upload failed. Make sure backend server is running!");
+      toast.error("Upload failed. Make sure backend server is running!");
     }
   };
 
@@ -623,6 +625,32 @@ export default function App() {
     }
     
     return html;
+  };
+
+  // Filter transcript based on search query
+  const filteredTranscript = transcript.filter(line => {
+    if (!searchQuery.trim()) return true;
+    
+    const query = searchQuery.toLowerCase();
+    return (
+      line.speaker?.toLowerCase().includes(query) ||
+      line.text?.toLowerCase().includes(query) ||
+      line.time?.includes(query)
+    );
+  });
+
+  // Highlight matching text in transcript
+  const highlightText = (text, query) => {
+    if (!query.trim()) return text;
+    
+    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    const parts = text.split(regex);
+    
+    return parts.map((part, index) => 
+      regex.test(part) 
+        ? `<mark class="bg-yellow-300 text-gray-900 px-1 rounded">${part}</mark>`
+        : part
+    ).join('');
   };
 
   const downloadAll = () => {
@@ -1160,6 +1188,38 @@ export default function App() {
                 </button>
               )}
             </div>
+            
+            {/* Search Bar */}
+            {transcript.length > 0 && (
+              <div className="px-8 pt-4 pb-2 border-b border-gray-200">
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Search transcript..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-700"
+                  />
+                  {searchQuery && (
+                    <button
+                      onClick={() => setSearchQuery('')}
+                      className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+                      title="Clear search"
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
+            
             <div className="p-8 max-h-[800px] overflow-y-auto">
               {transcript.length === 0 ? (
                 <div className="text-center py-16">
@@ -1174,32 +1234,65 @@ export default function App() {
                 </div>
               ) : (
                 <div className="space-y-5">
-                  {transcript.map((line, index) => (
-                    <div 
-                      key={index} 
-                      className={`group/item border-l-4 pl-5 py-3 rounded-r-lg transition-all duration-200 cursor-pointer ${
-                        activeSegmentIndex === index
-                          ? 'border-green-500 bg-gradient-to-r from-green-50 to-green-100 shadow-md scale-[1.02]'
-                          : 'border-blue-400 hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent hover:border-blue-500'
-                      }`}
-                      onClick={() => handleTimestampClick(line.time, index)}
-                    >
-                      <div className="flex items-center gap-3 mb-2">
-                        <button
-                          className={`px-3 py-1.5 font-semibold text-xs rounded-lg transition-all hover:scale-110 ${
-                            activeSegmentIndex === index
-                              ? 'bg-green-500 text-white shadow-md'
-                              : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
-                          }`}
-                          title="Click to jump to this timestamp"
-                        >
-                          {audioFile && '▶ '}{line.time}
-                        </button>
-                        <span className="font-bold text-gray-800 text-base">{line.speaker}</span>
-                      </div>
-                      <p className="text-gray-700 leading-relaxed">{line.text}</p>
+                  {filteredTranscript.length === 0 ? (
+                    <div className="text-center py-12">
+                      <svg className="w-16 h-16 text-gray-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      </svg>
+                      <p className="text-gray-500 font-medium">No results found for "{searchQuery}"</p>
+                      <button
+                        onClick={() => setSearchQuery('')}
+                        className="mt-3 text-sm text-blue-600 hover:text-blue-700 font-medium"
+                      >
+                        Clear search
+                      </button>
                     </div>
-                  ))}
+                  ) : (
+                    <>
+                      {searchQuery && (
+                        <div className="text-sm text-gray-600 mb-4 px-2">
+                          Found {filteredTranscript.length} of {transcript.length} segments
+                        </div>
+                      )}
+                      {filteredTranscript.map((line, index) => {
+                        // Find original index for proper highlighting
+                        const originalIndex = transcript.findIndex(t => t === line);
+                        
+                        return (
+                          <div 
+                            key={originalIndex} 
+                            className={`group/item border-l-4 pl-5 py-3 rounded-r-lg transition-all duration-200 cursor-pointer ${
+                              activeSegmentIndex === originalIndex
+                                ? 'border-green-500 bg-gradient-to-r from-green-50 to-green-100 shadow-md scale-[1.02]'
+                                : 'border-blue-400 hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent hover:border-blue-500'
+                            }`}
+                            onClick={() => handleTimestampClick(line.time, originalIndex)}
+                          >
+                            <div className="flex items-center gap-3 mb-2">
+                              <button
+                                className={`px-3 py-1.5 font-semibold text-xs rounded-lg transition-all hover:scale-110 ${
+                                  activeSegmentIndex === originalIndex
+                                    ? 'bg-green-500 text-white shadow-md'
+                                    : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
+                                }`}
+                                title="Click to jump to this timestamp"
+                              >
+                                {audioFile && '▶ '}{line.time}
+                              </button>
+                              <span 
+                                className="font-bold text-gray-800 text-base"
+                                dangerouslySetInnerHTML={{ __html: highlightText(line.speaker, searchQuery) }}
+                              />
+                            </div>
+                            <p 
+                              className="text-gray-700 leading-relaxed"
+                              dangerouslySetInnerHTML={{ __html: highlightText(line.text, searchQuery) }}
+                            />
+                          </div>
+                        );
+                      })}
+                    </>
+                  )}
                 </div>
               )}
             </div>
@@ -1494,6 +1587,34 @@ export default function App() {
           </div>
         )}
       </div>
+      
+      {/* Toast Notifications */}
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 4000,
+          style: {
+            background: '#363636',
+            color: '#fff',
+            padding: '16px',
+            borderRadius: '10px',
+          },
+          success: {
+            duration: 3000,
+            iconTheme: {
+              primary: '#10B981',
+              secondary: '#fff',
+            },
+          },
+          error: {
+            duration: 4000,
+            iconTheme: {
+              primary: '#EF4444',
+              secondary: '#fff',
+            },
+          },
+        }}
+      />
     </div>
   );
 }
