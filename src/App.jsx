@@ -255,7 +255,7 @@ export default function App() {
         
         setProcessingHistory(prev => [historyEntry, ...prev.slice(0, 9)]); // Keep last 10
         
-        console.log(`✅ Processing completed in ${processingTime}s`);
+        console.log(`✅ Processing completed in ${formatDuration(processingTime)}`);
       } else {
         throw new Error("Processing failed");
       }
@@ -625,6 +625,18 @@ export default function App() {
     }
     
     return html;
+  };
+
+  // Format seconds to HH:MM:SS or MM:SS
+  const formatDuration = (totalSeconds) => {
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    
+    if (hours > 0) {
+      return `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+    return `${minutes}:${String(seconds).padStart(2, '0')}`;
   };
 
   // Filter transcript based on search query
@@ -1570,7 +1582,7 @@ export default function App() {
                       </div>
                       <div className="flex items-center gap-4">
                         <div className="text-right">
-                          <div className="text-sm font-bold text-green-600">{item.processingTime}s</div>
+                          <div className="text-sm font-bold text-green-600">{formatDuration(item.processingTime)}</div>
                           <div className="text-xs text-gray-500">{item.segmentCount} segments</div>
                         </div>
                         <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
