@@ -647,6 +647,40 @@ VĂN BẢN ĐÃ SỬA (giữ nguyên số thứ tự):"""
                         
                         # Only update if there's a meaningful change
                         if corrected and corrected != original:
+                            # ✅ VALIDATION: Reject hallucinated/invalid responses
+                            # Check 1: Reject if corrected text is too short (< 30% of original)
+                            if len(corrected) < len(original) * 0.3:
+                                corrected_segments.append(new_seg)
+                                continue
+                            
+                            # Check 2: Reject if corrected text is too long (> 200% of original)
+                            if len(corrected) > len(original) * 2.0:
+                                corrected_segments.append(new_seg)
+                                continue
+                            
+                            # Check 3: Reject meta-responses (LLM describing its task instead of doing it)
+                            meta_patterns = [
+                                "tôi có thể", "i can", "i will",
+                                "sửa lỗi chính tả", "chỉnh sửa văn bản",
+                                "đây là văn bản", "here is the",
+                                "văn bản đã sửa", "corrected text",
+                                "không có lỗi", "no errors",
+                                "văn bản gốc", "original text"
+                            ]
+                            is_meta_response = any(
+                                pattern in corrected.lower() 
+                                for pattern in meta_patterns
+                            )
+                            if is_meta_response:
+                                corrected_segments.append(new_seg)
+                                continue
+                            
+                            # Check 4: Reject if response is just a generic phrase
+                            if len(corrected.split()) < 3:
+                                corrected_segments.append(new_seg)
+                                continue
+                            
+                            # ✅ All validations passed - apply correction
                             new_seg['text'] = corrected
                             new_seg['text_original'] = original  # Keep original for reference
                             total_corrected += 1
