@@ -300,9 +300,9 @@ class MergeNormalizer:
             if not seg['text'] or len(seg['text'].strip()) < 2:
                 continue
             
-            # Check 2: Duration hợp lý (0.1s - 120s)
+            # Check 2: Duration hợp lý (0.1s - 900s)
             duration = seg['duration']
-            if duration < 0.1 or duration > 120:
+            if duration < 0.1 or duration > 900:
                 continue
             
             # Check 3: Text/duration ratio hợp lý
