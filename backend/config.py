@@ -20,7 +20,7 @@ OUTPUT_DIR = DATA_DIR / "outputs"
 #   - "large-v2" (high accuracy, ~10GB VRAM, 1x realtime)
 #   - "large-v3" (best accuracy, ~10GB VRAM, 1x realtime)
 # Note: Use ".en" suffix for English-only models (faster but English only)
-WHISPER_MODEL = "small"
+WHISPER_MODEL = "large-v2"
 
 LANGUAGE = "vi"  # ISO 639-1 code, e.g., "en" for English, "vi" for Vietnamese, or None for auto-detect
 USE_GPU = False  # ✅ TEST: Disable GPU to check if CUDA is causing crash
@@ -56,8 +56,8 @@ HF_TOKEN = None  # Will be loaded from .env file if not set here
 CHUNK_DURATION_MINUTES = 5
 
 ENABLE_VAD = True  # Voice Activity Detection
-ENABLE_GENDER = True  # Gender classification
-ENABLE_SPELL_CHECK = True  # LLM spell checking and grammar correction
+ENABLE_GENDER = False  # Gender classification
+ENABLE_SPELL_CHECK = False  # LLM spell checking and grammar correction
 ENABLE_LLM_ANALYSIS = True  # LLM summary and tasks
 DEBUG_MODE = True  # Save intermediate stage outputs for debugging
 

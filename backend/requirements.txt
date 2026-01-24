@@ -1,9 +1,33 @@
-fastapi
-uvicorn
-python-multipart
+# ==================== FastAPI Backend ====================
+fastapi>=0.104.0
+uvicorn>=0.24.0
+python-multipart>=0.0.6
 
-# AMITA Pipeline Dependencies (lightweight - use existing PyTorch)
-faster-whisper>=0.10.0
+# ==================== Core Dependencies ====================
+numpy>=1.24.0
+scipy>=1.11.0
+python-dotenv>=1.0.0
+
+# ==================== Audio Processing ====================
 librosa>=0.10.0
 soundfile>=0.12.1
-python-dotenv>=1.0.0
+
+# ==================== ASR (Speech Recognition) ====================
+faster-whisper>=0.10.0
+
+# ==================== Speaker Diarization ====================
+# Requires HF_TOKEN from https://huggingface.co/settings/tokens
+pyannote.audio>=3.1.0
+
+# ==================== Deep Learning ====================
+# PyTorch - install separately based on your system:
+# CPU only: pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
+# CUDA 11.8: pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu118
+# CUDA 12.1: pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu121
+torch>=2.0.0
+torchaudio>=2.0.0
+
+# ==================== LLM (Optional) ====================
+# Install Ollama separately: https://ollama.ai
+# Then: pip install ollama
+ollama>=0.1.0
