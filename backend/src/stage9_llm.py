@@ -33,7 +33,7 @@ class LLMAnalyzer:
         - Better error handling
     """
     
-    def __init__(self, model: str = "llama3.2:3b", max_context_length: int = 8000):
+    def __init__(self, model: str = "qwen3:8b", max_context_length: int = 8000):
         """
         Initialize LLM Analyzer
         

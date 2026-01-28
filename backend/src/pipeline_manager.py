@@ -280,11 +280,19 @@ class MeetingPipeline:
         # ✅ Use faster-whisper with config
         device_mode = "cuda" if USE_GPU else "cpu"
         
+        # Get model settings from config (can be overridden by processing mode)
+        whisper_model = self.config.get("whisper_model", WHISPER_MODEL)
+        whisper_beam_size = self.config.get("whisper_beam_size", WHISPER_BEAM_SIZE)
+        whisper_vad_filter = self.config.get("whisper_vad_filter", WHISPER_VAD_FILTER)
+        
+        print(f"   🤖 Using Whisper Model: {whisper_model}")
+        print(f"   📊 Using Beam Size: {whisper_beam_size}")
+        
         whisper = WhisperProcessor(
-            model_size=WHISPER_MODEL,
+            model_size=whisper_model,
             device=device_mode,  # ✅ Force device from config
-            beam_size=WHISPER_BEAM_SIZE,
-            vad_filter=WHISPER_VAD_FILTER
+            beam_size=whisper_beam_size,
+            vad_filter=whisper_vad_filter
         )
         result = whisper.process(
             audio_path=self.preprocessed_audio,
@@ -919,14 +927,8 @@ if __name__ == "__main__":
     # Create pipeline (output_dir will default to backend/src/outputs)
     pipeline = MeetingPipeline(audio_file)
     
-    # Configure (optional)
-    pipeline.config.update({
-        "chunk_duration_minutes": 10,
-        "enable_vad": True,
-        "enable_gender": True,
-        "enable_spell_check": True,
-        "enable_llm": True
-    })
+    # Configure - Use settings from config.py via PIPELINE_CONFIG
+    # No need to override here, MeetingPipeline already uses PIPELINE_CONFIG
     
     # Run
     try:

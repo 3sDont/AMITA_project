@@ -68,7 +68,7 @@ PROCESSING_MODES = {
     "flash": {
         "name": "Flash Mode",
         "description": "⚡ Fastest - Quick results for short meetings",
-        "whisper_model": "base",
+        "whisper_model": "small",
         "whisper_beam_size": 3,
         "whisper_vad_filter": True,
         "chunk_duration_minutes": 10,
@@ -84,7 +84,7 @@ PROCESSING_MODES = {
     "flow": {
         "name": "Flow Mode",
         "description": "⚖️ Balanced - Recommended for most meetings",
-        "whisper_model": "small",
+        "whisper_model": "medium",
         "whisper_beam_size": 5,
         "whisper_vad_filter": True,
         "chunk_duration_minutes": 7,
@@ -100,7 +100,7 @@ PROCESSING_MODES = {
     "deep": {
         "name": "Deep Mode",
         "description": "🎯 Most Accurate - Detailed analysis for important meetings",
-        "whisper_model": "medium",
+        "whisper_model": "large-v2",
         "whisper_beam_size": 10,
         "whisper_vad_filter": True,
         "chunk_duration_minutes": 3,

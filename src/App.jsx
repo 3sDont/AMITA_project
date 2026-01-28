@@ -11,10 +11,11 @@ export default function App() {
   const [duration, setDuration] = useState(0);
   const [isRecording, setIsRecording] = useState(false);
   const [recordingTime, setRecordingTime] = useState(0);
-  const [recordingSource, setRecordingSource] = useState('microphone'); // 'microphone' or 'system'
   const [uploadedFilename, setUploadedFilename] = useState(null); // Store backend filename
   const [processingMode, setProcessingMode] = useState('flow'); // 'flash', 'flow', 'deep'
   const [activeSegmentIndex, setActiveSegmentIndex] = useState(null); // Track which segment is currently playing
+  const [shouldAutoPause, setShouldAutoPause] = useState(false); // Auto-pause at next segment
+  const [targetSegmentIndex, setTargetSegmentIndex] = useState(null); // Target segment to stop at
   const [processingProgress, setProcessingProgress] = useState(0); // 0-100
   const [processingStage, setProcessingStage] = useState(''); // Current stage name
   const [processingStartTime, setProcessingStartTime] = useState(null);
@@ -306,8 +307,34 @@ export default function App() {
       });
 
       wavesurfer.current.on('audioprocess', () => {
-        setCurrentTime(wavesurfer.current.getCurrentTime());
-        updateActiveSegment(wavesurfer.current.getCurrentTime());
+        const currentSeconds = wavesurfer.current.getCurrentTime();
+        setCurrentTime(currentSeconds);
+        updateActiveSegment(currentSeconds);
+        
+        // Auto-pause when reaching next segment
+        if (shouldAutoPause && targetSegmentIndex !== null && transcript.length > 0) {
+          const nextIndex = targetSegmentIndex + 1;
+          
+          // If this is the last segment, pause at the end
+          if (nextIndex >= transcript.length) {
+            // Check if we're near the end of the audio
+            if (currentSeconds >= duration - 0.2) {
+              wavesurfer.current.pause();
+              setIsPlaying(false);
+              setShouldAutoPause(false);
+              setTargetSegmentIndex(null);
+            }
+          } else {
+            // Pause when reaching the next segment
+            const nextTimestamp = parseTimestamp(transcript[nextIndex].time);
+            if (currentSeconds >= nextTimestamp - 0.05) { // Stop 0.05s before next segment
+              wavesurfer.current.pause();
+              setIsPlaying(false);
+              setShouldAutoPause(false);
+              setTargetSegmentIndex(null);
+            }
+          }
+        }
       });
 
       wavesurfer.current.on('finish', () => {
@@ -321,6 +348,11 @@ export default function App() {
     if (wavesurfer.current) {
       wavesurfer.current.playPause();
       setIsPlaying(!isPlaying);
+      // Disable auto-pause when manually toggling play
+      if (!isPlaying) {
+        setShouldAutoPause(false);
+        setTargetSegmentIndex(null);
+      }
     }
   };
 
@@ -373,6 +405,10 @@ export default function App() {
     // Set active segment
     setActiveSegmentIndex(index);
     
+    // Enable auto-pause at next segment
+    setShouldAutoPause(true);
+    setTargetSegmentIndex(index);
+    
     // Auto-play if not playing
     if (!isPlaying) {
       wavesurfer.current.play();
@@ -409,30 +445,39 @@ export default function App() {
       setSummary("");
       setTasks([]);
       
-      let stream;
-      if (recordingSource === 'system') {
-        // Capture system audio using getDisplayMedia
-        stream = await navigator.mediaDevices.getDisplayMedia({
-          video: {
-            displaySurface: "monitor"
-          },
+      // Always capture both microphone and system audio
+      const [micStream, systemStream] = await Promise.all([
+        navigator.mediaDevices.getUserMedia({ audio: true }),
+        navigator.mediaDevices.getDisplayMedia({
+          video: { displaySurface: "monitor" },
           audio: {
             echoCancellation: false,
             noiseSuppression: false,
             autoGainControl: false
           }
-        });
-        
-        // Stop video track if not needed, keep only audio
-        const videoTrack = stream.getVideoTracks()[0];
-        if (videoTrack) {
-          videoTrack.stop();
-          stream.removeTrack(videoTrack);
-        }
-      } else {
-        // Capture from microphone
-        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        })
+      ]);
+      
+      // Stop video track from display capture
+      const videoTrack = systemStream.getVideoTracks()[0];
+      if (videoTrack) {
+        videoTrack.stop();
+        systemStream.removeTrack(videoTrack);
       }
+      
+      // Mix both audio streams using AudioContext
+      const audioContext = new AudioContext();
+      const micSource = audioContext.createMediaStreamSource(micStream);
+      const systemSource = audioContext.createMediaStreamSource(systemStream);
+      const destination = audioContext.createMediaStreamDestination();
+      
+      micSource.connect(destination);
+      systemSource.connect(destination);
+      
+      const stream = destination.stream;
+      
+      // Store original streams to stop them later
+      stream._originalStreams = [micStream, systemStream];
       
       mediaRecorder.current = new MediaRecorder(stream);
       audioChunks.current = [];
@@ -452,7 +497,10 @@ export default function App() {
         setUploadedFile(file);
         setRecordingTime(0);
         
-        // Stop all tracks
+        // Stop all tracks (including mixed streams if 'both' mode)
+        if (stream._originalStreams) {
+          stream._originalStreams.forEach(s => s.getTracks().forEach(track => track.stop()));
+        }
         stream.getTracks().forEach(track => track.stop());
 
         // Auto-upload recorded audio
@@ -468,8 +516,8 @@ export default function App() {
       }, 1000);
 
     } catch (error) {
-      console.error('Error accessing microphone:', error);
-      toast.error('Could not access microphone. Please grant permission.');
+      console.error('Error accessing microphone or system audio:', error);
+      toast.error('Could not access microphone or system audio. Please grant permissions.');
     }
   };
 
@@ -812,36 +860,6 @@ export default function App() {
               </div>
             </div>
             
-            {/* Audio Source Selection */}
-            {!isRecording && (
-              <div className="mb-5 flex gap-3">
-                <button
-                  onClick={() => setRecordingSource('microphone')}
-                  disabled={isProcessing}
-                  className={`flex-1 py-3 px-4 rounded-xl font-semibold transition-all duration-300 ${
-                    recordingSource === 'microphone'
-                      ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg scale-105'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105'
-                  } disabled:opacity-50`}
-                >
-                  <span className="text-lg mr-2">🎤</span>
-                  Microphone
-                </button>
-                <button
-                  onClick={() => setRecordingSource('system')}
-                  disabled={isProcessing}
-                  className={`flex-1 py-3 px-4 rounded-xl font-semibold transition-all duration-300 ${
-                    recordingSource === 'system'
-                      ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg scale-105'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105'
-                  } disabled:opacity-50`}
-                >
-                  <span className="text-lg mr-2">🔊</span>
-                  System Audio
-                </button>
-              </div>
-            )}
-            
             <div className="flex flex-col gap-4">
               <button
                 onClick={isRecording ? stopRecording : startRecording}
@@ -866,9 +884,7 @@ export default function App() {
                 )}
               </button>
               <p className="text-xs text-gray-500 text-center leading-relaxed">
-                {recordingSource === 'microphone' 
-                  ? '🎙️ Record audio from your microphone'
-                  : '💻 Capture audio playing on your device'}
+                🎶 Records both microphone and system audio simultaneously
               </p>
             </div>
           </div>
@@ -1501,10 +1517,10 @@ export default function App() {
               </svg>
             </div>
             <h3 className="font-bold text-gray-800 mb-3 text-lg">
-              Online Voice Recorder
+              Easy to use
             </h3>
             <p className="text-gray-600 leading-relaxed">
-              Our Voice Recorder is a convenient and simple online tool that can be used right in your browser.
+              Our system is convenient and simple that everyone can use for their works.
             </p>
           </div>
           <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
@@ -1515,7 +1531,7 @@ export default function App() {
             </div>
             <h3 className="font-bold text-gray-800 mb-3 text-lg">Free to use</h3>
             <p className="text-gray-600 leading-relaxed">
-              Voice Recorder is completely free. No hidden payments, activation fees, or charges for extra features.
+              Our system is completely free. No hidden payments, activation fees, or charges for extra features.
             </p>
           </div>
           <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">

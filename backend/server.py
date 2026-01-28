@@ -188,7 +188,10 @@ async def process_audio(data: dict):
                         "min_speakers": mode_config.get("min_speakers"),
                         "max_speakers": mode_config.get("max_speakers"),
                         "processing_mode": mode,
-                        "llm_detail_level": mode_config.get("llm_detail_level", "standard")
+                        "llm_detail_level": mode_config.get("llm_detail_level", "standard"),
+                        "whisper_model": mode_config["whisper_model"],
+                        "whisper_beam_size": mode_config["whisper_beam_size"],
+                        "whisper_vad_filter": mode_config["whisper_vad_filter"]
                     })
                     
                     # Update Whisper settings for this processing session
